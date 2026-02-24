@@ -69,12 +69,18 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           {service.emoji}
         </div>
         <h3 className="text-[17px] font-extrabold text-foreground leading-[1.15] tracking-tight mb-[3px]">{service.name}</h3>
-        <p className="text-xs text-t4 leading-snug mb-0">{service.subtitle}</p>
+        <p className="text-xs text-t4 leading-snug mb-1.5">{service.subtitle}</p>
+
+        {/* Goal */}
+        <div className="flex items-start gap-1.5 bg-primary/[.06] border border-primary/[.12] rounded-lg px-2.5 py-2 mb-1">
+          <span className="text-primary text-[11px] mt-[1px] flex-shrink-0">🎯</span>
+          <span className="text-[11px] text-t2 leading-snug font-medium">{service.goal}</span>
+        </div>
 
         {/* Expand button */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="inline-flex items-center gap-1 bg-transparent border-none pt-[5px] text-primary-dark text-[11.5px] font-semibold cursor-pointer transition-opacity hover:opacity-70 mb-[2px]"
+          className="inline-flex items-center gap-1 bg-transparent border-none pt-[3px] text-primary-dark text-[11.5px] font-semibold cursor-pointer transition-opacity hover:opacity-70 mb-[2px]"
         >
           <span>Детальніше</span>
           <ChevronDown className={`w-[11px] h-[11px] transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
