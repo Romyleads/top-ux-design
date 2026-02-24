@@ -1,0 +1,153 @@
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import type { ServiceCard } from "@/data/services";
+import FeatureIcon from "./FeatureIcon";
+
+interface ServiceCardProps {
+  service: ServiceCard;
+  isOrdered: boolean;
+  onAddToCart: (name: string, emoji: string, price: string) => void;
+}
+
+export default function ServiceCardComponent({ service, isOrdered, onAddToCart }: ServiceCardProps) {
+  const [activeTier, setActiveTier] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+  const [fading, setFading] = useState(false);
+
+  const features = service.tierFeatures[activeTier] || [];
+  const tier = service.tiers[activeTier];
+
+  const handleTierChange = (idx: number) => {
+    if (idx === activeTier) return;
+    setFading(true);
+    setTimeout(() => {
+      setActiveTier(idx);
+      setFading(false);
+    }, 150);
+  };
+
+  const displayName = `${service.name} (${tier.name})`;
+
+  const handleAdd = () => {
+    onAddToCart(displayName, service.emoji, tier.price);
+  };
+
+  return (
+    <div
+      className={`bg-card rounded-2xl overflow-hidden flex flex-col relative shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover group ${
+        isOrdered ? "ring-[2.5px] ring-primary" : ""
+      }`}
+    >
+      {isOrdered && (
+        <div className="absolute top-[11px] right-[11px] w-[22px] h-[22px] rounded-full bg-primary text-primary-foreground text-[11px] font-bold flex items-center justify-center z-10 shadow-green">
+          ✓
+        </div>
+      )}
+
+      {/* Photo */}
+      <div className="relative h-[130px] overflow-hidden flex-shrink-0 bg-border">
+        <img
+          src={service.photo}
+          alt={service.name}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-[550ms] ease-out group-hover:scale-[1.07]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-foreground/55" />
+        <span className="absolute bottom-[9px] right-[10px] z-[2] bg-card/[.88] backdrop-blur-lg text-t2 text-[10px] font-semibold px-[9px] py-[3px] rounded-full">
+          {service.tag}
+        </span>
+        {service.hot && (
+          <span className="absolute top-[10px] left-[10px] z-[2] bg-amber text-primary-foreground text-[9.5px] font-bold px-[9px] py-[3px] rounded-full tracking-wider">
+            🔥 HOT
+          </span>
+        )}
+      </div>
+
+      {/* Body */}
+      <div className="px-4 relative">
+        <div className="w-[46px] h-[46px] bg-card rounded-xl shadow-[0_4px_16px_rgba(15,23,42,0.14)] border-[1.5px] border-card flex items-center justify-center text-[22px] -mt-[23px] mb-2.5 relative z-[5] transition-all duration-200 group-hover:shadow-[0_6px_22px_rgba(15,23,42,0.18)] group-hover:-translate-y-[1px]">
+          {service.emoji}
+        </div>
+        <h3 className="text-[17px] font-extrabold text-foreground leading-[1.15] tracking-tight mb-[3px]">{service.name}</h3>
+        <p className="text-xs text-t4 leading-snug mb-0">{service.subtitle}</p>
+
+        {/* Expand button */}
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="inline-flex items-center gap-1 bg-transparent border-none pt-[5px] text-primary-dark text-[11.5px] font-semibold cursor-pointer transition-opacity hover:opacity-70 mb-[2px]"
+        >
+          <span>Детальніше</span>
+          <ChevronDown className={`w-[11px] h-[11px] transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
+        </button>
+
+        {/* Expandable section */}
+        <div className={`overflow-hidden transition-all duration-400 ease-out ${expanded ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}>
+          <div className="pt-2 pb-1.5 border-t border-secondary mt-1.5">
+            {service.info.map((section, i) => (
+              <div key={i} className="flex flex-col gap-[3px] mb-2.5 last:mb-0">
+                <span className="text-[9.5px] font-bold tracking-wider uppercase text-primary-dark opacity-75">{section.label}</span>
+                {section.type === "list" && section.items ? (
+                  <ul className="list-none p-0 m-0 flex flex-col gap-0.5">
+                    {section.items.map((item, j) => (
+                      <li key={j} className="text-[11px] text-t3 leading-snug pl-3 relative before:content-['›'] before:absolute before:left-0 before:text-primary before:font-bold">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <span className="text-[11.5px] text-t2 leading-relaxed">{section.text}</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Tier Picker */}
+      <div className="grid grid-cols-3 bg-secondary rounded-[11px] p-[3px] mx-4 mt-3 gap-[2px]">
+        {service.tiers.map((t, i) => (
+          <button
+            key={i}
+            onClick={() => handleTierChange(i)}
+            className={`flex flex-col items-center py-2 px-1 rounded-[7px] cursor-pointer transition-all duration-200 select-none ${
+              i === activeTier
+                ? "bg-card border border-primary/40 shadow-sm"
+                : "hover:bg-foreground/[.03]"
+            }`}
+          >
+            <span className={`text-[10.5px] font-semibold leading-none mb-[5px] transition-colors ${i === activeTier ? "text-primary-dark font-bold" : "text-t4"}`}>
+              {t.name}
+            </span>
+            <span className={`text-[15px] font-extrabold leading-none transition-colors ${i === activeTier ? "text-foreground" : "text-t3"}`}>
+              {t.price}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {/* Features */}
+      <div className={`px-4 pt-[2px] transition-opacity duration-150 ${fading ? "opacity-0" : "opacity-100"}`}>
+        {features.map((feat, i) => (
+          <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-[7px]">
+            <FeatureIcon icon={feat.icon} />
+            <span className="text-xs text-t3 leading-snug [&>b]:text-t2 [&>b]:font-semibold" dangerouslySetInnerHTML={{ __html: feat.text }} />
+          </div>
+        ))}
+      </div>
+
+      {/* CTA */}
+      <div className="px-4 pt-2.5 pb-3.5 mt-auto">
+        <button
+          onClick={handleAdd}
+          className={`block w-full rounded-[14px] text-[13.5px] font-bold py-[13px] px-5 text-center relative overflow-hidden transition-all duration-200 ${
+            isOrdered
+              ? "bg-green-light text-green-text ring-[1.5px] ring-green-border"
+              : "gradient-primary text-primary-foreground shadow-green gradient-shine hover:-translate-y-[2px] hover:shadow-green-hover hover:brightness-[1.04] active:translate-y-0 active:scale-[0.98]"
+          }`}
+        >
+          {isOrdered ? "✓ В кошику" : `Додати ${tier.name} — ${tier.price}`}
+        </button>
+      </div>
+    </div>
+  );
+}
