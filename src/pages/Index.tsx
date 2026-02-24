@@ -7,6 +7,7 @@ import FilterBar from "@/components/FilterBar";
 import BlockSection from "@/components/BlockSection";
 import CartFab from "@/components/CartFab";
 import CartDrawer from "@/components/CartDrawer";
+import SocialProof from "@/components/SocialProof";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -73,7 +74,10 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Premium top accent bar */}
+      <div className="h-1 w-full gradient-primary" />
+
       <div className="max-w-[1320px] mx-auto px-7 max-sm:px-3.5">
         <HeroSection
           searchQuery={searchQuery}
@@ -109,6 +113,7 @@ export default function Index() {
       </div>
 
       <CartFab totalItems={cart.totalItems} onOpen={cart.openCart} />
+      <SocialProof />
       <CartDrawer
         isOpen={cart.isOpen}
         items={cart.items}
