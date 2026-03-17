@@ -1,5 +1,7 @@
 import { Search, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { useLanguage } from "@/i18n/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 interface HeroSectionProps {
   searchQuery: string;
@@ -18,6 +20,7 @@ const plural = (n: number, one: string, few: string, many: string) => {
 export default function HeroSection({ searchQuery, onSearchChange, resultCount }: HeroSectionProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [focused, setFocused] = useState(false);
+  const { t, locale } = useLanguage();
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -31,22 +34,39 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
     return () => document.removeEventListener("keydown", handler);
   }, []);
 
+  const conceptWord = (n: number) =>
+    locale === "uk"
+      ? plural(n, t("plural.concept.one"), t("plural.concept.few"), t("plural.concept.many"))
+      : t("plural.concept.many");
+
   return (
-    <section className="text-center pt-20 pb-10 px-6">
-      <span className="inline-flex items-center gap-1.5 bg-green-light border border-green-border text-green-text text-[11px] font-bold px-3.5 py-1 rounded-full mb-5 tracking-wider uppercase">
-        📋 Маркетинговий арсенал
+    <section className="text-center pt-16 pb-10 px-6 relative">
+      {/* Floating decorative orbs */}
+      <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-primary/[.06] rounded-full blur-[100px] animate-float pointer-events-none" />
+      <div className="absolute top-20 right-[15%] w-[200px] h-[200px] bg-primary/[.04] rounded-full blur-[80px] animate-float-delayed pointer-events-none" />
+
+      {/* Language Switcher */}
+      <div className="flex justify-end mb-6">
+        <LanguageSwitcher />
+      </div>
+
+      <span className="inline-flex items-center gap-1.5 bg-green-light border border-green-border text-green-text text-[11px] font-bold px-3.5 py-1 rounded-full mb-5 tracking-wider uppercase animate-pulse-subtle">
+        {t("hero.badge")}
       </span>
-      <h1 className="text-[clamp(28px,4vw,50px)] font-extrabold text-foreground leading-[1.08] mb-3.5 tracking-tight">
-        Офер <span className="text-primary">Концепти</span>
+      <h1 className="text-[clamp(32px,5vw,58px)] font-black text-foreground leading-[1.05] mb-4 tracking-tight">
+        {t("hero.title1")}{" "}
+        <span className="bg-gradient-to-r from-primary via-primary-dark to-primary bg-[length:200%_auto] bg-clip-text text-transparent animate-shimmer">
+          {t("hero.title2")}
+        </span>
       </h1>
-      <p className="text-t3 text-base max-w-[500px] mx-auto mb-6 leading-relaxed">
-        Повна бібліотека маркетингових матеріалів — від друкованої продукції до трендових цифрових форматів 2024–2025
+      <p className="text-t3 text-[15px] sm:text-base max-w-[520px] mx-auto mb-7 leading-relaxed">
+        {t("hero.subtitle")}
       </p>
 
       {/* Premium Search */}
       <div className={`relative max-w-[520px] mx-auto aurora-border ${focused ? "focus-within" : ""}`}>
         <div
-          className={`relative z-[1] flex items-center bg-card rounded-full py-[7px] pl-[22px] pr-[7px] gap-2.5 border-[1.5px] transition-all duration-200 ${
+          className={`relative z-[1] flex items-center bg-card/90 backdrop-blur-xl rounded-full py-[7px] pl-[22px] pr-[7px] gap-2.5 border-[1.5px] transition-all duration-200 ${
             focused
               ? "border-transparent shadow-[0_8px_32px_-4px_rgba(22,163,74,0.2),0_2px_8px_rgba(22,163,74,0.1)]"
               : "border-border shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1),0_1px_4px_rgba(0,0,0,0.04)]"
@@ -64,7 +84,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
             onChange={(e) => onSearchChange(e.target.value)}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            placeholder="Пошук концепту, формату, ключового слова..."
+            placeholder={t("hero.search")}
             className="flex-1 border-none outline-none text-[15px] text-foreground bg-transparent font-sans tracking-tight min-w-0 placeholder:text-t4 placeholder:font-normal"
           />
           {searchQuery.length > 0 && (
@@ -93,11 +113,11 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
         <p className="text-center mt-3.5 text-xs text-t4 font-medium animate-fade-in">
           {resultCount > 0 ? (
             <>
-              Знайдено <strong className="text-primary-dark font-bold">{resultCount}</strong>{" "}
-              {plural(resultCount, "концепт", "концепти", "концептів")}
+              {t("hero.found")} <strong className="text-primary-dark font-bold">{resultCount}</strong>{" "}
+              {conceptWord(resultCount)}
             </>
           ) : (
-            "Нічого не знайдено"
+            t("hero.nothing")
           )}
         </p>
       )}
