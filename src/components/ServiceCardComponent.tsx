@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface ServiceCardProps {
   service: ServiceCard;
@@ -13,6 +14,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [fading, setFading] = useState(false);
+  const { t } = useLanguage();
 
   const features = service.tierFeatures[activeTier] || [];
   const tier = service.tiers[activeTier];
@@ -34,9 +36,10 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   return (
     <div
-      className={`bg-card rounded-2xl overflow-hidden flex flex-col relative shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover group ${
+      className={`bg-card rounded-2xl overflow-hidden flex flex-col relative shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover hover:scale-[1.01] group ${
         isOrdered ? "ring-[2.5px] ring-primary" : ""
       }`}
+      style={{ transformStyle: "preserve-3d" }}
     >
       {isOrdered && (
         <div className="absolute top-[11px] right-[11px] w-[22px] h-[22px] rounded-full bg-primary text-primary-foreground text-[11px] font-bold flex items-center justify-center z-10 shadow-green">
@@ -57,7 +60,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           {service.tag}
         </span>
         {service.hot && (
-          <span className="absolute top-[10px] left-[10px] z-[2] bg-amber text-primary-foreground text-[9.5px] font-bold px-[9px] py-[3px] rounded-full tracking-wider">
+          <span className="absolute top-[10px] left-[10px] z-[2] bg-amber text-primary-foreground text-[9.5px] font-bold px-[9px] py-[3px] rounded-full tracking-wider animate-pulse-subtle">
             🔥 HOT
           </span>
         )}
@@ -82,7 +85,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           onClick={() => setExpanded(!expanded)}
           className="inline-flex items-center gap-1 bg-transparent border-none pt-[3px] text-primary-dark text-[11.5px] font-semibold cursor-pointer transition-opacity hover:opacity-70 mb-[2px]"
         >
-          <span>Детальніше</span>
+          <span>{t("card.details")}</span>
           <ChevronDown className={`w-[11px] h-[11px] transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
         </button>
 
@@ -111,7 +114,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
       {/* Tier Picker */}
       <div className="grid grid-cols-3 bg-secondary rounded-[11px] p-[3px] mx-4 mt-3 gap-[2px]">
-        {service.tiers.map((t, i) => (
+        {service.tiers.map((tierItem, i) => (
           <button
             key={i}
             onClick={() => handleTierChange(i)}
@@ -122,10 +125,10 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             }`}
           >
             <span className={`text-[10.5px] font-semibold leading-none mb-[5px] transition-colors ${i === activeTier ? "text-primary-dark font-bold" : "text-t4"}`}>
-              {t.name}
+              {tierItem.name}
             </span>
             <span className={`text-[15px] font-extrabold leading-none transition-colors ${i === activeTier ? "text-foreground" : "text-t3"}`}>
-              {t.price}
+              {tierItem.price}
             </span>
           </button>
         ))}
@@ -151,7 +154,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
               : "gradient-primary text-primary-foreground shadow-green gradient-shine hover:-translate-y-[2px] hover:shadow-green-hover hover:brightness-[1.04] active:translate-y-0 active:scale-[0.98]"
           }`}
         >
-          {isOrdered ? "✓ В кошику" : `Додати ${tier.name} — ${tier.price}`}
+          {isOrdered ? t("card.inCart") : `${t("card.add")} ${tier.name} — ${tier.price}`}
         </button>
       </div>
     </div>

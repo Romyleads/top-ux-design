@@ -1,6 +1,7 @@
 import { ShoppingCart, X, ArrowRight, Minus, Plus, Trash2 } from "lucide-react";
 import type { CartItem } from "@/hooks/useCart";
 import { useState } from "react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -18,18 +19,8 @@ interface CartDrawerProps {
 }
 
 export default function CartDrawer({
-  isOpen,
-  items,
-  totalItems,
-  totalPrice,
-  hasPrice,
-  formatEur,
-  step,
-  setStep,
-  onClose,
-  onChangeQty,
-  onRemove,
-  onClear,
+  isOpen, items, totalItems, totalPrice, hasPrice, formatEur, step, setStep,
+  onClose, onChangeQty, onRemove, onClear,
 }: CartDrawerProps) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -38,14 +29,15 @@ export default function CartDrawer({
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [dsgvo, setDsgvo] = useState(false);
+  const { t } = useLanguage();
 
   const isEmpty = items.length === 0;
 
   const handleSubmit = () => {
-    if (!name.trim()) { alert("Введіть ім'я"); return; }
-    if (!contact.trim() && !email.trim()) { alert("Вкажіть Slack/Telegram або Email"); return; }
-    if (!dsgvo) { alert("Погодьтесь з умовами"); return; }
-    if (isEmpty) { alert("Кошик порожній"); return; }
+    if (!name.trim()) { alert(t("alert.name")); return; }
+    if (!contact.trim() && !email.trim()) { alert(t("alert.contact")); return; }
+    if (!dsgvo) { alert(t("alert.dsgvo")); return; }
+    if (isEmpty) { alert(t("alert.empty")); return; }
     setSubmitted(true);
   };
 
@@ -62,14 +54,14 @@ export default function CartDrawer({
         <div className="fixed inset-0 z-[3000] bg-foreground/40 flex items-center justify-center p-5" onClick={() => setShowConfirm(false)}>
           <div className="bg-card rounded-2xl p-7 max-w-[300px] w-full text-center shadow-card-hover animate-scale-in" onClick={(e) => e.stopPropagation()}>
             <div className="text-4xl mb-3">🗑️</div>
-            <div className="text-[15px] font-extrabold text-foreground mb-2">Очистити кошик?</div>
-            <p className="text-[13px] text-t2 leading-relaxed mb-5">Ви впевнені, що хочете повністю видалити свій вибір?</p>
+            <div className="text-[15px] font-extrabold text-foreground mb-2">{t("confirm.title")}</div>
+            <p className="text-[13px] text-t2 leading-relaxed mb-5">{t("confirm.msg")}</p>
             <div className="flex gap-2">
               <button onClick={() => setShowConfirm(false)} className="flex-1 bg-secondary border border-border text-foreground text-[13px] font-medium py-2.5 rounded-[10px] hover:bg-border transition-colors">
-                Ні, залишити
+                {t("confirm.no")}
               </button>
               <button onClick={() => { onClear(); setShowConfirm(false); }} className="flex-1 bg-destructive/10 border border-destructive/30 text-destructive text-[13px] font-bold py-2.5 rounded-[10px] hover:bg-destructive/20 transition-colors">
-                Так, видалити
+                {t("confirm.yes")}
               </button>
             </div>
           </div>
@@ -87,7 +79,7 @@ export default function CartDrawer({
                 {totalItems}
               </span>
             </div>
-            <span className="text-sm font-bold text-foreground">Крок {step} / 2</span>
+            <span className="text-sm font-bold text-foreground">{t("cart.step")} {step} / 2</span>
           </div>
           <button onClick={onClose} className="bg-transparent border border-border text-t2 w-[30px] h-[30px] rounded-lg flex items-center justify-center hover:bg-background transition-colors">
             <X className="w-3.5 h-3.5" />
@@ -98,25 +90,25 @@ export default function CartDrawer({
           <div className="flex-1 flex flex-col overflow-y-auto">
             {!isEmpty && (
               <div className="px-4 py-4 border-b border-border bg-secondary/50 flex-shrink-0">
-                <div className="text-[10px] text-t4 uppercase tracking-wider mb-1 font-semibold">Орієнтовна вартість замовлення</div>
+                <div className="text-[10px] text-t4 uppercase tracking-wider mb-1 font-semibold">{t("cart.estCost")}</div>
                 <div className="text-[26px] font-extrabold text-foreground tracking-tight mb-[3px]">
-                  {hasPrice ? <strong className="text-primary">{formatEur(totalPrice)}</strong> : <span className="text-[15px] text-t4">Ціна уточнюється</span>}
+                  {hasPrice ? <strong className="text-primary">{formatEur(totalPrice)}</strong> : <span className="text-[15px] text-t4">{t("cart.priceTbd")}</span>}
                 </div>
-                <div className="text-[11px] text-t4">ℹ Базова версія · фінальна ціна уточнюється після консультації</div>
+                <div className="text-[11px] text-t4">{t("cart.priceNote")}</div>
               </div>
             )}
 
             {isEmpty ? (
               <div className="text-center py-12 px-5 text-t4 text-[13px] leading-relaxed flex-1 flex flex-col items-center justify-center">
                 <div className="text-[40px] mb-3">🛍</div>
-                <p>Кошик порожній.<br />Оберіть послуги та натисніть<br /><strong className="text-foreground">Додати</strong></p>
+                <p>{t("cart.empty")}<br />{t("cart.emptyHint")}<br /><strong className="text-foreground">{t("cart.addBtn")}</strong></p>
               </div>
             ) : (
               <div className="px-4 py-3 flex-1">
                 <div className="text-[10px] text-t4 uppercase tracking-wider mb-2 font-bold flex items-center justify-between">
-                  Обрані послуги
+                  {t("cart.selected")}
                   <button onClick={() => setShowConfirm(true)} className="text-destructive/60 hover:text-destructive text-[10px] font-semibold transition-colors">
-                    Очистити все
+                    {t("cart.clearAll")}
                   </button>
                 </div>
                 <div className="space-y-1.5">
@@ -148,9 +140,9 @@ export default function CartDrawer({
             {!isEmpty && (
               <div className="px-4 py-3 pb-5 flex-shrink-0 border-t border-border">
                 <button onClick={() => setStep(2)} className="w-full flex items-center justify-center gap-[7px] gradient-primary-dark border-none text-primary-foreground text-[13.5px] font-bold py-3.5 rounded-[10px] shadow-[0_6px_16px_-6px_rgba(31,107,69,0.45)] hover:brightness-[1.08] transition-all">
-                  Перейти до оформлення <ArrowRight className="w-4 h-4" />
+                  {t("cart.proceed")} <ArrowRight className="w-4 h-4" />
                 </button>
-                <p className="text-center text-[11px] text-t4 mt-1.5">Запит на розрахунок — без зобов'язань</p>
+                <p className="text-center text-[11px] text-t4 mt-1.5">{t("cart.noObligation")}</p>
               </div>
             )}
           </div>
@@ -165,44 +157,44 @@ export default function CartDrawer({
                 <span className="text-[13px] font-bold text-foreground">{hasPrice ? formatEur(totalPrice) : ""}</span>
               </div>
               <button onClick={() => setStep(1)} className="bg-transparent border border-border text-t2 text-[11.5px] px-2.5 py-1 rounded-[7px] hover:bg-background transition-colors flex-shrink-0">
-                ✏ Змінити
+                {t("cart.edit")}
               </button>
             </div>
 
             {submitted ? (
               <div className="text-center py-10 px-5 animate-scale-in">
                 <div className="text-[44px] mb-3">✅</div>
-                <div className="text-base font-extrabold text-primary mb-2">Запит надіслано!</div>
-                <p className="text-t3 text-[13px] leading-relaxed">Ми зв'яжемося у Slack або Telegram протягом 24 годин. Дякуємо!</p>
+                <div className="text-base font-extrabold text-primary mb-2">{t("cart.sent")}</div>
+                <p className="text-t3 text-[13px] leading-relaxed">{t("cart.sentMsg")}</p>
               </div>
             ) : (
               <div className="px-4 py-3.5 flex-1">
-                <div className="text-[15px] font-extrabold text-foreground mb-[3px]">Контактні дані</div>
-                <p className="text-t4 text-xs mb-3.5">Відповідаємо у Slack або Telegram — без телефонних дзвінків</p>
+                <div className="text-[15px] font-extrabold text-foreground mb-[3px]">{t("cart.contact")}</div>
+                <p className="text-t4 text-xs mb-3.5">{t("cart.contactSub")}</p>
 
                 <div className="space-y-2.5">
                   <div>
-                    <label className="block text-[11.5px] font-semibold text-t2 mb-1">Ім'я *</label>
+                    <label className="block text-[11.5px] font-semibold text-t2 mb-1">{t("cart.name")} *</label>
                     <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Ivan Muster" className="w-full bg-secondary/80 border-[1.5px] border-border rounded-[10px] px-3 py-[9px] text-[13px] text-foreground outline-none transition-all focus:border-primary focus:bg-card focus:ring-[3px] focus:ring-primary/[.08]" />
                   </div>
                   <div>
-                    <label className="block text-[11.5px] font-semibold text-t2 mb-1">Slack або Telegram *</label>
-                    <input value={contact} onChange={(e) => setContact(e.target.value)} placeholder="@slack або @telegram" className="w-full bg-secondary/80 border-[1.5px] border-border rounded-[10px] px-3 py-[9px] text-[13px] text-foreground outline-none transition-all focus:border-primary focus:bg-card focus:ring-[3px] focus:ring-primary/[.08]" />
+                    <label className="block text-[11.5px] font-semibold text-t2 mb-1">{t("cart.slackTg")} *</label>
+                    <input value={contact} onChange={(e) => setContact(e.target.value)} placeholder="@slack or @telegram" className="w-full bg-secondary/80 border-[1.5px] border-border rounded-[10px] px-3 py-[9px] text-[13px] text-foreground outline-none transition-all focus:border-primary focus:bg-card focus:ring-[3px] focus:ring-primary/[.08]" />
                   </div>
                   <div>
-                    <label className="block text-[11.5px] font-semibold text-t2 mb-1">E-Mail</label>
+                    <label className="block text-[11.5px] font-semibold text-t2 mb-1">{t("cart.email")}</label>
                     <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="you@example.com" className="w-full bg-secondary/80 border-[1.5px] border-border rounded-[10px] px-3 py-[9px] text-[13px] text-foreground outline-none transition-all focus:border-primary focus:bg-card focus:ring-[3px] focus:ring-primary/[.08]" />
                   </div>
                   <div>
-                    <label className="block text-[11.5px] font-semibold text-t2 mb-1">Коментар <span className="font-normal">(необов'язково)</span></label>
-                    <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Деталі, дедлайн, питання..." className="w-full bg-secondary/80 border-[1.5px] border-border rounded-[10px] px-3 py-[9px] text-[13px] text-foreground outline-none transition-all focus:border-primary focus:bg-card focus:ring-[3px] focus:ring-primary/[.08] h-[68px] resize-none" />
+                    <label className="block text-[11.5px] font-semibold text-t2 mb-1">{t("cart.comment")} <span className="font-normal">({t("cart.optional")})</span></label>
+                    <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder="..." className="w-full bg-secondary/80 border-[1.5px] border-border rounded-[10px] px-3 py-[9px] text-[13px] text-foreground outline-none transition-all focus:border-primary focus:bg-card focus:ring-[3px] focus:ring-primary/[.08] h-[68px] resize-none" />
                   </div>
                   <label className="flex items-start gap-[9px] p-2.5 px-3 bg-secondary/80 border border-border rounded-lg cursor-pointer">
                     <input type="checkbox" checked={dsgvo} onChange={(e) => setDsgvo(e.target.checked)} className="w-3.5 h-3.5 mt-0.5 accent-primary flex-shrink-0" />
-                    <span className="text-[11.5px] text-t3 leading-relaxed">Я погоджуюся з обробкою моїх даних згідно з політикою конфіденційності. *</span>
+                    <span className="text-[11.5px] text-t3 leading-relaxed">{t("cart.dsgvo")} *</span>
                   </label>
                   <button onClick={handleSubmit} className="w-full gradient-primary-dark border-none text-primary-foreground text-sm font-bold py-[13px] rounded-[10px] shadow-[0_6px_16px_-6px_rgba(31,107,69,0.4)] hover:brightness-[1.08] transition-all mt-1">
-                    Надіслати запит →
+                    {t("cart.submit")}
                   </button>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback } from "react";
 import { services, blocks } from "@/data/services";
 import { useCart } from "@/hooks/useCart";
+import { useLanguage } from "@/i18n/LanguageContext";
 import HeroSection from "@/components/HeroSection";
 import StatsBar from "@/components/StatsBar";
 import FilterBar from "@/components/FilterBar";
@@ -13,19 +14,17 @@ export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeBlock, setActiveBlock] = useState("all");
   const cart = useCart();
+  const { t } = useLanguage();
 
-  // Track ordered card base names
   const orderedNames = useMemo(() => {
     const names = new Set<string>();
     cart.items.forEach((item) => {
-      // Extract base name from "Name (Tier)" format
       const match = item.name.match(/^(.+?)\s*\(/);
       if (match) names.add(match[1]);
     });
     return names;
   }, [cart.items]);
 
-  // Filter logic
   const filteredServices = useMemo(() => {
     let result = services;
     if (activeBlock !== "all") {
@@ -35,9 +34,7 @@ export default function Index() {
       const q = searchQuery.toLowerCase();
       result = result.filter((s) => {
         const searchable = [
-          s.name,
-          s.subtitle,
-          s.tag,
+          s.name, s.subtitle, s.tag,
           ...s.info.flatMap((i) => [i.text || "", ...(i.items || [])]),
           ...s.tierFeatures.flat().map((f) => f.text),
         ].join(" ").toLowerCase();
@@ -47,7 +44,6 @@ export default function Index() {
     return result;
   }, [searchQuery, activeBlock]);
 
-  // Group by block
   const groupedByBlock = useMemo(() => {
     const groups: Record<string, typeof services> = {};
     filteredServices.forEach((s) => {
@@ -58,27 +54,26 @@ export default function Index() {
   }, [filteredServices]);
 
   const handleAddToCart = useCallback(
-    (name: string, emoji: string, price: string) => {
-      cart.addItem({ name, emoji, price });
-    },
+    (name: string, emoji: string, price: string) => { cart.addItem({ name, emoji, price }); },
     [cart.addItem]
   );
 
-  const handleSearch = useCallback((q: string) => {
-    setSearchQuery(q);
-  }, []);
-
-  const handleFilter = useCallback((blockId: string) => {
-    setActiveBlock(blockId);
-    setSearchQuery("");
-  }, []);
+  const handleSearch = useCallback((q: string) => setSearchQuery(q), []);
+  const handleFilter = useCallback((blockId: string) => { setActiveBlock(blockId); setSearchQuery(""); }, []);
 
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Premium top accent bar */}
-      <div className="h-1 w-full gradient-primary" />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Floating background orbs */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[10%] left-[5%] w-[500px] h-[500px] rounded-full bg-primary/[.04] blur-[120px] animate-float" />
+        <div className="absolute top-[50%] right-[5%] w-[400px] h-[400px] rounded-full bg-primary/[.03] blur-[100px] animate-float-delayed" />
+        <div className="absolute bottom-[10%] left-[30%] w-[350px] h-[350px] rounded-full bg-primary/[.025] blur-[90px] animate-float" />
+      </div>
 
-      <div className="max-w-[1320px] mx-auto px-7 max-sm:px-3.5">
+      {/* Premium top accent bar */}
+      <div className="h-1 w-full gradient-primary relative z-10" />
+
+      <div className="max-w-[1320px] mx-auto px-7 max-sm:px-3.5 relative z-10">
         <HeroSection
           searchQuery={searchQuery}
           onSearchChange={handleSearch}
@@ -87,7 +82,6 @@ export default function Index() {
         <StatsBar />
         <FilterBar activeBlock={activeBlock} onFilter={handleFilter} />
 
-        {/* Blocks */}
         {blocks
           .filter((b) => activeBlock === "all" || b.id === activeBlock)
           .map((block) => (
@@ -102,13 +96,12 @@ export default function Index() {
 
         {filteredServices.length === 0 && (
           <div className="text-center py-16 text-t4 text-[15px] animate-fade-in">
-            Нічого не знайдено за запитом «{searchQuery}»
+            {t("search.nothingFor")} «{searchQuery}»
           </div>
         )}
 
-        {/* Footer */}
         <footer className="border-t border-border py-8 mt-20 text-center text-t4 text-[13px]">
-          © {new Date().getFullYear()} Офер Концепти · Маркетингові матеріали
+          © {new Date().getFullYear()} {t("footer.copy")}
         </footer>
       </div>
 
