@@ -17,7 +17,6 @@ export default function LanguageSwitcher() {
       <div
         className="absolute top-[3px] bottom-[3px] rounded-full gradient-primary shadow-green transition-all duration-300 ease-out"
         style={{
-          width: `${100 / langs.length}%`,
           left: `calc(${(activeIdx * 100) / langs.length}% + 3px)`,
           width: "calc(33.333% - 2px)",
         }}
