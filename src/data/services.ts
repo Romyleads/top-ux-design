@@ -1,3 +1,39 @@
+// Image imports
+import imgPresentation from "@/assets/services/presentation.jpg";
+import imgBrochure from "@/assets/services/brochure.jpg";
+import imgCatalog from "@/assets/services/catalog.jpg";
+import imgFlyer from "@/assets/services/flyer.jpg";
+import imgLandingPage from "@/assets/services/landing-page.jpg";
+import imgVideoAd from "@/assets/services/video-ad.jpg";
+import imgSmm from "@/assets/services/smm.jpg";
+import imgBanners from "@/assets/services/banners.jpg";
+import imgLogo from "@/assets/services/logo.jpg";
+import imgBusinessCard from "@/assets/services/business-card.jpg";
+import imgPackaging from "@/assets/services/packaging.jpg";
+import imgBrandbook from "@/assets/services/brandbook.jpg";
+import imgBlogPost from "@/assets/services/blog-post.jpg";
+import imgInfographic from "@/assets/services/infographic.jpg";
+import imgWhitePaper from "@/assets/services/white-paper.jpg";
+import imgCaseStudy from "@/assets/services/case-study.jpg";
+import imgEbook from "@/assets/services/ebook.jpg";
+import imgEmailCampaign from "@/assets/services/email-campaign.jpg";
+import imgDripCampaign from "@/assets/services/drip-campaign.jpg";
+import imgNewsletter from "@/assets/services/newsletter.jpg";
+import imgWebinar from "@/assets/services/webinar.jpg";
+import imgProductTour from "@/assets/services/product-tour.jpg";
+import imgTestimonials from "@/assets/services/testimonials.jpg";
+import imgPpcGoogle from "@/assets/services/ppc-google.jpg";
+import imgRetargeting from "@/assets/services/retargeting.jpg";
+import imgNativeAds from "@/assets/services/native-ads.jpg";
+import imgLandingAd from "@/assets/services/landing-ad.jpg";
+import imgUgc from "@/assets/services/ugc.jpg";
+import imgAiContent from "@/assets/services/ai-content.jpg";
+import imgSaasOnboarding from "@/assets/services/saas-onboarding.jpg";
+import imgLinkedinBrand from "@/assets/services/linkedin-brand.jpg";
+import imgMicroSaas from "@/assets/services/micro-saas.jpg";
+import imgInteractiveContent from "@/assets/services/interactive-content.jpg";
+import imgPodcast from "@/assets/services/podcast.jpg";
+
 export interface TierFeature {
   icon: "size" | "format" | "clock" | "check";
   text: string;
@@ -68,7 +104,7 @@ export const services: ServiceCard[] = [
     subtitle: "Переконлива слайд-колода для переговорів і пітчів",
     goal: "Перетворити увагу аудиторії на конкретне рішення: угоду, інвестицію або наступну зустріч",
     blockId: "b1",
-    photo: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+    photo: imgPresentation,
     tag: "🖨 Друкована",
     tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "279 €" }, { name: "Pro", price: "449 €" }],
     tierFeatures: [
@@ -90,7 +126,7 @@ export const services: ServiceCard[] = [
     subtitle: "Друкований або PDF-документ для детального знайомства з послугами",
     goal: "Дати потенційному клієнту повне уявлення про пропозицію та мотивувати до звернення",
     blockId: "b1",
-    photo: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80",
+    photo: imgBrochure,
     tag: "🖨 Друкована",
     tiers: [{ name: "Lite", price: "119 €" }, { name: "Standard", price: "229 €" }, { name: "Pro", price: "379 €" }],
     tierFeatures: [
@@ -112,7 +148,7 @@ export const services: ServiceCard[] = [
     subtitle: "Систематизований перелік товарів та послуг з цінами й візуалами",
     goal: "Спростити вибір для клієнта та прискорити процес замовлення через структуровану подачу",
     blockId: "b1",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    photo: imgCatalog,
     tag: "🖨 Друкована",
     tiers: [{ name: "Lite", price: "299 €" }, { name: "Standard", price: "649 €" }, { name: "Pro", price: "1 199 €" }],
     tierFeatures: [
@@ -134,7 +170,7 @@ export const services: ServiceCard[] = [
     subtitle: "Яскравий односторінковий документ із чітким закликом до дії",
     goal: "Миттєво привернути увагу та спонукати до негайної дії: дзвінка, переходу або покупки",
     blockId: "b1",
-    photo: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=600&q=80",
+    photo: imgFlyer,
     tag: "🖨 Друкована",
     tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "129 €" }, { name: "Pro", price: "199 €" }],
     tierFeatures: [
@@ -160,7 +196,7 @@ export const services: ServiceCard[] = [
     subtitle: "Конверсійна цільова сторінка для залучення лідів",
     goal: "Максимізувати конверсію відвідувачів у ліди через чітку воронку та переконливий оффер",
     blockId: "b2",
-    photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    photo: imgLandingPage,
     tag: "💻 Цифрова",
     hot: true,
     tiers: [{ name: "Lite", price: "799 €" }, { name: "Standard", price: "1 699 €" }, { name: "Pro", price: "2 999 €" }],
@@ -183,7 +219,7 @@ export const services: ServiceCard[] = [
     subtitle: "Короткий динамічний ролик для онлайн- та офлайн-каналів",
     goal: "Захопити увагу за перші 3 секунди та донести ключове повідомлення бренду",
     blockId: "b2",
-    photo: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+    photo: imgVideoAd,
     tag: "💻 Цифрова",
     tiers: [{ name: "Lite", price: "349 €" }, { name: "Standard", price: "699 €" }, { name: "Pro", price: "1 199 €" }],
     tierFeatures: [
@@ -205,7 +241,7 @@ export const services: ServiceCard[] = [
     subtitle: "Стратегія та контент для Instagram, Facebook, LinkedIn",
     goal: "Побудувати лояльну аудиторію та генерувати ліди через системний контент у соцмережах",
     blockId: "b2",
-    photo: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80",
+    photo: imgSmm,
     tag: "💻 Цифрова",
     tiers: [{ name: "Lite", price: "299 €" }, { name: "Standard", price: "549 €" }, { name: "Pro", price: "899 €" }],
     tierFeatures: [
@@ -226,7 +262,7 @@ export const services: ServiceCard[] = [
     subtitle: "Графічні оголошення для дисплейної реклами та сайтів",
     goal: "Забезпечити високий CTR рекламних кампаній через професійні креативи",
     blockId: "b2",
-    photo: "https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=600&q=80",
+    photo: imgBanners,
     tag: "💻 Цифрова",
     tiers: [{ name: "Lite", price: "89 €" }, { name: "Standard", price: "169 €" }, { name: "Pro", price: "279 €" }],
     tierFeatures: [
@@ -251,7 +287,7 @@ export const services: ServiceCard[] = [
     subtitle: "Унікальний графічний знак та шрифтовий знак бренду",
     goal: "Створити впізнаваний візуальний символ, що відображає сутність бренду",
     blockId: "b3",
-    photo: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80",
+    photo: imgLogo,
     tag: "🎨 Брендинг",
     tiers: [{ name: "Lite", price: "229 €" }, { name: "Standard", price: "429 €" }, { name: "Pro", price: "699 €" }],
     tierFeatures: [
@@ -272,7 +308,7 @@ export const services: ServiceCard[] = [
     subtitle: "Компактний та стильний носій ділової ідентичності",
     goal: "Залишити професійне враження при першій зустрічі та забезпечити зручний спосіб зв'язку",
     blockId: "b3",
-    photo: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=600&q=80",
+    photo: imgBusinessCard,
     tag: "🎨 Брендинг",
     tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "89 €" }, { name: "Pro", price: "149 €" }],
     tierFeatures: [
@@ -293,7 +329,7 @@ export const services: ServiceCard[] = [
     subtitle: "Фірмова упаковка, що продає на полиці",
     goal: "Виділити продукт серед конкурентів на полиці та посилити бренд-досвід",
     blockId: "b3",
-    photo: "https://images.unsplash.com/photo-1605732562742-aec16ae68bda?auto=format&fit=crop&w=600&q=80",
+    photo: imgPackaging,
     tag: "🎨 Брендинг",
     tiers: [{ name: "Lite", price: "179 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "599 €" }],
     tierFeatures: [
@@ -314,7 +350,7 @@ export const services: ServiceCard[] = [
     subtitle: "Офіційний стайл-гайд для єдності всіх комунікацій",
     goal: "Забезпечити візуальну єдність бренду на всіх точках контакту з клієнтом",
     blockId: "b3",
-    photo: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=600&q=80",
+    photo: imgBrandbook,
     tag: "🎨 Брендинг",
     tiers: [{ name: "Lite", price: "599 €" }, { name: "Standard", price: "1 199 €" }, { name: "Pro", price: "1 999 €" }],
     tierFeatures: [
@@ -339,7 +375,7 @@ export const services: ServiceCard[] = [
     subtitle: "SEO-оптимізований текст для органічного трафіку",
     goal: "Залучити органічний трафік та побудувати авторитет бренду через експертний контент",
     blockId: "b4",
-    photo: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80",
+    photo: imgBlogPost,
     tag: "📝 Контент",
     tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "249 €" }],
     tierFeatures: [
@@ -360,7 +396,7 @@ export const services: ServiceCard[] = [
     subtitle: "Візуальний матеріал для пояснення складних даних",
     goal: "Перетворити складні дані у зрозумілу візуалізацію, що легко шериться",
     blockId: "b4",
-    photo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+    photo: imgInfographic,
     tag: "📝 Контент",
     tiers: [{ name: "Lite", price: "119 €" }, { name: "Standard", price: "229 €" }, { name: "Pro", price: "379 €" }],
     tierFeatures: [
@@ -381,7 +417,7 @@ export const services: ServiceCard[] = [
     subtitle: "Авторитетний аналітичний документ для генерації B2B-лідів",
     goal: "Позиціонувати компанію як лідера думки та генерувати якісні B2B-ліди",
     blockId: "b4",
-    photo: "https://images.unsplash.com/photo-1553028826-f4804a6dba3b?auto=format&fit=crop&w=600&q=80",
+    photo: imgWhitePaper,
     tag: "📝 Контент",
     tiers: [{ name: "Lite", price: "349 €" }, { name: "Standard", price: "699 €" }, { name: "Pro", price: "1 199 €" }],
     tierFeatures: [
@@ -402,7 +438,7 @@ export const services: ServiceCard[] = [
     subtitle: "Детальна документація успішного проєкту як соціальний доказ",
     goal: "Показати реальні результати роботи та переконати потенційних клієнтів через факти",
     blockId: "b4",
-    photo: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=600&q=80",
+    photo: imgCaseStudy,
     tag: "📝 Контент",
     tiers: [{ name: "Lite", price: "179 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "599 €" }],
     tierFeatures: [
@@ -427,7 +463,7 @@ export const services: ServiceCard[] = [
     subtitle: "Електронна книга — найкращий обмін на email-адресу",
     goal: "Обміняти цінний контент на email-адресу та запустити nurture-воронку",
     blockId: "b5",
-    photo: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=600&q=80",
+    photo: imgEbook,
     tag: "📧 Email",
     hot: true,
     tiers: [{ name: "Lite", price: "249 €" }, { name: "Standard", price: "499 €" }, { name: "Pro", price: "849 €" }],
@@ -449,7 +485,7 @@ export const services: ServiceCard[] = [
     subtitle: "Персоналізовані листи з конверсією вище середньої по ринку",
     goal: "Доставити персоналізоване повідомлення та конвертувати підписників у клієнтів",
     blockId: "b5",
-    photo: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=600&q=80",
+    photo: imgEmailCampaign,
     tag: "📧 Email",
     tiers: [{ name: "Lite", price: "89 €" }, { name: "Standard", price: "169 €" }, { name: "Pro", price: "299 €" }],
     tierFeatures: [
@@ -470,7 +506,7 @@ export const services: ServiceCard[] = [
     subtitle: "Автоматизована серія листів, що веде підписника до покупки",
     goal: "Автоматично провести ліда через воронку від знайомства до покупки",
     blockId: "b5",
-    photo: "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?auto=format&fit=crop&w=600&q=80",
+    photo: imgDripCampaign,
     tag: "📧 Email",
     hot: true,
     tiers: [{ name: "Lite", price: "229 €" }, { name: "Standard", price: "429 €" }, { name: "Pro", price: "699 €" }],
@@ -492,7 +528,7 @@ export const services: ServiceCard[] = [
     subtitle: "Регулярна розсилка для утримання та монетизації аудиторії",
     goal: "Утримувати увагу аудиторії та будувати лояльність через регулярний цінний контент",
     blockId: "b5",
-    photo: "https://images.unsplash.com/photo-1504711434969-e33886168d6c?auto=format&fit=crop&w=600&q=80",
+    photo: imgNewsletter,
     tag: "📧 Email",
     tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "279 €" }, { name: "Pro", price: "449 €" }],
     tierFeatures: [
@@ -517,7 +553,7 @@ export const services: ServiceCard[] = [
     subtitle: "Живий або записаний освітній формат для залучення й монетизації",
     goal: "Побудувати експертність та конвертувати аудиторію через навчальний контент",
     blockId: "b6",
-    photo: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=600&q=80",
+    photo: imgWebinar,
     tag: "🎬 Відео",
     tiers: [{ name: "Lite", price: "299 €" }, { name: "Standard", price: "599 €" }, { name: "Pro", price: "999 €" }],
     tierFeatures: [
@@ -538,7 +574,7 @@ export const services: ServiceCard[] = [
     subtitle: "Демонстрація продукту, офісу або команди для підвищення довіри",
     goal: "Показати продукт у дії та зняти бар'єри до покупки через візуальну демонстрацію",
     blockId: "b6",
-    photo: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+    photo: imgProductTour,
     tag: "🎬 Відео",
     tiers: [{ name: "Lite", price: "249 €" }, { name: "Standard", price: "499 €" }, { name: "Pro", price: "849 €" }],
     tierFeatures: [
@@ -559,7 +595,7 @@ export const services: ServiceCard[] = [
     subtitle: "Відеовідгуки задоволених клієнтів як найпотужніший соціальний доказ",
     goal: "Побудувати довіру через реальні історії задоволених клієнтів",
     blockId: "b6",
-    photo: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+    photo: imgTestimonials,
     tag: "🎬 Відео",
     tiers: [{ name: "Lite", price: "179 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "599 €" }],
     tierFeatures: [
@@ -584,7 +620,7 @@ export const services: ServiceCard[] = [
     subtitle: "Контекстна реклама з оплатою за клік у Google та Bing",
     goal: "Залучити цільовий трафік із максимальним ROI через оптимізовані рекламні кампанії",
     blockId: "b7",
-    photo: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80",
+    photo: imgPpcGoogle,
     tag: "📢 Реклама",
     tiers: [{ name: "Lite", price: "249 €" }, { name: "Standard", price: "499 €" }, { name: "Pro", price: "849 €" }],
     tierFeatures: [
@@ -605,7 +641,7 @@ export const services: ServiceCard[] = [
     subtitle: "Повернення відвідувачів сайту, що пішли без конверсії",
     goal: "Повернути «загублених» відвідувачів та довести їх до конверсії",
     blockId: "b7",
-    photo: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=600&q=80",
+    photo: imgRetargeting,
     tag: "📢 Реклама",
     tiers: [{ name: "Lite", price: "229 €" }, { name: "Standard", price: "429 €" }, { name: "Pro", price: "699 €" }],
     tierFeatures: [
@@ -626,7 +662,7 @@ export const services: ServiceCard[] = [
     subtitle: "Рекламний контент, що виглядає як редакційний матеріал",
     goal: "Донести рекламне повідомлення без опору аудиторії через нативний формат",
     blockId: "b7",
-    photo: "https://images.unsplash.com/photo-1504711434969-e33886168d6c?auto=format&fit=crop&w=600&q=80",
+    photo: imgNativeAds,
     tag: "📢 Реклама",
     tiers: [{ name: "Lite", price: "299 €" }, { name: "Standard", price: "599 €" }, { name: "Pro", price: "999 €" }],
     tierFeatures: [
@@ -647,7 +683,7 @@ export const services: ServiceCard[] = [
     subtitle: "Конверсійна цільова сторінка з вимірюваним ROI",
     goal: "Створити швидку конверсійну сторінку з чітким вимірюванням ефективності кампанії",
     blockId: "b7",
-    photo: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80",
+    photo: imgLandingAd,
     tag: "📢 Реклама",
     hot: true,
     tiers: [{ name: "Lite", price: "179 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "599 €" }],
@@ -673,7 +709,7 @@ export const services: ServiceCard[] = [
     subtitle: "User-Generated Content для автентичного маркетингу",
     goal: "Побудувати автентичну довіру через контент від реальних користувачів",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+    photo: imgUgc,
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $50–500 / відео",
@@ -696,7 +732,7 @@ export const services: ServiceCard[] = [
     subtitle: "Інтеграція AI-інструментів у маркетингові процеси",
     goal: "Масштабувати виробництво контенту через AI без втрати якості та стилю бренду",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80",
+    photo: imgAiContent,
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $2 000–8 000 / міс",
@@ -719,7 +755,7 @@ export const services: ServiceCard[] = [
     subtitle: "Welcome-серія та навчальні матеріали для нових користувачів",
     goal: "Знизити churn та прискорити Time-to-Value для нових користувачів SaaS",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80",
+    photo: imgSaasOnboarding,
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $1 000–5 000 / проєкт",
@@ -742,7 +778,7 @@ export const services: ServiceCard[] = [
     subtitle: "Побудова особистого бренду на LinkedIn для B2B",
     goal: "Перетворити LinkedIn-профіль у магніт для B2B-клієнтів та партнерів",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1616469829581-73886eb0ecab?auto=format&fit=crop&w=600&q=80",
+    photo: imgLinkedinBrand,
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $2 000–7 000 / міс",
@@ -765,7 +801,7 @@ export const services: ServiceCard[] = [
     subtitle: "Мінімальний SaaS-продукт для швидкої монетизації",
     goal: "Швидко запустити та монетизувати мінімальний SaaS-продукт для перевірки ідеї",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    photo: imgMicroSaas,
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $5 000–20 000 / проєкт",
@@ -788,7 +824,7 @@ export const services: ServiceCard[] = [
     subtitle: "Квізи, калькулятори та інтерактивні елементи для залучення",
     goal: "Залучити та кваліфікувати ліди через інтерактивний досвід із конверсією 40%+",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1553481187-be93c21490a9?auto=format&fit=crop&w=600&q=80",
+    photo: imgInteractiveContent,
     tag: "🔥 Тренд",
     hot: true,
     tiers: [{ name: "Lite", price: "349 €" }, { name: "Standard", price: "699 €" }, { name: "Pro", price: "1 199 €" }],
@@ -810,7 +846,7 @@ export const services: ServiceCard[] = [
     subtitle: "Повний запуск подкасту: від концепції до дистрибуції",
     goal: "Побудувати лояльну аудиторію та експертний авторитет через регулярний аудіо/відео-контент",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80",
+    photo: imgPodcast,
     tag: "🔥 Тренд",
     hot: true,
     tiers: [{ name: "Lite", price: "349 €" }, { name: "Standard", price: "699 €" }, { name: "Pro", price: "1 299 €" }],
