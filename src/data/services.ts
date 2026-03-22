@@ -262,7 +262,7 @@ export const services: ServiceCard[] = [
     subtitle: "Графічні оголошення для дисплейної реклами та сайтів",
     goal: "Забезпечити високий CTR рекламних кампаній через професійні креативи",
     blockId: "b2",
-    photo: "https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=600&q=80",
+    photo: imgBanners,
     tag: "💻 Цифрова",
     tiers: [{ name: "Lite", price: "89 €" }, { name: "Standard", price: "169 €" }, { name: "Pro", price: "279 €" }],
     tierFeatures: [
