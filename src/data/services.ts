@@ -396,7 +396,7 @@ export const services: ServiceCard[] = [
     subtitle: "Візуальний матеріал для пояснення складних даних",
     goal: "Перетворити складні дані у зрозумілу візуалізацію, що легко шериться",
     blockId: "b4",
-    photo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+    photo: imgInfographic,
     tag: "📝 Контент",
     tiers: [{ name: "Lite", price: "119 €" }, { name: "Standard", price: "229 €" }, { name: "Pro", price: "379 €" }],
     tierFeatures: [
