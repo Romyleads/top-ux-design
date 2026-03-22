@@ -196,7 +196,7 @@ export const services: ServiceCard[] = [
     subtitle: "Конверсійна цільова сторінка для залучення лідів",
     goal: "Максимізувати конверсію відвідувачів у ліди через чітку воронку та переконливий оффер",
     blockId: "b2",
-    photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    photo: imgLandingPage,
     tag: "💻 Цифрова",
     hot: true,
     tiers: [{ name: "Lite", price: "799 €" }, { name: "Standard", price: "1 699 €" }, { name: "Pro", price: "2 999 €" }],
