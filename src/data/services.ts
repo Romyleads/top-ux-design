@@ -375,7 +375,7 @@ export const services: ServiceCard[] = [
     subtitle: "SEO-оптимізований текст для органічного трафіку",
     goal: "Залучити органічний трафік та побудувати авторитет бренду через експертний контент",
     blockId: "b4",
-    photo: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80",
+    photo: imgBlogPost,
     tag: "📝 Контент",
     tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "249 €" }],
     tierFeatures: [
