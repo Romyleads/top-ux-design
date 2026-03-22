@@ -308,7 +308,7 @@ export const services: ServiceCard[] = [
     subtitle: "Компактний та стильний носій ділової ідентичності",
     goal: "Залишити професійне враження при першій зустрічі та забезпечити зручний спосіб зв'язку",
     blockId: "b3",
-    photo: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=600&q=80",
+    photo: imgBusinessCard,
     tag: "🎨 Брендинг",
     tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "89 €" }, { name: "Pro", price: "149 €" }],
     tierFeatures: [
