@@ -506,7 +506,7 @@ export const services: ServiceCard[] = [
     subtitle: "Автоматизована серія листів, що веде підписника до покупки",
     goal: "Автоматично провести ліда через воронку від знайомства до покупки",
     blockId: "b5",
-    photo: "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?auto=format&fit=crop&w=600&q=80",
+    photo: imgDripCampaign,
     tag: "📧 Email",
     hot: true,
     tiers: [{ name: "Lite", price: "229 €" }, { name: "Standard", price: "429 €" }, { name: "Pro", price: "699 €" }],
