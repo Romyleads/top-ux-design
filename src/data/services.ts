@@ -801,7 +801,7 @@ export const services: ServiceCard[] = [
     subtitle: "Мінімальний SaaS-продукт для швидкої монетизації",
     goal: "Швидко запустити та монетизувати мінімальний SaaS-продукт для перевірки ідеї",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    photo: imgMicroSaas,
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $5 000–20 000 / проєкт",
