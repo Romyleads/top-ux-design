@@ -662,7 +662,7 @@ export const services: ServiceCard[] = [
     subtitle: "Рекламний контент, що виглядає як редакційний матеріал",
     goal: "Донести рекламне повідомлення без опору аудиторії через нативний формат",
     blockId: "b7",
-    photo: "https://images.unsplash.com/photo-1504711434969-e33886168d6c?auto=format&fit=crop&w=600&q=80",
+    photo: imgNativeAds,
     tag: "📢 Реклама",
     tiers: [{ name: "Lite", price: "299 €" }, { name: "Standard", price: "599 €" }, { name: "Pro", price: "999 €" }],
     tierFeatures: [
