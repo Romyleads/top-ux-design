@@ -104,7 +104,7 @@ export const services: ServiceCard[] = [
     subtitle: "Переконлива слайд-колода для переговорів і пітчів",
     goal: "Перетворити увагу аудиторії на конкретне рішення: угоду, інвестицію або наступну зустріч",
     blockId: "b1",
-    photo: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+    photo: imgPresentation,
     tag: "🖨 Друкована",
     tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "279 €" }, { name: "Pro", price: "449 €" }],
     tierFeatures: [
