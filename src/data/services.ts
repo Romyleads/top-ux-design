@@ -463,7 +463,7 @@ export const services: ServiceCard[] = [
     subtitle: "Електронна книга — найкращий обмін на email-адресу",
     goal: "Обміняти цінний контент на email-адресу та запустити nurture-воронку",
     blockId: "b5",
-    photo: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=600&q=80",
+    photo: imgEbook,
     tag: "📧 Email",
     hot: true,
     tiers: [{ name: "Lite", price: "249 €" }, { name: "Standard", price: "499 €" }, { name: "Pro", price: "849 €" }],
