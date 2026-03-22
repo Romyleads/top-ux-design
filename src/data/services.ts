@@ -485,7 +485,7 @@ export const services: ServiceCard[] = [
     subtitle: "Персоналізовані листи з конверсією вище середньої по ринку",
     goal: "Доставити персоналізоване повідомлення та конвертувати підписників у клієнтів",
     blockId: "b5",
-    photo: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=600&q=80",
+    photo: imgEmailCampaign,
     tag: "📧 Email",
     tiers: [{ name: "Lite", price: "89 €" }, { name: "Standard", price: "169 €" }, { name: "Pro", price: "299 €" }],
     tierFeatures: [
