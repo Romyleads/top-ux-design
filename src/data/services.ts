@@ -126,7 +126,7 @@ export const services: ServiceCard[] = [
     subtitle: "Друкований або PDF-документ для детального знайомства з послугами",
     goal: "Дати потенційному клієнту повне уявлення про пропозицію та мотивувати до звернення",
     blockId: "b1",
-    photo: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80",
+    photo: imgBrochure,
     tag: "🖨 Друкована",
     tiers: [{ name: "Lite", price: "119 €" }, { name: "Standard", price: "229 €" }, { name: "Pro", price: "379 €" }],
     tierFeatures: [
