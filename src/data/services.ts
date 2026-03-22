@@ -438,7 +438,7 @@ export const services: ServiceCard[] = [
     subtitle: "Детальна документація успішного проєкту як соціальний доказ",
     goal: "Показати реальні результати роботи та переконати потенційних клієнтів через факти",
     blockId: "b4",
-    photo: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=600&q=80",
+    photo: imgCaseStudy,
     tag: "📝 Контент",
     tiers: [{ name: "Lite", price: "179 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "599 €" }],
     tierFeatures: [
