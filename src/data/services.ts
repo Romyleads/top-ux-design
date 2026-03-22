@@ -350,7 +350,7 @@ export const services: ServiceCard[] = [
     subtitle: "Офіційний стайл-гайд для єдності всіх комунікацій",
     goal: "Забезпечити візуальну єдність бренду на всіх точках контакту з клієнтом",
     blockId: "b3",
-    photo: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=600&q=80",
+    photo: imgBrandbook,
     tag: "🎨 Брендинг",
     tiers: [{ name: "Lite", price: "599 €" }, { name: "Standard", price: "1 199 €" }, { name: "Pro", price: "1 999 €" }],
     tierFeatures: [
