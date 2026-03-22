@@ -1,3 +1,39 @@
+// Image imports
+import imgPresentation from "@/assets/services/presentation.jpg";
+import imgBrochure from "@/assets/services/brochure.jpg";
+import imgCatalog from "@/assets/services/catalog.jpg";
+import imgFlyer from "@/assets/services/flyer.jpg";
+import imgLandingPage from "@/assets/services/landing-page.jpg";
+import imgVideoAd from "@/assets/services/video-ad.jpg";
+import imgSmm from "@/assets/services/smm.jpg";
+import imgBanners from "@/assets/services/banners.jpg";
+import imgLogo from "@/assets/services/logo.jpg";
+import imgBusinessCard from "@/assets/services/business-card.jpg";
+import imgPackaging from "@/assets/services/packaging.jpg";
+import imgBrandbook from "@/assets/services/brandbook.jpg";
+import imgBlogPost from "@/assets/services/blog-post.jpg";
+import imgInfographic from "@/assets/services/infographic.jpg";
+import imgWhitePaper from "@/assets/services/white-paper.jpg";
+import imgCaseStudy from "@/assets/services/case-study.jpg";
+import imgEbook from "@/assets/services/ebook.jpg";
+import imgEmailCampaign from "@/assets/services/email-campaign.jpg";
+import imgDripCampaign from "@/assets/services/drip-campaign.jpg";
+import imgNewsletter from "@/assets/services/newsletter.jpg";
+import imgWebinar from "@/assets/services/webinar.jpg";
+import imgProductTour from "@/assets/services/product-tour.jpg";
+import imgTestimonials from "@/assets/services/testimonials.jpg";
+import imgPpcGoogle from "@/assets/services/ppc-google.jpg";
+import imgRetargeting from "@/assets/services/retargeting.jpg";
+import imgNativeAds from "@/assets/services/native-ads.jpg";
+import imgLandingAd from "@/assets/services/landing-ad.jpg";
+import imgUgc from "@/assets/services/ugc.jpg";
+import imgAiContent from "@/assets/services/ai-content.jpg";
+import imgSaasOnboarding from "@/assets/services/saas-onboarding.jpg";
+import imgLinkedinBrand from "@/assets/services/linkedin-brand.jpg";
+import imgMicroSaas from "@/assets/services/micro-saas.jpg";
+import imgInteractiveContent from "@/assets/services/interactive-content.jpg";
+import imgPodcast from "@/assets/services/podcast.jpg";
+
 export interface TierFeature {
   icon: "size" | "format" | "clock" | "check";
   text: string;
