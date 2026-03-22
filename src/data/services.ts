@@ -778,7 +778,7 @@ export const services: ServiceCard[] = [
     subtitle: "Побудова особистого бренду на LinkedIn для B2B",
     goal: "Перетворити LinkedIn-профіль у магніт для B2B-клієнтів та партнерів",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1616469829581-73886eb0ecab?auto=format&fit=crop&w=600&q=80",
+    photo: imgLinkedinBrand,
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $2 000–7 000 / міс",
