@@ -170,7 +170,7 @@ export const services: ServiceCard[] = [
     subtitle: "Яскравий односторінковий документ із чітким закликом до дії",
     goal: "Миттєво привернути увагу та спонукати до негайної дії: дзвінка, переходу або покупки",
     blockId: "b1",
-    photo: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=600&q=80",
+    photo: imgFlyer,
     tag: "🖨 Друкована",
     tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "129 €" }, { name: "Pro", price: "199 €" }],
     tierFeatures: [
