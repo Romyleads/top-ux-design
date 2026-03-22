@@ -329,7 +329,7 @@ export const services: ServiceCard[] = [
     subtitle: "Фірмова упаковка, що продає на полиці",
     goal: "Виділити продукт серед конкурентів на полиці та посилити бренд-досвід",
     blockId: "b3",
-    photo: "https://images.unsplash.com/photo-1605732562742-aec16ae68bda?auto=format&fit=crop&w=600&q=80",
+    photo: imgPackaging,
     tag: "🎨 Брендинг",
     tiers: [{ name: "Lite", price: "179 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "599 €" }],
     tierFeatures: [
