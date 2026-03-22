@@ -148,7 +148,7 @@ export const services: ServiceCard[] = [
     subtitle: "Систематизований перелік товарів та послуг з цінами й візуалами",
     goal: "Спростити вибір для клієнта та прискорити процес замовлення через структуровану подачу",
     blockId: "b1",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    photo: imgCatalog,
     tag: "🖨 Друкована",
     tiers: [{ name: "Lite", price: "299 €" }, { name: "Standard", price: "649 €" }, { name: "Pro", price: "1 199 €" }],
     tierFeatures: [
