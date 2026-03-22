@@ -595,7 +595,7 @@ export const services: ServiceCard[] = [
     subtitle: "Відеовідгуки задоволених клієнтів як найпотужніший соціальний доказ",
     goal: "Побудувати довіру через реальні історії задоволених клієнтів",
     blockId: "b6",
-    photo: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+    photo: imgTestimonials,
     tag: "🎬 Відео",
     tiers: [{ name: "Lite", price: "179 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "599 €" }],
     tierFeatures: [
