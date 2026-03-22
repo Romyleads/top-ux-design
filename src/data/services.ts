@@ -287,7 +287,7 @@ export const services: ServiceCard[] = [
     subtitle: "Унікальний графічний знак та шрифтовий знак бренду",
     goal: "Створити впізнаваний візуальний символ, що відображає сутність бренду",
     blockId: "b3",
-    photo: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80",
+    photo: imgLogo,
     tag: "🎨 Брендинг",
     tiers: [{ name: "Lite", price: "229 €" }, { name: "Standard", price: "429 €" }, { name: "Pro", price: "699 €" }],
     tierFeatures: [
