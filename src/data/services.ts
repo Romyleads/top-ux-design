@@ -574,7 +574,7 @@ export const services: ServiceCard[] = [
     subtitle: "Демонстрація продукту, офісу або команди для підвищення довіри",
     goal: "Показати продукт у дії та зняти бар'єри до покупки через візуальну демонстрацію",
     blockId: "b6",
-    photo: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+    photo: imgProductTour,
     tag: "🎬 Відео",
     tiers: [{ name: "Lite", price: "249 €" }, { name: "Standard", price: "499 €" }, { name: "Pro", price: "849 €" }],
     tierFeatures: [
