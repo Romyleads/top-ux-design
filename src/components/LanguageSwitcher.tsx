@@ -1,10 +1,38 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Locale } from "@/i18n/translations";
 
-const langs: { code: Locale; flag: string; label: string }[] = [
-  { code: "uk", flag: "🇺🇦", label: "UA" },
-  { code: "en", flag: "🇬🇧", label: "EN" },
-  { code: "de", flag: "🇩🇪", label: "DE" },
+const FlagUA = () => (
+  <svg width="18" height="13" viewBox="0 0 18 13" className="rounded-[2px] shadow-sm">
+    <rect width="18" height="6.5" fill="#005BBB" />
+    <rect y="6.5" width="18" height="6.5" fill="#FFD500" />
+  </svg>
+);
+
+const FlagGB = () => (
+  <svg width="18" height="13" viewBox="0 0 60 30" className="rounded-[2px] shadow-sm">
+    <clipPath id="gb"><rect width="60" height="30" /></clipPath>
+    <g clipPath="url(#gb)">
+      <rect width="60" height="30" fill="#012169" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" clipPath="url(#gb)" />
+      <path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10" />
+      <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6" />
+    </g>
+  </svg>
+);
+
+const FlagDE = () => (
+  <svg width="18" height="13" viewBox="0 0 18 13" className="rounded-[2px] shadow-sm">
+    <rect width="18" height="4.33" fill="#000" />
+    <rect y="4.33" width="18" height="4.33" fill="#DD0000" />
+    <rect y="8.66" width="18" height="4.34" fill="#FFCC00" />
+  </svg>
+);
+
+const langs: { code: Locale; Flag: React.FC; label: string }[] = [
+  { code: "uk", Flag: FlagUA, label: "UA" },
+  { code: "en", Flag: FlagGB, label: "EN" },
+  { code: "de", Flag: FlagDE, label: "DE" },
 ];
 
 export default function LanguageSwitcher() {
@@ -25,13 +53,13 @@ export default function LanguageSwitcher() {
         <button
           key={lang.code}
           onClick={() => setLocale(lang.code)}
-          className={`relative z-10 flex items-center gap-1 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-all duration-200 select-none ${
+          className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-all duration-200 select-none ${
             locale === lang.code
               ? "text-primary-foreground scale-[1.05]"
               : "text-t3 hover:text-foreground"
           }`}
         >
-          <span className="text-sm leading-none">{lang.flag}</span>
+          <lang.Flag />
           <span>{lang.label}</span>
         </button>
       ))}
