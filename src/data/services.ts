@@ -553,7 +553,7 @@ export const services: ServiceCard[] = [
     subtitle: "Живий або записаний освітній формат для залучення й монетизації",
     goal: "Побудувати експертність та конвертувати аудиторію через навчальний контент",
     blockId: "b6",
-    photo: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=600&q=80",
+    photo: imgWebinar,
     tag: "🎬 Відео",
     tiers: [{ name: "Lite", price: "299 €" }, { name: "Standard", price: "599 €" }, { name: "Pro", price: "999 €" }],
     tierFeatures: [
