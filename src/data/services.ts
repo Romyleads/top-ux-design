@@ -732,7 +732,7 @@ export const services: ServiceCard[] = [
     subtitle: "Інтеграція AI-інструментів у маркетингові процеси",
     goal: "Масштабувати виробництво контенту через AI без втрати якості та стилю бренду",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80",
+    photo: imgAiContent,
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $2 000–8 000 / міс",
