@@ -219,7 +219,7 @@ export const services: ServiceCard[] = [
     subtitle: "Короткий динамічний ролик для онлайн- та офлайн-каналів",
     goal: "Захопити увагу за перші 3 секунди та донести ключове повідомлення бренду",
     blockId: "b2",
-    photo: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+    photo: imgVideoAd,
     tag: "💻 Цифрова",
     tiers: [{ name: "Lite", price: "349 €" }, { name: "Standard", price: "699 €" }, { name: "Pro", price: "1 199 €" }],
     tierFeatures: [
