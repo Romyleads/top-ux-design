@@ -846,7 +846,7 @@ export const services: ServiceCard[] = [
     subtitle: "Повний запуск подкасту: від концепції до дистрибуції",
     goal: "Побудувати лояльну аудиторію та експертний авторитет через регулярний аудіо/відео-контент",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80",
+    photo: imgPodcast,
     tag: "🔥 Тренд",
     hot: true,
     tiers: [{ name: "Lite", price: "349 €" }, { name: "Standard", price: "699 €" }, { name: "Pro", price: "1 299 €" }],
