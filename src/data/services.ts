@@ -620,7 +620,7 @@ export const services: ServiceCard[] = [
     subtitle: "Контекстна реклама з оплатою за клік у Google та Bing",
     goal: "Залучити цільовий трафік із максимальним ROI через оптимізовані рекламні кампанії",
     blockId: "b7",
-    photo: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80",
+    photo: imgPpcGoogle,
     tag: "📢 Реклама",
     tiers: [{ name: "Lite", price: "249 €" }, { name: "Standard", price: "499 €" }, { name: "Pro", price: "849 €" }],
     tierFeatures: [
