@@ -641,7 +641,7 @@ export const services: ServiceCard[] = [
     subtitle: "Повернення відвідувачів сайту, що пішли без конверсії",
     goal: "Повернути «загублених» відвідувачів та довести їх до конверсії",
     blockId: "b7",
-    photo: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=600&q=80",
+    photo: imgRetargeting,
     tag: "📢 Реклама",
     tiers: [{ name: "Lite", price: "229 €" }, { name: "Standard", price: "429 €" }, { name: "Pro", price: "699 €" }],
     tierFeatures: [
