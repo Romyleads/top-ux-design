@@ -241,7 +241,7 @@ export const services: ServiceCard[] = [
     subtitle: "Стратегія та контент для Instagram, Facebook, LinkedIn",
     goal: "Побудувати лояльну аудиторію та генерувати ліди через системний контент у соцмережах",
     blockId: "b2",
-    photo: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80",
+    photo: imgSmm,
     tag: "💻 Цифрова",
     tiers: [{ name: "Lite", price: "299 €" }, { name: "Standard", price: "549 €" }, { name: "Pro", price: "899 €" }],
     tierFeatures: [
