@@ -755,7 +755,7 @@ export const services: ServiceCard[] = [
     subtitle: "Welcome-серія та навчальні матеріали для нових користувачів",
     goal: "Знизити churn та прискорити Time-to-Value для нових користувачів SaaS",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80",
+    photo: imgSaasOnboarding,
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $1 000–5 000 / проєкт",
