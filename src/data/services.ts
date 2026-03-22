@@ -824,7 +824,7 @@ export const services: ServiceCard[] = [
     subtitle: "Квізи, калькулятори та інтерактивні елементи для залучення",
     goal: "Залучити та кваліфікувати ліди через інтерактивний досвід із конверсією 40%+",
     blockId: "b8",
-    photo: "https://images.unsplash.com/photo-1553481187-be93c21490a9?auto=format&fit=crop&w=600&q=80",
+    photo: imgInteractiveContent,
     tag: "🔥 Тренд",
     hot: true,
     tiers: [{ name: "Lite", price: "349 €" }, { name: "Standard", price: "699 €" }, { name: "Pro", price: "1 199 €" }],
