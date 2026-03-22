@@ -528,7 +528,7 @@ export const services: ServiceCard[] = [
     subtitle: "Регулярна розсилка для утримання та монетизації аудиторії",
     goal: "Утримувати увагу аудиторії та будувати лояльність через регулярний цінний контент",
     blockId: "b5",
-    photo: "https://images.unsplash.com/photo-1504711434969-e33886168d6c?auto=format&fit=crop&w=600&q=80",
+    photo: imgNewsletter,
     tag: "📧 Email",
     tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "279 €" }, { name: "Pro", price: "449 €" }],
     tierFeatures: [
