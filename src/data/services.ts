@@ -417,7 +417,7 @@ export const services: ServiceCard[] = [
     subtitle: "Авторитетний аналітичний документ для генерації B2B-лідів",
     goal: "Позиціонувати компанію як лідера думки та генерувати якісні B2B-ліди",
     blockId: "b4",
-    photo: "https://images.unsplash.com/photo-1553028826-f4804a6dba3b?auto=format&fit=crop&w=600&q=80",
+    photo: imgWhitePaper,
     tag: "📝 Контент",
     tiers: [{ name: "Lite", price: "349 €" }, { name: "Standard", price: "699 €" }, { name: "Pro", price: "1 199 €" }],
     tierFeatures: [
