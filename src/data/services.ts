@@ -683,7 +683,7 @@ export const services: ServiceCard[] = [
     subtitle: "Конверсійна цільова сторінка з вимірюваним ROI",
     goal: "Створити швидку конверсійну сторінку з чітким вимірюванням ефективності кампанії",
     blockId: "b7",
-    photo: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80",
+    photo: imgLandingAd,
     tag: "📢 Реклама",
     hot: true,
     tiers: [{ name: "Lite", price: "179 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "599 €" }],
