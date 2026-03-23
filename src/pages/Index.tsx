@@ -64,12 +64,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Floating background orbs */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[10%] left-[5%] w-[500px] h-[500px] rounded-full bg-primary/[.04] blur-[120px] animate-float" />
-        <div className="absolute top-[50%] right-[5%] w-[400px] h-[400px] rounded-full bg-primary/[.03] blur-[100px] animate-float-delayed" />
-        <div className="absolute bottom-[10%] left-[30%] w-[350px] h-[350px] rounded-full bg-primary/[.025] blur-[90px] animate-float" />
-      </div>
+      <AnimatedBackground />
 
       {/* Premium top accent bar */}
       <div className="h-1 w-full gradient-primary relative z-10" />
