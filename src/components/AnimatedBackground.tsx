@@ -110,22 +110,27 @@ export default function AnimatedBackground() {
       <div className="absolute bottom-[10%] left-[30%] w-[350px] h-[350px] rounded-full bg-primary/[.025] blur-[90px] animate-float" />
 
       {/* Floating marketing icons */}
-      {items.map((item, i) => (
-        <div
-          key={i}
-          className={`absolute text-primary/[.06] animate-${item.drift}`}
-          style={{
-            left: item.x,
-            top: item.y,
-            width: item.size,
-            height: item.size,
-            animationDuration: `${item.duration}s`,
-            animationDelay: `${item.delay}s`,
-          }}
-        >
-          {item.svg}
-        </div>
-      ))}
+      {items.map((item, i) => {
+        const driftClass = item.drift === "drift-1" ? "animate-drift-1" 
+          : item.drift === "drift-2" ? "animate-drift-2" 
+          : "animate-drift-3";
+        return (
+          <div
+            key={i}
+            className={`absolute text-primary/[.06] ${driftClass}`}
+            style={{
+              left: item.x,
+              top: item.y,
+              width: item.size,
+              height: item.size,
+              animationDuration: `${item.duration}s`,
+              animationDelay: `${item.delay}s`,
+            }}
+          >
+            {item.svg}
+          </div>
+        );
+      })}
     </div>
   );
 }
