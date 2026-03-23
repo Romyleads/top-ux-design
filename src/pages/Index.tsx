@@ -97,7 +97,7 @@ export default function Index() {
         )}
 
         <footer className="border-t border-border py-8 mt-20 text-center text-t4 text-[13px]">
-          © {new Date().getFullYear()} {t("footer.copy")}
+          © 2026 {t("footer.copy")}
         </footer>
       </div>
 
