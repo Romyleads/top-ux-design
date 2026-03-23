@@ -22,7 +22,7 @@ export default function FilterBar({ activeBlock, onFilter }: FilterBarProps) {
         {t("filter.all")}
       </button>
       {blocks.map((b) => {
-        const blockTitle = t(`block.${b.id}.title`) !== `block.${b.id}.title` ? t(`block.${b.id}.title`) : b.title;
+        const blockTitle = t(`block.${b.id}.title`);
         return (
           <button
             key={b.id}

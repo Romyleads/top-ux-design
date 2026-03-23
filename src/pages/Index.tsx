@@ -9,6 +9,7 @@ import BlockSection from "@/components/BlockSection";
 import CartFab from "@/components/CartFab";
 import CartDrawer from "@/components/CartDrawer";
 import SocialProof from "@/components/SocialProof";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
