@@ -28,8 +28,8 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
 
   if (cards.length === 0) return null;
 
-  const blockTitle = t(`block.${block.id}.title`) !== `block.${block.id}.title` ? t(`block.${block.id}.title`) : block.title;
-  const blockSubtitle = t(`block.${block.id}.subtitle`) !== `block.${block.id}.subtitle` ? t(`block.${block.id}.subtitle`) : block.subtitle;
+  const blockTitle = t(`block.${block.id}.title`);
+  const blockSubtitle = t(`block.${block.id}.subtitle`);
 
   return (
     <section ref={sectionRef} className="mb-24">

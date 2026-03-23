@@ -87,7 +87,7 @@ export const translations: Record<string, Record<Locale, string>> = {
   "social.hrAgo": { uk: "год тому", en: "hr ago", de: "Std. her" },
 
   // Footer
-  "footer.copy": { uk: "Офер Концепти · Маркетингові матеріали", en: "Offer Concepts · Marketing Materials", de: "Angebot Konzepte · Marketingmaterialien" },
+  "footer.copy": { uk: "PROMOVISIONS.COM MARKETING", en: "PROMOVISIONS.COM MARKETING", de: "PROMOVISIONS.COM MARKETING" },
 
   // Plural concepts
   "plural.concept.one": { uk: "концепт", en: "concept", de: "Konzept" },
