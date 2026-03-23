@@ -1,40 +1,44 @@
 
 
-## Plan: Fix i18n, Update Branding, Dynamic Marketing Background
+## Plan: Translate Service Cards & Fix Cart Language
 
-### 1. Fix Language Switching for Block Titles
+### Problem
+1. **Card content** (name, subtitle, goal, tag) is hardcoded in Ukrainian in `services.ts` — doesn't change when switching languages
+2. **Cart items** store the Ukrainian display name — stays Ukrainian regardless of locale
 
-**Problem:** When switching languages, block titles/subtitles may not update reactively. The `BlockSection` and `FilterBar` components use a redundant fallback pattern that could cause issues.
+### Solution
 
-**Fix:**
-- Simplify the translation logic in `BlockSection.tsx` and `FilterBar.tsx` to always use `t()` directly without the `!== key` fallback pattern
-- Ensure `useLanguage()` hook triggers re-renders correctly on locale change
-- Update `SocialProof.tsx` to also translate city names and person names for EN/DE locales
-- Add any missing translation keys
+#### 1. Add translation keys for all 34 service cards (`translations.ts`)
 
-**Files:** `BlockSection.tsx`, `FilterBar.tsx`, `SocialProof.tsx`, `translations.ts`
+Add ~170 new keys following the pattern:
+```
+"service.presentation.name": { uk: "Презентація", en: "Presentation", de: "Präsentation" },
+"service.presentation.subtitle": { uk: "Переконлива слайд-колода...", en: "Compelling slide deck...", de: "Überzeugende Folienpräsentation..." },
+"service.presentation.goal": { uk: "Перетворити увагу аудиторії...", en: "Convert audience attention...", de: "Die Aufmerksamkeit des Publikums..." },
+```
 
-### 2. Update Footer Branding
+Also translate tags (6 unique): "🖨 Друкована", "💻 Цифрова", "🎨 Бренд", "📝 Контент", "📧 Email", "🎬 Відео", "📣 Реклама", "🚀 Тренд"
 
-**Change:** Replace footer text from "Офер Концепти · Маркетингові матеріали" to "PROMOVISIONS.COM MARKETING" with (c) 2026.
+#### 2. Update `ServiceCardComponent.tsx` to use translations
 
-**Files:** `translations.ts` (update `footer.copy` for all 3 languages), `Index.tsx` (ensure year is 2026 or uses the translation directly)
+Replace hardcoded `service.name`, `service.subtitle`, `service.goal`, `service.tag` with `t(`service.${service.id}.name`)` etc.
 
-### 3. Dynamic Marketing-Themed Background Animation
+#### 3. Fix cart to use translated names
 
-**Replace** the current simple floating gradient orbs with a rich, marketing-themed animated background featuring:
+- Change `onAddToCart` to pass `service.id` instead of display name
+- Update `CartItem` interface in `useCart.ts` to store `serviceId` 
+- In `CartDrawer.tsx`, resolve display name via `t(`service.${item.serviceId}.name`)`
+- This way cart items automatically show in the current language
 
-- **Floating SVG icons** — clocks, growth charts, metrics, bar graphs, trend arrows, target icons — rendered as semi-transparent, slowly drifting elements with varying sizes, rotation, and opacity
-- **Animated growth lines** — subtle rising trend lines that draw themselves across the background
-- **Particle-like metrics** — small floating numbers (%, +, arrows) that drift upward
-- All elements at very low opacity (3-8%) so they don't compete with content
+#### 4. Update `BlockSection.tsx` card key
 
-**Implementation:**
-- Create `src/components/AnimatedBackground.tsx` — a full-screen fixed component with ~15-20 floating SVG marketing icons, each with unique animation (CSS keyframes for drift, rotate, fade)
-- Add new keyframes in `tailwind.config.ts`: `drift-up`, `drift-diagonal`, `rotate-slow`, `pulse-fade`
-- Replace the current 3 orb divs in `Index.tsx` with the new `AnimatedBackground` component
-- Keep some gradient orbs but add the marketing icons on top
+Ensure `onAddToCart` passes `service.id` through to the cart system.
 
-**Files to create:** `src/components/AnimatedBackground.tsx`
-**Files to edit:** `Index.tsx`, `tailwind.config.ts`, `translations.ts`, `BlockSection.tsx`, `FilterBar.tsx`
+### Files to Edit
+- `src/i18n/translations.ts` — add ~170 translation keys for 34 services (name, subtitle, goal, tag)
+- `src/components/ServiceCardComponent.tsx` — use `t()` for name, subtitle, goal, tag; pass `id` to cart
+- `src/hooks/useCart.ts` — update `CartItem` to use `id` as key instead of `name`
+- `src/components/CartDrawer.tsx` — resolve translated names from cart item IDs
+- `src/components/BlockSection.tsx` — update `onAddToCart` signature
+- `src/pages/Index.tsx` — update `onAddToCart` handler
 
