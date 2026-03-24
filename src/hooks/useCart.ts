@@ -1,9 +1,11 @@
 import { useState, useCallback } from "react";
 
 export interface CartItem {
+  id: string;
   name: string;
   emoji: string;
   price: string;
+  tierName: string;
   qty: number;
 }
 
@@ -29,25 +31,30 @@ export function useCart() {
   const formatEur = (n: number) => n.toLocaleString("de-DE") + " €";
 
   const addItem = useCallback((item: Omit<CartItem, "qty">) => {
+    const key = `${item.id}__${item.tierName}`;
     setItems((prev) => {
-      const existing = prev.find((i) => i.name === item.name);
+      const existing = prev.find((i) => `${i.id}__${i.tierName}` === key);
       if (existing) {
-        return prev.map((i) => (i.name === item.name ? { ...i, qty: i.qty + 1 } : i));
+        return prev.map((i) => (`${i.id}__${i.tierName}` === key ? { ...i, qty: i.qty + 1 } : i));
       }
       return [...prev, { ...item, qty: 1 }];
     });
   }, []);
 
-  const changeQty = useCallback((name: string, delta: number) => {
-    setItems((prev) => {
-      return prev
-        .map((i) => (i.name === name ? { ...i, qty: i.qty + delta } : i))
-        .filter((i) => i.qty > 0);
-    });
+  const itemKey = (item: CartItem) => `${item.id}__${item.tierName}`;
+
+  const changeQty = useCallback((id: string, tierName: string, delta: number) => {
+    const key = `${id}__${tierName}`;
+    setItems((prev) =>
+      prev
+        .map((i) => (itemKey(i) === key ? { ...i, qty: i.qty + delta } : i))
+        .filter((i) => i.qty > 0)
+    );
   }, []);
 
-  const removeItem = useCallback((name: string) => {
-    setItems((prev) => prev.filter((i) => i.name !== name));
+  const removeItem = useCallback((id: string, tierName: string) => {
+    const key = `${id}__${tierName}`;
+    setItems((prev) => prev.filter((i) => itemKey(i) !== key));
   }, []);
 
   const clearCart = useCallback(() => {
