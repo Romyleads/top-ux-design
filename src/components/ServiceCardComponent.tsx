@@ -4,10 +4,22 @@ import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
 import { useLanguage } from "@/i18n/LanguageContext";
 
+// Map raw Ukrainian tags to translation keys
+const tagKeyMap: Record<string, string> = {
+  "🖨 Друкована": "tag.print",
+  "💻 Цифрова": "tag.digital",
+  "🎨 Брендинг": "tag.branding",
+  "📝 Контент": "tag.content",
+  "📧 Email": "tag.email",
+  "🎬 Відео": "tag.video",
+  "📢 Реклама": "tag.ads",
+  "🔥 Тренд": "tag.trend",
+};
+
 interface ServiceCardProps {
   service: ServiceCard;
   isOrdered: boolean;
-  onAddToCart: (name: string, emoji: string, price: string) => void;
+  onAddToCart: (id: string, emoji: string, price: string, tierName: string) => void;
 }
 
 export default function ServiceCardComponent({ service, isOrdered, onAddToCart }: ServiceCardProps) {
@@ -28,10 +40,13 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
     }, 150);
   };
 
-  const displayName = `${service.name} (${tier.name})`;
+  const serviceName = t(`service.${service.id}.name`);
+  const serviceSubtitle = t(`service.${service.id}.subtitle`);
+  const serviceGoal = t(`service.${service.id}.goal`);
+  const serviceTag = t(tagKeyMap[service.tag] || service.tag);
 
   const handleAdd = () => {
-    onAddToCart(displayName, service.emoji, tier.price);
+    onAddToCart(service.id, service.emoji, tier.price, tier.name);
   };
 
   return (
@@ -51,13 +66,13 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       <div className="relative h-[130px] overflow-hidden flex-shrink-0 bg-border">
         <img
           src={service.photo}
-          alt={service.name}
+          alt={serviceName}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-[550ms] ease-out group-hover:scale-[1.07]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-foreground/55" />
         <span className="absolute bottom-[9px] right-[10px] z-[2] bg-card/[.88] backdrop-blur-lg text-t2 text-[10px] font-semibold px-[9px] py-[3px] rounded-full">
-          {service.tag}
+          {serviceTag}
         </span>
         {service.hot && (
           <span className="absolute top-[10px] left-[10px] z-[2] bg-amber text-primary-foreground text-[9.5px] font-bold px-[9px] py-[3px] rounded-full tracking-wider animate-pulse-subtle">
@@ -71,13 +86,13 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         <div className="w-[46px] h-[46px] bg-card rounded-xl shadow-[0_4px_16px_rgba(15,23,42,0.14)] border-[1.5px] border-card flex items-center justify-center text-[22px] -mt-[23px] mb-2.5 relative z-[5] transition-all duration-200 group-hover:shadow-[0_6px_22px_rgba(15,23,42,0.18)] group-hover:-translate-y-[1px]">
           {service.emoji}
         </div>
-        <h3 className="text-[17px] font-extrabold text-foreground leading-[1.15] tracking-tight mb-[3px]">{service.name}</h3>
-        <p className="text-xs text-t4 leading-snug mb-1.5">{service.subtitle}</p>
+        <h3 className="text-[17px] font-extrabold text-foreground leading-[1.15] tracking-tight mb-[3px]">{serviceName}</h3>
+        <p className="text-xs text-t4 leading-snug mb-1.5">{serviceSubtitle}</p>
 
         {/* Goal */}
         <div className="flex items-start gap-1.5 bg-primary/[.06] border border-primary/[.12] rounded-lg px-2.5 py-2 mb-1">
           <span className="text-primary text-[11px] mt-[1px] flex-shrink-0">🎯</span>
-          <span className="text-[11px] text-t2 leading-snug font-medium">{service.goal}</span>
+          <span className="text-[11px] text-t2 leading-snug font-medium">{serviceGoal}</span>
         </div>
 
         {/* Expand button */}
