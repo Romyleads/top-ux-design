@@ -17,13 +17,10 @@ export default function Index() {
   const cart = useCart();
   const { t } = useLanguage();
 
-  const orderedNames = useMemo(() => {
-    const names = new Set<string>();
-    cart.items.forEach((item) => {
-      const match = item.name.match(/^(.+?)\s*\(/);
-      if (match) names.add(match[1]);
-    });
-    return names;
+  const orderedIds = useMemo(() => {
+    const ids = new Set<string>();
+    cart.items.forEach((item) => ids.add(item.id));
+    return ids;
   }, [cart.items]);
 
   const filteredServices = useMemo(() => {
@@ -34,8 +31,11 @@ export default function Index() {
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       result = result.filter((s) => {
+        const translatedName = t(`service.${s.id}.name`);
+        const translatedSubtitle = t(`service.${s.id}.subtitle`);
+        const translatedGoal = t(`service.${s.id}.goal`);
         const searchable = [
-          s.name, s.subtitle, s.tag,
+          s.name, s.subtitle, s.tag, translatedName, translatedSubtitle, translatedGoal,
           ...s.info.flatMap((i) => [i.text || "", ...(i.items || [])]),
           ...s.tierFeatures.flat().map((f) => f.text),
         ].join(" ").toLowerCase();
@@ -43,7 +43,7 @@ export default function Index() {
       });
     }
     return result;
-  }, [searchQuery, activeBlock]);
+  }, [searchQuery, activeBlock, t]);
 
   const groupedByBlock = useMemo(() => {
     const groups: Record<string, typeof services> = {};
@@ -55,8 +55,11 @@ export default function Index() {
   }, [filteredServices]);
 
   const handleAddToCart = useCallback(
-    (name: string, emoji: string, price: string) => { cart.addItem({ name, emoji, price }); },
-    [cart.addItem]
+    (id: string, emoji: string, price: string, tierName: string) => {
+      const serviceName = t(`service.${id}.name`);
+      cart.addItem({ id, name: serviceName, emoji, price, tierName });
+    },
+    [cart.addItem, t]
   );
 
   const handleSearch = useCallback((q: string) => setSearchQuery(q), []);
@@ -85,7 +88,7 @@ export default function Index() {
               key={block.id}
               block={block}
               cards={groupedByBlock[block.id] || []}
-              orderedNames={orderedNames}
+              orderedNames={orderedIds}
               onAddToCart={handleAddToCart}
             />
           ))}

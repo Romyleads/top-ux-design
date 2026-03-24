@@ -13,8 +13,8 @@ interface CartDrawerProps {
   step: 1 | 2;
   setStep: (s: 1 | 2) => void;
   onClose: () => void;
-  onChangeQty: (name: string, delta: number) => void;
-  onRemove: (name: string) => void;
+  onChangeQty: (id: string, tierName: string, delta: number) => void;
+  onRemove: (id: string, tierName: string) => void;
   onClear: () => void;
 }
 
@@ -39,6 +39,11 @@ export default function CartDrawer({
     if (!dsgvo) { alert(t("alert.dsgvo")); return; }
     if (isEmpty) { alert(t("alert.empty")); return; }
     setSubmitted(true);
+  };
+
+  const getDisplayName = (item: CartItem) => {
+    const translated = t(`service.${item.id}.name`);
+    return `${translated} (${item.tierName})`;
   };
 
   return (
@@ -113,22 +118,22 @@ export default function CartDrawer({
                 </div>
                 <div className="space-y-1.5">
                   {items.map((item) => (
-                    <div key={item.name} className="bg-background border border-border rounded-[10px] p-[9px] px-[11px] flex items-center gap-2">
+                    <div key={`${item.id}__${item.tierName}`} className="bg-background border border-border rounded-[10px] p-[9px] px-[11px] flex items-center gap-2">
                       <span className="text-lg flex-shrink-0">{item.emoji}</span>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[12.5px] font-semibold text-foreground whitespace-nowrap overflow-hidden text-ellipsis">{item.name}</div>
+                        <div className="text-[12.5px] font-semibold text-foreground whitespace-nowrap overflow-hidden text-ellipsis">{getDisplayName(item)}</div>
                         <div className="text-[11px] text-t4">{item.price}</div>
                       </div>
                       <div className="flex items-center bg-card border border-border rounded-[7px] overflow-hidden flex-shrink-0">
-                        <button onClick={() => onChangeQty(item.name, -1)} className="bg-transparent border-none text-t4 text-base w-[26px] h-[26px] flex items-center justify-center hover:bg-background hover:text-foreground transition-colors">
+                        <button onClick={() => onChangeQty(item.id, item.tierName, -1)} className="bg-transparent border-none text-t4 text-base w-[26px] h-[26px] flex items-center justify-center hover:bg-background hover:text-foreground transition-colors">
                           <Minus className="w-3 h-3" />
                         </button>
                         <span className="text-xs font-bold text-foreground min-w-[22px] text-center">{item.qty}</span>
-                        <button onClick={() => onChangeQty(item.name, 1)} className="bg-transparent border-none text-t4 text-base w-[26px] h-[26px] flex items-center justify-center hover:bg-background hover:text-foreground transition-colors">
+                        <button onClick={() => onChangeQty(item.id, item.tierName, 1)} className="bg-transparent border-none text-t4 text-base w-[26px] h-[26px] flex items-center justify-center hover:bg-background hover:text-foreground transition-colors">
                           <Plus className="w-3 h-3" />
                         </button>
                       </div>
-                      <button onClick={() => onRemove(item.name)} className="bg-transparent border-none text-border text-[13px] p-1 rounded-[5px] flex-shrink-0 hover:text-destructive hover:bg-destructive/10 transition-colors">
+                      <button onClick={() => onRemove(item.id, item.tierName)} className="bg-transparent border-none text-border text-[13px] p-1 rounded-[5px] flex-shrink-0 hover:text-destructive hover:bg-destructive/10 transition-colors">
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
@@ -152,7 +157,7 @@ export default function CartDrawer({
             <div className="mx-4 mt-3 p-2.5 px-3 bg-secondary/80 border border-border rounded-[10px] flex items-center justify-between gap-2.5 flex-shrink-0">
               <div className="flex flex-col gap-0.5 min-w-0">
                 <span className="text-[11px] text-t4 whitespace-nowrap overflow-hidden text-ellipsis">
-                  {items.map((i) => `${i.emoji} ${i.name}`).join(", ")}
+                  {items.map((i) => `${i.emoji} ${getDisplayName(i)}`).join(", ")}
                 </span>
                 <span className="text-[13px] font-bold text-foreground">{hasPrice ? formatEur(totalPrice) : ""}</span>
               </div>

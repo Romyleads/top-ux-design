@@ -7,7 +7,7 @@ interface BlockSectionProps {
   block: Block;
   cards: ServiceCard[];
   orderedNames: Set<string>;
-  onAddToCart: (name: string, emoji: string, price: string) => void;
+  onAddToCart: (id: string, emoji: string, price: string, tierName: string) => void;
 }
 
 export default function BlockSection({ block, cards, orderedNames, onAddToCart }: BlockSectionProps) {
@@ -56,7 +56,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
           >
             <ServiceCardComponent
               service={card}
-              isOrdered={orderedNames.has(card.name)}
+              isOrdered={orderedNames.has(card.id)}
               onAddToCart={onAddToCart}
             />
           </div>
