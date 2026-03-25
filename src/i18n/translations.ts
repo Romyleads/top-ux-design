@@ -1,3 +1,7 @@
+import { uk } from "./uk";
+import { en } from "./en";
+import { de } from "./de";
+
 export type Locale = "uk" | "en" | "de";
 
 export const translations: Record<string, Record<Locale, string>> = {
