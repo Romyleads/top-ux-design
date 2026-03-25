@@ -16,6 +16,17 @@ const tagKeyMap: Record<string, string> = {
   "🔥 Тренд": "tag.trend",
 };
 
+function tList(t: (key: string) => string, prefix: string): string[] {
+  const result: string[] = [];
+  for (let i = 0; i < 20; i++) {
+    const key = `${prefix}.${i}`;
+    const val = t(key);
+    if (val === key) break; // key not found, stop
+    result.push(val);
+  }
+  return result;
+}
+
 interface ServiceCardProps {
   service: ServiceCard;
   isOrdered: boolean;
@@ -107,22 +118,42 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         {/* Expandable section */}
         <div className={`overflow-hidden transition-all duration-400 ease-out ${expanded ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}>
           <div className="pt-2 pb-1.5 border-t border-secondary mt-1.5">
-            {service.info.map((section, i) => (
-              <div key={i} className="flex flex-col gap-[3px] mb-2.5 last:mb-0">
-                <span className="text-[9.5px] font-bold tracking-wider uppercase text-primary-dark opacity-75">{section.label}</span>
-                {section.type === "list" && section.items ? (
-                  <ul className="list-none p-0 m-0 flex flex-col gap-0.5">
-                    {section.items.map((item, j) => (
-                      <li key={j} className="text-[11px] text-t3 leading-snug pl-3 relative before:content-['›'] before:absolute before:left-0 before:text-primary before:font-bold">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <span className="text-[11.5px] text-t2 leading-relaxed">{section.text}</span>
-                )}
-              </div>
-            ))}
+            {service.info.map((section, i) => {
+              const sectionLabel = t(`info.${section.kind}`);
+              const isContentList = section.kind === "content";
+              
+              // For text sections, look up translation
+              const sectionText = section.kind !== "content"
+                ? t(`service.${service.id}.info.${section.kind}`)
+                : undefined;
+              
+              // For content list, use tList helper
+              const contentItems = isContentList
+                ? tList(t, `service.${service.id}.info.content`)
+                : undefined;
+
+              // Skip if translated value is the key itself (no translation)
+              const textKey = `service.${service.id}.info.${section.kind}`;
+              if (!isContentList && sectionText === textKey) return null;
+              if (isContentList && (!contentItems || contentItems.length === 0)) return null;
+
+              return (
+                <div key={i} className="flex flex-col gap-[3px] mb-2.5 last:mb-0">
+                  <span className="text-[9.5px] font-bold tracking-wider uppercase text-primary-dark opacity-75">{sectionLabel}</span>
+                  {isContentList && contentItems ? (
+                    <ul className="list-none p-0 m-0 flex flex-col gap-0.5">
+                      {contentItems.map((item, j) => (
+                        <li key={j} className="text-[11px] text-t3 leading-snug pl-3 relative before:content-['›'] before:absolute before:left-0 before:text-primary before:font-bold">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <span className="text-[11.5px] text-t2 leading-relaxed">{sectionText}</span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -151,12 +182,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
       {/* Features */}
       <div className={`px-4 pt-[2px] transition-opacity duration-150 ${fading ? "opacity-0" : "opacity-100"}`}>
-        {features.map((feat, i) => (
-          <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-[7px]">
-            <FeatureIcon icon={feat.icon} />
-            <span className="text-xs text-t3 leading-snug [&>b]:text-t2 [&>b]:font-semibold" dangerouslySetInnerHTML={{ __html: feat.text }} />
-          </div>
-        ))}
+        {features.map((feat, i) => {
+          const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
+          return (
+            <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-[7px]">
+              <FeatureIcon icon={feat.icon} />
+              <span className="text-xs text-t3 leading-snug [&>b]:text-t2 [&>b]:font-semibold" dangerouslySetInnerHTML={{ __html: tierFeatText }} />
+            </div>
+          );
+        })}
       </div>
 
       {/* CTA */}
