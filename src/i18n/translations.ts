@@ -266,3 +266,10 @@ export const translations: Record<string, Record<Locale, string>> = {
   "block.b8.title": { uk: "Трендові 2024–2025", en: "Trending 2024–2025", de: "Trends 2024–2025" },
   "block.b8.subtitle": { uk: "Найбільш затребувані формати", en: "Most in-demand formats", de: "Die gefragtesten Formate" },
 };
+
+// Merge per-language files (info sections + tier features)
+Object.keys(uk).forEach((key) => {
+  if (!translations[key]) {
+    translations[key] = { uk: uk[key], en: en[key] || "", de: de[key] || "" };
+  }
+});
