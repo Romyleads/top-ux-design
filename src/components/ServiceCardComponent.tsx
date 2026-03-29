@@ -5,7 +5,7 @@ import {
   Smartphone, Image, Pencil, CreditCard, PackageOpen, BookMarked, PenLine, 
   Trophy, GraduationCap, Mail, Droplets, Newspaper, Video, Home, Star, 
   Target, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
-  Mic, Flame
+  Mic, Flame, Wallet, Send, Cpu, Blocks
 } from "lucide-react";
 import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
