@@ -184,12 +184,12 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           </div>
         </div>
 
-        {/* Features — clean lines */}
-        <div className={`transition-opacity duration-150 mb-4 space-y-0 ${fading ? "opacity-0" : "opacity-100"}`}>
+        {/* Features */}
+        <div className={`transition-opacity duration-150 mb-4 ${fading ? "opacity-0" : "opacity-100"}`}>
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
-              <div key={`${activeTier}-${i}`} className="flex items-center gap-3 py-2.5 border-b border-border/20 last:border-b-0">
+              <div key={`${activeTier}-${i}`} className="flex items-center gap-3 py-2.5">
                 <FeatureIcon icon={feat.icon} />
                 <span className="text-[13px] text-t2 leading-snug [&>b]:text-foreground [&>b]:font-semibold" dangerouslySetInnerHTML={{ __html: tierFeatText }} />
               </div>
