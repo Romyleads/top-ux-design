@@ -1,33 +1,46 @@
 import { useState, useEffect, useCallback } from "react";
 import { services } from "@/data/services";
 import { useLanguage } from "@/i18n/LanguageContext";
+import type { Locale } from "@/i18n/translations";
 
-const firstNames = [
-  "Олександр", "Марія", "Дмитро", "Анна", "Максим", "Катерина",
-  "Андрій", "Юлія", "Сергій", "Вікторія", "Іван", "Наталія",
-  "Михайло", "Ольга", "Артем", "Тетяна", "Роман", "Ірина",
-  "Владислав", "Софія", "Денис", "Аліна", "Олег", "Дарина",
-];
+const namesByLocale: Record<Locale, string[]> = {
+  uk: [
+    "Олександр", "Марія", "Дмитро", "Анна", "Максим", "Катерина",
+    "Андрій", "Юлія", "Сергій", "Вікторія", "Іван", "Наталія",
+    "Михайло", "Ольга", "Артем", "Тетяна", "Роман", "Ірина",
+  ],
+  en: [
+    "Alexander", "Maria", "James", "Anna", "Max", "Catherine",
+    "Andrew", "Julia", "Sergei", "Victoria", "John", "Natalie",
+    "Michael", "Olga", "Arthur", "Tatiana", "Roman", "Irene",
+  ],
+  de: [
+    "Alexander", "Marie", "Dmitri", "Anna", "Maximilian", "Katharina",
+    "Andreas", "Julia", "Sergej", "Viktoria", "Johann", "Natalie",
+    "Michael", "Olga", "Artem", "Tatjana", "Roman", "Irene",
+  ],
+};
 
-const cities = [
-  "Київ", "Львів", "Одеса", "Харків", "Дніпро", "Запоріжжя",
-  "Вінниця", "Полтава", "Варшава", "Берлін", "Прага", "Лондон",
-];
+const citiesByLocale: Record<Locale, string[]> = {
+  uk: ["Київ", "Львів", "Одеса", "Харків", "Дніпро", "Запоріжжя", "Вінниця", "Полтава", "Варшава", "Берлін", "Прага", "Лондон"],
+  en: ["Kyiv", "Lviv", "Odesa", "Kharkiv", "Dnipro", "Zaporizhzhia", "Vinnytsia", "Poltava", "Warsaw", "Berlin", "Prague", "London"],
+  de: ["Kyjiw", "Lwiw", "Odessa", "Charkiw", "Dnipro", "Saporischschja", "Winnyzja", "Poltawa", "Warschau", "Berlin", "Prag", "London"],
+};
 
 export default function SocialProof() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [notification, setNotification] = useState<{
-    id: number; name: string; city: string; emoji: string; serviceName: string; tierName: string; mins: number;
+    id: number; nameIdx: number; cityIdx: number; emoji: string; serviceId: string; tierIdx: number; mins: number;
   } | null>(null);
   const [visible, setVisible] = useState(false);
 
   const generateNotification = useCallback(() => {
     const service = services[Math.floor(Math.random() * services.length)];
-    const name = firstNames[Math.floor(Math.random() * firstNames.length)];
-    const city = cities[Math.floor(Math.random() * cities.length)];
-    const tier = service.tiers[Math.floor(Math.random() * service.tiers.length)];
+    const nameIdx = Math.floor(Math.random() * namesByLocale.uk.length);
+    const cityIdx = Math.floor(Math.random() * citiesByLocale.uk.length);
+    const tierIdx = Math.floor(Math.random() * service.tiers.length);
     const mins = Math.floor(Math.random() * 55) + 2;
-    return { id: Date.now(), name, city, emoji: service.emoji, serviceName: service.name, tierName: tier.name, mins };
+    return { id: Date.now(), nameIdx, cityIdx, emoji: service.emoji, serviceId: service.id, tierIdx, mins };
   }, []);
 
   const showNotification = useCallback(() => {
@@ -43,6 +56,14 @@ export default function SocialProof() {
   }, [showNotification]);
 
   if (!notification) return null;
+
+  const names = namesByLocale[locale];
+  const cities = citiesByLocale[locale];
+  const displayName = names[notification.nameIdx] || names[0];
+  const displayCity = cities[notification.cityIdx] || cities[0];
+  const serviceName = t(`service.${notification.serviceId}.name`);
+  const service = services.find(s => s.id === notification.serviceId);
+  const tierName = service?.tiers[notification.tierIdx]?.name ?? "";
 
   const timeText = notification.mins < 60
     ? `${notification.mins} ${t("social.minAgo")}`
@@ -60,12 +81,12 @@ export default function SocialProof() {
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-[12.5px] text-foreground leading-snug font-medium">
-            <span className="font-bold">{notification.name}</span>
-            <span className="text-t3"> {t("social.from")} {notification.city}</span>
+            <span className="font-bold">{displayName}</span>
+            <span className="text-t3"> {t("social.from")} {displayCity}</span>
           </p>
           <p className="text-[11.5px] text-t3 leading-snug mt-0.5">
-            {t("social.ordered")} <span className="font-semibold text-t2">{notification.serviceName}</span>
-            <span className="text-t4"> · {notification.tierName}</span>
+            {t("social.ordered")} <span className="font-semibold text-t2">{serviceName}</span>
+            <span className="text-t4"> · {tierName}</span>
           </p>
           <p className="text-[10px] text-t4 mt-1">{timeText}</p>
         </div>
