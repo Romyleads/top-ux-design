@@ -4,7 +4,7 @@ import {
   Smartphone, Image, Pencil, CreditCard, PackageOpen, BookMarked, PenLine, 
   Trophy, GraduationCap, Mail, Droplets, Newspaper, Video, Home, Star, 
   Target, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
-  Mic, Flame, ChevronRight
+  Mic, Flame
 } from "lucide-react";
 import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
@@ -70,9 +70,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
   return (
     <div
       className={`rounded-[22px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group ${
-        isOrdered 
-          ? "ring-[2.5px] ring-primary glow-green" 
-          : ""
+        isOrdered ? "ring-[2.5px] ring-primary glow-green" : ""
       }`}
       style={{ 
         background: 'hsl(0 0% 100%)',
@@ -82,7 +80,6 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         border: '1px solid hsl(220 13% 91% / 0.7)',
       }}
     >
-
       {isOrdered && (
         <div className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full gradient-primary text-primary-foreground text-xs font-bold flex items-center justify-center z-20" style={{
           boxShadow: '0 4px 12px rgba(34, 197, 94, 0.4)',
@@ -91,15 +88,14 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
       )}
 
-      {/* Photo — clean, no text overlay */}
-      <div className="relative h-[190px] overflow-hidden flex-shrink-0 rounded-t-[20px]">
+      {/* Photo */}
+      <div className="relative h-[180px] overflow-hidden flex-shrink-0">
         <img
           src={service.photo}
           alt={serviceName}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
         />
-        {/* HOT badge */}
         {service.hot && (
           <div className="absolute top-3.5 left-3.5 z-[3]">
             <span className="inline-flex items-center gap-1 text-[10px] font-bold px-3 py-1.5 rounded-full tracking-wider text-white animate-pulse-subtle" style={{
@@ -114,42 +110,76 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
       {/* Card body */}
       <div className="px-5 pt-4 flex-1 flex flex-col relative z-[1]">
-        {/* Icon + Title + Subtitle — below photo */}
-        <div className="flex items-start gap-3 mb-4">
-          <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 border border-border/40" style={{
-            background: 'hsl(142 76% 48% / 0.06)',
-          }}>
-            {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-xl">{service.emoji}</span>}
+        {/* Title + Subtitle */}
+        <div className="flex items-start gap-3 mb-3">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border border-border/40 bg-primary/[.06]">
+            {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-lg">{service.emoji}</span>}
           </div>
           <div className="min-w-0">
-            <h3 className="text-[17px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
+            <h3 className="text-[16px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
             <p className="text-[12px] text-t3 leading-snug">{serviceSubtitle}</p>
           </div>
         </div>
-        {/* Goal block */}
-        <div className="flex items-start gap-3 rounded-2xl px-4 py-3.5 mb-5 border border-primary/10 bg-primary/[.03]">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary/10">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* Dartboard */}
-              <circle cx="12" cy="12" r="10.5" stroke="hsl(142,71%,42%)" strokeWidth="1.2" opacity="0.4" />
-              <circle cx="12" cy="12" r="7" stroke="hsl(142,71%,42%)" strokeWidth="1.2" opacity="0.6" />
-              <circle cx="12" cy="12" r="3.5" stroke="hsl(142,71%,42%)" strokeWidth="1.2" opacity="0.8" />
-              <circle cx="12" cy="12" r="1.2" fill="hsl(142,71%,42%)" />
-              {/* Dart — coming from top-right, tip touching center */}
-              <path d="M12 12L19 5" stroke="hsl(4,80%,52%)" strokeWidth="1.8" strokeLinecap="round" />
-              {/* Dart tip (triangle) */}
-              <path d="M11.2 12.8L12 12L12.8 11.2" stroke="hsl(4,80%,52%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              {/* Dart flights/fins */}
-              <path d="M19 5L21 4L20 3Z" fill="hsl(4,70%,55%)" />
-              <path d="M19 5L21 7" stroke="hsl(4,70%,55%)" strokeWidth="1.2" strokeLinecap="round" />
-              <path d="M19 5L17 3" stroke="hsl(4,70%,55%)" strokeWidth="1.2" strokeLinecap="round" />
+
+        {/* Goal */}
+        <div className="flex items-start gap-2.5 rounded-xl px-3.5 py-3 mb-3 border border-primary/10 bg-primary/[.03]">
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-primary/10 mt-0.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="hsl(142,71%,42%)" strokeWidth="1.5" opacity="0.35" />
+              <circle cx="12" cy="12" r="6.5" stroke="hsl(142,71%,42%)" strokeWidth="1.5" opacity="0.55" />
+              <circle cx="12" cy="12" r="3" stroke="hsl(142,71%,42%)" strokeWidth="1.5" opacity="0.8" />
+              <circle cx="12" cy="12" r="1" fill="hsl(142,71%,42%)" />
+              <line x1="12" y1="12" x2="20" y2="4" stroke="hsl(0,75%,50%)" strokeWidth="2" strokeLinecap="round" />
+              <path d="M17.5 4H20V6.5" stroke="hsl(0,75%,50%)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <span className="text-[13px] text-foreground leading-[1.5] font-semibold">{serviceGoal}</span>
+          <span className="text-[12.5px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
         </div>
 
-        {/* Tier Picker — elevated */}
-        <div className="rounded-2xl p-1.5 mb-5" style={{
+        {/* Details expand — between goal and tier picker */}
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="flex items-center gap-1.5 mb-3 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary self-start"
+        >
+          <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+          <span>{t("card.details")}</span>
+        </button>
+
+        <div className={`overflow-hidden transition-all duration-400 ease-out ${expanded ? "max-h-[420px] opacity-100 mb-3" : "max-h-0 opacity-0"}`}>
+          <div className="space-y-2.5 pb-1">
+            {service.info
+              .filter((section) => section.kind !== "goal") /* skip goal — already shown above */
+              .map((section, i) => {
+                const sectionLabel = t(`info.${section.kind}`);
+                const isContentList = section.kind === "content";
+                const sectionText = !isContentList ? t(`service.${service.id}.info.${section.kind}`) : undefined;
+                const contentItems = isContentList ? tList(t, `service.${service.id}.info.content`) : undefined;
+                const textKey = `service.${service.id}.info.${section.kind}`;
+                if (!isContentList && sectionText === textKey) return null;
+                if (isContentList && (!contentItems || contentItems.length === 0)) return null;
+
+                return (
+                  <div key={i} className="flex flex-col gap-1">
+                    <span className="text-[10px] font-bold tracking-[0.1em] uppercase text-primary">{sectionLabel}</span>
+                    {isContentList && contentItems ? (
+                      <ul className="list-none p-0 m-0 flex flex-col gap-0.5">
+                        {contentItems.map((item, j) => (
+                          <li key={j} className="text-[11.5px] text-t2 leading-snug pl-3 relative before:content-['›'] before:absolute before:left-0 before:text-primary before:font-bold">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span className="text-[12px] text-t2 leading-relaxed">{sectionText}</span>
+                    )}
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+
+        {/* Tier Picker */}
+        <div className="rounded-2xl p-1.5 mb-4" style={{
           background: 'hsl(220 14% 96%)',
           boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.04)',
         }}>
@@ -158,10 +188,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
               <button
                 key={i}
                 onClick={() => handleTierChange(i)}
-                className={`flex flex-col items-center py-3 px-2 rounded-xl cursor-pointer transition-all duration-250 select-none ${
-                  i === activeTier
-                    ? "shadow-lg"
-                    : "hover:bg-card/60"
+                className={`flex flex-col items-center py-2.5 px-2 rounded-xl cursor-pointer transition-all duration-200 select-none ${
+                  i === activeTier ? "" : "hover:bg-card/60"
                 }`}
                 style={i === activeTier ? {
                   background: 'hsl(0 0% 100%)',
@@ -169,12 +197,12 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
                   border: '1px solid hsl(142 71% 42% / 0.25)',
                 } : undefined}
               >
-                <span className={`text-[11px] font-semibold leading-none mb-2 transition-colors ${
+                <span className={`text-[11px] font-semibold leading-none mb-1.5 transition-colors ${
                   i === activeTier ? "text-primary font-bold" : "text-t4"
                 }`}>
                   {tierItem.name}
                 </span>
-                <span className={`text-[17px] font-extrabold leading-none transition-colors ${
+                <span className={`text-[16px] font-extrabold leading-none transition-colors ${
                   i === activeTier ? "text-foreground" : "text-t3"
                 }`}>
                   {tierItem.price}
@@ -185,11 +213,11 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Features */}
-        <div className={`transition-opacity duration-150 mb-4 ${fading ? "opacity-0" : "opacity-100"}`}>
+        <div className={`transition-opacity duration-150 mb-3 ${fading ? "opacity-0" : "opacity-100"}`}>
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
-              <div key={`${activeTier}-${i}`} className="flex items-center gap-3 py-2.5">
+              <div key={`${activeTier}-${i}`} className="flex items-center gap-3 py-2">
                 <FeatureIcon icon={feat.icon} />
                 <span className="text-[13px] text-t2 leading-snug [&>b]:text-foreground [&>b]:font-semibold" dangerouslySetInnerHTML={{ __html: tierFeatText }} />
               </div>
@@ -197,14 +225,14 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           })}
         </div>
 
-        {/* CTA Button — premium */}
-        <div className="mt-auto pt-3 pb-4">
+        {/* CTA */}
+        <div className="mt-auto pt-2 pb-4">
           <button
             onClick={handleAdd}
-            className={`block w-full rounded-2xl text-[14px] font-bold py-4 px-6 text-center relative overflow-hidden transition-all duration-300 ${
+            className={`block w-full rounded-2xl text-[14px] font-bold py-3.5 px-6 text-center relative overflow-hidden transition-all duration-300 ${
               isOrdered
                 ? "bg-green-light text-green-text ring-[1.5px] ring-green-border"
-                : "text-primary-foreground gradient-shine hover:-translate-y-[2px] active:translate-y-0 active:scale-[0.98]"
+                : "text-primary-foreground gradient-shine hover:-translate-y-[1px] active:translate-y-0 active:scale-[0.98]"
             }`}
             style={!isOrdered ? {
               background: 'linear-gradient(135deg, hsl(142, 76%, 46%) 0%, hsl(152, 60%, 36%) 100%)',
@@ -213,53 +241,6 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           >
             {isOrdered ? t("card.inCart") : `${t("card.add")} ${tier.name} — ${tier.price}`}
           </button>
-        </div>
-
-        {/* Details — minimal bottom link */}
-        <div className="border-t border-border/20 py-3">
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="w-full flex items-center justify-center gap-2 bg-transparent border-none text-t4 text-[12px] font-medium cursor-pointer transition-all hover:text-primary hover:gap-3"
-          >
-            <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
-            <span>{t("card.details")}</span>
-            <ChevronRight className="w-3 h-3 opacity-40" />
-          </button>
-
-          <div className={`overflow-hidden transition-all duration-400 ease-out ${expanded ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}>
-            <div className="pt-4 space-y-3">
-              {service.info.map((section, i) => {
-                const sectionLabel = t(`info.${section.kind}`);
-                const isContentList = section.kind === "content";
-                const sectionText = section.kind !== "content"
-                  ? t(`service.${service.id}.info.${section.kind}`)
-                  : undefined;
-                const contentItems = isContentList
-                  ? tList(t, `service.${service.id}.info.content`)
-                  : undefined;
-                const textKey = `service.${service.id}.info.${section.kind}`;
-                if (!isContentList && sectionText === textKey) return null;
-                if (isContentList && (!contentItems || contentItems.length === 0)) return null;
-
-                return (
-                  <div key={i} className="flex flex-col gap-1.5">
-                    <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-primary">{sectionLabel}</span>
-                    {isContentList && contentItems ? (
-                      <ul className="list-none p-0 m-0 flex flex-col gap-1">
-                        {contentItems.map((item, j) => (
-                          <li key={j} className="text-[12px] text-t2 leading-snug pl-3.5 relative before:content-['›'] before:absolute before:left-0 before:text-primary before:font-bold">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <span className="text-[12.5px] text-t2 leading-relaxed">{sectionText}</span>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
         </div>
       </div>
     </div>
