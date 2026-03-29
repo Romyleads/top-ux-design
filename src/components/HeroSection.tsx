@@ -41,16 +41,16 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       : t("plural.concept.many");
 
   return (
-    <section className="text-center pt-4 pb-6 px-6 relative z-10">
+    <section className="text-center pt-2 pb-5 px-6 relative z-10">
       {/* Language Switcher */}
-      <div className="flex justify-end mb-3">
+      <div className="flex justify-end mb-1">
         <LanguageSwitcher />
       </div>
 
       {/* 3D Logo with glow */}
-      <div className="mb-4 relative">
+      <div className="mb-1 relative -mt-2">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[400px] h-[120px] rounded-full opacity-30" style={{
+          <div className="w-[400px] h-[100px] rounded-full opacity-30" style={{
             background: 'radial-gradient(ellipse, hsl(142, 76%, 48%) 0%, transparent 70%)',
             filter: 'blur(40px)',
           }} />
@@ -58,20 +58,20 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
         <img 
           src={promoLogo} 
           alt="PromoVisions" 
-          className="max-w-[420px] w-full mx-auto relative z-[1] drop-shadow-[0_4px_40px_rgba(74,222,128,0.3)]"
+          className="max-w-[380px] w-full mx-auto relative z-[1] drop-shadow-[0_4px_40px_rgba(74,222,128,0.3)]"
         />
       </div>
 
-      <span className="inline-flex items-center gap-1.5 bg-primary/10 border border-primary/20 text-primary text-[10.5px] font-bold px-3 py-1 rounded-full mb-3 tracking-wider uppercase animate-pulse-subtle backdrop-blur-sm">
+      <span className="inline-flex items-center gap-1.5 bg-primary/10 border border-primary/20 text-primary text-[10.5px] font-bold px-3 py-1 rounded-full mb-2 tracking-wider uppercase animate-pulse-subtle backdrop-blur-sm">
         {t("hero.badge")}
       </span>
-      <h1 className="text-[clamp(22px,3vw,34px)] font-black text-white leading-[1.1] mb-3 tracking-tight drop-shadow-[0_2px_20px_rgba(74,222,128,0.15)]">
+      <h1 className="text-[clamp(20px,2.8vw,30px)] font-black text-white leading-[1.1] mb-2 tracking-tight drop-shadow-[0_2px_20px_rgba(74,222,128,0.15)]">
         {t("hero.title1")}{" "}
         <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-green-300 bg-[length:200%_auto] bg-clip-text text-transparent animate-shimmer">
           {t("hero.title2")}
         </span>
       </h1>
-      <p className="text-white/55 text-[14px] max-w-[480px] mx-auto mb-6 leading-relaxed">
+      <p className="text-white/55 text-[13px] max-w-[460px] mx-auto mb-4 leading-relaxed">
         {t("hero.subtitle")}
       </p>
 
