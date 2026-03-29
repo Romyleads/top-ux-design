@@ -30,20 +30,18 @@ const citiesByLocale: Record<Locale, string[]> = {
 export default function SocialProof() {
   const { t, locale } = useLanguage();
   const [notification, setNotification] = useState<{
-    id: number; name: string; city: string; emoji: string; serviceId: string; tierIdx: number; mins: number;
+    id: number; nameIdx: number; cityIdx: number; emoji: string; serviceId: string; tierIdx: number; mins: number;
   } | null>(null);
   const [visible, setVisible] = useState(false);
 
   const generateNotification = useCallback(() => {
     const service = services[Math.floor(Math.random() * services.length)];
-    const names = namesByLocale[locale];
-    const cities = citiesByLocale[locale];
-    const name = names[Math.floor(Math.random() * names.length)];
-    const city = cities[Math.floor(Math.random() * cities.length)];
+    const nameIdx = Math.floor(Math.random() * namesByLocale.uk.length);
+    const cityIdx = Math.floor(Math.random() * citiesByLocale.uk.length);
     const tierIdx = Math.floor(Math.random() * service.tiers.length);
     const mins = Math.floor(Math.random() * 55) + 2;
-    return { id: Date.now(), name, city, emoji: service.emoji, serviceId: service.id, tierIdx, mins };
-  }, [locale]);
+    return { id: Date.now(), nameIdx, cityIdx, emoji: service.emoji, serviceId: service.id, tierIdx, mins };
+  }, []);
 
   const showNotification = useCallback(() => {
     setNotification(generateNotification());
@@ -59,12 +57,13 @@ export default function SocialProof() {
 
   if (!notification) return null;
 
-  const serviceName = t(`service.${notification.serviceId}.name`);
-  const tierName = t(`service.${notification.serviceId}.tier${notification.tierIdx}`);
   const names = namesByLocale[locale];
   const cities = citiesByLocale[locale];
-  const displayName = names[Math.abs(notification.name.charCodeAt(0)) % names.length] || notification.name;
-  const displayCity = cities[Math.abs(notification.city.charCodeAt(0)) % cities.length] || notification.city;
+  const displayName = names[notification.nameIdx] || names[0];
+  const displayCity = cities[notification.cityIdx] || cities[0];
+  const serviceName = t(`service.${notification.serviceId}.name`);
+  const service = services.find(s => s.id === notification.serviceId);
+  const tierName = service?.tiers[notification.tierIdx]?.name ?? "";
 
   const timeText = notification.mins < 60
     ? `${notification.mins} ${t("social.minAgo")}`
