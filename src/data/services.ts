@@ -33,6 +33,10 @@ import imgLinkedinBrand from "@/assets/services/linkedin-brand.jpg";
 import imgMicroSaas from "@/assets/services/micro-saas.jpg";
 import imgInteractiveContent from "@/assets/services/interactive-content.jpg";
 import imgPodcast from "@/assets/services/podcast.jpg";
+import imgSaasBuilder from "@/assets/services/saas-builder.jpg";
+import imgTelegramTwa from "@/assets/services/telegram-twa.jpg";
+import imgAiAutomation from "@/assets/services/ai-automation.jpg";
+import imgNocodeMvp from "@/assets/services/nocode-mvp.jpg";
 
 export interface TierFeature {
   icon: "size" | "format" | "clock" | "check";
