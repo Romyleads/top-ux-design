@@ -109,12 +109,16 @@ export default function Index() {
           </div>
         )}
 
-        <footer className="border-t border-border/40 py-8 mt-20 text-center text-t4 text-[13px]">
-          <div className="flex items-center justify-center gap-2 mb-1">
-            <div className="w-2 h-2 rounded-full gradient-primary animate-pulse-subtle" />
-            <span className="text-primary-dark font-bold tracking-wide text-[14px]">PROMOVISIONS.COM</span>
+        <footer className="relative mt-20 -mx-7 max-sm:-mx-3.5 px-7 max-sm:px-3.5 py-12 text-center overflow-hidden" style={{
+          background: `linear-gradient(180deg, hsl(0,0%,99%) 0%, hsl(220,35%,8%) 100%)`
+        }}>
+          <div className="relative z-10">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <div className="w-2 h-2 rounded-full gradient-primary animate-pulse-subtle" />
+              <span className="text-primary font-bold tracking-widest text-sm">PROMOVISIONS.COM</span>
+            </div>
+            <p className="text-white/40 text-[12px]">© 2026 {t("footer.copy")}</p>
           </div>
-          © 2026 {t("footer.copy")}
         </footer>
       </div>
 
