@@ -80,6 +80,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           : '0 1px 2px rgba(0,0,0,0.04), 0 8px 32px -12px rgba(0,0,0,0.08)',
         border: '1px solid hsl(220 13% 91% / 0.5)',
       }}
+      onMouseLeave={() => expanded && setExpanded(false)}
     >
       {isOrdered && (
         <div className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full gradient-primary text-primary-foreground text-xs font-bold flex items-center justify-center z-20" style={{
