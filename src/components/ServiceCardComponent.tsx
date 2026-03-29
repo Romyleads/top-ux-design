@@ -69,7 +69,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   return (
     <div
-      className={`rounded-[20px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-3 group ${
+      className={`rounded-[22px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group ${
         isOrdered 
           ? "ring-[2.5px] ring-primary glow-green" 
           : ""
@@ -78,14 +78,10 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         background: 'hsl(0 0% 100%)',
         boxShadow: isOrdered 
           ? '0 0 30px -8px rgba(34, 197, 94, 0.35)' 
-          : '0 8px 40px -12px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.04)',
+          : '0 2px 8px rgba(0,0,0,0.04), 0 12px 48px -16px rgba(0,0,0,0.10)',
+        border: '1px solid hsl(220 13% 91% / 0.7)',
       }}
     >
-      {/* Hover glow effect — matches card rounding */}
-      <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" style={{
-        boxShadow: '0 20px 60px -15px rgba(34, 197, 94, 0.2), 0 8px 24px rgba(0,0,0,0.08)',
-        borderRadius: 'inherit',
-      }} />
 
       {isOrdered && (
         <div className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full gradient-primary text-primary-foreground text-xs font-bold flex items-center justify-center z-20" style={{
@@ -130,29 +126,26 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             <p className="text-[12px] text-t3 leading-snug">{serviceSubtitle}</p>
           </div>
         </div>
-        {/* Goal block — premium accent */}
-        <div className="flex items-start gap-3 rounded-2xl px-4 py-3.5 mb-5" style={{
-          background: 'linear-gradient(135deg, hsl(142 76% 48% / 0.06), hsl(142 76% 48% / 0.02))',
-          border: '1px solid hsl(142 71% 42% / 0.12)',
-        }}>
-          <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{
-            background: 'linear-gradient(135deg, hsl(142 76% 48% / 0.15), hsl(142 76% 48% / 0.05))',
-          }}>
-            <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
-              {/* Target rings */}
-              <circle cx="16" cy="16" r="14" stroke="hsl(142, 71%, 42%)" strokeWidth="1.5" />
-              <circle cx="16" cy="16" r="9" stroke="hsl(142, 71%, 42%)" strokeWidth="1.5" />
-              <circle cx="16" cy="16" r="4" fill="hsl(142, 71%, 42%)" />
-              {/* Arrow shaft — diagonal, stuck in bullseye */}
-              <line x1="5" y1="5" x2="14.5" y2="14.5" stroke="hsl(0, 80%, 50%)" strokeWidth="2" strokeLinecap="round" />
-              {/* Arrow head */}
-              <polygon points="3,3 9,4.5 4.5,9" fill="hsl(0, 80%, 50%)" />
-              {/* Arrow feathers */}
-              <line x1="4" y1="8" x2="7" y2="7" stroke="hsl(0, 65%, 58%)" strokeWidth="1" strokeLinecap="round" />
-              <line x1="8" y1="4" x2="7" y2="7" stroke="hsl(0, 65%, 58%)" strokeWidth="1" strokeLinecap="round" />
+        {/* Goal block */}
+        <div className="flex items-start gap-3 rounded-2xl px-4 py-3.5 mb-5 border border-primary/10 bg-primary/[.03]">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary/10">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Dartboard */}
+              <circle cx="12" cy="12" r="10.5" stroke="hsl(142,71%,42%)" strokeWidth="1.2" opacity="0.4" />
+              <circle cx="12" cy="12" r="7" stroke="hsl(142,71%,42%)" strokeWidth="1.2" opacity="0.6" />
+              <circle cx="12" cy="12" r="3.5" stroke="hsl(142,71%,42%)" strokeWidth="1.2" opacity="0.8" />
+              <circle cx="12" cy="12" r="1.2" fill="hsl(142,71%,42%)" />
+              {/* Dart — coming from top-right, tip touching center */}
+              <path d="M12 12L19 5" stroke="hsl(4,80%,52%)" strokeWidth="1.8" strokeLinecap="round" />
+              {/* Dart tip (triangle) */}
+              <path d="M11.2 12.8L12 12L12.8 11.2" stroke="hsl(4,80%,52%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              {/* Dart flights/fins */}
+              <path d="M19 5L21 4L20 3Z" fill="hsl(4,70%,55%)" />
+              <path d="M19 5L21 7" stroke="hsl(4,70%,55%)" strokeWidth="1.2" strokeLinecap="round" />
+              <path d="M19 5L17 3" stroke="hsl(4,70%,55%)" strokeWidth="1.2" strokeLinecap="round" />
             </svg>
           </div>
-          <span className="text-[13px] text-foreground leading-[1.45] font-semibold">{serviceGoal}</span>
+          <span className="text-[13px] text-foreground leading-[1.5] font-semibold">{serviceGoal}</span>
         </div>
 
         {/* Tier Picker — elevated */}
@@ -191,12 +184,12 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           </div>
         </div>
 
-        {/* Features — clean lines */}
-        <div className={`transition-opacity duration-150 mb-4 space-y-0 ${fading ? "opacity-0" : "opacity-100"}`}>
+        {/* Features */}
+        <div className={`transition-opacity duration-150 mb-4 ${fading ? "opacity-0" : "opacity-100"}`}>
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
-              <div key={`${activeTier}-${i}`} className="flex items-center gap-3 py-2.5 border-b border-border/20 last:border-b-0">
+              <div key={`${activeTier}-${i}`} className="flex items-center gap-3 py-2.5">
                 <FeatureIcon icon={feat.icon} />
                 <span className="text-[13px] text-t2 leading-snug [&>b]:text-foreground [&>b]:font-semibold" dangerouslySetInnerHTML={{ __html: tierFeatText }} />
               </div>
