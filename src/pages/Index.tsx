@@ -109,29 +109,24 @@ export default function Index() {
           </div>
         )}
 
-        <footer className="relative mt-20 -mx-7 max-sm:-mx-3.5 px-7 max-sm:px-3.5 py-16 text-center overflow-hidden" style={{
-          background: `linear-gradient(180deg, hsl(0,0%,99%) 0%, hsl(220,40%,6%) 60%)`
+        <footer className="relative mt-20 -mx-7 max-sm:-mx-3.5 px-7 max-sm:px-3.5 py-14 text-center overflow-hidden border-t border-primary/10" style={{
+          background: `linear-gradient(180deg, hsl(0,0%,99%) 0%, hsl(145,30%,95%) 50%, hsl(150,25%,90%) 100%)`
         }}>
-          {/* Footer grid overlay */}
-          <div className="absolute inset-0 opacity-[0.04]" style={{
-            backgroundImage: `linear-gradient(rgba(74,222,128,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,0.5) 1px, transparent 1px)`,
-            backgroundSize: "80px 80px",
+          {/* Soft glow */}
+          <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[500px] h-[200px] rounded-full opacity-20" style={{
+            background: `radial-gradient(ellipse, hsl(142, 71%, 65%) 0%, transparent 70%)`
           }} />
-          {/* Footer neon glow */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-15" style={{
-            background: `radial-gradient(ellipse, hsl(142, 71%, 45%) 0%, transparent 70%)`
-          }} />
-          {/* Neon line */}
-          <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{
+          {/* Top neon accent line */}
+          <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{
             background: `linear-gradient(90deg, transparent 0%, hsl(142, 76%, 48%) 30%, hsl(160, 80%, 55%) 50%, hsl(142, 76%, 48%) 70%, transparent 100%)`,
-            boxShadow: `0 0 20px rgba(74, 222, 128, 0.4), 0 0 60px rgba(74, 222, 128, 0.1)`
+            boxShadow: `0 0 12px rgba(74, 222, 128, 0.3)`
           }} />
           <div className="relative z-10">
-            <div className="flex items-center justify-center gap-2.5 mb-3">
-              <div className="w-2.5 h-2.5 rounded-full gradient-primary animate-pulse-subtle" />
-              <span className="text-primary font-bold tracking-[0.2em] text-[15px]">PROMOVISIONS.COM</span>
+            <div className="flex items-center justify-center gap-2.5 mb-2">
+              <div className="w-2 h-2 rounded-full gradient-primary animate-pulse-subtle" />
+              <span className="text-primary-dark font-bold tracking-[0.2em] text-[15px]">PROMOVISIONS.COM</span>
             </div>
-            <p className="text-white/30 text-[12px] tracking-wide">© 2026 {t("footer.copy")}</p>
+            <p className="text-t3 text-[12px] tracking-wide">© 2026 {t("footer.copy")}</p>
           </div>
         </footer>
       </div>
