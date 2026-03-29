@@ -116,15 +116,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
       {/* Body */}
       <div className="px-4 relative">
-        <div className="w-[46px] h-[46px] bg-card rounded-xl shadow-[0_4px_16px_rgba(15,23,42,0.14)] border-[1.5px] border-card flex items-center justify-center text-[22px] -mt-[23px] mb-2.5 relative z-[5] transition-all duration-200 group-hover:shadow-[0_6px_22px_rgba(15,23,42,0.18)] group-hover:-translate-y-[1px]">
-          {service.emoji}
+        <div className="w-[44px] h-[44px] bg-card rounded-xl shadow-[0_4px_16px_rgba(15,23,42,0.12)] border border-border/60 flex items-center justify-center -mt-[22px] mb-2.5 relative z-[5] transition-all duration-200 group-hover:shadow-[0_6px_22px_rgba(15,23,42,0.16)] group-hover:-translate-y-[1px]">
+          {(() => { const SvcIcon = serviceIcons[service.id]; return SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-[20px]">{service.emoji}</span>; })()}
         </div>
         <h3 className="text-[17px] font-extrabold text-foreground leading-[1.15] tracking-tight mb-[3px]">{serviceName}</h3>
         <p className="text-xs text-t4 leading-snug mb-1.5">{serviceSubtitle}</p>
 
         {/* Goal */}
         <div className="flex items-start gap-1.5 bg-primary/[.06] border border-primary/[.12] rounded-lg px-2.5 py-2 mb-1">
-          <span className="text-primary text-[11px] mt-[1px] flex-shrink-0">🎯</span>
+          <Target className="w-3.5 h-3.5 text-primary mt-[1px] flex-shrink-0" strokeWidth={2} />
           <span className="text-[11px] text-t2 leading-snug font-medium">{serviceGoal}</span>
         </div>
 
