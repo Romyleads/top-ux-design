@@ -2,6 +2,18 @@ import { useRef, useState, useEffect } from "react";
 import type { Block, ServiceCard } from "@/data/services";
 import ServiceCardComponent from "./ServiceCardComponent";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { Printer, Monitor, Palette, PenLine, Mail, Clapperboard, Megaphone, TrendingUp } from "lucide-react";
+
+const blockIcons: Record<string, React.ElementType> = {
+  b1: Printer,
+  b2: Monitor,
+  b3: Palette,
+  b4: PenLine,
+  b5: Mail,
+  b6: Clapperboard,
+  b7: Megaphone,
+  b8: TrendingUp,
+};
 
 interface BlockSectionProps {
   block: Block;
@@ -29,20 +41,20 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
   if (cards.length === 0) return null;
 
   const blockTitle = t(`block.${block.id}.title`);
-  const blockSubtitle = t(`block.${block.id}.subtitle`);
+  const IconComponent = blockIcons[block.id];
 
   return (
-    <section ref={sectionRef} className="mb-16">
-      {/* Block Header */}
-      <div className={`flex items-center gap-4 mb-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-border/60" />
-        <h2 className="text-[17px] font-bold text-foreground tracking-tight whitespace-nowrap">
-          {block.icon} {blockTitle}
-        </h2>
-        <span className="text-[11px] font-medium text-t3 bg-muted/60 px-2 py-0.5 rounded-full">
-          {cards.length}
-        </span>
-        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-border/60" />
+    <section ref={sectionRef} className="mb-20">
+      {/* Block Header — premium minimal */}
+      <div className={`mb-10 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <div className="flex items-center gap-4">
+          <div className="w-11 h-11 rounded-xl bg-primary/[.08] border border-primary/[.12] flex items-center justify-center flex-shrink-0">
+            {IconComponent && <IconComponent className="w-5 h-5 text-primary" strokeWidth={1.8} />}
+          </div>
+          <h2 className="text-2xl font-bold text-foreground tracking-tight">{blockTitle}</h2>
+          <div className="h-[1px] flex-1 bg-border/50" />
+          <span className="text-xs font-semibold text-t3 tabular-nums">{cards.length}</span>
+        </div>
       </div>
 
       {/* Cards Grid */}
