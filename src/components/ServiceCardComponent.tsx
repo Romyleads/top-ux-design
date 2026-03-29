@@ -126,29 +126,26 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             <p className="text-[12px] text-t3 leading-snug">{serviceSubtitle}</p>
           </div>
         </div>
-        {/* Goal block — premium accent */}
-        <div className="flex items-start gap-3 rounded-2xl px-4 py-3.5 mb-5" style={{
-          background: 'linear-gradient(135deg, hsl(142 76% 48% / 0.06), hsl(142 76% 48% / 0.02))',
-          border: '1px solid hsl(142 71% 42% / 0.12)',
-        }}>
-          <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{
-            background: 'linear-gradient(135deg, hsl(142 76% 48% / 0.15), hsl(142 76% 48% / 0.05))',
-          }}>
-            <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
-              {/* Target rings */}
-              <circle cx="16" cy="16" r="14" stroke="hsl(142, 71%, 42%)" strokeWidth="1.5" />
-              <circle cx="16" cy="16" r="9" stroke="hsl(142, 71%, 42%)" strokeWidth="1.5" />
-              <circle cx="16" cy="16" r="4" fill="hsl(142, 71%, 42%)" />
-              {/* Arrow shaft — diagonal, stuck in bullseye */}
-              <line x1="5" y1="5" x2="14.5" y2="14.5" stroke="hsl(0, 80%, 50%)" strokeWidth="2" strokeLinecap="round" />
-              {/* Arrow head */}
-              <polygon points="3,3 9,4.5 4.5,9" fill="hsl(0, 80%, 50%)" />
-              {/* Arrow feathers */}
-              <line x1="4" y1="8" x2="7" y2="7" stroke="hsl(0, 65%, 58%)" strokeWidth="1" strokeLinecap="round" />
-              <line x1="8" y1="4" x2="7" y2="7" stroke="hsl(0, 65%, 58%)" strokeWidth="1" strokeLinecap="round" />
+        {/* Goal block */}
+        <div className="flex items-start gap-3 rounded-2xl px-4 py-3.5 mb-5 border border-primary/10 bg-primary/[.03]">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary/10">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Dartboard */}
+              <circle cx="12" cy="12" r="10.5" stroke="hsl(142,71%,42%)" strokeWidth="1.2" opacity="0.4" />
+              <circle cx="12" cy="12" r="7" stroke="hsl(142,71%,42%)" strokeWidth="1.2" opacity="0.6" />
+              <circle cx="12" cy="12" r="3.5" stroke="hsl(142,71%,42%)" strokeWidth="1.2" opacity="0.8" />
+              <circle cx="12" cy="12" r="1.2" fill="hsl(142,71%,42%)" />
+              {/* Dart — coming from top-right, tip touching center */}
+              <path d="M12 12L19 5" stroke="hsl(4,80%,52%)" strokeWidth="1.8" strokeLinecap="round" />
+              {/* Dart tip (triangle) */}
+              <path d="M11.2 12.8L12 12L12.8 11.2" stroke="hsl(4,80%,52%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              {/* Dart flights/fins */}
+              <path d="M19 5L21 4L20 3Z" fill="hsl(4,70%,55%)" />
+              <path d="M19 5L21 7" stroke="hsl(4,70%,55%)" strokeWidth="1.2" strokeLinecap="round" />
+              <path d="M19 5L17 3" stroke="hsl(4,70%,55%)" strokeWidth="1.2" strokeLinecap="round" />
             </svg>
           </div>
-          <span className="text-[13px] text-foreground leading-[1.45] font-semibold">{serviceGoal}</span>
+          <span className="text-[13px] text-foreground leading-[1.5] font-semibold">{serviceGoal}</span>
         </div>
 
         {/* Tier Picker — elevated */}
