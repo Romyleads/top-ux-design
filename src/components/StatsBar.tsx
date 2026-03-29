@@ -85,7 +85,7 @@ function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatI
           style={{
             background: accent
               ? 'linear-gradient(135deg, hsl(142 71% 42%), hsl(148 60% 30%))'
-              : 'linear-gradient(180deg, hsl(220 25% 10%) 0%, hsl(220 15% 35%) 100%)',
+              : 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 75%) 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.08))',
