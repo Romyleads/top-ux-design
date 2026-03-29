@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { services, blocks } from "@/data/services";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { LayoutGrid, Layers, Flame } from "lucide-react";
@@ -35,17 +35,49 @@ function useCountUp(target: number, duration = 1800) {
   return { count, ref };
 }
 
+function useParallax() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [offsets, setOffsets] = useState([0, 0, 0]);
+
+  const handleScroll = useCallback(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const center = window.innerHeight / 2;
+    const distance = (rect.top + rect.height / 2 - center) / window.innerHeight;
+    // Each stat moves at a different parallax speed
+    setOffsets([
+      distance * -18,
+      distance * -30,
+      distance * -22,
+    ]);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  return { containerRef, offsets };
+}
+
 interface StatItemProps {
   countRef: React.RefObject<HTMLDivElement>;
   count: number;
   label: string;
   icon: React.ElementType;
   accent?: boolean;
+  offsetY: number;
 }
 
-function StatItem({ countRef, count, label, icon: Icon, accent }: StatItemProps) {
+function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatItemProps) {
   return (
-    <div ref={countRef} className="text-center group flex-1 py-2">
+    <div
+      ref={countRef}
+      className="text-center group flex-1 py-2 will-change-transform"
+      style={{ transform: `translateY(${offsetY}px)`, transition: 'transform 0.1s linear' }}
+    >
       <div className="flex items-center justify-center gap-2.5 mb-1.5">
         <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-muted-foreground/40"}`} strokeWidth={1.5} />
         <span
@@ -56,7 +88,6 @@ function StatItem({ countRef, count, label, icon: Icon, accent }: StatItemProps)
               : 'linear-gradient(180deg, hsl(220 25% 10%) 0%, hsl(220 15% 35%) 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            textShadow: 'none',
             filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.08))',
           }}
         >
@@ -77,12 +108,13 @@ export default function StatsBar() {
   const s1 = useCountUp(services.length);
   const s2 = useCountUp(blocks.length);
   const s3 = useCountUp(hotCount);
+  const { containerRef, offsets } = useParallax();
 
   return (
-    <div className="flex items-center justify-center my-6 mx-auto max-w-lg gap-6 sm:gap-10">
-      <StatItem countRef={s1.ref} count={s1.count} label={t("stats.concepts")} icon={LayoutGrid} />
-      <StatItem countRef={s2.ref} count={s2.count} label={t("stats.blocks")} icon={Layers} />
-      <StatItem countRef={s3.ref} count={s3.count} label={t("stats.trending")} icon={Flame} accent />
+    <div ref={containerRef} className="flex items-center justify-center my-6 mx-auto max-w-lg gap-6 sm:gap-10 overflow-visible">
+      <StatItem countRef={s1.ref} count={s1.count} label={t("stats.concepts")} icon={LayoutGrid} offsetY={offsets[0]} />
+      <StatItem countRef={s2.ref} count={s2.count} label={t("stats.blocks")} icon={Layers} offsetY={offsets[1]} />
+      <StatItem countRef={s3.ref} count={s3.count} label={t("stats.trending")} icon={Flame} accent offsetY={offsets[2]} />
     </div>
   );
 }
