@@ -52,7 +52,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
           <div className="w-10 h-10 rounded-xl bg-primary/[.06] border border-primary/[.12] flex items-center justify-center">
             {IconComponent && <IconComponent className="w-[18px] h-[18px] text-primary" strokeWidth={1.7} />}
           </div>
-          <h2 className="text-lg font-bold text-foreground tracking-[0.14em] uppercase">{blockTitle}</h2>
+          <h2 className="text-sm font-bold text-foreground tracking-[0.12em] uppercase">{blockTitle}</h2>
           <div className="w-6 h-6 rounded-full bg-primary/[.06] flex items-center justify-center">
             <span className="text-[11px] font-bold text-primary">{cards.length}</span>
           </div>
