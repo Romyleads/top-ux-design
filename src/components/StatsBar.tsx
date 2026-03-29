@@ -3,7 +3,7 @@ import { services, blocks } from "@/data/services";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { LayoutGrid, Layers, Flame } from "lucide-react";
 
-function useCountUp(target: number, duration = 1500) {
+function useCountUp(target: number, duration = 1800) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const started = useRef(false);
@@ -45,18 +45,25 @@ interface StatItemProps {
 
 function StatItem({ countRef, count, label, icon: Icon, accent }: StatItemProps) {
   return (
-    <div ref={countRef} className="text-center group flex-1">
-      <div className="flex items-center justify-center gap-2 mb-1">
-        <Icon className={`w-4 h-4 ${accent ? "text-primary" : "text-t3"}`} strokeWidth={1.8} />
-        <span className={`text-[34px] sm:text-[42px] font-black tracking-tighter leading-none transition-transform duration-300 group-hover:scale-110 ${
-          accent
-            ? "bg-gradient-to-br from-primary to-primary-dark bg-clip-text text-transparent"
-            : "text-foreground"
-        }`}>
+    <div ref={countRef} className="text-center group flex-1 py-2">
+      <div className="flex items-center justify-center gap-2.5 mb-1.5">
+        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-muted-foreground/40"}`} strokeWidth={1.5} />
+        <span
+          className="text-[48px] sm:text-[56px] font-black tracking-tighter leading-none transition-transform duration-500 group-hover:scale-110"
+          style={{
+            background: accent
+              ? 'linear-gradient(135deg, hsl(142 71% 42%), hsl(148 60% 30%))'
+              : 'linear-gradient(180deg, hsl(220 25% 10%) 0%, hsl(220 15% 35%) 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textShadow: 'none',
+            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.08))',
+          }}
+        >
           {count}
         </span>
       </div>
-      <div className={`text-[9px] font-bold uppercase tracking-[0.18em] ${accent ? "text-primary-dark" : "text-t4"}`}>
+      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/70" : "text-muted-foreground/50"}`}>
         {label}
       </div>
     </div>
@@ -72,15 +79,9 @@ export default function StatsBar() {
   const s3 = useCountUp(hotCount);
 
   return (
-    <div className="flex items-center my-8 rounded-2xl py-4 px-6 sm:px-10 mx-auto max-w-md border border-border/40" style={{
-      background: 'linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(0 0% 100% / 0.65))',
-      backdropFilter: 'blur(20px) saturate(1.6)',
-      boxShadow: '0 4px 24px -8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03)',
-    }}>
+    <div className="flex items-center justify-center my-6 mx-auto max-w-lg gap-6 sm:gap-10">
       <StatItem countRef={s1.ref} count={s1.count} label={t("stats.concepts")} icon={LayoutGrid} />
-      <div className="w-px h-8 bg-border/30 mx-2" />
       <StatItem countRef={s2.ref} count={s2.count} label={t("stats.blocks")} icon={Layers} />
-      <div className="w-px h-8 bg-border/30 mx-2" />
       <StatItem countRef={s3.ref} count={s3.count} label={t("stats.trending")} icon={Flame} accent />
     </div>
   );
