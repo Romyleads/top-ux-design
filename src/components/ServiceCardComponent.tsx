@@ -224,17 +224,17 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* CTA */}
-        <div className="mt-auto pt-2 pb-4">
+        <div className="mt-auto pt-1.5 pb-4">
           <button
             onClick={handleAdd}
-            className={`block w-full rounded-2xl text-[14px] font-bold py-3.5 px-6 text-center relative overflow-hidden transition-all duration-300 ${
+            className={`block w-full rounded-xl text-[13px] font-bold py-3 px-5 text-center relative overflow-hidden transition-all duration-300 ${
               isOrdered
                 ? "bg-green-light text-green-text ring-[1.5px] ring-green-border"
                 : "text-primary-foreground gradient-shine hover:-translate-y-[1px] active:translate-y-0 active:scale-[0.98]"
             }`}
             style={!isOrdered ? {
               background: 'linear-gradient(135deg, hsl(142, 76%, 46%) 0%, hsl(152, 60%, 36%) 100%)',
-              boxShadow: '0 8px 28px -4px rgba(22, 163, 74, 0.45), 0 2px 6px rgba(22, 163, 74, 0.2)',
+              boxShadow: '0 6px 20px -4px rgba(22, 163, 74, 0.4), 0 2px 4px rgba(22, 163, 74, 0.15)',
             } : undefined}
           >
             {isOrdered ? t("card.inCart") : `${t("card.add")} ${tier.name} — ${tier.price}`}
