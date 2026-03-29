@@ -28,20 +28,22 @@ const citiesByLocale: Record<Locale, string[]> = {
 };
 
 export default function SocialProof() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [notification, setNotification] = useState<{
-    id: number; name: string; city: string; emoji: string; serviceName: string; tierName: string; mins: number;
+    id: number; name: string; city: string; emoji: string; serviceId: string; tierIdx: number; mins: number;
   } | null>(null);
   const [visible, setVisible] = useState(false);
 
   const generateNotification = useCallback(() => {
     const service = services[Math.floor(Math.random() * services.length)];
-    const name = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const names = namesByLocale[locale];
+    const cities = citiesByLocale[locale];
+    const name = names[Math.floor(Math.random() * names.length)];
     const city = cities[Math.floor(Math.random() * cities.length)];
-    const tier = service.tiers[Math.floor(Math.random() * service.tiers.length)];
+    const tierIdx = Math.floor(Math.random() * service.tiers.length);
     const mins = Math.floor(Math.random() * 55) + 2;
-    return { id: Date.now(), name, city, emoji: service.emoji, serviceName: service.name, tierName: tier.name, mins };
-  }, []);
+    return { id: Date.now(), name, city, emoji: service.emoji, serviceId: service.id, tierIdx, mins };
+  }, [locale]);
 
   const showNotification = useCallback(() => {
     setNotification(generateNotification());
