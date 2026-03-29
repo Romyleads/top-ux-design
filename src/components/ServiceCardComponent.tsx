@@ -95,37 +95,14 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
       )}
 
-      {/* Photo with cinematic overlay */}
-      <div className="relative h-[200px] overflow-hidden flex-shrink-0">
+      {/* Photo — clean, no text overlay */}
+      <div className="relative h-[190px] overflow-hidden flex-shrink-0 rounded-t-[20px]">
         <img
           src={service.photo}
           alt={serviceName}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
         />
-        {/* Cinematic gradient */}
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.65) 85%, rgba(0,0,0,0.8) 100%)'
-        }} />
-        
-        {/* Icon floating on photo */}
-        <div className="absolute bottom-4 left-4 z-[3]">
-          <div className="w-11 h-11 rounded-2xl flex items-center justify-center backdrop-blur-xl border border-white/20 transition-transform duration-300 group-hover:scale-110" style={{
-            background: 'rgba(255,255,255,0.9)',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-          }}>
-            {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-xl">{service.emoji}</span>}
-          </div>
-        </div>
-
-        {/* Title on photo */}
-        <div className="absolute bottom-4 left-[68px] right-4 z-[3]">
-          <h3 className="text-[18px] font-extrabold text-white leading-tight tracking-tight mb-0.5" style={{
-            textShadow: '0 2px 8px rgba(0,0,0,0.3)',
-          }}>{serviceName}</h3>
-          <p className="text-[12px] text-white/70 leading-snug font-medium">{serviceSubtitle}</p>
-        </div>
-
         {/* HOT badge */}
         {service.hot && (
           <div className="absolute top-3.5 left-3.5 z-[3]">
@@ -140,7 +117,19 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Card body */}
-      <div className="px-5 pt-5 flex-1 flex flex-col relative z-[1]">
+      <div className="px-5 pt-4 flex-1 flex flex-col relative z-[1]">
+        {/* Icon + Title + Subtitle — below photo */}
+        <div className="flex items-start gap-3 mb-4">
+          <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 border border-border/40" style={{
+            background: 'hsl(142 76% 48% / 0.06)',
+          }}>
+            {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-xl">{service.emoji}</span>}
+          </div>
+          <div className="min-w-0">
+            <h3 className="text-[17px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
+            <p className="text-[12px] text-t3 leading-snug">{serviceSubtitle}</p>
+          </div>
+        </div>
         {/* Goal block — premium accent */}
         <div className="flex items-start gap-3 rounded-2xl px-4 py-3.5 mb-5" style={{
           background: 'linear-gradient(135deg, hsl(142 76% 48% / 0.06), hsl(142 76% 48% / 0.02))',
