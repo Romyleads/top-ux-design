@@ -178,30 +178,29 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Tier Picker */}
-        <div className="rounded-2xl p-1.5 mb-4" style={{
+        <div className="rounded-xl p-1 mb-3" style={{
           background: 'hsl(220 14% 96%)',
-          boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.04)',
         }}>
-          <div className="grid grid-cols-3 gap-1">
+          <div className="grid grid-cols-3 gap-0.5">
             {service.tiers.map((tierItem, i) => (
               <button
                 key={i}
                 onClick={() => handleTierChange(i)}
-                className={`flex flex-col items-center py-2.5 px-2 rounded-xl cursor-pointer transition-all duration-200 select-none ${
-                  i === activeTier ? "" : "hover:bg-card/60"
+                className={`flex flex-col items-center py-2 px-1.5 rounded-lg cursor-pointer transition-all duration-200 select-none ${
+                  i === activeTier ? "" : "hover:bg-white/50"
                 }`}
                 style={i === activeTier ? {
                   background: 'hsl(0 0% 100%)',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)',
-                  border: '1px solid hsl(142 71% 42% / 0.25)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                  border: '1px solid hsl(142 71% 42% / 0.2)',
                 } : undefined}
               >
-                <span className={`text-[11px] font-semibold leading-none mb-1.5 transition-colors ${
+                <span className={`text-[10px] font-semibold leading-none mb-1 transition-colors ${
                   i === activeTier ? "text-primary font-bold" : "text-t4"
                 }`}>
                   {tierItem.name}
                 </span>
-                <span className={`text-[16px] font-extrabold leading-none transition-colors ${
+                <span className={`text-[15px] font-extrabold leading-none transition-colors ${
                   i === activeTier ? "text-foreground" : "text-t3"
                 }`}>
                   {tierItem.price}
