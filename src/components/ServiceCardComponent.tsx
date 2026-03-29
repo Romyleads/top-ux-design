@@ -100,19 +100,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Photo with curved bottom mask */}
-      <div className="relative h-[160px] flex-shrink-0">
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src={service.photo}
-            alt={serviceName}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
-          />
-        </div>
-        {/* Curved bottom overlay — arching downward */}
-        <svg className="absolute bottom-0 left-0 w-full h-[35px] z-[2]" viewBox="0 0 400 35" preserveAspectRatio="none">
-          <path d="M0,0 Q200,45 400,0 L400,35 L0,35 Z" fill="hsl(0 0% 100%)" />
-        </svg>
+      <div className="relative h-[160px] flex-shrink-0 overflow-hidden" style={{
+        clipPath: 'ellipse(120% 100% at 50% 0%)',
+      }}>
+        <img
+          src={service.photo}
+          alt={serviceName}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
+        />
         {service.hot && (
           <div className="absolute top-3.5 left-3.5 z-[3]">
             <span className="inline-flex items-center gap-1 text-[10px] font-bold px-3 py-1.5 rounded-full tracking-wider text-white animate-pulse-subtle" style={{
