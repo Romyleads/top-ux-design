@@ -2,6 +2,7 @@ import { Search, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import promoLogo from "@/assets/promovisions-logo.png";
 
 interface HeroSectionProps {
   searchQuery: string;
@@ -46,10 +47,19 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
         <LanguageSwitcher />
       </div>
 
+      {/* 3D Logo */}
+      <div className="mb-6">
+        <img 
+          src={promoLogo} 
+          alt="PromoVisions" 
+          className="max-w-[480px] w-full mx-auto drop-shadow-[0_4px_30px_rgba(74,222,128,0.25)]"
+        />
+      </div>
+
       <span className="inline-flex items-center gap-1.5 bg-primary/10 border border-primary/20 text-primary text-[11px] font-bold px-3.5 py-1 rounded-full mb-5 tracking-wider uppercase animate-pulse-subtle backdrop-blur-sm">
         {t("hero.badge")}
       </span>
-      <h1 className="text-[clamp(32px,5vw,58px)] font-black text-white leading-[1.05] mb-4 tracking-tight drop-shadow-[0_2px_20px_rgba(74,222,128,0.15)]">
+      <h1 className="text-[clamp(24px,3.5vw,38px)] font-black text-white leading-[1.1] mb-4 tracking-tight drop-shadow-[0_2px_20px_rgba(74,222,128,0.15)]">
         {t("hero.title1")}{" "}
         <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-green-300 bg-[length:200%_auto] bg-clip-text text-transparent animate-shimmer">
           {t("hero.title2")}
