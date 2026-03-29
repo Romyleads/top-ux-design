@@ -109,15 +109,29 @@ export default function Index() {
           </div>
         )}
 
-        <footer className="relative mt-20 -mx-7 max-sm:-mx-3.5 px-7 max-sm:px-3.5 py-12 text-center overflow-hidden" style={{
-          background: `linear-gradient(180deg, hsl(0,0%,99%) 0%, hsl(220,35%,8%) 100%)`
+        <footer className="relative mt-20 -mx-7 max-sm:-mx-3.5 px-7 max-sm:px-3.5 py-16 text-center overflow-hidden" style={{
+          background: `linear-gradient(180deg, hsl(0,0%,99%) 0%, hsl(220,40%,6%) 60%)`
         }}>
+          {/* Footer grid overlay */}
+          <div className="absolute inset-0 opacity-[0.04]" style={{
+            backgroundImage: `linear-gradient(rgba(74,222,128,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,0.5) 1px, transparent 1px)`,
+            backgroundSize: "80px 80px",
+          }} />
+          {/* Footer neon glow */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-15" style={{
+            background: `radial-gradient(ellipse, hsl(142, 71%, 45%) 0%, transparent 70%)`
+          }} />
+          {/* Neon line */}
+          <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{
+            background: `linear-gradient(90deg, transparent 0%, hsl(142, 76%, 48%) 30%, hsl(160, 80%, 55%) 50%, hsl(142, 76%, 48%) 70%, transparent 100%)`,
+            boxShadow: `0 0 20px rgba(74, 222, 128, 0.4), 0 0 60px rgba(74, 222, 128, 0.1)`
+          }} />
           <div className="relative z-10">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="w-2 h-2 rounded-full gradient-primary animate-pulse-subtle" />
-              <span className="text-primary font-bold tracking-widest text-sm">PROMOVISIONS.COM</span>
+            <div className="flex items-center justify-center gap-2.5 mb-3">
+              <div className="w-2.5 h-2.5 rounded-full gradient-primary animate-pulse-subtle" />
+              <span className="text-primary font-bold tracking-[0.2em] text-[15px]">PROMOVISIONS.COM</span>
             </div>
-            <p className="text-white/40 text-[12px]">© 2026 {t("footer.copy")}</p>
+            <p className="text-white/30 text-[12px] tracking-wide">© 2026 {t("footer.copy")}</p>
           </div>
         </footer>
       </div>
