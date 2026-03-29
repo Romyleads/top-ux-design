@@ -7,12 +7,12 @@ export type Locale = "uk" | "en" | "de";
 export const translations: Record<string, Record<Locale, string>> = {
   // Hero
   "hero.badge": { uk: "📋 Маркетинговий арсенал", en: "📋 Marketing Arsenal", de: "📋 Marketing-Arsenal" },
-  "hero.title1": { uk: "Офер", en: "Offer", de: "Angebot" },
+  "hero.title1": { uk: "Готові", en: "Ready-made", de: "Fertige" },
   "hero.title2": { uk: "Концепти", en: "Concepts", de: "Konzepte" },
   "hero.subtitle": {
-    uk: "Повна бібліотека маркетингових матеріалів — від друкованої продукції до трендових цифрових форматів 2024–2025",
-    en: "Complete library of marketing materials — from print to trending digital formats 2024–2025",
-    de: "Komplette Bibliothek von Marketingmaterialien — von Print bis zu digitalen Trendformaten 2024–2025",
+    uk: "Оберіть маркетинговий концепт — ми реалізуємо його під ключ за 1–7 днів",
+    en: "Choose a marketing concept — we deliver it turnkey in 1–7 days",
+    de: "Wählen Sie ein Marketingkonzept — wir liefern es schlüsselfertig in 1–7 Tagen",
   },
   "hero.search": {
     uk: "Пошук концепту, формату, ключового слова...",

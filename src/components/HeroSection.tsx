@@ -41,7 +41,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       : t("plural.concept.many");
 
   return (
-    <section className="text-center pt-2 pb-5 px-6 relative z-10">
+    <section className="text-center pt-2 pb-4 px-6 relative z-10">
       {/* Language Switcher */}
       <div className="flex justify-end mb-1">
         <LanguageSwitcher />
@@ -62,16 +62,13 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
         />
       </div>
 
-      <span className="inline-flex items-center gap-1.5 bg-primary/10 border border-primary/20 text-primary text-[10.5px] font-bold px-3 py-1 rounded-full mb-2 tracking-wider uppercase animate-pulse-subtle backdrop-blur-sm">
-        {t("hero.badge")}
-      </span>
-      <h1 className="text-[clamp(20px,2.8vw,30px)] font-black text-white leading-[1.1] mb-2 tracking-tight drop-shadow-[0_2px_20px_rgba(74,222,128,0.15)]">
+      <h1 className="text-[clamp(22px,3vw,32px)] font-black text-white leading-[1.1] mb-2 tracking-tight drop-shadow-[0_2px_20px_rgba(74,222,128,0.15)]">
         {t("hero.title1")}{" "}
         <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-green-300 bg-[length:200%_auto] bg-clip-text text-transparent animate-shimmer">
           {t("hero.title2")}
         </span>
       </h1>
-      <p className="text-white/55 text-[13px] max-w-[460px] mx-auto mb-4 leading-relaxed">
+      <p className="text-white/60 text-[13.5px] max-w-[460px] mx-auto mb-4 leading-relaxed font-medium">
         {t("hero.subtitle")}
       </p>
 
