@@ -144,7 +144,7 @@ export default function CartDrawer({
 
             {!isEmpty && (
               <div className="px-4 py-3 pb-5 flex-shrink-0 border-t border-border">
-                <button onClick={() => setStep(2)} className="w-full flex items-center justify-center gap-[7px] gradient-primary-dark border-none text-primary-foreground text-[13.5px] font-bold py-3.5 rounded-[10px] shadow-[0_6px_16px_-6px_rgba(31,107,69,0.45)] hover:brightness-[1.08] transition-all">
+                <button onClick={() => setStep(2)} className="w-full flex items-center justify-center gap-[7px] gradient-primary border-none text-primary-foreground text-[13.5px] font-bold py-3.5 rounded-[12px] shadow-green hover:shadow-green-hover hover:-translate-y-[1px] hover:brightness-[1.04] active:translate-y-0 transition-all">
                   {t("cart.proceed")} <ArrowRight className="w-4 h-4" />
                 </button>
                 <p className="text-center text-[11px] text-t4 mt-1.5">{t("cart.noObligation")}</p>
