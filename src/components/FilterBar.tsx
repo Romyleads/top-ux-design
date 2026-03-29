@@ -10,13 +10,13 @@ export default function FilterBar({ activeBlock, onFilter }: FilterBarProps) {
   const { t } = useLanguage();
 
   return (
-    <div className="flex gap-1.5 flex-wrap justify-center mb-12">
+    <div className="flex gap-2 flex-wrap justify-center mb-12">
       <button
         onClick={() => onFilter("all")}
-        className={`px-4 py-[7px] rounded-[9px] text-[13px] font-medium border-[1.5px] transition-all duration-150 ${
+        className={`px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-all duration-200 ${
           activeBlock === "all"
-            ? "gradient-primary border-primary text-primary-foreground shadow-[0_2px_8px_rgba(22,163,74,0.25)]"
-            : "bg-card border-border text-t3 hover:border-primary hover:text-primary"
+            ? "gradient-primary border-primary text-primary-foreground shadow-green"
+            : "glass border-border/60 text-t2 hover:border-primary/40 hover:text-primary hover:shadow-sm"
         }`}
       >
         {t("filter.all")}
@@ -27,10 +27,10 @@ export default function FilterBar({ activeBlock, onFilter }: FilterBarProps) {
           <button
             key={b.id}
             onClick={() => onFilter(b.id)}
-            className={`px-4 py-[7px] rounded-[9px] text-[13px] font-medium border-[1.5px] transition-all duration-150 ${
+            className={`px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-all duration-200 ${
               activeBlock === b.id
-                ? "gradient-primary border-primary text-primary-foreground shadow-[0_2px_8px_rgba(22,163,74,0.25)]"
-                : "bg-card border-border text-t3 hover:border-primary hover:text-primary"
+                ? "gradient-primary border-primary text-primary-foreground shadow-green"
+                : "glass border-border/60 text-t2 hover:border-primary/40 hover:text-primary hover:shadow-sm"
             }`}
           >
             {b.icon} {blockTitle.split(" ")[0]}
