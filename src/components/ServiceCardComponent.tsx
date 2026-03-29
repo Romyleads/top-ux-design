@@ -69,7 +69,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   return (
     <div
-      className={`rounded-[20px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-3 group ${
+      className={`rounded-[22px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group ${
         isOrdered 
           ? "ring-[2.5px] ring-primary glow-green" 
           : ""
@@ -78,14 +78,10 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         background: 'hsl(0 0% 100%)',
         boxShadow: isOrdered 
           ? '0 0 30px -8px rgba(34, 197, 94, 0.35)' 
-          : '0 8px 40px -12px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.04)',
+          : '0 2px 8px rgba(0,0,0,0.04), 0 12px 48px -16px rgba(0,0,0,0.10)',
+        border: '1px solid hsl(220 13% 91% / 0.7)',
       }}
     >
-      {/* Hover glow effect — matches card rounding */}
-      <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" style={{
-        boxShadow: '0 20px 60px -15px rgba(34, 197, 94, 0.2), 0 8px 24px rgba(0,0,0,0.08)',
-        borderRadius: 'inherit',
-      }} />
 
       {isOrdered && (
         <div className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full gradient-primary text-primary-foreground text-xs font-bold flex items-center justify-center z-20" style={{
