@@ -81,9 +81,10 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           : '0 8px 40px -12px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.04)',
       }}
     >
-      {/* Hover glow effect */}
+      {/* Hover glow effect — matches card rounding */}
       <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" style={{
         boxShadow: '0 20px 60px -15px rgba(34, 197, 94, 0.2), 0 8px 24px rgba(0,0,0,0.08)',
+        borderRadius: 'inherit',
       }} />
 
       {isOrdered && (
@@ -94,37 +95,14 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
       )}
 
-      {/* Photo with cinematic overlay */}
-      <div className="relative h-[200px] overflow-hidden flex-shrink-0">
+      {/* Photo — clean, no text overlay */}
+      <div className="relative h-[190px] overflow-hidden flex-shrink-0 rounded-t-[20px]">
         <img
           src={service.photo}
           alt={serviceName}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
         />
-        {/* Cinematic gradient */}
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.65) 85%, rgba(0,0,0,0.8) 100%)'
-        }} />
-        
-        {/* Icon floating on photo */}
-        <div className="absolute bottom-4 left-4 z-[3]">
-          <div className="w-11 h-11 rounded-2xl flex items-center justify-center backdrop-blur-xl border border-white/20 transition-transform duration-300 group-hover:scale-110" style={{
-            background: 'rgba(255,255,255,0.9)',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-          }}>
-            {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-xl">{service.emoji}</span>}
-          </div>
-        </div>
-
-        {/* Title on photo */}
-        <div className="absolute bottom-4 left-[68px] right-4 z-[3]">
-          <h3 className="text-[18px] font-extrabold text-white leading-tight tracking-tight mb-0.5" style={{
-            textShadow: '0 2px 8px rgba(0,0,0,0.3)',
-          }}>{serviceName}</h3>
-          <p className="text-[12px] text-white/70 leading-snug font-medium">{serviceSubtitle}</p>
-        </div>
-
         {/* HOT badge */}
         {service.hot && (
           <div className="absolute top-3.5 left-3.5 z-[3]">
@@ -139,7 +117,19 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Card body */}
-      <div className="px-5 pt-5 flex-1 flex flex-col relative z-[1]">
+      <div className="px-5 pt-4 flex-1 flex flex-col relative z-[1]">
+        {/* Icon + Title + Subtitle — below photo */}
+        <div className="flex items-start gap-3 mb-4">
+          <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 border border-border/40" style={{
+            background: 'hsl(142 76% 48% / 0.06)',
+          }}>
+            {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-xl">{service.emoji}</span>}
+          </div>
+          <div className="min-w-0">
+            <h3 className="text-[17px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
+            <p className="text-[12px] text-t3 leading-snug">{serviceSubtitle}</p>
+          </div>
+        </div>
         {/* Goal block — premium accent */}
         <div className="flex items-start gap-3 rounded-2xl px-4 py-3.5 mb-5" style={{
           background: 'linear-gradient(135deg, hsl(142 76% 48% / 0.06), hsl(142 76% 48% / 0.02))',
@@ -148,12 +138,18 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{
             background: 'linear-gradient(135deg, hsl(142 76% 48% / 0.15), hsl(142 76% 48% / 0.05))',
           }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-primary">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-              <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1.5" />
-              <circle cx="12" cy="12" r="2.5" fill="currentColor" />
-              <path d="M21 3L13.5 10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              <path d="M17 3H21V7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+              {/* Target rings */}
+              <circle cx="16" cy="16" r="14" stroke="hsl(142, 71%, 42%)" strokeWidth="1.5" />
+              <circle cx="16" cy="16" r="9" stroke="hsl(142, 71%, 42%)" strokeWidth="1.5" />
+              <circle cx="16" cy="16" r="4" fill="hsl(142, 71%, 42%)" />
+              {/* Arrow shaft — diagonal, stuck in bullseye */}
+              <line x1="5" y1="5" x2="14.5" y2="14.5" stroke="hsl(0, 80%, 50%)" strokeWidth="2" strokeLinecap="round" />
+              {/* Arrow head */}
+              <polygon points="3,3 9,4.5 4.5,9" fill="hsl(0, 80%, 50%)" />
+              {/* Arrow feathers */}
+              <line x1="4" y1="8" x2="7" y2="7" stroke="hsl(0, 65%, 58%)" strokeWidth="1" strokeLinecap="round" />
+              <line x1="8" y1="4" x2="7" y2="7" stroke="hsl(0, 65%, 58%)" strokeWidth="1" strokeLinecap="round" />
             </svg>
           </div>
           <span className="text-[13px] text-foreground leading-[1.45] font-semibold">{serviceGoal}</span>
