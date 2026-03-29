@@ -126,7 +126,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       <div className="px-5 pt-4 flex-1 flex flex-col relative z-[1]">
 
         {/* Goal */}
-        <div className="flex items-start gap-3 rounded-xl px-3.5 py-3 mb-3 border border-primary/10 bg-primary/[.03]">
+        <div className="flex items-start gap-3 px-1 py-2 mb-2">
           <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 mt-0.5">
             <img src={goalIcon} alt="" width={36} height={36} className="object-contain" />
           </div>
