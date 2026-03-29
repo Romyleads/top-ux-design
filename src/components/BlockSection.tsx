@@ -34,23 +34,15 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
   return (
     <section ref={sectionRef} className="mb-16">
       {/* Block Header */}
-      <div className={`text-center mb-8 relative transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-        <div className="inline-flex items-center gap-3 bg-white/60 backdrop-blur-sm border border-border/40 rounded-2xl px-6 py-3 mb-3 shadow-sm">
-          <span className="text-[28px] leading-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
-            {block.icon}
-          </span>
-          <div className="text-left">
-            <span className="text-[22px] font-extrabold text-foreground tracking-tight leading-[1.1] block">{blockTitle}</span>
-            <span className="text-xs text-t4 block">{blockSubtitle}</span>
-          </div>
-        </div>
-        <div className="flex items-center justify-center gap-3">
-          <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-primary/30" />
-          <span className="text-[10.5px] font-semibold text-primary-dark bg-primary/[.06] border border-primary/[.15] px-2.5 py-[2px] rounded-full tracking-wider">
-            {cards.length} {t("block.concepts")}
-          </span>
-          <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-primary/30" />
-        </div>
+      <div className={`flex items-center gap-4 mb-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-border/60" />
+        <h2 className="text-[17px] font-bold text-foreground tracking-tight whitespace-nowrap">
+          {block.icon} {blockTitle}
+        </h2>
+        <span className="text-[11px] font-medium text-t3 bg-muted/60 px-2 py-0.5 rounded-full">
+          {cards.length}
+        </span>
+        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-border/60" />
       </div>
 
       {/* Cards Grid */}
