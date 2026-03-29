@@ -79,13 +79,13 @@ function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatI
       style={{ transform: `translateY(${offsetY}px)`, transition: 'transform 0.1s linear' }}
     >
       <div className="flex items-center justify-center gap-2.5 mb-1.5">
-        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-muted-foreground/40"}`} strokeWidth={1.5} />
+        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-white/40"}`} strokeWidth={1.5} />
         <span
           className="text-[48px] sm:text-[56px] font-black tracking-tighter leading-none transition-transform duration-500 group-hover:scale-110"
           style={{
             background: accent
               ? 'linear-gradient(135deg, hsl(142 71% 42%), hsl(148 60% 30%))'
-              : 'linear-gradient(180deg, hsl(220 25% 10%) 0%, hsl(220 15% 35%) 100%)',
+              : 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 75%) 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.08))',
@@ -94,7 +94,7 @@ function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatI
           {count}
         </span>
       </div>
-      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/70" : "text-muted-foreground/50"}`}>
+      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/70" : "text-white/40"}`}>
         {label}
       </div>
     </div>
