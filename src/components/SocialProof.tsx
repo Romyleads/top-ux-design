@@ -1,18 +1,31 @@
 import { useState, useEffect, useCallback } from "react";
 import { services } from "@/data/services";
 import { useLanguage } from "@/i18n/LanguageContext";
+import type { Locale } from "@/i18n/translations";
 
-const firstNames = [
-  "Олександр", "Марія", "Дмитро", "Анна", "Максим", "Катерина",
-  "Андрій", "Юлія", "Сергій", "Вікторія", "Іван", "Наталія",
-  "Михайло", "Ольга", "Артем", "Тетяна", "Роман", "Ірина",
-  "Владислав", "Софія", "Денис", "Аліна", "Олег", "Дарина",
-];
+const namesByLocale: Record<Locale, string[]> = {
+  uk: [
+    "Олександр", "Марія", "Дмитро", "Анна", "Максим", "Катерина",
+    "Андрій", "Юлія", "Сергій", "Вікторія", "Іван", "Наталія",
+    "Михайло", "Ольга", "Артем", "Тетяна", "Роман", "Ірина",
+  ],
+  en: [
+    "Alexander", "Maria", "James", "Anna", "Max", "Catherine",
+    "Andrew", "Julia", "Sergei", "Victoria", "John", "Natalie",
+    "Michael", "Olga", "Arthur", "Tatiana", "Roman", "Irene",
+  ],
+  de: [
+    "Alexander", "Marie", "Dmitri", "Anna", "Maximilian", "Katharina",
+    "Andreas", "Julia", "Sergej", "Viktoria", "Johann", "Natalie",
+    "Michael", "Olga", "Artem", "Tatjana", "Roman", "Irene",
+  ],
+};
 
-const cities = [
-  "Київ", "Львів", "Одеса", "Харків", "Дніпро", "Запоріжжя",
-  "Вінниця", "Полтава", "Варшава", "Берлін", "Прага", "Лондон",
-];
+const citiesByLocale: Record<Locale, string[]> = {
+  uk: ["Київ", "Львів", "Одеса", "Харків", "Дніпро", "Запоріжжя", "Вінниця", "Полтава", "Варшава", "Берлін", "Прага", "Лондон"],
+  en: ["Kyiv", "Lviv", "Odesa", "Kharkiv", "Dnipro", "Zaporizhzhia", "Vinnytsia", "Poltava", "Warsaw", "Berlin", "Prague", "London"],
+  de: ["Kyjiw", "Lwiw", "Odessa", "Charkiw", "Dnipro", "Saporischschja", "Winnyzja", "Poltawa", "Warschau", "Berlin", "Prag", "London"],
+};
 
 export default function SocialProof() {
   const { t } = useLanguage();
