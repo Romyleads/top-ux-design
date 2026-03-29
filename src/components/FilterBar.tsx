@@ -10,7 +10,7 @@ export default function FilterBar({ activeBlock, onFilter }: FilterBarProps) {
   const { t } = useLanguage();
 
   return (
-    <div className="flex gap-2 flex-wrap justify-center mb-12">
+    <div className="flex gap-2 flex-wrap justify-center mb-8">
       <button
         onClick={() => onFilter("all")}
         className={`px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-all duration-200 ${
