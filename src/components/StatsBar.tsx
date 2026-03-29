@@ -45,56 +45,34 @@ function useParallax() {
     const rect = el.getBoundingClientRect();
     const center = window.innerHeight / 2;
     const distance = (rect.top + rect.height / 2 - center) / window.innerHeight;
-    // Each stat moves at a different parallax speed
+    // Round to full pixels to avoid blurry text while parallaxing
     setOffsets([
-      distance * -40,
-      distance * -65,
-      distance * -50,
+      Math.round(distance * -40),
+      Math.round(distance * -65),
+      Math.round(distance * -50),
     ]);
   }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  return { containerRef, offsets };
-}
-
-interface StatItemProps {
-  countRef: React.RefObject<HTMLDivElement>;
-  count: number;
-  label: string;
-  icon: React.ElementType;
-  accent?: boolean;
-  offsetY: number;
-}
-
+...
 function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatItemProps) {
   return (
     <div
       ref={countRef}
-      className="text-center group flex-1 py-2 will-change-transform"
-      style={{ transform: `translateY(${offsetY}px)`, transition: 'transform 0.1s linear' }}
+      className="text-center group flex-1 py-2 px-1 sm:px-2"
+      style={{ transform: `translate3d(0, ${offsetY}px, 0)`, transition: "transform 0.12s linear" }}
     >
       <div className="flex items-center justify-center gap-2.5 mb-1.5">
-        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-white/40"}`} strokeWidth={1.5} />
+        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-foreground/45"}`} strokeWidth={1.5} />
         <span
-          className="text-[48px] sm:text-[56px] font-black tracking-tighter leading-none transition-transform duration-500 group-hover:scale-110"
-          style={{
-            background: accent
-              ? 'linear-gradient(135deg, hsl(142 71% 42%), hsl(148 60% 30%))'
-              : 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 75%) 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.08))',
-          }}
+          className={`inline-block text-[48px] sm:text-[56px] font-black tracking-tight leading-[0.96] pr-[0.03em] transition-transform duration-500 group-hover:scale-105 ${
+            accent
+              ? "text-primary drop-shadow-[0_6px_14px_hsl(var(--primary)/0.35)]"
+              : "text-foreground drop-shadow-[0_5px_12px_hsl(var(--foreground)/0.22)]"
+          }`}
         >
           {count}
         </span>
       </div>
-      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/70" : "text-white/40"}`}>
+      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/70" : "text-foreground/45"}`}>
         {label}
       </div>
     </div>
