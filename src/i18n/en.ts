@@ -729,7 +729,6 @@ export const en: Record<string, string> = {
   "service.podcast.tier.2.2": "<b>Ongoing</b>",
   "service.podcast.tier.2.3": "Weekly episode · growth",
 };
-  "info.formats": "",
   "service.presentation.info.description": "",
   "service.presentation.info.content.0": "",
   "service.presentation.info.content.1": "",
