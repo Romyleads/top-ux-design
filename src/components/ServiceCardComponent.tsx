@@ -1,19 +1,40 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { 
+  ChevronDown, BarChart3, BookOpen, Package, FileText, Globe, Clapperboard, 
+  Smartphone, Image, Pencil, CreditCard, PackageOpen, BookMarked, PenLine, 
+  Trophy, GraduationCap, Mail, Droplets, Newspaper, Video, Home, Star, 
+  Target, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
+  Mic, Printer, Monitor, Palette, Megaphone, Flame
+} from "lucide-react";
 import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
 import { useLanguage } from "@/i18n/LanguageContext";
 
+// Premium Lucide icons per service
+const serviceIcons: Record<string, React.ElementType> = {
+  "presentation": BarChart3, "brochure": BookOpen, "catalog": Package, "flyer": FileText,
+  "landing-page": Globe, "video-ad": Clapperboard, "smm": Smartphone, "banners": Image,
+  "logo": Pencil, "business-card": CreditCard, "packaging": PackageOpen, "brandbook": BookMarked,
+  "blog-post": PenLine, "infographic": BarChart3, "white-paper": FileText, "case-study": Trophy,
+  "ebook": GraduationCap, "email-campaign": Mail, "drip-campaign": Droplets, "newsletter": Newspaper,
+  "webinar": Video, "product-tour": Home, "testimonials": Star, "ppc-google": Target,
+  "retargeting": RefreshCw, "native-ads": Newspaper, "landing-ad": Rocket, "ugc": Theater,
+  "ai-content": Bot, "saas-onboarding": Map, "linkedin-brand": Briefcase, "micro-saas": Zap,
+  "interactive-content": Gamepad2, "podcast": Mic,
+};
+
+// Premium Lucide icons per tag
+const tagIcons: Record<string, React.ElementType> = {
+  "tag.print": Printer, "tag.digital": Monitor, "tag.branding": Palette,
+  "tag.content": PenLine, "tag.email": Mail, "tag.video": Clapperboard,
+  "tag.ads": Megaphone, "tag.trend": Flame,
+};
+
 // Map raw Ukrainian tags to translation keys
 const tagKeyMap: Record<string, string> = {
-  "🖨 Друкована": "tag.print",
-  "💻 Цифрова": "tag.digital",
-  "🎨 Брендинг": "tag.branding",
-  "📝 Контент": "tag.content",
-  "📧 Email": "tag.email",
-  "🎬 Відео": "tag.video",
-  "📢 Реклама": "tag.ads",
-  "🔥 Тренд": "tag.trend",
+  "🖨 Друкована": "tag.print", "💻 Цифрова": "tag.digital", "🎨 Брендинг": "tag.branding",
+  "📝 Контент": "tag.content", "📧 Email": "tag.email", "🎬 Відео": "tag.video",
+  "📢 Реклама": "tag.ads", "🔥 Тренд": "tag.trend",
 };
 
 function tList(t: (key: string) => string, prefix: string): string[] {
@@ -82,27 +103,28 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           className="w-full h-full object-cover transition-transform duration-[550ms] ease-out group-hover:scale-[1.07]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-foreground/55" />
-        <span className="absolute bottom-[9px] right-[10px] z-[2] bg-card/[.88] backdrop-blur-lg text-t2 text-[10px] font-semibold px-[9px] py-[3px] rounded-full">
+        <span className="absolute bottom-[9px] right-[10px] z-[2] bg-card/[.88] backdrop-blur-lg text-t2 text-[10px] font-semibold px-[9px] py-[3px] rounded-full inline-flex items-center gap-1">
+          {(() => { const TagIcon = tagIcons[tagKeyMap[service.tag] || ""]; return TagIcon ? <TagIcon className="w-3 h-3" strokeWidth={2} /> : null; })()}
           {serviceTag}
         </span>
         {service.hot && (
-          <span className="absolute top-[10px] left-[10px] z-[2] bg-amber text-primary-foreground text-[9.5px] font-bold px-[9px] py-[3px] rounded-full tracking-wider animate-pulse-subtle">
-            🔥 HOT
+          <span className="absolute top-[10px] left-[10px] z-[2] bg-amber text-primary-foreground text-[9.5px] font-bold px-[9px] py-[3px] rounded-full tracking-wider animate-pulse-subtle inline-flex items-center gap-1">
+            <Flame className="w-3 h-3" strokeWidth={2.5} /> HOT
           </span>
         )}
       </div>
 
       {/* Body */}
       <div className="px-4 relative">
-        <div className="w-[46px] h-[46px] bg-card rounded-xl shadow-[0_4px_16px_rgba(15,23,42,0.14)] border-[1.5px] border-card flex items-center justify-center text-[22px] -mt-[23px] mb-2.5 relative z-[5] transition-all duration-200 group-hover:shadow-[0_6px_22px_rgba(15,23,42,0.18)] group-hover:-translate-y-[1px]">
-          {service.emoji}
+        <div className="w-[44px] h-[44px] bg-card rounded-xl shadow-[0_4px_16px_rgba(15,23,42,0.12)] border border-border/60 flex items-center justify-center -mt-[22px] mb-2.5 relative z-[5] transition-all duration-200 group-hover:shadow-[0_6px_22px_rgba(15,23,42,0.16)] group-hover:-translate-y-[1px]">
+          {(() => { const SvcIcon = serviceIcons[service.id]; return SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-[20px]">{service.emoji}</span>; })()}
         </div>
         <h3 className="text-[17px] font-extrabold text-foreground leading-[1.15] tracking-tight mb-[3px]">{serviceName}</h3>
         <p className="text-xs text-t4 leading-snug mb-1.5">{serviceSubtitle}</p>
 
         {/* Goal */}
         <div className="flex items-start gap-1.5 bg-primary/[.06] border border-primary/[.12] rounded-lg px-2.5 py-2 mb-1">
-          <span className="text-primary text-[11px] mt-[1px] flex-shrink-0">🎯</span>
+          <Target className="w-3.5 h-3.5 text-primary mt-[1px] flex-shrink-0" strokeWidth={2} />
           <span className="text-[11px] text-t2 leading-snug font-medium">{serviceGoal}</span>
         </div>
 
