@@ -83,7 +83,7 @@ export const blocks: Block[] = [
   { id: "b5", icon: "📧", title: "Email-маркетинг", subtitle: "Листи та лід-магніти" },
   { id: "b6", icon: "🎬", title: "Відеоконтент", subtitle: "Навчання, огляди та інтерактив" },
   { id: "b7", icon: "📢", title: "Платна реклама", subtitle: "PPC, таргетинг і ретаргетинг" },
-  { id: "b8", icon: "🔥", title: "Трендові 2024–2025", subtitle: "Найбільш затребувані формати" },
+  { id: "b8", icon: "🔥", title: "Трендові 2026", subtitle: "Найбільш затребувані формати" },
 ];
 
 // Helper to create default tier features
