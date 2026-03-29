@@ -127,31 +127,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
         {/* Goal */}
         <div className="flex items-start gap-3 rounded-xl px-3.5 py-3 mb-3 border border-primary/10 bg-primary/[.03]">
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{
-            background: 'linear-gradient(145deg, hsl(162 56% 95%), hsl(162 34% 87%))',
-            boxShadow: '0 4px 14px hsl(162 50% 30% / 0.18), inset 0 1px 3px hsl(0 0% 100% / 0.9)',
-          }}>
-            <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <ellipse cx="24" cy="38" rx="13" ry="3" fill="hsl(160 36% 22% / 0.2)" />
-
-              {/* 3D diamond target */}
-              <polygon points="24,7 40,16 24,25 8,16" fill="hsl(165 66% 56%)" />
-              <polygon points="8,16 24,25 24,35 8,26" fill="hsl(165 56% 40%)" />
-              <polygon points="40,16 24,25 24,35 40,26" fill="hsl(165 60% 34%)" />
-
-              {/* top layers */}
-              <polygon points="24,10 36,16 24,22 12,16" fill="hsl(0 0% 97%)" />
-              <polygon points="24,12.5 32,16 24,19.5 16,16" fill="hsl(164 74% 46%)" />
-              <polygon points="24,14.3 28.7,16 24,17.7 19.3,16" fill="hsl(0 0% 97%)" />
-              <circle cx="24" cy="16" r="1.7" fill="hsl(2 82% 52%)" />
-              <path d="M18 13.5 Q24 9.6 31 13" stroke="hsl(0 0% 100% / 0.3)" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-
-              {/* Dart */}
-              <line x1="24" y1="16" x2="40.5" y2="8.2" stroke="hsl(2 82% 50%)" strokeWidth="2.4" strokeLinecap="round" />
-              <path d="M40.5 5.8 L44.2 8.1 L40.2 10.9 L39 8.4 Z" fill="hsl(2 82% 50%)" />
-              <path d="M36.7 10L34.4 8" stroke="hsl(7 92% 62%)" strokeWidth="1.4" strokeLinecap="round" />
-              <path d="M36.7 10L35 12.5" stroke="hsl(7 92% 62%)" strokeWidth="1.4" strokeLinecap="round" />
-            </svg>
+          <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <img src={goalIcon} alt="" width={36} height={36} className="object-contain" />
           </div>
           <span className="text-[12.5px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
         </div>
