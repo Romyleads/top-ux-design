@@ -2,7 +2,7 @@ import { Search, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import promoLogo from "@/assets/promovisions-logo.png";
+import promoLogo from "@/assets/promovisions-hero.png";
 
 interface HeroSectionProps {
   searchQuery: string;
