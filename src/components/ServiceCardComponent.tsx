@@ -70,15 +70,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   return (
     <div
-      className={`rounded-[22px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group ${
-        isOrdered ? "ring-[2.5px] ring-primary glow-green" : ""
+      className={`rounded-[20px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-2 group ${
+        isOrdered ? "ring-[2px] ring-primary glow-green" : ""
       }`}
       style={{ 
-        background: 'hsl(0 0% 100%)',
+        background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 99%) 100%)',
         boxShadow: isOrdered 
           ? '0 0 30px -8px rgba(34, 197, 94, 0.35)' 
-          : '0 2px 8px rgba(0,0,0,0.04), 0 12px 48px -16px rgba(0,0,0,0.10)',
-        border: '1px solid hsl(220 13% 91% / 0.7)',
+          : '0 1px 2px rgba(0,0,0,0.04), 0 8px 32px -12px rgba(0,0,0,0.08)',
+        border: '1px solid hsl(220 13% 91% / 0.5)',
       }}
     >
       {isOrdered && (
@@ -90,18 +90,20 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       )}
 
       {/* Title + Subtitle — above photo */}
-      <div className="flex items-start gap-3 px-5 pt-4 pb-3">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border border-border/40 bg-primary/[.06]">
-          {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-lg">{service.emoji}</span>}
+      <div className="flex items-start gap-3 px-5 pt-4 pb-2.5">
+        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{
+          background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.1), hsl(142, 76%, 48% / 0.04))',
+        }}>
+          {SvcIcon ? <SvcIcon className="w-[18px] h-[18px] text-primary" strokeWidth={1.8} /> : <span className="text-base">{service.emoji}</span>}
         </div>
         <div className="min-w-0">
-          <h3 className="text-[16px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
-          <p className="text-[12px] text-t3 leading-snug">{serviceSubtitle}</p>
+          <h3 className="text-[15px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
+          <p className="text-[11.5px] text-t3 leading-snug">{serviceSubtitle}</p>
         </div>
       </div>
 
       {/* Photo with curved bottom mask */}
-      <div className="relative h-[160px] flex-shrink-0 overflow-hidden" style={{
+      <div className="relative h-[140px] flex-shrink-0 overflow-hidden" style={{
         clipPath: 'ellipse(120% 100% at 50% 0%)',
       }}>
         <img
@@ -123,14 +125,14 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Card body */}
-      <div className="px-5 pt-4 flex-1 flex flex-col relative z-[1]">
+      <div className="px-5 pt-3.5 flex-1 flex flex-col relative z-[1]">
 
         {/* Goal */}
-        <div className="flex items-start gap-3 px-1 py-2 mb-2">
-          <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <img src={goalIcon} alt="" width={36} height={36} className="object-contain" />
+        <div className="flex items-start gap-2.5 py-1.5 mb-1.5">
+          <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
-          <span className="text-[12.5px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
+          <span className="text-[12px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
         </div>
 
         {/* Details expand — between goal and tier picker */}
@@ -176,30 +178,29 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Tier Picker */}
-        <div className="rounded-2xl p-1.5 mb-4" style={{
+        <div className="rounded-xl p-1 mb-3" style={{
           background: 'hsl(220 14% 96%)',
-          boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.04)',
         }}>
-          <div className="grid grid-cols-3 gap-1">
+          <div className="grid grid-cols-3 gap-0.5">
             {service.tiers.map((tierItem, i) => (
               <button
                 key={i}
                 onClick={() => handleTierChange(i)}
-                className={`flex flex-col items-center py-2.5 px-2 rounded-xl cursor-pointer transition-all duration-200 select-none ${
-                  i === activeTier ? "" : "hover:bg-card/60"
+                className={`flex flex-col items-center py-2 px-1.5 rounded-lg cursor-pointer transition-all duration-200 select-none ${
+                  i === activeTier ? "" : "hover:bg-white/50"
                 }`}
                 style={i === activeTier ? {
                   background: 'hsl(0 0% 100%)',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)',
-                  border: '1px solid hsl(142 71% 42% / 0.25)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                  border: '1px solid hsl(142 71% 42% / 0.2)',
                 } : undefined}
               >
-                <span className={`text-[11px] font-semibold leading-none mb-1.5 transition-colors ${
+                <span className={`text-[10px] font-semibold leading-none mb-1 transition-colors ${
                   i === activeTier ? "text-primary font-bold" : "text-t4"
                 }`}>
                   {tierItem.name}
                 </span>
-                <span className={`text-[16px] font-extrabold leading-none transition-colors ${
+                <span className={`text-[15px] font-extrabold leading-none transition-colors ${
                   i === activeTier ? "text-foreground" : "text-t3"
                 }`}>
                   {tierItem.price}
@@ -210,7 +211,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Features */}
-        <div className={`transition-opacity duration-150 mb-3 ${fading ? "opacity-0" : "opacity-100"}`}>
+        <div className={`transition-opacity duration-150 mb-2 ${fading ? "opacity-0" : "opacity-100"}`}>
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
@@ -223,17 +224,17 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* CTA */}
-        <div className="mt-auto pt-2 pb-4">
+        <div className="mt-auto pt-1.5 pb-4">
           <button
             onClick={handleAdd}
-            className={`block w-full rounded-2xl text-[14px] font-bold py-3.5 px-6 text-center relative overflow-hidden transition-all duration-300 ${
+            className={`block w-full rounded-xl text-[13px] font-bold py-3 px-5 text-center relative overflow-hidden transition-all duration-300 ${
               isOrdered
                 ? "bg-green-light text-green-text ring-[1.5px] ring-green-border"
                 : "text-primary-foreground gradient-shine hover:-translate-y-[1px] active:translate-y-0 active:scale-[0.98]"
             }`}
             style={!isOrdered ? {
               background: 'linear-gradient(135deg, hsl(142, 76%, 46%) 0%, hsl(152, 60%, 36%) 100%)',
-              boxShadow: '0 8px 28px -4px rgba(22, 163, 74, 0.45), 0 2px 6px rgba(22, 163, 74, 0.2)',
+              boxShadow: '0 6px 20px -4px rgba(22, 163, 74, 0.4), 0 2px 4px rgba(22, 163, 74, 0.15)',
             } : undefined}
           >
             {isOrdered ? t("card.inCart") : `${t("card.add")} ${tier.name} — ${tier.price}`}
