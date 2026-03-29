@@ -59,6 +59,13 @@ export default function SocialProof() {
 
   if (!notification) return null;
 
+  const serviceName = t(`service.${notification.serviceId}.name`);
+  const tierName = t(`service.${notification.serviceId}.tier${notification.tierIdx}`);
+  const names = namesByLocale[locale];
+  const cities = citiesByLocale[locale];
+  const displayName = names[Math.abs(notification.name.charCodeAt(0)) % names.length] || notification.name;
+  const displayCity = cities[Math.abs(notification.city.charCodeAt(0)) % cities.length] || notification.city;
+
   const timeText = notification.mins < 60
     ? `${notification.mins} ${t("social.minAgo")}`
     : `${Math.floor(notification.mins / 60)} ${t("social.hrAgo")}`;
@@ -75,12 +82,12 @@ export default function SocialProof() {
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-[12.5px] text-foreground leading-snug font-medium">
-            <span className="font-bold">{notification.name}</span>
-            <span className="text-t3"> {t("social.from")} {notification.city}</span>
+            <span className="font-bold">{displayName}</span>
+            <span className="text-t3"> {t("social.from")} {displayCity}</span>
           </p>
           <p className="text-[11.5px] text-t3 leading-snug mt-0.5">
-            {t("social.ordered")} <span className="font-semibold text-t2">{notification.serviceName}</span>
-            <span className="text-t4"> · {notification.tierName}</span>
+            {t("social.ordered")} <span className="font-semibold text-t2">{serviceName}</span>
+            <span className="text-t4"> · {tierName}</span>
           </p>
           <p className="text-[10px] text-t4 mt-1">{timeText}</p>
         </div>
