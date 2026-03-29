@@ -76,22 +76,22 @@ function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatI
   return (
     <div
       ref={countRef}
-      className="text-center group flex-1 py-2 px-1 sm:px-2 overflow-visible"
+      className="text-center group flex-1 min-w-[104px] py-2 px-2 overflow-visible"
       style={{ transform: `translateY(${offsetY}px)`, transition: "transform 0.12s linear" }}
     >
       <div className="flex items-center justify-center gap-2.5 mb-1.5">
-        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-primary-foreground/50"}`} strokeWidth={1.5} />
+        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-sidebar-primary-foreground/55"}`} strokeWidth={1.5} />
         <span
-          className={`inline-block text-[48px] sm:text-[56px] font-black tracking-tight leading-[1.08] px-[0.03em] pb-[0.05em] transition-transform duration-500 group-hover:scale-105 ${
+          className={`inline-block text-[50px] sm:text-[58px] font-black tracking-tight leading-[1.12] px-[0.05em] pb-[0.06em] [font-variant-numeric:tabular-nums] transition-transform duration-500 group-hover:scale-105 ${
             accent
               ? "text-primary drop-shadow-[0_6px_14px_hsl(var(--primary)/0.35)]"
-              : "text-primary-foreground drop-shadow-[0_6px_14px_hsl(var(--primary-foreground)/0.28)]"
+              : "text-sidebar-primary-foreground drop-shadow-[0_6px_14px_hsl(var(--sidebar-primary-foreground)/0.32)]"
           }`}
         >
           {count}
         </span>
       </div>
-      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/75" : "text-primary-foreground/60"}`}>
+      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/75" : "text-sidebar-primary-foreground/62"}`}>
         {label}
       </div>
     </div>
