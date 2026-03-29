@@ -62,10 +62,21 @@ export function useCart() {
     setStep(1);
   }, []);
 
+  const autoCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const openCart = useCallback(() => {
     setIsOpen(true);
     setStep(1);
   }, []);
+
+  // Auto-close empty cart after 2 seconds
+  useEffect(() => {
+    if (autoCloseTimer.current) clearTimeout(autoCloseTimer.current);
+    if (isOpen && items.length === 0) {
+      autoCloseTimer.current = setTimeout(() => setIsOpen(false), 2000);
+    }
+    return () => { if (autoCloseTimer.current) clearTimeout(autoCloseTimer.current); };
+  }, [isOpen, items.length]);
 
   const closeCart = useCallback(() => {
     setIsOpen(false);
