@@ -3,7 +3,7 @@ import {
   ChevronDown, BarChart3, BookOpen, Package, FileText, Globe, Clapperboard, 
   Smartphone, Image, Pencil, CreditCard, PackageOpen, BookMarked, PenLine, 
   Trophy, GraduationCap, Mail, Droplets, Newspaper, Video, Home, Star, 
-  Crosshair, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
+  Crosshair, Target, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
   Mic, Flame
 } from "lucide-react";
 import type { ServiceCard } from "@/data/services";
