@@ -45,6 +45,7 @@ function useParallax() {
     const rect = el.getBoundingClientRect();
     const center = window.innerHeight / 2;
     const distance = (rect.top + rect.height / 2 - center) / window.innerHeight;
+
     // Round to full pixels to avoid blurry text while parallaxing
     setOffsets([
       Math.round(distance * -40),
@@ -52,7 +53,25 @@ function useParallax() {
       Math.round(distance * -50),
     ]);
   }, []);
-...
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  return { containerRef, offsets };
+}
+
+interface StatItemProps {
+  countRef: React.RefObject<HTMLDivElement>;
+  count: number;
+  label: string;
+  icon: React.ElementType;
+  accent?: boolean;
+  offsetY: number;
+}
+
 function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatItemProps) {
   return (
     <div
