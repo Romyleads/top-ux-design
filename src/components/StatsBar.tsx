@@ -45,7 +45,7 @@ export default function StatsBar() {
   const s3 = useCountUp(hotCount);
 
   return (
-    <div className="flex justify-center gap-8 sm:gap-16 my-10">
+    <div className="flex justify-center gap-8 sm:gap-16 my-10 glass rounded-2xl py-6 px-8 mx-auto max-w-fit border border-border/40">
       <div ref={s1.ref} className="text-center group">
         <div className="relative">
           <div className="text-[42px] sm:text-[52px] font-black text-foreground tracking-tighter leading-none transition-transform duration-300 group-hover:scale-110">

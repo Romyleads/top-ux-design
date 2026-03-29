@@ -70,7 +70,7 @@ export default function Index() {
       <AnimatedBackground />
 
       {/* Premium top accent bar */}
-      <div className="h-1 w-full gradient-primary relative z-10" />
+      <div className="h-1 w-full gradient-primary relative z-10 shadow-[0_2px_12px_rgba(34,197,94,0.3)]" />
 
       <div className="max-w-[1320px] mx-auto px-7 max-sm:px-3.5 relative z-10">
         <HeroSection
@@ -99,7 +99,11 @@ export default function Index() {
           </div>
         )}
 
-        <footer className="border-t border-border py-8 mt-20 text-center text-t4 text-[13px]">
+        <footer className="border-t border-border/50 py-8 mt-20 text-center text-t4 text-[13px] glass rounded-t-2xl">
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <div className="w-2 h-2 rounded-full gradient-primary animate-pulse-subtle" />
+            <span className="text-primary-dark font-bold tracking-wide text-[14px]">PROMOVISIONS.COM</span>
+          </div>
           © 2026 {t("footer.copy")}
         </footer>
       </div>

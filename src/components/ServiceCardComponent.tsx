@@ -62,8 +62,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   return (
     <div
-      className={`bg-card rounded-2xl overflow-hidden flex flex-col relative shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover hover:scale-[1.01] group ${
-        isOrdered ? "ring-[2.5px] ring-primary" : ""
+      className={`glass-strong rounded-2xl overflow-hidden flex flex-col relative shadow-card transition-all duration-300 hover:-translate-y-2 hover:shadow-card-hover hover:scale-[1.015] group border border-border/50 ${
+        isOrdered ? "ring-[2.5px] ring-primary glow-green" : ""
       }`}
       style={{ transformStyle: "preserve-3d" }}
     >
