@@ -10,5 +10,9 @@ const iconMap = {
 
 export default function FeatureIcon({ icon }: { icon: TierFeature["icon"] }) {
   const Icon = iconMap[icon];
-  return <Icon className="w-[15px] h-[15px] text-border flex-shrink-0" strokeWidth={1.5} />;
+  return (
+    <div className="w-6 h-6 rounded-lg bg-primary/[.07] flex items-center justify-center flex-shrink-0">
+      <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
+    </div>
+  );
 }
