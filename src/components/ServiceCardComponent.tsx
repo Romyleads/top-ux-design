@@ -90,13 +90,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       )}
 
       {/* Title + Subtitle — above photo */}
-      <div className="flex items-start gap-3 px-5 pt-4 pb-3">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border border-border/40 bg-primary/[.06]">
-          {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-lg">{service.emoji}</span>}
+      <div className="flex items-start gap-3 px-5 pt-4 pb-2.5">
+        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{
+          background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.1), hsl(142, 76%, 48% / 0.04))',
+        }}>
+          {SvcIcon ? <SvcIcon className="w-[18px] h-[18px] text-primary" strokeWidth={1.8} /> : <span className="text-base">{service.emoji}</span>}
         </div>
         <div className="min-w-0">
-          <h3 className="text-[16px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
-          <p className="text-[12px] text-t3 leading-snug">{serviceSubtitle}</p>
+          <h3 className="text-[15px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
+          <p className="text-[11.5px] text-t3 leading-snug">{serviceSubtitle}</p>
         </div>
       </div>
 
