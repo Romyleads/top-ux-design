@@ -103,7 +103,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Photo with curved bottom mask */}
-      <div className="relative h-[160px] flex-shrink-0 overflow-hidden" style={{
+      <div className="relative h-[140px] flex-shrink-0 overflow-hidden" style={{
         clipPath: 'ellipse(120% 100% at 50% 0%)',
       }}>
         <img
