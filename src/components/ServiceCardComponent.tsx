@@ -1,4 +1,5 @@
 import { useState } from "react";
+import goalIcon from "@/assets/goal-icon.png";
 import { 
   ChevronDown, BarChart3, BookOpen, Package, FileText, Globe, Clapperboard, 
   Smartphone, Image, Pencil, CreditCard, PackageOpen, BookMarked, PenLine, 
