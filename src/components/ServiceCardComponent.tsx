@@ -21,6 +21,7 @@ const serviceIcons: Record<string, React.ElementType> = {
   "retargeting": RefreshCw, "native-ads": Newspaper, "landing-ad": Rocket, "ugc": Theater,
   "ai-content": Bot, "saas-onboarding": Map, "linkedin-brand": Briefcase, "micro-saas": Zap,
   "interactive-content": Gamepad2, "podcast": Mic,
+  "saas-builder": Wallet, "telegram-twa": Send, "ai-automation": Cpu, "nocode-mvp": Blocks,
 };
 
 function tList(t: (key: string) => string, prefix: string): string[] {
