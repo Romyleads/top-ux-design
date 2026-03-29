@@ -81,9 +81,10 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           : '0 8px 40px -12px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.04)',
       }}
     >
-      {/* Hover glow effect */}
+      {/* Hover glow effect — matches card rounding */}
       <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" style={{
         boxShadow: '0 20px 60px -15px rgba(34, 197, 94, 0.2), 0 8px 24px rgba(0,0,0,0.08)',
+        borderRadius: 'inherit',
       }} />
 
       {isOrdered && (
