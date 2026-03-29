@@ -47,9 +47,9 @@ function useParallax() {
     const distance = (rect.top + rect.height / 2 - center) / window.innerHeight;
     // Each stat moves at a different parallax speed
     setOffsets([
-      distance * -18,
-      distance * -30,
-      distance * -22,
+      distance * -40,
+      distance * -65,
+      distance * -50,
     ]);
   }, []);
 
