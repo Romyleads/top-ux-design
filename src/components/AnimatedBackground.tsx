@@ -192,8 +192,8 @@ export default function AnimatedBackground() {
         background: `linear-gradient(180deg, 
           hsl(220, 40%, 6%) 0%, 
           hsl(220, 35%, 8%) 30%, 
-          hsl(200, 20%, 12%) 55%,
-          hsl(0, 0%, 99%) 100%
+          hsl(220, 20%, 12%) 55%,
+          hsl(220, 14%, 92%) 100%
         )`
       }} />
 
@@ -218,7 +218,7 @@ export default function AnimatedBackground() {
 
       {/* Gradient fade hero → content */}
       <div className="absolute top-[500px] left-0 right-0 h-[200px] z-[1]" style={{
-        background: `linear-gradient(180deg, transparent 0%, hsl(0, 0%, 99%) 100%)`
+        background: `linear-gradient(180deg, transparent 0%, hsl(220, 14%, 92%) 100%)`
       }} />
 
       {/* Content area — subtle repeating background pattern */}
