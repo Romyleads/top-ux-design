@@ -3,7 +3,7 @@ import {
   ChevronDown, BarChart3, BookOpen, Package, FileText, Globe, Clapperboard, 
   Smartphone, Image, Pencil, CreditCard, PackageOpen, BookMarked, PenLine, 
   Trophy, GraduationCap, Mail, Droplets, Newspaper, Video, Home, Star, 
-  Crosshair, Target, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
+  Target, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
   Mic, Flame
 } from "lucide-react";
 import type { ServiceCard } from "@/data/services";
@@ -120,14 +120,21 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       {/* Body */}
       <div className="px-4 pt-4 flex-1 flex flex-col">
         {/* Goal */}
-        <div className="flex items-start gap-2.5 rounded-xl px-3.5 py-3 mb-4" style={{
+        <div className="flex items-start gap-3 rounded-xl px-3.5 py-3 mb-4" style={{
           background: 'linear-gradient(135deg, hsl(142 76% 48% / 0.08), hsl(160 70% 50% / 0.04))',
           border: '1px solid hsl(142 71% 42% / 0.15)',
         }}>
-          <div className="w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-[1px]">
-            <Crosshair className="w-3.5 h-3.5 text-primary" strokeWidth={2.2} />
+          <div className="w-7 h-7 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="6" />
+              <circle cx="12" cy="12" r="2" />
+              <line x1="22" y1="2" x2="14" y2="10" />
+              <line x1="18" y1="2" x2="22" y2="2" />
+              <line x1="22" y1="6" x2="22" y2="2" />
+            </svg>
           </div>
-          <span className="text-[12.5px] text-t1 leading-snug font-semibold">{serviceGoal}</span>
+          <span className="text-[13px] text-foreground leading-snug font-semibold">{serviceGoal}</span>
         </div>
 
         {/* Tier Picker — prominent */}
