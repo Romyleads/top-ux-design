@@ -126,14 +126,53 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
         {/* Goal */}
         <div className="flex items-start gap-2.5 rounded-xl px-3.5 py-3 mb-3 border border-primary/10 bg-primary/[.03]">
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-primary/10 mt-0.5">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="10" stroke="hsl(142,71%,42%)" strokeWidth="1.5" opacity="0.35" />
-              <circle cx="12" cy="12" r="6.5" stroke="hsl(142,71%,42%)" strokeWidth="1.5" opacity="0.55" />
-              <circle cx="12" cy="12" r="3" stroke="hsl(142,71%,42%)" strokeWidth="1.5" opacity="0.8" />
-              <circle cx="12" cy="12" r="1" fill="hsl(142,71%,42%)" />
-              <line x1="12" y1="12" x2="20" y2="4" stroke="hsl(0,75%,50%)" strokeWidth="2" strokeLinecap="round" />
-              <path d="M17.5 4H20V6.5" stroke="hsl(0,75%,50%)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{
+            background: 'linear-gradient(145deg, hsl(145 60% 96%), hsl(145 40% 90%))',
+            boxShadow: '0 2px 8px rgba(34,197,94,0.15), inset 0 1px 2px rgba(255,255,255,0.8)',
+          }}>
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+              {/* 3D target base shadow */}
+              <ellipse cx="16" cy="17" rx="11" ry="11" fill="hsl(142,50%,35%)" opacity="0.12" />
+              {/* Outer ring with gradient */}
+              <circle cx="16" cy="16" r="11" fill="url(#goalGradOuter)" />
+              <circle cx="16" cy="16" r="9.5" fill="hsl(145,60%,96%)" />
+              {/* Middle ring */}
+              <circle cx="16" cy="16" r="8" fill="url(#goalGradMid)" />
+              <circle cx="16" cy="16" r="6.5" fill="hsl(145,60%,96%)" />
+              {/* Inner ring */}
+              <circle cx="16" cy="16" r="5" fill="url(#goalGradInner)" />
+              <circle cx="16" cy="16" r="3.5" fill="hsl(145,60%,96%)" />
+              {/* Bullseye */}
+              <circle cx="16" cy="16" r="2.2" fill="url(#goalBullseye)" />
+              {/* 3D highlight on bullseye */}
+              <ellipse cx="15.3" cy="15" rx="1" ry="0.7" fill="white" opacity="0.5" />
+              {/* Arrow shaft */}
+              <line x1="16" y1="16" x2="25" y2="7" stroke="hsl(0,75%,48%)" strokeWidth="1.8" strokeLinecap="round" />
+              {/* Arrow tip */}
+              <polygon points="25.5,5.5 27,7 25,8.5 23.5,7" fill="hsl(0,75%,48%)" />
+              {/* Arrow fletching */}
+              <line x1="24.2" y1="7.8" x2="26" y2="9.5" stroke="hsl(0,65%,55%)" strokeWidth="1.2" strokeLinecap="round" />
+              <line x1="24.2" y1="7.8" x2="22.5" y2="6" stroke="hsl(0,65%,55%)" strokeWidth="1.2" strokeLinecap="round" />
+              {/* 3D shine */}
+              <ellipse cx="12" cy="12" rx="4" ry="2.5" fill="white" opacity="0.15" transform="rotate(-30 12 12)" />
+              <defs>
+                <radialGradient id="goalGradOuter" cx="40%" cy="35%">
+                  <stop offset="0%" stopColor="hsl(142,76%,56%)" />
+                  <stop offset="100%" stopColor="hsl(142,71%,38%)" />
+                </radialGradient>
+                <radialGradient id="goalGradMid" cx="40%" cy="35%">
+                  <stop offset="0%" stopColor="hsl(142,76%,56%)" />
+                  <stop offset="100%" stopColor="hsl(142,71%,40%)" />
+                </radialGradient>
+                <radialGradient id="goalGradInner" cx="40%" cy="35%">
+                  <stop offset="0%" stopColor="hsl(142,76%,52%)" />
+                  <stop offset="100%" stopColor="hsl(142,71%,36%)" />
+                </radialGradient>
+                <radialGradient id="goalBullseye" cx="40%" cy="35%">
+                  <stop offset="0%" stopColor="hsl(0,80%,58%)" />
+                  <stop offset="100%" stopColor="hsl(0,75%,42%)" />
+                </radialGradient>
+              </defs>
             </svg>
           </div>
           <span className="text-[12.5px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
