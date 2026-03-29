@@ -216,7 +216,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             return (
             <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-1.5">
                 <FeatureIcon icon={feat.icon} />
-                <span className={`text-[13px] leading-snug [&>b]:font-semibold ${feat.icon === "clock" ? "text-destructive font-semibold" : "text-t2 [&>b]:text-foreground"}`} dangerouslySetInnerHTML={{ __html: tierFeatText }} />
+                <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
               </div>
             );
           })}
