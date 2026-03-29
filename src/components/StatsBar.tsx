@@ -46,9 +46,9 @@ interface StatItemProps {
 function StatItem({ countRef, count, label, icon: Icon, accent }: StatItemProps) {
   return (
     <div ref={countRef} className="text-center group flex-1">
-      <div className="flex items-center justify-center gap-2 mb-1.5">
+      <div className="flex items-center justify-center gap-2 mb-1">
         <Icon className={`w-4 h-4 ${accent ? "text-primary" : "text-t3"}`} strokeWidth={1.8} />
-        <span className={`text-[36px] sm:text-[44px] font-black tracking-tighter leading-none transition-transform duration-300 group-hover:scale-110 ${
+        <span className={`text-[34px] sm:text-[42px] font-black tracking-tighter leading-none transition-transform duration-300 group-hover:scale-110 ${
           accent
             ? "bg-gradient-to-br from-primary to-primary-dark bg-clip-text text-transparent"
             : "text-foreground"
@@ -56,7 +56,7 @@ function StatItem({ countRef, count, label, icon: Icon, accent }: StatItemProps)
           {count}
         </span>
       </div>
-      <div className={`text-[10px] font-bold uppercase tracking-[0.15em] ${accent ? "text-primary-dark" : "text-t4"}`}>
+      <div className={`text-[9px] font-bold uppercase tracking-[0.18em] ${accent ? "text-primary-dark" : "text-t4"}`}>
         {label}
       </div>
     </div>
@@ -72,11 +72,15 @@ export default function StatsBar() {
   const s3 = useCountUp(hotCount);
 
   return (
-    <div className="flex items-center my-10 bg-white/70 backdrop-blur-xl rounded-2xl py-5 px-6 sm:px-10 mx-auto max-w-md border border-border/50 shadow-card">
+    <div className="flex items-center my-8 rounded-2xl py-4 px-6 sm:px-10 mx-auto max-w-md border border-border/40" style={{
+      background: 'linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(0 0% 100% / 0.65))',
+      backdropFilter: 'blur(20px) saturate(1.6)',
+      boxShadow: '0 4px 24px -8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03)',
+    }}>
       <StatItem countRef={s1.ref} count={s1.count} label={t("stats.concepts")} icon={LayoutGrid} />
-      <div className="w-px h-10 bg-border/40 mx-2" />
+      <div className="w-px h-8 bg-border/30 mx-2" />
       <StatItem countRef={s2.ref} count={s2.count} label={t("stats.blocks")} icon={Layers} />
-      <div className="w-px h-10 bg-border/40 mx-2" />
+      <div className="w-px h-8 bg-border/30 mx-2" />
       <StatItem countRef={s3.ref} count={s3.count} label={t("stats.trending")} icon={Flame} accent />
     </div>
   );
