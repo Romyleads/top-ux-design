@@ -120,9 +120,14 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       {/* Body */}
       <div className="px-4 pt-4 flex-1 flex flex-col">
         {/* Goal */}
-        <div className="flex items-start gap-2 bg-primary/[.05] border border-primary/[.10] rounded-xl px-3 py-2.5 mb-4">
-          <Target className="w-4 h-4 text-primary mt-[1px] flex-shrink-0" strokeWidth={2} />
-          <span className="text-[12px] text-t2 leading-snug font-medium">{serviceGoal}</span>
+        <div className="flex items-start gap-2.5 rounded-xl px-3.5 py-3 mb-4" style={{
+          background: 'linear-gradient(135deg, hsl(142 76% 48% / 0.08), hsl(160 70% 50% / 0.04))',
+          border: '1px solid hsl(142 71% 42% / 0.15)',
+        }}>
+          <div className="w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-[1px]">
+            <Crosshair className="w-3.5 h-3.5 text-primary" strokeWidth={2.2} />
+          </div>
+          <span className="text-[12.5px] text-t1 leading-snug font-semibold">{serviceGoal}</span>
         </div>
 
         {/* Tier Picker — prominent */}
