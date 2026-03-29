@@ -33,6 +33,10 @@ import imgLinkedinBrand from "@/assets/services/linkedin-brand.jpg";
 import imgMicroSaas from "@/assets/services/micro-saas.jpg";
 import imgInteractiveContent from "@/assets/services/interactive-content.jpg";
 import imgPodcast from "@/assets/services/podcast.jpg";
+import imgSaasBuilder from "@/assets/services/saas-builder.jpg";
+import imgTelegramTwa from "@/assets/services/telegram-twa.jpg";
+import imgAiAutomation from "@/assets/services/ai-automation.jpg";
+import imgNocodeMvp from "@/assets/services/nocode-mvp.jpg";
 
 export interface TierFeature {
   icon: "size" | "format" | "clock" | "check";
@@ -83,7 +87,7 @@ export const blocks: Block[] = [
   { id: "b5", icon: "📧", title: "Email-маркетинг", subtitle: "Листи та лід-магніти" },
   { id: "b6", icon: "🎬", title: "Відеоконтент", subtitle: "Навчання, огляди та інтерактив" },
   { id: "b7", icon: "📢", title: "Платна реклама", subtitle: "PPC, таргетинг і ретаргетинг" },
-  { id: "b8", icon: "🔥", title: "Трендові 2024–2025", subtitle: "Найбільш затребувані формати" },
+  { id: "b8", icon: "🔥", title: "Трендові 2026", subtitle: "Найбільш затребувані формати" },
 ];
 
 // Helper to create default tier features
@@ -860,6 +864,97 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Від ідеї до регулярного подкасту з аудиторією. Повний продакшн-цикл: концепція, брендинг, запис, монтаж, дистрибуція на Spotify/Apple Podcasts та просування через соцмережі та newsletter.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Концепція, назва та формат подкасту", "Брендинг: обкладинка, intro/outro", "Запис, монтаж та пост-продакшн", "Дистрибуція (Spotify, Apple, YouTube)", "Промо-стратегія та зростання аудиторії"], type: "list" },
       { kind: "goal", label: "Мета", text: "Створити медіа-актив для довгострокового зростання бренду.", type: "text" },
+    ],
+  },
+  // ═══════════════════════════════════════
+  // New trending 2026 services
+  // ═══════════════════════════════════════
+  {
+    id: "saas-builder",
+    name: "SaaS-сервіс під ключ",
+    emoji: "💰",
+    subtitle: "Створення підписного SaaS-продукту з рекурентним доходом",
+    goal: "Запустити SaaS-бізнес з щомісячною оплатою: бот, кабінет, платформу або інструмент",
+    blockId: "b8",
+    photo: imgSaasBuilder,
+    tag: "🔥 Тренд",
+    hot: true,
+    tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "699 €" }],
+    tierFeatures: [
+      tf("<b>MVP</b> · 1 core-фіча · landing", "Web App (React/Next)", "<b>Термін: 14 днів</b>", "2 правки · Stripe інтеграція"),
+      tf("<b>3–5 фіч</b> · dashboard + auth", "Web App + API + DB", "<b>Термін: 10 днів</b>", "5 правок · аналітика · onboarding"),
+      tf("<b>Повний</b> продукт · масштабування", "Full-stack + Mobile-ready", "<b>Термін: 7 днів</b>", "Безлімітні правки · CI/CD · підтримка"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Повний цикл створення SaaS-продукту: від валідації ідеї до запуску з підпискою. Користувачі платять щомісяця за ваш бот, кабінет, платформу або інструмент. Включає дизайн, розробку, платіжну систему та стратегію монетизації.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Валідація ідеї та бізнес-модель", "UX/UI дизайн продукту", "Розробка MVP з core-функціоналом", "Інтеграція Stripe/LemonSqueezy підписок", "Landing page + onboarding flow", "Аналітика та метрики (MRR, churn, LTV)"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Запустити підписний SaaS з рекурентним доходом.", type: "text" },
+    ],
+  },
+  {
+    id: "telegram-twa",
+    name: "Telegram Mini App (TWA)",
+    emoji: "✈️",
+    subtitle: "Міні-додаток всередині Telegram як повноцінний сервіс",
+    goal: "Створити міні-апку в Telegram, яка виглядає як повноцінний додаток з оплатою та базою",
+    blockId: "b8",
+    photo: imgTelegramTwa,
+    tag: "🔥 Тренд",
+    hot: true,
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "199 €" }, { name: "Pro", price: "449 €" }],
+    tierFeatures: [
+      tf("<b>1 екран</b> · базовий бот + TWA", "Telegram Web App", "<b>Термін: 7 днів</b>", "2 правки · хостинг"),
+      tf("<b>3–5 екранів</b> · auth + БД + оплата", "TWA + Supabase + Stripe", "<b>Термін: 5 днів</b>", "4 правки · push · аналітика"),
+      tf("<b>Повний</b> сервіс · адмін-панель", "TWA + API + Dashboard", "<b>Термін: 5 днів</b>", "Безлімітні правки · маркетинг"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Telegram Web App (TWA) — міні-додаток прямо всередині месенджера. Виглядає як повноцінний мобільний додаток, але не потребує завантаження з App Store. Ідеально для сервісів, магазинів, записів, освітніх платформ та будь-яких бізнесів з аудиторією в Telegram.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Дизайн інтерфейсу під Telegram UI", "Розробка TWA (React + Telegram SDK)", "Telegram Bot для взаємодії", "Інтеграція оплати (Telegram Payments / Stripe)", "База даних та авторизація через Telegram", "Деплой та налаштування бота"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Отримати повноцінний сервіс всередині Telegram без окремого додатку.", type: "text" },
+    ],
+  },
+  {
+    id: "ai-automation",
+    name: "AI-автоматизація бізнесу",
+    emoji: "🤖",
+    subtitle: "Автоматизація процесів через AI-агентів та ботів",
+    goal: "Автоматизувати рутинні бізнес-процеси через AI та зменшити витрати на персонал",
+    blockId: "b8",
+    photo: imgAiAutomation,
+    tag: "🔥 Тренд",
+    hot: true,
+    tiers: [{ name: "Lite", price: "99 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "549 €" }],
+    tierFeatures: [
+      tf("<b>1 бот</b> · FAQ + lead capture", "Telegram / WhatsApp", "<b>Термін: 5 днів</b>", "2 правки · навчання на даних"),
+      tf("<b>AI-агент</b> · CRM + автовідповіді", "Multi-channel + Make/n8n", "<b>Термін: 5 днів</b>", "5 правок · інтеграції · дашборд"),
+      tf("<b>Повна</b> екосистема AI-агентів", "Custom AI + API + Analytics", "<b>Термін: 5 днів</b>", "Безлімітні правки · підтримка 3 міс"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Впровадження AI-агентів для автоматизації бізнес-процесів: чат-боти для підтримки, AI-менеджери продажів, автоматична обробка заявок, генерація контенту та аналітика. Використовуємо GPT, Claude та open-source моделі.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Аудит процесів для автоматизації", "Розробка AI-ботів та агентів", "Інтеграція з CRM, email, месенджерами", "Навчання AI на даних компанії", "Дашборд аналітики та моніторинг", "Документація та навчання команди"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Зменшити ручну роботу на 70% через AI-автоматизацію.", type: "text" },
+    ],
+  },
+  {
+    id: "nocode-mvp",
+    name: "No-Code MVP",
+    emoji: "⚡",
+    subtitle: "Швидкий запуск продукту без програмування",
+    goal: "Запустити робочий продукт за тиждень без написання коду для валідації ідеї",
+    blockId: "b8",
+    photo: imgNocodeMvp,
+    tag: "🔥 Тренд",
+    hot: true,
+    tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "349 €" }],
+    tierFeatures: [
+      tf("<b>Landing</b> + форма + автоматизація", "Tilda / Framer + Zapier", "<b>Термін: 3 дні</b>", "2 правки · аналітика"),
+      tf("<b>MVP</b> · dashboard + auth + DB", "Bubble / Glide + Supabase", "<b>Термін: 5 днів</b>", "4 правки · оплата · email"),
+      tf("<b>Повний</b> no-code продукт", "Multi-tool stack + API", "<b>Термін: 5 днів</b>", "Безлімітні правки · масштабування"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Запуск повноцінного цифрового продукту без програмування за допомогою no-code інструментів: Bubble, Framer, Glide, Make, Supabase. Ідеально для стартапів, які хочуть швидко валідувати ідею з мінімальним бюджетом.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Аналіз ідеї та вибір інструментів", "Дизайн та прототипування", "Збірка MVP на no-code платформі", "Інтеграція оплати та email", "Деплой та налаштування домену", "Гайд по самостійному управлінню"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Валідувати бізнес-ідею за мінімальний бюджет та час.", type: "text" },
     ],
   },
 ];

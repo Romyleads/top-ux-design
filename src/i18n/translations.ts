@@ -263,7 +263,7 @@ export const translations: Record<string, Record<Locale, string>> = {
   "block.b6.subtitle": { uk: "Навчання, огляди та інтерактив", en: "Training, reviews and interactive", de: "Schulung, Bewertungen und Interaktiv" },
   "block.b7.title": { uk: "Платна реклама", en: "Paid Advertising", de: "Bezahlte Werbung" },
   "block.b7.subtitle": { uk: "PPC, таргетинг і ретаргетинг", en: "PPC, targeting and retargeting", de: "PPC, Targeting und Retargeting" },
-  "block.b8.title": { uk: "Трендові 2024–2025", en: "Trending 2024–2025", de: "Trends 2024–2025" },
+  "block.b8.title": { uk: "Трендові 2026", en: "Trending 2026", de: "Trends 2026" },
   "block.b8.subtitle": { uk: "Найбільш затребувані формати", en: "Most in-demand formats", de: "Die gefragtesten Formate" },
 };
 

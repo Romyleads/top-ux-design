@@ -5,7 +5,7 @@ import {
   Smartphone, Image, Pencil, CreditCard, PackageOpen, BookMarked, PenLine, 
   Trophy, GraduationCap, Mail, Droplets, Newspaper, Video, Home, Star, 
   Target, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
-  Mic, Flame
+  Mic, Flame, Wallet, Send, Cpu, Blocks
 } from "lucide-react";
 import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
@@ -21,6 +21,7 @@ const serviceIcons: Record<string, React.ElementType> = {
   "retargeting": RefreshCw, "native-ads": Newspaper, "landing-ad": Rocket, "ugc": Theater,
   "ai-content": Bot, "saas-onboarding": Map, "linkedin-brand": Briefcase, "micro-saas": Zap,
   "interactive-content": Gamepad2, "podcast": Mic,
+  "saas-builder": Wallet, "telegram-twa": Send, "ai-automation": Cpu, "nocode-mvp": Blocks,
 };
 
 function tList(t: (key: string) => string, prefix: string): string[] {
