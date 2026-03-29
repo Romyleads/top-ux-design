@@ -99,7 +99,11 @@ export default function Index() {
           </div>
         )}
 
-        <footer className="border-t border-border py-8 mt-20 text-center text-t4 text-[13px]">
+        <footer className="border-t border-border/50 py-8 mt-20 text-center text-t4 text-[13px] glass rounded-t-2xl">
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <div className="w-2 h-2 rounded-full gradient-primary animate-pulse-subtle" />
+            <span className="text-primary-dark font-bold tracking-wide text-[14px]">PROMOVISIONS.COM</span>
+          </div>
           © 2026 {t("footer.copy")}
         </footer>
       </div>
