@@ -67,17 +67,27 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      <AnimatedBackground />
+      {/* Dark hero zone with animated background */}
+      <div className="relative">
+        <AnimatedBackground />
+        
+        {/* Neon accent bar */}
+        <div className="h-[2px] w-full relative z-10" style={{
+          background: `linear-gradient(90deg, transparent 0%, hsl(142, 76%, 48%) 30%, hsl(160, 80%, 55%) 50%, hsl(142, 76%, 48%) 70%, transparent 100%)`,
+          boxShadow: `0 0 20px rgba(74, 222, 128, 0.4), 0 0 60px rgba(74, 222, 128, 0.1)`
+        }} />
 
-      {/* Premium top accent bar */}
-      <div className="h-1 w-full gradient-primary relative z-10 shadow-[0_2px_12px_rgba(34,197,94,0.3)]" />
+        <div className="max-w-[1320px] mx-auto px-7 max-sm:px-3.5 relative z-10">
+          <HeroSection
+            searchQuery={searchQuery}
+            onSearchChange={handleSearch}
+            resultCount={searchQuery ? filteredServices.length : undefined}
+          />
+        </div>
+      </div>
 
+      {/* Content area — light background */}
       <div className="max-w-[1320px] mx-auto px-7 max-sm:px-3.5 relative z-10">
-        <HeroSection
-          searchQuery={searchQuery}
-          onSearchChange={handleSearch}
-          resultCount={searchQuery ? filteredServices.length : undefined}
-        />
         <StatsBar />
         <FilterBar activeBlock={activeBlock} onFilter={handleFilter} />
 
@@ -99,7 +109,7 @@ export default function Index() {
           </div>
         )}
 
-        <footer className="border-t border-border/50 py-8 mt-20 text-center text-t4 text-[13px] glass rounded-t-2xl">
+        <footer className="border-t border-border/40 py-8 mt-20 text-center text-t4 text-[13px]">
           <div className="flex items-center justify-center gap-2 mb-1">
             <div className="w-2 h-2 rounded-full gradient-primary animate-pulse-subtle" />
             <span className="text-primary-dark font-bold tracking-wide text-[14px]">PROMOVISIONS.COM</span>

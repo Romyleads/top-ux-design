@@ -40,41 +40,37 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       : t("plural.concept.many");
 
   return (
-    <section className="text-center pt-16 pb-10 px-6 relative">
-      {/* Floating decorative orbs */}
-      <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-primary/[.06] rounded-full blur-[100px] animate-float pointer-events-none" />
-      <div className="absolute top-20 right-[15%] w-[200px] h-[200px] bg-primary/[.04] rounded-full blur-[80px] animate-float-delayed pointer-events-none" />
-
-      {/* Language Switcher */}
+    <section className="text-center pt-16 pb-14 px-6 relative z-10">
+      {/* Language Switcher — light on dark */}
       <div className="flex justify-end mb-6">
         <LanguageSwitcher />
       </div>
 
-      <span className="inline-flex items-center gap-1.5 bg-green-light border border-green-border text-green-text text-[11px] font-bold px-3.5 py-1 rounded-full mb-5 tracking-wider uppercase animate-pulse-subtle">
+      <span className="inline-flex items-center gap-1.5 bg-primary/10 border border-primary/20 text-primary text-[11px] font-bold px-3.5 py-1 rounded-full mb-5 tracking-wider uppercase animate-pulse-subtle backdrop-blur-sm">
         {t("hero.badge")}
       </span>
-      <h1 className="text-[clamp(32px,5vw,58px)] font-black text-foreground leading-[1.05] mb-4 tracking-tight">
+      <h1 className="text-[clamp(32px,5vw,58px)] font-black text-white leading-[1.05] mb-4 tracking-tight drop-shadow-[0_2px_20px_rgba(74,222,128,0.15)]">
         {t("hero.title1")}{" "}
-        <span className="bg-gradient-to-r from-primary via-primary-dark to-primary bg-[length:200%_auto] bg-clip-text text-transparent animate-shimmer">
+        <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-green-300 bg-[length:200%_auto] bg-clip-text text-transparent animate-shimmer">
           {t("hero.title2")}
         </span>
       </h1>
-      <p className="text-t3 text-[15px] sm:text-base max-w-[520px] mx-auto mb-7 leading-relaxed">
+      <p className="text-white/60 text-[15px] sm:text-base max-w-[520px] mx-auto mb-8 leading-relaxed">
         {t("hero.subtitle")}
       </p>
 
-      {/* Premium Search */}
+      {/* Premium Search — glass on dark */}
       <div className={`relative max-w-[520px] mx-auto aurora-border ${focused ? "focus-within" : ""}`}>
         <div
-          className={`relative z-[1] flex items-center bg-card/90 backdrop-blur-xl rounded-full py-[7px] pl-[22px] pr-[7px] gap-2.5 border-[1.5px] transition-all duration-200 ${
+          className={`relative z-[1] flex items-center rounded-full py-[7px] pl-[22px] pr-[7px] gap-2.5 border-[1.5px] transition-all duration-200 backdrop-blur-xl ${
             focused
-              ? "border-transparent shadow-[0_8px_32px_-4px_rgba(22,163,74,0.2),0_2px_8px_rgba(22,163,74,0.1)]"
-              : "border-border shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1),0_1px_4px_rgba(0,0,0,0.04)]"
+              ? "bg-white/10 border-primary/40 shadow-[0_8px_32px_-4px_rgba(74,222,128,0.25),0_0_60px_-10px_rgba(74,222,128,0.1)]"
+              : "bg-white/[0.07] border-white/[0.12] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.3)]"
           }`}
         >
           <Search
             className={`flex-shrink-0 w-[18px] h-[18px] transition-all duration-300 ${
-              focused ? "text-primary scale-115 -rotate-[5deg]" : "text-t4"
+              focused ? "text-primary scale-115 -rotate-[5deg]" : "text-white/40"
             }`}
           />
           <input
@@ -85,20 +81,20 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             placeholder={t("hero.search")}
-            className="flex-1 border-none outline-none text-[15px] text-foreground bg-transparent font-sans tracking-tight min-w-0 placeholder:text-t4 placeholder:font-normal"
+            className="flex-1 border-none outline-none text-[15px] text-white bg-transparent font-sans tracking-tight min-w-0 placeholder:text-white/30 placeholder:font-normal"
           />
           {searchQuery.length > 0 && (
             <button
               onClick={() => onSearchChange("")}
-              className="flex-shrink-0 flex items-center justify-center w-[22px] h-[22px] rounded-full bg-transparent text-t4 hover:text-t2 hover:bg-secondary transition-colors"
+              className="flex-shrink-0 flex items-center justify-center w-[22px] h-[22px] rounded-full bg-transparent text-white/40 hover:text-white hover:bg-white/10 transition-colors"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           )}
           {!searchQuery && !focused && (
-            <div className="flex-shrink-0 flex items-center gap-[3px] opacity-55">
-              <kbd className="bg-secondary border border-border rounded-[5px] px-1.5 py-0.5 text-[10.5px] font-semibold text-t3 leading-snug">Ctrl</kbd>
-              <kbd className="bg-secondary border border-border rounded-[5px] px-1.5 py-0.5 text-[10.5px] font-semibold text-t3 leading-snug">K</kbd>
+            <div className="flex-shrink-0 flex items-center gap-[3px] opacity-40">
+              <kbd className="bg-white/10 border border-white/10 rounded-[5px] px-1.5 py-0.5 text-[10.5px] font-semibold text-white/50 leading-snug">Ctrl</kbd>
+              <kbd className="bg-white/10 border border-white/10 rounded-[5px] px-1.5 py-0.5 text-[10.5px] font-semibold text-white/50 leading-snug">K</kbd>
             </div>
           )}
           <button
@@ -110,10 +106,10 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
         </div>
       </div>
       {searchQuery && resultCount !== undefined && (
-        <p className="text-center mt-3.5 text-xs text-t4 font-medium animate-fade-in">
+        <p className="text-center mt-3.5 text-xs text-white/50 font-medium animate-fade-in">
           {resultCount > 0 ? (
             <>
-              {t("hero.found")} <strong className="text-primary-dark font-bold">{resultCount}</strong>{" "}
+              {t("hero.found")} <strong className="text-primary font-bold">{resultCount}</strong>{" "}
               {conceptWord(resultCount)}
             </>
           ) : (

@@ -19,7 +19,6 @@ function useCountUp(target: number, duration = 1500) {
           const animate = (now: number) => {
             const elapsed = now - start;
             const progress = Math.min(elapsed / duration, 1);
-            // ease-out cubic
             const eased = 1 - Math.pow(1 - progress, 3);
             setCount(Math.round(eased * target));
             if (progress < 1) requestAnimationFrame(animate);
@@ -45,7 +44,7 @@ export default function StatsBar() {
   const s3 = useCountUp(hotCount);
 
   return (
-    <div className="flex justify-center gap-8 sm:gap-16 my-10 glass rounded-2xl py-6 px-8 mx-auto max-w-fit border border-border/40">
+    <div className="flex justify-center gap-8 sm:gap-16 my-10 bg-white/70 backdrop-blur-xl rounded-2xl py-6 px-8 mx-auto max-w-fit border border-border/50 shadow-card">
       <div ref={s1.ref} className="text-center group">
         <div className="relative">
           <div className="text-[42px] sm:text-[52px] font-black text-foreground tracking-tighter leading-none transition-transform duration-300 group-hover:scale-110">
