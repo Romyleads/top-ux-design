@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 
-// Canvas-based particle network
 function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -12,6 +11,7 @@ function ParticleCanvas() {
 
     let animId: number;
     let w = 0, h = 0;
+    let mouseX = -1000, mouseY = -1000;
 
     const resize = () => {
       w = canvas.width = window.innerWidth;
@@ -20,58 +20,82 @@ function ParticleCanvas() {
     resize();
     window.addEventListener("resize", resize);
 
-    const PARTICLE_COUNT = 80;
+    const handleMouse = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
+    window.addEventListener("mousemove", handleMouse);
+
+    const PARTICLE_COUNT = 90;
     const particles = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: Math.random() * 2000,
       y: Math.random() * 4000,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: -Math.random() * 0.5 - 0.15,
-      size: Math.random() * 3 + 1,
-      opacity: Math.random() * 0.5 + 0.15,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      size: Math.random() * 2 + 0.8,
       pulse: Math.random() * Math.PI * 2,
+      hue: 142 + Math.random() * 30 - 15, // green range with slight variation
     }));
 
-    const MAX_DIST = 160;
+    const MAX_DIST = 150;
+    const MOUSE_DIST = 200;
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
 
       for (const p of particles) {
+        // Mouse interaction - subtle push
+        const mdx = p.x - mouseX;
+        const mdy = p.y - mouseY;
+        const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (mDist < MOUSE_DIST && mDist > 0) {
+          const force = (MOUSE_DIST - mDist) / MOUSE_DIST * 0.015;
+          p.vx += (mdx / mDist) * force;
+          p.vy += (mdy / mDist) * force;
+        }
+
+        // Damping
+        p.vx *= 0.999;
+        p.vy *= 0.999;
+
         p.x += p.vx;
         p.y += p.vy;
-        p.pulse += 0.02;
+        p.pulse += 0.015;
 
-        if (p.x < 0) p.x = w;
-        if (p.x > w) p.x = 0;
-        if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
-        if (p.y > h + 10) { p.y = -10; p.x = Math.random() * w; }
+        if (p.x < -20) p.x = w + 20;
+        if (p.x > w + 20) p.x = -20;
+        if (p.y < -20) p.y = h + 20;
+        if (p.y > h + 20) p.y = -20;
 
-        const alpha = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+        const alpha = 0.3 + 0.25 * Math.sin(p.pulse);
+
+        // Glow
+        const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 6);
+        grd.addColorStop(0, `hsla(${p.hue}, 80%, 60%, ${alpha * 0.5})`);
+        grd.addColorStop(1, `hsla(${p.hue}, 80%, 60%, 0)`);
+        ctx.fillStyle = grd;
+        ctx.fillRect(p.x - p.size * 6, p.y - p.size * 6, p.size * 12, p.size * 12);
+
+        // Core dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(34, 197, 94, ${alpha})`;
-        ctx.fill();
-
-        // Glow effect
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(34, 197, 94, ${alpha * 0.15})`;
+        ctx.fillStyle = `hsla(${p.hue}, 85%, 65%, ${alpha})`;
         ctx.fill();
       }
 
-      // Connection lines
+      // Connections
+      ctx.lineWidth = 0.6;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MAX_DIST) {
-            const alpha = 0.12 * (1 - dist / MAX_DIST);
+            const alpha = 0.08 * (1 - dist / MAX_DIST);
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(34, 197, 94, ${alpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `hsla(142, 70%, 55%, ${alpha})`;
             ctx.stroke();
           }
         }
@@ -84,50 +108,42 @@ function ParticleCanvas() {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", handleMouse);
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-    />
-  );
+  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />;
 }
 
-// Floating SVG marketing icons
 const icons = [
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="4,40 16,28 24,34 44,8" /><polyline points="34,8 44,8 44,18" /></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="24" cy="24" r="20" /><polyline points="24,12 24,24 34,28" /></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="24" cy="24" r="20" /><circle cx="24" cy="24" r="13" /><circle cx="24" cy="24" r="6" /></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="6" y="28" width="8" height="16" rx="1" /><rect x="20" y="18" width="8" height="26" rx="1" /><rect x="34" y="8" width="8" height="36" rx="1" /></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2"><text x="6" y="34" fontSize="28" fill="currentColor" stroke="none" fontWeight="bold">%</text></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="24" cy="24" r="20" /><path d="M24 4 L24 24 L44 24" /></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2"><line x1="24" y1="42" x2="24" y2="8" /><polyline points="14,18 24,8 34,18" /></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2"><text x="10" y="38" fontSize="34" fill="currentColor" stroke="none" fontWeight="bold">€</text></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="28,4 12,28 24,28 20,44 36,20 24,20" /></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="20" cy="20" r="14" /><line x1="30" y1="30" x2="42" y2="42" /></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2"><text x="12" y="38" fontSize="34" fill="currentColor" stroke="none" fontWeight="bold">$</text></svg>,
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 6h40L28 24v14l-8 4V24L4 6z" /></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2"><polyline points="4,40 16,28 24,34 44,8" /><polyline points="34,8 44,8 44,18" /></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="24" cy="24" r="20" /><polyline points="24,12 24,24 34,28" /></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="24" cy="24" r="20" /><circle cx="24" cy="24" r="13" /><circle cx="24" cy="24" r="6" /></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="6" y="28" width="8" height="16" rx="1" /><rect x="20" y="18" width="8" height="26" rx="1" /><rect x="34" y="8" width="8" height="36" rx="1" /></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><text x="6" y="34" fontSize="28" fill="currentColor" stroke="none" fontWeight="bold">%</text></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="24" cy="24" r="20" /><path d="M24 4 L24 24 L44 24" /></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="24" y1="42" x2="24" y2="8" /><polyline points="14,18 24,8 34,18" /></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><text x="10" y="38" fontSize="34" fill="currentColor" stroke="none" fontWeight="bold">€</text></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2"><polygon points="28,4 12,28 24,28 20,44 36,20 24,20" /></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="20" cy="20" r="14" /><line x1="30" y1="30" x2="42" y2="42" /></svg>,
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M4 6h40L28 24v14l-8 4V24L4 6z" /></svg>,
 ];
 
 const floatingItems = [
-  { iconIdx: 0, size: 56, x: "6%", y: "8%", delay: 0, duration: 28, drift: 1 },
-  { iconIdx: 1, size: 44, x: "82%", y: "10%", delay: 3, duration: 25, drift: 2 },
-  { iconIdx: 2, size: 50, x: "42%", y: "4%", delay: 1, duration: 32, drift: 3 },
-  { iconIdx: 3, size: 42, x: "22%", y: "78%", delay: 5, duration: 27, drift: 1 },
-  { iconIdx: 4, size: 36, x: "32%", y: "48%", delay: 7, duration: 30, drift: 2 },
-  { iconIdx: 5, size: 46, x: "4%", y: "40%", delay: 2, duration: 33, drift: 3 },
-  { iconIdx: 6, size: 38, x: "52%", y: "85%", delay: 9, duration: 24, drift: 1 },
-  { iconIdx: 7, size: 34, x: "86%", y: "82%", delay: 11, duration: 28, drift: 2 },
-  { iconIdx: 8, size: 40, x: "2%", y: "85%", delay: 4, duration: 30, drift: 3 },
-  { iconIdx: 9, size: 36, x: "48%", y: "35%", delay: 6, duration: 26, drift: 1 },
-  { iconIdx: 0, size: 40, x: "75%", y: "55%", delay: 8, duration: 23, drift: 2 },
-  { iconIdx: 10, size: 34, x: "90%", y: "38%", delay: 10, duration: 31, drift: 3 },
-  { iconIdx: 11, size: 42, x: "14%", y: "62%", delay: 1, duration: 27, drift: 1 },
-  { iconIdx: 1, size: 38, x: "16%", y: "22%", delay: 13, duration: 25, drift: 2 },
-  { iconIdx: 3, size: 46, x: "62%", y: "22%", delay: 12, duration: 29, drift: 3 },
-  { iconIdx: 2, size: 32, x: "70%", y: "72%", delay: 14, duration: 22, drift: 1 },
+  { iconIdx: 0, size: 48, x: "6%", y: "8%", delay: 0, duration: 30, drift: 1 },
+  { iconIdx: 1, size: 38, x: "84%", y: "12%", delay: 4, duration: 26, drift: 2 },
+  { iconIdx: 2, size: 42, x: "44%", y: "5%", delay: 2, duration: 34, drift: 3 },
+  { iconIdx: 3, size: 36, x: "24%", y: "80%", delay: 6, duration: 28, drift: 1 },
+  { iconIdx: 4, size: 30, x: "34%", y: "50%", delay: 8, duration: 32, drift: 2 },
+  { iconIdx: 5, size: 40, x: "4%", y: "42%", delay: 3, duration: 35, drift: 3 },
+  { iconIdx: 6, size: 32, x: "54%", y: "86%", delay: 10, duration: 25, drift: 1 },
+  { iconIdx: 7, size: 28, x: "88%", y: "84%", delay: 12, duration: 29, drift: 2 },
+  { iconIdx: 8, size: 34, x: "3%", y: "86%", delay: 5, duration: 31, drift: 3 },
+  { iconIdx: 9, size: 30, x: "50%", y: "36%", delay: 7, duration: 27, drift: 1 },
+  { iconIdx: 0, size: 34, x: "76%", y: "56%", delay: 9, duration: 24, drift: 2 },
+  { iconIdx: 10, size: 36, x: "15%", y: "64%", delay: 1, duration: 28, drift: 3 },
+  { iconIdx: 1, size: 32, x: "18%", y: "24%", delay: 14, duration: 26, drift: 1 },
+  { iconIdx: 3, size: 40, x: "64%", y: "24%", delay: 13, duration: 30, drift: 2 },
 ];
 
 export default function AnimatedBackground() {
@@ -135,17 +151,16 @@ export default function AnimatedBackground() {
     <>
       <ParticleCanvas />
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Gradient orbs */}
-        <div className="absolute top-[5%] left-[3%] w-[600px] h-[600px] rounded-full bg-primary/[.12] blur-[120px] animate-float" />
-        <div className="absolute top-[40%] right-[2%] w-[500px] h-[500px] rounded-full bg-primary/[.08] blur-[100px] animate-float-delayed" />
-        <div className="absolute bottom-[5%] left-[25%] w-[450px] h-[450px] rounded-full bg-primary/[.06] blur-[90px] animate-float" />
-        <div className="absolute top-[65%] left-[55%] w-[350px] h-[350px] rounded-full bg-primary/[.07] blur-[80px] animate-float-delayed" />
+        {/* Subtle radial gradient from center */}
+        <div className="absolute inset-0" style={{
+          background: `radial-gradient(ellipse 80% 60% at 50% 30%, hsla(142, 60%, 50%, 0.04) 0%, transparent 70%)`
+        }} />
 
-        {/* Floating marketing icons — much more visible */}
+        {/* Floating marketing icons */}
         {floatingItems.map((item, i) => (
           <div
             key={i}
-            className={`absolute text-primary/20 animate-drift-${item.drift}`}
+            className={`absolute text-primary/[.14] animate-drift-${item.drift}`}
             style={{
               left: item.x,
               top: item.y,
@@ -159,14 +174,11 @@ export default function AnimatedBackground() {
           </div>
         ))}
 
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[.03]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(34,197,94,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(34,197,94,0.4) 1px, transparent 1px)`,
-            backgroundSize: "60px 60px",
-          }}
-        />
+        {/* Dot grid */}
+        <div className="absolute inset-0 opacity-[.035]" style={{
+          backgroundImage: `radial-gradient(circle, hsla(142, 70%, 50%, 0.8) 1px, transparent 1px)`,
+          backgroundSize: "40px 40px",
+        }} />
       </div>
     </>
   );
