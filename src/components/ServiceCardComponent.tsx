@@ -103,12 +103,13 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           className="w-full h-full object-cover transition-transform duration-[550ms] ease-out group-hover:scale-[1.07]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-foreground/55" />
-        <span className="absolute bottom-[9px] right-[10px] z-[2] bg-card/[.88] backdrop-blur-lg text-t2 text-[10px] font-semibold px-[9px] py-[3px] rounded-full">
+        <span className="absolute bottom-[9px] right-[10px] z-[2] bg-card/[.88] backdrop-blur-lg text-t2 text-[10px] font-semibold px-[9px] py-[3px] rounded-full inline-flex items-center gap-1">
+          {(() => { const TagIcon = tagIcons[tagKeyMap[service.tag] || ""]; return TagIcon ? <TagIcon className="w-3 h-3" strokeWidth={2} /> : null; })()}
           {serviceTag}
         </span>
         {service.hot && (
-          <span className="absolute top-[10px] left-[10px] z-[2] bg-amber text-primary-foreground text-[9.5px] font-bold px-[9px] py-[3px] rounded-full tracking-wider animate-pulse-subtle">
-            🔥 HOT
+          <span className="absolute top-[10px] left-[10px] z-[2] bg-amber text-primary-foreground text-[9.5px] font-bold px-[9px] py-[3px] rounded-full tracking-wider animate-pulse-subtle inline-flex items-center gap-1">
+            <Flame className="w-3 h-3" strokeWidth={2.5} /> HOT
           </span>
         )}
       </div>
