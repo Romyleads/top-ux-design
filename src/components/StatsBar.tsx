@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { services, blocks } from "@/data/services";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { LayoutGrid, Layers, Flame } from "lucide-react";
 
 function useCountUp(target: number, duration = 1500) {
   const [count, setCount] = useState(0);
@@ -10,7 +11,6 @@ function useCountUp(target: number, duration = 1500) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
@@ -35,6 +35,34 @@ function useCountUp(target: number, duration = 1500) {
   return { count, ref };
 }
 
+interface StatItemProps {
+  countRef: React.RefObject<HTMLDivElement>;
+  count: number;
+  label: string;
+  icon: React.ElementType;
+  accent?: boolean;
+}
+
+function StatItem({ countRef, count, label, icon: Icon, accent }: StatItemProps) {
+  return (
+    <div ref={countRef} className="text-center group flex-1">
+      <div className="flex items-center justify-center gap-2 mb-1.5">
+        <Icon className={`w-4 h-4 ${accent ? "text-primary" : "text-t3"}`} strokeWidth={1.8} />
+        <span className={`text-[36px] sm:text-[44px] font-black tracking-tighter leading-none transition-transform duration-300 group-hover:scale-110 ${
+          accent
+            ? "bg-gradient-to-br from-primary to-primary-dark bg-clip-text text-transparent"
+            : "text-foreground"
+        }`}>
+          {count}
+        </span>
+      </div>
+      <div className={`text-[10px] font-bold uppercase tracking-[0.15em] ${accent ? "text-primary-dark" : "text-t4"}`}>
+        {label}
+      </div>
+    </div>
+  );
+}
+
 export default function StatsBar() {
   const hotCount = services.filter((s) => s.hot).length;
   const { t } = useLanguage();
@@ -44,30 +72,12 @@ export default function StatsBar() {
   const s3 = useCountUp(hotCount);
 
   return (
-    <div className="flex justify-center gap-8 sm:gap-16 my-10 bg-white/70 backdrop-blur-xl rounded-2xl py-6 px-8 mx-auto max-w-fit border border-border/50 shadow-card">
-      <div ref={s1.ref} className="text-center group">
-        <div className="relative">
-          <div className="text-[42px] sm:text-[52px] font-black text-foreground tracking-tighter leading-none transition-transform duration-300 group-hover:scale-110">
-            {s1.count}
-          </div>
-          <div className="absolute -top-1 -right-2 text-[10px] opacity-40">✦</div>
-        </div>
-        <div className="text-[11.5px] text-t4 mt-1.5 font-semibold uppercase tracking-widest">{t("stats.concepts")}</div>
-      </div>
-      <div className="w-px h-14 self-center bg-border/60" />
-      <div ref={s2.ref} className="text-center group">
-        <div className="text-[42px] sm:text-[52px] font-black text-foreground tracking-tighter leading-none transition-transform duration-300 group-hover:scale-110">
-          {s2.count}
-        </div>
-        <div className="text-[11.5px] text-t4 mt-1.5 font-semibold uppercase tracking-widest">{t("stats.blocks")}</div>
-      </div>
-      <div className="w-px h-14 self-center bg-border/60" />
-      <div ref={s3.ref} className="text-center group">
-        <div className="text-[42px] sm:text-[52px] font-black bg-gradient-to-br from-primary to-primary-dark bg-clip-text text-transparent tracking-tighter leading-none transition-transform duration-300 group-hover:scale-110">
-          {s3.count}
-        </div>
-        <div className="text-[11.5px] text-primary-dark mt-1.5 font-semibold uppercase tracking-widest">{t("stats.trending")}</div>
-      </div>
+    <div className="flex items-center my-10 bg-white/70 backdrop-blur-xl rounded-2xl py-5 px-6 sm:px-10 mx-auto max-w-md border border-border/50 shadow-card">
+      <StatItem countRef={s1.ref} count={s1.count} label={t("stats.concepts")} icon={LayoutGrid} />
+      <div className="w-px h-10 bg-border/40 mx-2" />
+      <StatItem countRef={s2.ref} count={s2.count} label={t("stats.blocks")} icon={Layers} />
+      <div className="w-px h-10 bg-border/40 mx-2" />
+      <StatItem countRef={s3.ref} count={s3.count} label={t("stats.trending")} icon={Flame} accent />
     </div>
   );
 }

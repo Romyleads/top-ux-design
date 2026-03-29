@@ -45,16 +45,18 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
 
   return (
     <section ref={sectionRef} className="mb-20">
-      {/* Block Header — centered premium */}
+      {/* Block Header */}
       <div className={`text-center mb-10 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-        <div className="inline-flex items-center gap-3">
-          <div className="h-[1px] w-10 bg-gradient-to-r from-transparent to-border/60" />
-          <div className="w-10 h-10 rounded-xl bg-primary/[.08] border border-primary/[.12] flex items-center justify-center">
-            {IconComponent && <IconComponent className="w-[18px] h-[18px] text-primary" strokeWidth={1.8} />}
+        <div className="inline-flex items-center gap-4">
+          <div className="h-[1.5px] w-16 bg-gradient-to-r from-transparent via-primary/20 to-primary/40" />
+          <div className="w-9 h-9 rounded-lg bg-primary/[.08] border border-primary/[.15] flex items-center justify-center">
+            {IconComponent && <IconComponent className="w-4 h-4 text-primary" strokeWidth={1.8} />}
           </div>
-          <h2 className="text-xl font-bold text-foreground tracking-tight">{blockTitle}</h2>
-          <span className="text-[11px] text-t4 font-medium">{cards.length}</span>
-          <div className="h-[1px] w-10 bg-gradient-to-l from-transparent to-border/60" />
+          <h2 className="text-lg font-bold text-foreground tracking-tight">{blockTitle}</h2>
+          <div className="w-6 h-6 rounded-full bg-primary/[.07] flex items-center justify-center">
+            <span className="text-[11px] font-bold text-primary-dark">{cards.length}</span>
+          </div>
+          <div className="h-[1.5px] w-16 bg-gradient-to-l from-transparent via-primary/20 to-primary/40" />
         </div>
       </div>
 
