@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// Full-page canvas with network nodes + flowing energy lines
+// Full-page canvas with network nodes — covers entire document height
 function FullPageCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -30,62 +30,75 @@ function FullPageCanvas() {
     const onScroll = () => { scrollY = window.scrollY; };
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    // Nodes for network — spread across viewport
-    const NODE_COUNT = 55;
+    // More nodes, faster movement
+    const NODE_COUNT = 80;
     const nodes = Array.from({ length: NODE_COUNT }, () => ({
       x: Math.random() * 2000,
-      y: Math.random() * 1200,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      radius: Math.random() * 1.8 + 1,
+      y: Math.random() * 1400,
+      vx: (Math.random() - 0.5) * 0.8,
+      vy: (Math.random() - 0.5) * 0.8,
+      radius: Math.random() * 2 + 0.8,
+      pulse: Math.random() * Math.PI * 2,
     }));
 
-    const CONNECT_DIST = 160;
-    const heroH = 550;
+    const CONNECT_DIST = 180;
+    const heroH = 600;
 
     const draw = () => {
-      time += 0.003;
+      time += 0.006;
       ctx.clearRect(0, 0, w, h);
 
       const isHeroVisible = scrollY < heroH;
+      const docH = document.documentElement.scrollHeight;
+      const footerStart = docH - 400;
+      const isFooterVisible = scrollY + h > footerStart;
 
       // Update nodes
       for (const n of nodes) {
+        // Mouse repulsion
         const dx = n.x - mouseX;
         const dy = n.y - mouseY;
         const md = Math.sqrt(dx * dx + dy * dy);
-        if (md < 150 && md > 0) {
-          const f = (150 - md) / 150 * 0.015;
+        if (md < 180 && md > 0) {
+          const f = (180 - md) / 180 * 0.02;
           n.vx += (dx / md) * f;
           n.vy += (dy / md) * f;
         }
-        n.vx *= 0.998;
-        n.vy *= 0.998;
+        // Gentle drift
+        n.vx += Math.sin(time + n.pulse) * 0.003;
+        n.vy += Math.cos(time * 0.7 + n.pulse) * 0.003;
+        n.vx *= 0.997;
+        n.vy *= 0.997;
         n.x += n.vx;
         n.y += n.vy;
-        if (n.x < -30) n.x = w + 30;
-        if (n.x > w + 30) n.x = -30;
-        if (n.y < -30) n.y = h + 30;
-        if (n.y > h + 30) n.y = -30;
+        if (n.x < -40) n.x = w + 40;
+        if (n.x > w + 40) n.x = -40;
+        if (n.y < -40) n.y = h + 40;
+        if (n.y > h + 40) n.y = -40;
       }
 
       // Draw connections
-      ctx.lineWidth = 0.8;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECT_DIST) {
-            const baseAlpha = 0.12 * (1 - dist / CONNECT_DIST);
-            // In hero (dark bg): bright green. Below hero (light bg): subtle gray-green
+            const baseAlpha = 0.15 * (1 - dist / CONNECT_DIST);
             const ny = Math.max(nodes[i].y, nodes[j].y);
-            const heroFade = isHeroVisible ? Math.max(0, 1 - (ny / h) * 0.3) : 0;
             
-            if (isHeroVisible && ny < h * 0.7) {
-              ctx.strokeStyle = `rgba(74, 222, 128, ${baseAlpha * (0.5 + heroFade * 0.5)})`;
+            // Bright in hero zone (top of viewport when scrolled to top)
+            // Bright in footer zone (bottom of viewport when scrolled to bottom)
+            const inHeroZone = isHeroVisible && ny < h * 0.65;
+            const inFooterZone = isFooterVisible && ny > h * 0.6;
+            
+            if (inHeroZone || inFooterZone) {
+              const pulse = 0.6 + Math.sin(time * 2 + i * 0.1) * 0.4;
+              ctx.strokeStyle = `rgba(74, 222, 128, ${baseAlpha * pulse})`;
+              ctx.lineWidth = 1;
             } else {
-              ctx.strokeStyle = `rgba(22, 163, 74, ${baseAlpha * 0.35})`;
+              ctx.strokeStyle = `rgba(22, 163, 74, ${baseAlpha * 0.3})`;
+              ctx.lineWidth = 0.6;
             }
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -95,38 +108,63 @@ function FullPageCanvas() {
         }
       }
 
-      // Draw nodes
+      // Draw nodes with pulsing glow
       for (const n of nodes) {
-        const isInHero = isHeroVisible && n.y < h * 0.65;
-        const alpha = isInHero ? 0.7 : 0.3;
-        const glowAlpha = isInHero ? 0.2 : 0.06;
-        const color = isInHero ? "74, 222, 128" : "22, 163, 74";
+        const inHero = isHeroVisible && n.y < h * 0.6;
+        const inFooter = isFooterVisible && n.y > h * 0.6;
+        const active = inHero || inFooter;
+        
+        const pulseScale = 1 + Math.sin(time * 3 + n.pulse) * 0.3;
+        const alpha = active ? 0.8 * pulseScale : 0.25;
+        const glowAlpha = active ? 0.25 * pulseScale : 0.04;
+        const color = active ? "74, 222, 128" : "22, 163, 74";
+        const glowRadius = active ? n.radius * 10 : n.radius * 5;
 
         // Glow
-        const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.radius * 7);
+        const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowRadius);
         grd.addColorStop(0, `rgba(${color}, ${glowAlpha})`);
         grd.addColorStop(1, `rgba(${color}, 0)`);
         ctx.fillStyle = grd;
         ctx.beginPath();
-        ctx.arc(n.x, n.y, n.radius * 7, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, glowRadius, 0, Math.PI * 2);
         ctx.fill();
 
         // Core
         ctx.fillStyle = `rgba(${color}, ${alpha})`;
         ctx.beginPath();
-        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, n.radius * (active ? pulseScale : 1), 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // Scan line (hero only)
+      // Energy waves — flowing horizontal lines
+      if (isHeroVisible || isFooterVisible) {
+        for (let wave = 0; wave < 3; wave++) {
+          ctx.beginPath();
+          const baseY = isHeroVisible 
+            ? h * 0.15 + wave * h * 0.15
+            : h * 0.7 + wave * h * 0.08;
+          const waveAlpha = 0.03 + Math.sin(time * 2 + wave) * 0.015;
+          ctx.strokeStyle = `rgba(74, 222, 128, ${waveAlpha})`;
+          ctx.lineWidth = 1.5;
+          for (let x = 0; x <= w; x += 4) {
+            const y = baseY + Math.sin(x * 0.008 + time * 3 + wave * 2) * 20
+                             + Math.sin(x * 0.003 + time * 1.5) * 15;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+      }
+
+      // Scan line
       if (isHeroVisible) {
-        const scanY = (Math.sin(time * 0.8) + 1) / 2 * Math.min(heroH, h * 0.6);
-        const scanGrd = ctx.createLinearGradient(0, scanY - 25, 0, scanY + 25);
+        const scanY = (Math.sin(time * 1.2) + 1) / 2 * Math.min(heroH, h * 0.6);
+        const scanGrd = ctx.createLinearGradient(0, scanY - 30, 0, scanY + 30);
         scanGrd.addColorStop(0, "rgba(74, 222, 128, 0)");
-        scanGrd.addColorStop(0.5, "rgba(74, 222, 128, 0.025)");
+        scanGrd.addColorStop(0.5, "rgba(74, 222, 128, 0.035)");
         scanGrd.addColorStop(1, "rgba(74, 222, 128, 0)");
         ctx.fillStyle = scanGrd;
-        ctx.fillRect(0, scanY - 25, w, 50);
+        ctx.fillRect(0, scanY - 30, w, 60);
       }
 
       animId = requestAnimationFrame(draw);
@@ -164,7 +202,7 @@ export default function AnimatedBackground() {
         background: `radial-gradient(ellipse, hsl(142, 71%, 45%) 0%, transparent 70%)`
       }} />
 
-      {/* Accent glows */}
+      {/* Accent glows — animated */}
       <div className="absolute top-[15%] right-[10%] w-[300px] h-[300px] rounded-full opacity-10 animate-float z-0" style={{
         background: `radial-gradient(circle, hsl(160, 80%, 50%) 0%, transparent 70%)`
       }} />
