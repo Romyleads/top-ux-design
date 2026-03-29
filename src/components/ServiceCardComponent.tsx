@@ -70,15 +70,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   return (
     <div
-      className={`rounded-[22px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group ${
-        isOrdered ? "ring-[2.5px] ring-primary glow-green" : ""
+      className={`rounded-[20px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-2 group ${
+        isOrdered ? "ring-[2px] ring-primary glow-green" : ""
       }`}
       style={{ 
-        background: 'hsl(0 0% 100%)',
+        background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 99%) 100%)',
         boxShadow: isOrdered 
           ? '0 0 30px -8px rgba(34, 197, 94, 0.35)' 
-          : '0 2px 8px rgba(0,0,0,0.04), 0 12px 48px -16px rgba(0,0,0,0.10)',
-        border: '1px solid hsl(220 13% 91% / 0.7)',
+          : '0 1px 2px rgba(0,0,0,0.04), 0 8px 32px -12px rgba(0,0,0,0.08)',
+        border: '1px solid hsl(220 13% 91% / 0.5)',
       }}
     >
       {isOrdered && (
