@@ -32,18 +32,25 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
   const blockSubtitle = t(`block.${block.id}.subtitle`);
 
   return (
-    <section ref={sectionRef} className="mb-24">
+    <section ref={sectionRef} className="mb-16">
       {/* Block Header */}
-      <div className={`text-center mb-10 relative transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-        <span className="text-[34px] leading-none block mx-auto mb-3.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.12)] transition-transform duration-300 hover:scale-[1.08] hover:-translate-y-[2px]">
-          {block.icon}
-        </span>
-        <span className="text-[26px] font-extrabold text-foreground tracking-tight leading-[1.1] block mb-1.5">{blockTitle}</span>
-        <span className="text-sm text-t4 block">{blockSubtitle}</span>
-        <span className="inline-block mt-3.5 text-[11px] font-semibold text-primary-dark bg-gradient-to-br from-primary/[.08] to-primary/[.06] border border-primary/[.18] px-3 py-[3px] rounded-full tracking-wider">
-          {cards.length} {t("block.concepts")}
-        </span>
-        <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full mx-auto mt-3.5" />
+      <div className={`text-center mb-8 relative transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <div className="inline-flex items-center gap-3 bg-white/60 backdrop-blur-sm border border-border/40 rounded-2xl px-6 py-3 mb-3 shadow-sm">
+          <span className="text-[28px] leading-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
+            {block.icon}
+          </span>
+          <div className="text-left">
+            <span className="text-[22px] font-extrabold text-foreground tracking-tight leading-[1.1] block">{blockTitle}</span>
+            <span className="text-xs text-t4 block">{blockSubtitle}</span>
+          </div>
+        </div>
+        <div className="flex items-center justify-center gap-3">
+          <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-primary/30" />
+          <span className="text-[10.5px] font-semibold text-primary-dark bg-primary/[.06] border border-primary/[.15] px-2.5 py-[2px] rounded-full tracking-wider">
+            {cards.length} {t("block.concepts")}
+          </span>
+          <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-primary/30" />
+        </div>
       </div>
 
       {/* Cards Grid */}
