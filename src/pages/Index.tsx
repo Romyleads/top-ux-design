@@ -110,7 +110,7 @@ export default function Index() {
         )}
 
         <footer className="relative mt-20 -mx-7 max-sm:-mx-3.5 px-7 max-sm:px-3.5 py-14 text-center overflow-hidden border-t border-primary/10" style={{
-          background: `linear-gradient(180deg, hsl(0,0%,99%) 0%, hsl(145,30%,95%) 50%, hsl(150,25%,90%) 100%)`
+          background: `linear-gradient(180deg, hsl(220,14%,92%) 0%, hsl(145,20%,88%) 50%, hsl(150,18%,84%) 100%)`
         }}>
           {/* Soft glow */}
           <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[500px] h-[200px] rounded-full opacity-20" style={{
