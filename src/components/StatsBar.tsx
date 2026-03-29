@@ -111,7 +111,7 @@ export default function StatsBar() {
   const { containerRef, offsets } = useParallax();
 
   return (
-    <div ref={containerRef} className="flex items-center justify-center my-6 mx-auto max-w-lg gap-6 sm:gap-10 overflow-visible">
+    <div ref={containerRef} className="flex items-center justify-center my-4 mx-auto max-w-lg gap-6 sm:gap-10 overflow-visible py-4">
       <StatItem countRef={s1.ref} count={s1.count} label={t("stats.concepts")} icon={LayoutGrid} offsetY={offsets[0]} />
       <StatItem countRef={s2.ref} count={s2.count} label={t("stats.blocks")} icon={Layers} offsetY={offsets[1]} />
       <StatItem countRef={s3.ref} count={s3.count} label={t("stats.trending")} icon={Flame} accent offsetY={offsets[2]} />
