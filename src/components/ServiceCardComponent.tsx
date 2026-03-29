@@ -1,19 +1,40 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { 
+  ChevronDown, BarChart3, BookOpen, Package, FileText, Globe, Clapperboard, 
+  Smartphone, Image, Pencil, CreditCard, PackageOpen, BookMarked, PenLine, 
+  Trophy, GraduationCap, Mail, Droplets, Newspaper, Video, Home, Star, 
+  Target, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
+  Mic, Printer, Monitor, Palette, Megaphone, Flame
+} from "lucide-react";
 import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
 import { useLanguage } from "@/i18n/LanguageContext";
 
+// Premium Lucide icons per service
+const serviceIcons: Record<string, React.ElementType> = {
+  "presentation": BarChart3, "brochure": BookOpen, "catalog": Package, "flyer": FileText,
+  "landing-page": Globe, "video-ad": Clapperboard, "smm": Smartphone, "banners": Image,
+  "logo": Pencil, "business-card": CreditCard, "packaging": PackageOpen, "brandbook": BookMarked,
+  "blog-post": PenLine, "infographic": BarChart3, "white-paper": FileText, "case-study": Trophy,
+  "ebook": GraduationCap, "email-campaign": Mail, "drip-campaign": Droplets, "newsletter": Newspaper,
+  "webinar": Video, "product-tour": Home, "testimonials": Star, "ppc-google": Target,
+  "retargeting": RefreshCw, "native-ads": Newspaper, "landing-ad": Rocket, "ugc": Theater,
+  "ai-content": Bot, "saas-onboarding": Map, "linkedin-brand": Briefcase, "micro-saas": Zap,
+  "interactive-content": Gamepad2, "podcast": Mic,
+};
+
+// Premium Lucide icons per tag
+const tagIcons: Record<string, React.ElementType> = {
+  "tag.print": Printer, "tag.digital": Monitor, "tag.branding": Palette,
+  "tag.content": PenLine, "tag.email": Mail, "tag.video": Clapperboard,
+  "tag.ads": Megaphone, "tag.trend": Flame,
+};
+
 // Map raw Ukrainian tags to translation keys
 const tagKeyMap: Record<string, string> = {
-  "🖨 Друкована": "tag.print",
-  "💻 Цифрова": "tag.digital",
-  "🎨 Брендинг": "tag.branding",
-  "📝 Контент": "tag.content",
-  "📧 Email": "tag.email",
-  "🎬 Відео": "tag.video",
-  "📢 Реклама": "tag.ads",
-  "🔥 Тренд": "tag.trend",
+  "🖨 Друкована": "tag.print", "💻 Цифрова": "tag.digital", "🎨 Брендинг": "tag.branding",
+  "📝 Контент": "tag.content", "📧 Email": "tag.email", "🎬 Відео": "tag.video",
+  "📢 Реклама": "tag.ads", "🔥 Тренд": "tag.trend",
 };
 
 function tList(t: (key: string) => string, prefix: string): string[] {
