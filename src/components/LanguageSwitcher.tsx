@@ -40,7 +40,7 @@ export default function LanguageSwitcher() {
   const activeIdx = langs.findIndex((l) => l.code === locale);
 
   return (
-    <div className="relative inline-flex items-center bg-card/80 backdrop-blur-xl border border-border rounded-full p-[3px] shadow-card">
+    <div className="relative inline-flex items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
       {/* Sliding indicator */}
       <div
         className="absolute top-[3px] bottom-[3px] rounded-full gradient-primary shadow-green transition-all duration-300 ease-out"
