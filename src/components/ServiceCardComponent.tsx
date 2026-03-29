@@ -125,14 +125,14 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Card body */}
-      <div className="px-5 pt-4 flex-1 flex flex-col relative z-[1]">
+      <div className="px-5 pt-3.5 flex-1 flex flex-col relative z-[1]">
 
         {/* Goal */}
-        <div className="flex items-start gap-3 px-1 py-2 mb-2">
-          <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <img src={goalIcon} alt="" width={36} height={36} className="object-contain" />
+        <div className="flex items-start gap-2.5 py-1.5 mb-1.5">
+          <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
-          <span className="text-[12.5px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
+          <span className="text-[12px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
         </div>
 
         {/* Details expand — between goal and tier picker */}
