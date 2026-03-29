@@ -4,13 +4,12 @@ import {
   Smartphone, Image, Pencil, CreditCard, PackageOpen, BookMarked, PenLine, 
   Trophy, GraduationCap, Mail, Droplets, Newspaper, Video, Home, Star, 
   Target, RefreshCw, Rocket, Theater, Bot, Map, Briefcase, Zap, Gamepad2, 
-  Mic, Printer, Monitor, Palette, Megaphone, Flame
+  Mic, Flame
 } from "lucide-react";
 import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-// Premium Lucide icons per service
 const serviceIcons: Record<string, React.ElementType> = {
   "presentation": BarChart3, "brochure": BookOpen, "catalog": Package, "flyer": FileText,
   "landing-page": Globe, "video-ad": Clapperboard, "smm": Smartphone, "banners": Image,
@@ -23,26 +22,12 @@ const serviceIcons: Record<string, React.ElementType> = {
   "interactive-content": Gamepad2, "podcast": Mic,
 };
 
-// Premium Lucide icons per tag
-const tagIcons: Record<string, React.ElementType> = {
-  "tag.print": Printer, "tag.digital": Monitor, "tag.branding": Palette,
-  "tag.content": PenLine, "tag.email": Mail, "tag.video": Clapperboard,
-  "tag.ads": Megaphone, "tag.trend": Flame,
-};
-
-// Map raw Ukrainian tags to translation keys
-const tagKeyMap: Record<string, string> = {
-  "🖨 Друкована": "tag.print", "💻 Цифрова": "tag.digital", "🎨 Брендинг": "tag.branding",
-  "📝 Контент": "tag.content", "📧 Email": "tag.email", "🎬 Відео": "tag.video",
-  "📢 Реклама": "tag.ads", "🔥 Тренд": "tag.trend",
-};
-
 function tList(t: (key: string) => string, prefix: string): string[] {
   const result: string[] = [];
   for (let i = 0; i < 20; i++) {
     const key = `${prefix}.${i}`;
     const val = t(key);
-    if (val === key) break; // key not found, stop
+    if (val === key) break;
     result.push(val);
   }
   return result;
@@ -75,158 +60,166 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
   const serviceName = t(`service.${service.id}.name`);
   const serviceSubtitle = t(`service.${service.id}.subtitle`);
   const serviceGoal = t(`service.${service.id}.goal`);
-  const serviceTag = t(tagKeyMap[service.tag] || service.tag);
 
   const handleAdd = () => {
     onAddToCart(service.id, service.emoji, tier.price, tier.name);
   };
 
+  const SvcIcon = serviceIcons[service.id];
+
   return (
     <div
-      className={`glass-strong rounded-2xl overflow-hidden flex flex-col relative shadow-card transition-all duration-300 hover:-translate-y-2 hover:shadow-card-hover hover:scale-[1.015] group border border-border/50 ${
-        isOrdered ? "ring-[2.5px] ring-primary glow-green" : ""
+      className={`rounded-2xl overflow-hidden flex flex-col relative transition-all duration-300 hover:-translate-y-2 hover:scale-[1.01] group border ${
+        isOrdered 
+          ? "ring-[2.5px] ring-primary glow-green border-primary/30" 
+          : "border-border/40 hover:border-primary/20"
       }`}
-      style={{ transformStyle: "preserve-3d" }}
+      style={{ 
+        background: 'rgba(255,255,255,0.95)',
+        boxShadow: '0 4px 32px -8px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04)',
+      }}
     >
       {isOrdered && (
-        <div className="absolute top-[11px] right-[11px] w-[22px] h-[22px] rounded-full bg-primary text-primary-foreground text-[11px] font-bold flex items-center justify-center z-10 shadow-green">
+        <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center z-20 shadow-lg">
           ✓
         </div>
       )}
 
-      {/* Photo */}
-      <div className="relative h-[130px] overflow-hidden flex-shrink-0 bg-border">
+      {/* Photo — larger, with overlay */}
+      <div className="relative h-[180px] overflow-hidden flex-shrink-0">
         <img
           src={service.photo}
           alt={serviceName}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-[550ms] ease-out group-hover:scale-[1.07]"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-foreground/55" />
-        <span className="absolute bottom-[9px] right-[10px] z-[2] bg-card/[.88] backdrop-blur-lg text-t2 text-[10px] font-semibold px-[9px] py-[3px] rounded-full inline-flex items-center gap-1">
-          {(() => { const TagIcon = tagIcons[tagKeyMap[service.tag] || ""]; return TagIcon ? <TagIcon className="w-3 h-3" strokeWidth={2} /> : null; })()}
-          {serviceTag}
-        </span>
+        {/* Gradient overlay */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.6) 100%)'
+        }} />
+        
+        {/* Title overlay on photo */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 z-[2]">
+          <div className="flex items-center gap-2.5 mb-1">
+            <div className="w-9 h-9 rounded-xl bg-card/90 backdrop-blur-sm border border-border/30 flex items-center justify-center shadow-lg">
+              {SvcIcon ? <SvcIcon className="w-[18px] h-[18px] text-primary" strokeWidth={1.8} /> : <span className="text-lg">{service.emoji}</span>}
+            </div>
+            <h3 className="text-lg font-extrabold text-white leading-tight tracking-tight drop-shadow-lg">{serviceName}</h3>
+          </div>
+          <p className="text-[13px] text-white/75 leading-snug pl-[46px]">{serviceSubtitle}</p>
+        </div>
+
+        {/* HOT badge */}
         {service.hot && (
-          <span className="absolute top-[10px] left-[10px] z-[2] bg-amber text-primary-foreground text-[9.5px] font-bold px-[9px] py-[3px] rounded-full tracking-wider animate-pulse-subtle inline-flex items-center gap-1">
+          <span className="absolute top-3 left-3 z-[2] bg-amber text-primary-foreground text-[10px] font-bold px-2.5 py-1 rounded-full tracking-wider animate-pulse-subtle inline-flex items-center gap-1 shadow-lg">
             <Flame className="w-3 h-3" strokeWidth={2.5} /> HOT
           </span>
         )}
       </div>
 
       {/* Body */}
-      <div className="px-4 relative">
-        <div className="w-[44px] h-[44px] bg-card rounded-xl shadow-[0_4px_16px_rgba(15,23,42,0.12)] border border-border/60 flex items-center justify-center -mt-[22px] mb-2.5 relative z-[5] transition-all duration-200 group-hover:shadow-[0_6px_22px_rgba(15,23,42,0.16)] group-hover:-translate-y-[1px]">
-          {(() => { const SvcIcon = serviceIcons[service.id]; return SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-[20px]">{service.emoji}</span>; })()}
-        </div>
-        <h3 className="text-[17px] font-extrabold text-foreground leading-[1.15] tracking-tight mb-[3px]">{serviceName}</h3>
-        <p className="text-xs text-t4 leading-snug mb-1.5">{serviceSubtitle}</p>
-
+      <div className="px-4 pt-4 flex-1 flex flex-col">
         {/* Goal */}
-        <div className="flex items-start gap-1.5 bg-primary/[.06] border border-primary/[.12] rounded-lg px-2.5 py-2 mb-1">
-          <Target className="w-3.5 h-3.5 text-primary mt-[1px] flex-shrink-0" strokeWidth={2} />
-          <span className="text-[11px] text-t2 leading-snug font-medium">{serviceGoal}</span>
+        <div className="flex items-start gap-2 bg-primary/[.05] border border-primary/[.10] rounded-xl px-3 py-2.5 mb-4">
+          <Target className="w-4 h-4 text-primary mt-[1px] flex-shrink-0" strokeWidth={2} />
+          <span className="text-[12px] text-t2 leading-snug font-medium">{serviceGoal}</span>
         </div>
 
-        {/* Expand button */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="inline-flex items-center gap-1 bg-transparent border-none pt-[3px] text-primary-dark text-[11.5px] font-semibold cursor-pointer transition-opacity hover:opacity-70 mb-[2px]"
-        >
-          <span>{t("card.details")}</span>
-          <ChevronDown className={`w-[11px] h-[11px] transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
-        </button>
-
-        {/* Expandable section */}
-        <div className={`overflow-hidden transition-all duration-400 ease-out ${expanded ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}>
-          <div className="pt-2 pb-1.5 border-t border-secondary mt-1.5">
-            {service.info.map((section, i) => {
-              const sectionLabel = t(`info.${section.kind}`);
-              const isContentList = section.kind === "content";
-              
-              // For text sections, look up translation
-              const sectionText = section.kind !== "content"
-                ? t(`service.${service.id}.info.${section.kind}`)
-                : undefined;
-              
-              // For content list, use tList helper
-              const contentItems = isContentList
-                ? tList(t, `service.${service.id}.info.content`)
-                : undefined;
-
-              // Skip if translated value is the key itself (no translation)
-              const textKey = `service.${service.id}.info.${section.kind}`;
-              if (!isContentList && sectionText === textKey) return null;
-              if (isContentList && (!contentItems || contentItems.length === 0)) return null;
-
-              return (
-                <div key={i} className="flex flex-col gap-[3px] mb-2.5 last:mb-0">
-                  <span className="text-[9.5px] font-bold tracking-wider uppercase text-primary-dark opacity-75">{sectionLabel}</span>
-                  {isContentList && contentItems ? (
-                    <ul className="list-none p-0 m-0 flex flex-col gap-0.5">
-                      {contentItems.map((item, j) => (
-                        <li key={j} className="text-[11px] text-t3 leading-snug pl-3 relative before:content-['›'] before:absolute before:left-0 before:text-primary before:font-bold">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <span className="text-[11.5px] text-t2 leading-relaxed">{sectionText}</span>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+        {/* Tier Picker — prominent */}
+        <div className="grid grid-cols-3 bg-secondary/80 rounded-xl p-1 gap-1 mb-4">
+          {service.tiers.map((tierItem, i) => (
+            <button
+              key={i}
+              onClick={() => handleTierChange(i)}
+              className={`flex flex-col items-center py-2.5 px-1 rounded-lg cursor-pointer transition-all duration-200 select-none ${
+                i === activeTier
+                  ? "bg-card shadow-md border border-primary/30"
+                  : "hover:bg-card/50"
+              }`}
+            >
+              <span className={`text-[11px] font-semibold leading-none mb-1.5 transition-colors ${i === activeTier ? "text-primary font-bold" : "text-t4"}`}>
+                {tierItem.name}
+              </span>
+              <span className={`text-base font-extrabold leading-none transition-colors ${i === activeTier ? "text-foreground" : "text-t3"}`}>
+                {tierItem.price}
+              </span>
+            </button>
+          ))}
         </div>
-      </div>
 
-      {/* Tier Picker */}
-      <div className="grid grid-cols-3 bg-secondary rounded-[11px] p-[3px] mx-4 mt-3 gap-[2px]">
-        {service.tiers.map((tierItem, i) => (
+        {/* Features */}
+        <div className={`transition-opacity duration-150 mb-3 ${fading ? "opacity-0" : "opacity-100"}`}>
+          {features.map((feat, i) => {
+            const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
+            return (
+              <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-[6px] border-b border-border/30 last:border-b-0">
+                <FeatureIcon icon={feat.icon} />
+                <span className="text-[12px] text-t3 leading-snug [&>b]:text-t2 [&>b]:font-semibold" dangerouslySetInnerHTML={{ __html: tierFeatText }} />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* CTA Button */}
+        <div className="mt-auto pt-2 pb-3">
           <button
-            key={i}
-            onClick={() => handleTierChange(i)}
-            className={`flex flex-col items-center py-2 px-1 rounded-[7px] cursor-pointer transition-all duration-200 select-none ${
-              i === activeTier
-                ? "bg-card border border-primary/40 shadow-sm"
-                : "hover:bg-foreground/[.03]"
+            onClick={handleAdd}
+            className={`block w-full rounded-xl text-sm font-bold py-3.5 px-5 text-center relative overflow-hidden transition-all duration-200 ${
+              isOrdered
+                ? "bg-green-light text-green-text ring-[1.5px] ring-green-border"
+                : "gradient-primary text-primary-foreground shadow-green gradient-shine hover:-translate-y-[1px] hover:shadow-green-hover active:translate-y-0 active:scale-[0.98]"
             }`}
           >
-            <span className={`text-[10.5px] font-semibold leading-none mb-[5px] transition-colors ${i === activeTier ? "text-primary-dark font-bold" : "text-t4"}`}>
-              {tierItem.name}
-            </span>
-            <span className={`text-[15px] font-extrabold leading-none transition-colors ${i === activeTier ? "text-foreground" : "text-t3"}`}>
-              {tierItem.price}
-            </span>
+            {isOrdered ? t("card.inCart") : `${t("card.add")} ${tier.name} — ${tier.price}`}
           </button>
-        ))}
-      </div>
+        </div>
 
-      {/* Features */}
-      <div className={`px-4 pt-[2px] transition-opacity duration-150 ${fading ? "opacity-0" : "opacity-100"}`}>
-        {features.map((feat, i) => {
-          const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
-          return (
-            <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-[7px]">
-              <FeatureIcon icon={feat.icon} />
-              <span className="text-xs text-t3 leading-snug [&>b]:text-t2 [&>b]:font-semibold" dangerouslySetInnerHTML={{ __html: tierFeatText }} />
+        {/* Details toggle — at bottom */}
+        <div className="border-t border-border/30 pt-2 pb-3">
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="w-full flex items-center justify-center gap-1.5 bg-transparent border-none text-t3 text-[12px] font-medium cursor-pointer transition-colors hover:text-primary"
+          >
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
+            <span>{t("card.details")}</span>
+          </button>
+
+          {/* Expandable section */}
+          <div className={`overflow-hidden transition-all duration-400 ease-out ${expanded ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}>
+            <div className="pt-3">
+              {service.info.map((section, i) => {
+                const sectionLabel = t(`info.${section.kind}`);
+                const isContentList = section.kind === "content";
+                const sectionText = section.kind !== "content"
+                  ? t(`service.${service.id}.info.${section.kind}`)
+                  : undefined;
+                const contentItems = isContentList
+                  ? tList(t, `service.${service.id}.info.content`)
+                  : undefined;
+                const textKey = `service.${service.id}.info.${section.kind}`;
+                if (!isContentList && sectionText === textKey) return null;
+                if (isContentList && (!contentItems || contentItems.length === 0)) return null;
+
+                return (
+                  <div key={i} className="flex flex-col gap-1 mb-3 last:mb-0">
+                    <span className="text-[10px] font-bold tracking-wider uppercase text-primary opacity-80">{sectionLabel}</span>
+                    {isContentList && contentItems ? (
+                      <ul className="list-none p-0 m-0 flex flex-col gap-0.5">
+                        {contentItems.map((item, j) => (
+                          <li key={j} className="text-[11.5px] text-t3 leading-snug pl-3 relative before:content-['›'] before:absolute before:left-0 before:text-primary before:font-bold">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span className="text-[12px] text-t2 leading-relaxed">{sectionText}</span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
-
-      {/* CTA */}
-      <div className="px-4 pt-2.5 pb-3.5 mt-auto">
-        <button
-          onClick={handleAdd}
-          className={`block w-full rounded-[14px] text-[13.5px] font-bold py-[13px] px-5 text-center relative overflow-hidden transition-all duration-200 ${
-            isOrdered
-              ? "bg-green-light text-green-text ring-[1.5px] ring-green-border"
-              : "gradient-primary text-primary-foreground shadow-green gradient-shine hover:-translate-y-[2px] hover:shadow-green-hover hover:brightness-[1.04] active:translate-y-0 active:scale-[0.98]"
-          }`}
-        >
-          {isOrdered ? t("card.inCart") : `${t("card.add")} ${tier.name} — ${tier.price}`}
-        </button>
+          </div>
+        </div>
       </div>
     </div>
   );
