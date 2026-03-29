@@ -41,7 +41,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       : t("plural.concept.many");
 
   return (
-    <section className="text-center pt-8 pb-10 px-6 relative z-10">
+    <section className="text-center pt-4 pb-6 px-6 relative z-10">
       {/* Language Switcher */}
       <div className="flex justify-end mb-3">
         <LanguageSwitcher />
