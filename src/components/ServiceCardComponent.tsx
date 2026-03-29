@@ -125,52 +125,51 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       <div className="px-5 pt-4 flex-1 flex flex-col relative z-[1]">
 
         {/* Goal */}
-        <div className="flex items-start gap-2.5 rounded-xl px-3.5 py-3 mb-3 border border-primary/10 bg-primary/[.03]">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{
-            background: 'linear-gradient(145deg, hsl(145 60% 96%), hsl(145 40% 90%))',
-            boxShadow: '0 2px 8px rgba(34,197,94,0.15), inset 0 1px 2px rgba(255,255,255,0.8)',
+        <div className="flex items-start gap-3 rounded-xl px-3.5 py-3 mb-3 border border-primary/10 bg-primary/[.03]">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{
+            background: 'linear-gradient(145deg, hsl(145 55% 94%), hsl(145 35% 88%))',
+            boxShadow: '0 3px 10px rgba(34,197,94,0.18), inset 0 1px 3px rgba(255,255,255,0.9)',
           }}>
-            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
-              {/* 3D target base shadow */}
-              <ellipse cx="16" cy="17" rx="11" ry="11" fill="hsl(142,50%,35%)" opacity="0.12" />
-              {/* Outer ring with gradient */}
-              <circle cx="16" cy="16" r="11" fill="url(#goalGradOuter)" />
-              <circle cx="16" cy="16" r="9.5" fill="hsl(145,60%,96%)" />
+            <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Shadow ellipse for 3D depth */}
+              <ellipse cx="20" cy="21.5" rx="13" ry="13" fill="hsl(142,40%,30%)" opacity="0.1" />
+              {/* Outer ring */}
+              <circle cx="20" cy="20" r="13" fill="url(#tgt3dOuter)" />
+              <circle cx="20" cy="20" r="11" fill="#f0faf3" />
               {/* Middle ring */}
-              <circle cx="16" cy="16" r="8" fill="url(#goalGradMid)" />
-              <circle cx="16" cy="16" r="6.5" fill="hsl(145,60%,96%)" />
+              <circle cx="20" cy="20" r="9.5" fill="url(#tgt3dMid)" />
+              <circle cx="20" cy="20" r="7.5" fill="#f0faf3" />
               {/* Inner ring */}
-              <circle cx="16" cy="16" r="5" fill="url(#goalGradInner)" />
-              <circle cx="16" cy="16" r="3.5" fill="hsl(145,60%,96%)" />
-              {/* Bullseye */}
-              <circle cx="16" cy="16" r="2.2" fill="url(#goalBullseye)" />
-              {/* 3D highlight on bullseye */}
-              <ellipse cx="15.3" cy="15" rx="1" ry="0.7" fill="white" opacity="0.5" />
-              {/* Arrow shaft */}
-              <line x1="16" y1="16" x2="25" y2="7" stroke="hsl(0,75%,48%)" strokeWidth="1.8" strokeLinecap="round" />
-              {/* Arrow tip */}
-              <polygon points="25.5,5.5 27,7 25,8.5 23.5,7" fill="hsl(0,75%,48%)" />
-              {/* Arrow fletching */}
-              <line x1="24.2" y1="7.8" x2="26" y2="9.5" stroke="hsl(0,65%,55%)" strokeWidth="1.2" strokeLinecap="round" />
-              <line x1="24.2" y1="7.8" x2="22.5" y2="6" stroke="hsl(0,65%,55%)" strokeWidth="1.2" strokeLinecap="round" />
-              {/* 3D shine */}
-              <ellipse cx="12" cy="12" rx="4" ry="2.5" fill="white" opacity="0.15" transform="rotate(-30 12 12)" />
+              <circle cx="20" cy="20" r="6" fill="url(#tgt3dInner)" />
+              <circle cx="20" cy="20" r="4" fill="#f0faf3" />
+              {/* Bullseye center */}
+              <circle cx="20" cy="20" r="2.8" fill="url(#tgt3dBull)" />
+              <ellipse cx="19.2" cy="19" rx="1.2" ry="0.8" fill="white" opacity="0.45" />
+              {/* Arrow — diagonal, stuck in center */}
+              <line x1="20" y1="20" x2="31" y2="9" stroke="#dc2626" strokeWidth="2.2" strokeLinecap="round" />
+              {/* Arrowhead triangle */}
+              <path d="M31.5 7L33 10L30 10.5Z" fill="#dc2626" />
+              {/* Arrow feathers */}
+              <path d="M30 10L32.5 12" stroke="#ef4444" strokeWidth="1.3" strokeLinecap="round" />
+              <path d="M30 10L27.5 7.5" stroke="#ef4444" strokeWidth="1.3" strokeLinecap="round" />
+              {/* 3D highlight arc */}
+              <path d="M12 13 Q16 9 24 11" stroke="white" strokeWidth="1.5" fill="none" opacity="0.25" strokeLinecap="round" />
               <defs>
-                <radialGradient id="goalGradOuter" cx="40%" cy="35%">
-                  <stop offset="0%" stopColor="hsl(142,76%,56%)" />
-                  <stop offset="100%" stopColor="hsl(142,71%,38%)" />
+                <radialGradient id="tgt3dOuter" cx="0.38" cy="0.32" r="0.6">
+                  <stop offset="0%" stopColor="#4ade80" />
+                  <stop offset="100%" stopColor="#16a34a" />
                 </radialGradient>
-                <radialGradient id="goalGradMid" cx="40%" cy="35%">
-                  <stop offset="0%" stopColor="hsl(142,76%,56%)" />
-                  <stop offset="100%" stopColor="hsl(142,71%,40%)" />
+                <radialGradient id="tgt3dMid" cx="0.38" cy="0.32" r="0.6">
+                  <stop offset="0%" stopColor="#4ade80" />
+                  <stop offset="100%" stopColor="#15803d" />
                 </radialGradient>
-                <radialGradient id="goalGradInner" cx="40%" cy="35%">
-                  <stop offset="0%" stopColor="hsl(142,76%,52%)" />
-                  <stop offset="100%" stopColor="hsl(142,71%,36%)" />
+                <radialGradient id="tgt3dInner" cx="0.38" cy="0.32" r="0.6">
+                  <stop offset="0%" stopColor="#22c55e" />
+                  <stop offset="100%" stopColor="#166534" />
                 </radialGradient>
-                <radialGradient id="goalBullseye" cx="40%" cy="35%">
-                  <stop offset="0%" stopColor="hsl(0,80%,58%)" />
-                  <stop offset="100%" stopColor="hsl(0,75%,42%)" />
+                <radialGradient id="tgt3dBull" cx="0.38" cy="0.32" r="0.6">
+                  <stop offset="0%" stopColor="#f87171" />
+                  <stop offset="100%" stopColor="#b91c1c" />
                 </radialGradient>
               </defs>
             </svg>
