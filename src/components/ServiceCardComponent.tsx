@@ -126,29 +126,29 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
         {/* Goal */}
         <div className="flex items-start gap-3 rounded-xl px-3.5 py-3 mb-3 border border-primary/10 bg-primary/[.03]">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{
-            background: 'linear-gradient(145deg, hsl(145 58% 95%), hsl(145 36% 88%))',
-            boxShadow: '0 4px 12px hsl(142 60% 42% / 0.18), inset 0 1px 3px hsl(0 0% 100% / 0.85)',
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{
+            background: 'linear-gradient(145deg, hsl(210 35% 96%), hsl(210 30% 89%))',
+            boxShadow: '0 4px 14px hsl(210 45% 35% / 0.16), inset 0 1px 3px hsl(0 0% 100% / 0.9)',
           }}>
-            <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              {/* Ground shadow */}
-              <ellipse cx="24" cy="36" rx="14" ry="4" fill="hsl(142 48% 28% / 0.2)" />
+            <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <ellipse cx="24" cy="39" rx="14" ry="3.5" fill="hsl(210 45% 24% / 0.2)" />
 
-              {/* 3D tilted target */}
-              <g transform="rotate(-18 24 24)">
-                <ellipse cx="24" cy="24" rx="13" ry="11" fill="hsl(146 68% 38%)" />
-                <ellipse cx="24" cy="24" rx="10.6" ry="9" fill="hsl(140 45% 96%)" />
-                <ellipse cx="24" cy="24" rx="8.4" ry="7" fill="hsl(145 66% 46%)" />
-                <ellipse cx="24" cy="24" rx="6" ry="5" fill="hsl(140 45% 96%)" />
-                <ellipse cx="24" cy="24" rx="3.5" ry="3" fill="hsl(2 76% 50%)" />
-                <ellipse cx="21" cy="20" rx="4.2" ry="2" fill="hsl(0 0% 100% / 0.2)" />
-              </g>
+              {/* 3D target body */}
+              <path d="M10 20C10 14 16.3 10 24 10C31.7 10 38 14 38 20V25C38 31 31.7 35 24 35C16.3 35 10 31 10 25V20Z" fill="hsl(201 70% 34%)" />
+              <ellipse cx="24" cy="20" rx="14" ry="10" fill="hsl(192 90% 57%)" />
 
-              {/* Arrow */}
-              <line x1="24" y1="24" x2="38" y2="10" stroke="hsl(3 78% 49%)" strokeWidth="2.4" strokeLinecap="round" />
-              <path d="M38 8 L42 10 L38 13 L36.8 10.4 Z" fill="hsl(3 78% 49%)" />
-              <path d="M35.8 11.4 L38.3 14" stroke="hsl(3 88% 60%)" strokeWidth="1.4" strokeLinecap="round" />
-              <path d="M35.8 11.4 L33.3 8.8" stroke="hsl(3 88% 60%)" strokeWidth="1.4" strokeLinecap="round" />
+              {/* top rings */}
+              <ellipse cx="24" cy="20" rx="10.8" ry="7.7" fill="hsl(194 35% 97%)" />
+              <ellipse cx="24" cy="20" rx="7.4" ry="5.2" fill="hsl(192 84% 49%)" />
+              <ellipse cx="24" cy="20" rx="4.2" ry="3" fill="hsl(194 35% 97%)" />
+              <ellipse cx="24" cy="20" rx="2" ry="1.4" fill="hsl(3 80% 54%)" />
+              <ellipse cx="21" cy="16.5" rx="4.8" ry="2" fill="hsl(0 0% 100% / 0.26)" />
+
+              {/* separate red arrow */}
+              <line x1="24" y1="20" x2="39.5" y2="8.5" stroke="hsl(2 82% 50%)" strokeWidth="2.6" strokeLinecap="round" />
+              <path d="M39.5 6L44 8.5L39 11.8L37.6 8.8Z" fill="hsl(2 82% 50%)" />
+              <path d="M36.5 10.2L33.8 8" stroke="hsl(7 92% 62%)" strokeWidth="1.4" strokeLinecap="round" />
+              <path d="M36.5 10.2L34.6 12.9" stroke="hsl(7 92% 62%)" strokeWidth="1.4" strokeLinecap="round" />
             </svg>
           </div>
           <span className="text-[12.5px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
