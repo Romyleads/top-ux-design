@@ -94,7 +94,7 @@ function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatI
           {count}
         </span>
       </div>
-      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/70" : "text-muted-foreground/50"}`}>
+      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/70" : "text-white/40"}`}>
         {label}
       </div>
     </div>
