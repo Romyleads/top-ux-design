@@ -44,9 +44,9 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
   const IconComponent = blockIcons[block.id];
 
   return (
-    <section ref={sectionRef} className="mb-20">
+    <section ref={sectionRef} className="mb-24">
       {/* Block Header */}
-      <div className={`text-center mb-10 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <div className={`text-center mb-12 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
         <div className="inline-flex items-center gap-5">
           <div className="h-[1px] w-20 bg-gradient-to-r from-transparent to-primary/30" />
           <div className="w-10 h-10 rounded-xl bg-primary/[.06] border border-primary/[.12] flex items-center justify-center">
