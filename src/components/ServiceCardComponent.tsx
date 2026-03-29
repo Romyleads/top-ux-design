@@ -88,6 +88,17 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
       )}
 
+      {/* Title + Subtitle — above photo */}
+      <div className="flex items-start gap-3 px-5 pt-4 pb-3">
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border border-border/40 bg-primary/[.06]">
+          {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-lg">{service.emoji}</span>}
+        </div>
+        <div className="min-w-0">
+          <h3 className="text-[16px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
+          <p className="text-[12px] text-t3 leading-snug">{serviceSubtitle}</p>
+        </div>
+      </div>
+
       {/* Photo */}
       <div className="relative h-[180px] overflow-hidden flex-shrink-0">
         <img
@@ -110,16 +121,6 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
       {/* Card body */}
       <div className="px-5 pt-4 flex-1 flex flex-col relative z-[1]">
-        {/* Title + Subtitle */}
-        <div className="flex items-start gap-3 mb-3">
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border border-border/40 bg-primary/[.06]">
-            {SvcIcon ? <SvcIcon className="w-5 h-5 text-primary" strokeWidth={1.8} /> : <span className="text-lg">{service.emoji}</span>}
-          </div>
-          <div className="min-w-0">
-            <h3 className="text-[16px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
-            <p className="text-[12px] text-t3 leading-snug">{serviceSubtitle}</p>
-          </div>
-        </div>
 
         {/* Goal */}
         <div className="flex items-start gap-2.5 rounded-xl px-3.5 py-3 mb-3 border border-primary/10 bg-primary/[.03]">
