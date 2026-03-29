@@ -70,7 +70,7 @@ export default function Index() {
       <AnimatedBackground />
 
       {/* Premium top accent bar */}
-      <div className="h-1 w-full gradient-primary relative z-10" />
+      <div className="h-1 w-full gradient-primary relative z-10 shadow-[0_2px_12px_rgba(34,197,94,0.3)]" />
 
       <div className="max-w-[1320px] mx-auto px-7 max-sm:px-3.5 relative z-10">
         <HeroSection
