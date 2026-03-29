@@ -214,9 +214,9 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
-              <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-1.5">
+            <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-1.5">
                 <FeatureIcon icon={feat.icon} />
-                <span className="text-[13px] text-t2 leading-snug [&>b]:text-foreground [&>b]:font-semibold" dangerouslySetInnerHTML={{ __html: tierFeatText }} />
+                <span className={`text-[13px] leading-snug [&>b]:font-semibold ${feat.icon === "clock" ? "text-destructive font-semibold" : "text-t2 [&>b]:text-foreground"}`} dangerouslySetInnerHTML={{ __html: tierFeatText }} />
               </div>
             );
           })}
