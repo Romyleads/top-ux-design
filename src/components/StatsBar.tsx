@@ -79,7 +79,7 @@ function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatI
       style={{ transform: `translateY(${offsetY}px)`, transition: 'transform 0.1s linear' }}
     >
       <div className="flex items-center justify-center gap-2.5 mb-1.5">
-        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-muted-foreground/40"}`} strokeWidth={1.5} />
+        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-white/40"}`} strokeWidth={1.5} />
         <span
           className="text-[48px] sm:text-[56px] font-black tracking-tighter leading-none transition-transform duration-500 group-hover:scale-110"
           style={{
