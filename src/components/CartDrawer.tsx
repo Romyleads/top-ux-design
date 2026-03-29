@@ -198,7 +198,7 @@ export default function CartDrawer({
                     <input type="checkbox" checked={dsgvo} onChange={(e) => setDsgvo(e.target.checked)} className="w-3.5 h-3.5 mt-0.5 accent-primary flex-shrink-0" />
                     <span className="text-[11.5px] text-t3 leading-relaxed">{t("cart.dsgvo")} *</span>
                   </label>
-                  <button onClick={handleSubmit} className="w-full gradient-primary-dark border-none text-primary-foreground text-sm font-bold py-[13px] rounded-[10px] shadow-[0_6px_16px_-6px_rgba(31,107,69,0.4)] hover:brightness-[1.08] transition-all mt-1">
+                  <button onClick={handleSubmit} className="w-full gradient-primary border-none text-primary-foreground text-sm font-bold py-[13px] rounded-[12px] shadow-green hover:shadow-green-hover hover:-translate-y-[1px] active:translate-y-0 transition-all mt-1">
                     {t("cart.submit")}
                   </button>
                 </div>
