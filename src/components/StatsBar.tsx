@@ -80,18 +80,18 @@ function StatItem({ countRef, count, label, icon: Icon, accent, offsetY }: StatI
       style={{ transform: `translateY(${offsetY}px)`, transition: "transform 0.12s linear" }}
     >
       <div className="flex items-center justify-center gap-2.5 mb-1.5">
-        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-sidebar-primary-foreground/55"}`} strokeWidth={1.5} />
+        <Icon className={`w-5 h-5 ${accent ? "text-primary" : "text-white/60"}`} strokeWidth={1.5} />
         <span
           className={`inline-block text-[50px] sm:text-[58px] font-black tracking-tight leading-[1.12] px-[0.05em] pb-[0.06em] [font-variant-numeric:tabular-nums] transition-transform duration-500 group-hover:scale-105 ${
             accent
               ? "text-primary drop-shadow-[0_6px_14px_hsl(var(--primary)/0.35)]"
-              : "text-sidebar-primary-foreground drop-shadow-[0_6px_14px_hsl(var(--sidebar-primary-foreground)/0.32)]"
+              : "text-white drop-shadow-[0_6px_14px_rgba(255,255,255,0.18)]"
           }`}
         >
           {count}
         </span>
       </div>
-      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/75" : "text-sidebar-primary-foreground/62"}`}>
+      <div className={`text-[9px] font-bold uppercase tracking-[0.2em] ${accent ? "text-primary/75" : "text-white/60"}`}>
         {label}
       </div>
     </div>

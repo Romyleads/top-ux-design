@@ -23,9 +23,9 @@ export const translations: Record<string, Record<Locale, string>> = {
   "hero.nothing": { uk: "Нічого не знайдено", en: "Nothing found", de: "Nichts gefunden" },
 
   // Stats
-  "stats.concepts": { uk: "концептів", en: "concepts", de: "Konzepte" },
-  "stats.blocks": { uk: "блоків", en: "blocks", de: "Blöcke" },
-  "stats.trending": { uk: "трендових", en: "trending", de: "im Trend" },
+  "stats.concepts": { uk: "послуг", en: "services", de: "Dienste" },
+  "stats.blocks": { uk: "категорій", en: "categories", de: "Kategorien" },
+  "stats.trending": { uk: "у тренді", en: "trending", de: "im Trend" },
 
   // Filter
   "filter.all": { uk: "Всі", en: "All", de: "Alle" },
