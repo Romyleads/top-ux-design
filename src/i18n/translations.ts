@@ -10,9 +10,9 @@ export const translations: Record<string, Record<Locale, string>> = {
   "hero.title1": { uk: "Готові", en: "Ready-made", de: "Fertige" },
   "hero.title2": { uk: "Концепти", en: "Concepts", de: "Konzepte" },
   "hero.subtitle": {
-    uk: "Оберіть маркетинговий концепт — ми реалізуємо його під ключ за 1–7 днів",
-    en: "Choose a marketing concept — we deliver it turnkey in 1–7 days",
-    de: "Wählen Sie ein Marketingkonzept — wir liefern es schlüsselfertig in 1–7 Tagen",
+    uk: "Маркетингові концепти під ключ за 1‑7 днів",
+    en: "Marketing concepts delivered turnkey in 1‑7 days",
+    de: "Marketingkonzepte schlüsselfertig in 1‑7 Tagen",
   },
   "hero.search": {
     uk: "Пошук концепту, формату, ключового слова...",

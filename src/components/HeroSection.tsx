@@ -68,7 +68,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
           {t("hero.title2")}
         </span>
       </h1>
-      <p className="text-white/60 text-[13.5px] max-w-[460px] mx-auto mb-4 leading-relaxed font-medium">
+      <p className="hidden sm:block text-white/60 text-[13.5px] mx-auto mb-4 leading-relaxed font-medium whitespace-nowrap">
         {t("hero.subtitle")}
       </p>
 
