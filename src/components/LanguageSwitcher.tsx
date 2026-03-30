@@ -45,9 +45,8 @@ export default function LanguageSwitcher() {
       <div
         className="absolute top-[3px] bottom-[3px] rounded-full gradient-primary shadow-green transition-all duration-300 ease-out"
         style={{
-          left: `${3 + activeIdx * (100 / langs.length)}%`,
-          width: `calc(${100 / langs.length}% - 6px)`,
-          marginLeft: activeIdx === 0 ? '0px' : '-3px',
+          width: `calc(${100 / langs.length}%)`,
+          transform: `translateX(${activeIdx * 100}%)`,
         }}
       />
       {langs.map((lang) => (
