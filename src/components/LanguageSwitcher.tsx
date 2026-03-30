@@ -40,13 +40,13 @@ export default function LanguageSwitcher() {
   const activeIdx = langs.findIndex((l) => l.code === locale);
 
   return (
-    <div className="relative inline-flex items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+    <div className="relative inline-flex items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)] overflow-hidden">
       {/* Sliding indicator */}
       <div
         className="absolute top-[3px] bottom-[3px] rounded-full gradient-primary shadow-green transition-all duration-300 ease-out"
         style={{
-          left: `calc(${(activeIdx * 100) / langs.length}% + 3px)`,
-          width: "calc(33.333% - 2px)",
+          width: `calc(${100 / langs.length}%)`,
+          transform: `translateX(${activeIdx * 100}%)`,
         }}
       />
       {langs.map((lang) => (
