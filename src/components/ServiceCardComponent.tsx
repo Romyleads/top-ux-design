@@ -46,7 +46,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [fading, setFading] = useState(false);
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
   const features = service.tierFeatures[activeTier] || [];
   const tier = service.tiers[activeTier];
