@@ -100,7 +100,9 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           {SvcIcon ? <SvcIcon className="w-[18px] h-[18px] text-primary" strokeWidth={1.8} /> : <span className="text-base">{service.emoji}</span>}
         </div>
         <div className="min-w-0">
-          <h3 className="text-[15px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
+          <Link to={`/${locale}/services/${service.id}`} className="hover:text-primary transition-colors">
+            <h3 className="text-[15px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
+          </Link>
           <p className="text-[11.5px] text-t3 leading-snug">{serviceSubtitle}</p>
         </div>
       </div>
