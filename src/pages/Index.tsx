@@ -92,6 +92,17 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      <SEOHead
+        title="PromoVisions — Ready-made Marketing Concepts"
+        description={t("hero.subtitle")}
+        path=""
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "PromoVisions",
+          url: "https://promovisions.com",
+        }}
+      />
       {/* Dark hero zone with animated background */}
       <div className="relative">
         <AnimatedBackground />
