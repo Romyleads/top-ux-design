@@ -34,10 +34,34 @@ export default function Index() {
         const translatedName = t(`service.${s.id}.name`);
         const translatedSubtitle = t(`service.${s.id}.subtitle`);
         const translatedGoal = t(`service.${s.id}.goal`);
+        // Translated info sections
+        const translatedInfo: string[] = [];
+        s.info.forEach((section) => {
+          if (section.kind === "content") {
+            for (let i = 0; i < 20; i++) {
+              const key = `service.${s.id}.info.content.${i}`;
+              const val = t(key);
+              if (val === key) break;
+              translatedInfo.push(val);
+            }
+          } else {
+            const val = t(`service.${s.id}.info.${section.kind}`);
+            translatedInfo.push(val);
+          }
+        });
+        // Translated tier features
+        const translatedTiers: string[] = [];
+        s.tierFeatures.forEach((tier, ti) => {
+          tier.forEach((_, fi) => {
+            translatedTiers.push(t(`service.${s.id}.tier.${ti}.${fi}`));
+          });
+        });
         const searchable = [
           s.name, s.subtitle, s.tag, translatedName, translatedSubtitle, translatedGoal,
           ...s.info.flatMap((i) => [i.text || "", ...(i.items || [])]),
           ...s.tierFeatures.flat().map((f) => f.text),
+          ...translatedInfo,
+          ...translatedTiers,
         ].join(" ").toLowerCase();
         return searchable.includes(q);
       });
