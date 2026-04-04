@@ -12,7 +12,11 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(() => {
     const saved = localStorage.getItem("locale");
-    return (saved === "en" || saved === "de") ? saved : "uk";
+    if (saved === "en" || saved === "de" || saved === "uk") return saved;
+    const browserLang = navigator.language?.toLowerCase() || "";
+    if (browserLang.startsWith("uk") || browserLang.startsWith("ru")) return "uk";
+    if (browserLang.startsWith("de")) return "de";
+    return "en";
   });
 
   const setLocale = useCallback((l: Locale) => {
@@ -21,7 +25,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const t = useCallback(
-    (key: string) => translations[key]?.[locale] ?? translations[key]?.["uk"] ?? key,
+    (key: string) => translations[key]?.[locale] ?? translations[key]?.["en"] ?? key,
     [locale]
   );
 
