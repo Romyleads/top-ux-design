@@ -62,7 +62,7 @@ export default function LanguageSwitcher() {
       {langs.map((lang) => (
         <button
           key={lang.code}
-          onClick={() => setLocale(lang.code)}
+          onClick={() => handleSwitch(lang.code)}
           className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-all duration-200 select-none ${
             locale === lang.code
               ? "text-primary-foreground scale-[1.05]"
