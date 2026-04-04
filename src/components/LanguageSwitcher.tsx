@@ -30,9 +30,9 @@ const FlagDE = () => (
 );
 
 const langs: { code: Locale; Flag: React.FC; label: string }[] = [
-  { code: "uk", Flag: FlagUA, label: "UA" },
   { code: "en", Flag: FlagGB, label: "EN" },
   { code: "de", Flag: FlagDE, label: "DE" },
+  { code: "uk", Flag: FlagUA, label: "UA" },
 ];
 
 export default function LanguageSwitcher() {
