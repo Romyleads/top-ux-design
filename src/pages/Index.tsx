@@ -10,6 +10,7 @@ import CartFab from "@/components/CartFab";
 import CartDrawer from "@/components/CartDrawer";
 import SocialProof from "@/components/SocialProof";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import SEOHead from "@/components/SEOHead";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -91,6 +92,17 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      <SEOHead
+        title="PromoVisions — Ready-made Marketing Concepts"
+        description={t("hero.subtitle")}
+        path=""
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "PromoVisions",
+          url: "https://promovisions.com",
+        }}
+      />
       {/* Dark hero zone with animated background */}
       <div className="relative">
         <AnimatedBackground />

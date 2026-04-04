@@ -1,4 +1,5 @@
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useNavigate, useLocation } from "react-router-dom";
 import type { Locale } from "@/i18n/translations";
 
 const FlagUA = () => (
@@ -37,7 +38,16 @@ const langs: { code: Locale; Flag: React.FC; label: string }[] = [
 
 export default function LanguageSwitcher() {
   const { locale, setLocale } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
   const activeIdx = langs.findIndex((l) => l.code === locale);
+
+  const handleSwitch = (code: Locale) => {
+    setLocale(code);
+    // Replace the locale prefix in the current path
+    const pathWithoutLocale = location.pathname.replace(/^\/(en|de|uk)/, "");
+    navigate(`/${code}${pathWithoutLocale || ""}${location.search}`, { replace: true });
+  };
 
   return (
     <div className="relative inline-grid grid-cols-3 items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
@@ -52,7 +62,7 @@ export default function LanguageSwitcher() {
       {langs.map((lang) => (
         <button
           key={lang.code}
-          onClick={() => setLocale(lang.code)}
+          onClick={() => handleSwitch(lang.code)}
           className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-all duration-200 select-none ${
             locale === lang.code
               ? "text-primary-foreground scale-[1.05]"
