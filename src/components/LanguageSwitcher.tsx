@@ -38,7 +38,16 @@ const langs: { code: Locale; Flag: React.FC; label: string }[] = [
 
 export default function LanguageSwitcher() {
   const { locale, setLocale } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
   const activeIdx = langs.findIndex((l) => l.code === locale);
+
+  const handleSwitch = (code: Locale) => {
+    setLocale(code);
+    // Replace the locale prefix in the current path
+    const pathWithoutLocale = location.pathname.replace(/^\/(en|de|uk)/, "");
+    navigate(`/${code}${pathWithoutLocale || ""}${location.search}`, { replace: true });
+  };
 
   return (
     <div className="relative inline-grid grid-cols-3 items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
