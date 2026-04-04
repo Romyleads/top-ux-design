@@ -10,6 +10,7 @@ import CartFab from "@/components/CartFab";
 import CartDrawer from "@/components/CartDrawer";
 import SocialProof from "@/components/SocialProof";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import SEOHead from "@/components/SEOHead";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
