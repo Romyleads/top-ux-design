@@ -37,6 +37,11 @@ import imgSaasBuilder from "@/assets/services/saas-builder.jpg";
 import imgTelegramTwa from "@/assets/services/telegram-twa.jpg";
 import imgAiAutomation from "@/assets/services/ai-automation.jpg";
 import imgNocodeMvp from "@/assets/services/nocode-mvp.jpg";
+import imgVibeCodingVisionary from "@/assets/services/vibe-coding-visionary.jpg";
+import imgAiTwin from "@/assets/services/ai-twin.jpg";
+import imgMvpOnDemand from "@/assets/services/mvp-on-demand.jpg";
+import imgAiVideoCatalog from "@/assets/services/ai-video-catalog.jpg";
+import imgReverseEngineering from "@/assets/services/reverse-engineering.jpg";
 
 export interface TierFeature {
   icon: "size" | "format" | "clock" | "check";
@@ -955,6 +960,117 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Запуск повноцінного цифрового продукту без програмування за допомогою no-code інструментів: Bubble, Framer, Glide, Make, Supabase. Ідеально для стартапів, які хочуть швидко валідувати ідею з мінімальним бюджетом.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Аналіз ідеї та вибір інструментів", "Дизайн та прототипування", "Збірка MVP на no-code платформі", "Інтеграція оплати та email", "Деплой та налаштування домену", "Гайд по самостійному управлінню"], type: "list" },
       { kind: "goal", label: "Мета", text: "Валідувати бізнес-ідею за мінімальний бюджет та час.", type: "text" },
+    ],
+  },
+  // ───── Унікальні AI-офери 2026 (ітерація 1) ─────
+  {
+    id: "vibe-coding-visionary",
+    name: "Vibe-Coding Visionary",
+    emoji: "🧙",
+    subtitle: "AI-візіонер створює 3-5 робочих прототипів під ваш запит",
+    goal: "Знайти найкраще продуктове рішення через мульти-платформну генерацію та порівняння UX",
+    blockId: "b8",
+    photo: imgVibeCodingVisionary,
+    tag: "🔥 Унікально",
+    hot: true,
+    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tierFeatures: [
+      tf("<b>3 прототипи</b> · 1 платформа", "Lovable / v0 / Bolt", "<b>Термін: 3 дні</b>", "1 раунд правок · Loom-розбір"),
+      tf("<b>5 прототипів</b> · 3 платформи", "Lovable + v0 + Replit", "<b>Термін: 5 днів</b>", "2 раунди правок · UX-порівняння"),
+      tf("<b>5 прототипів</b> · усі платформи", "Full stack vibe-coding", "<b>Термін: 7 днів</b>", "3 раунди · 1h консультація · код"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Сесія з AI-візіонером: під ваш запит за 3-7 днів генеруємо 3-5 робочих прототипів на різних AI-платформах (Lovable, v0, Bolt, Replit). Порівнюємо UX, архітектуру, швидкість — ви обираєте найкращий і отримуєте код + правки.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Глибинний бриф та аналіз ідеї", "Генерація 3-5 прототипів на різних AI-платформах", "Порівняльний UX-розбір (Loom-відео)", "Раунди правок на обраному прототипі", "Передача коду та інструкцій з масштабування"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Не вгадувати на першій ітерації, а отримати кілька реальних варіантів і обрати найкращий.", type: "text" },
+    ],
+  },
+  {
+    id: "ai-twin",
+    name: "AI Twin засновника",
+    emoji: "🤖",
+    subtitle: "Цифровий двійник: голос + аватар + база знань для клієнтів 24/7",
+    goal: "Замінити першу лінію продажів і підтримки цифровим двійником, що працює без вихідних",
+    blockId: "b8",
+    photo: imgAiTwin,
+    tag: "🔥 Унікально",
+    hot: true,
+    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tierFeatures: [
+      tf("<b>Клон голосу</b> + 50 відповідей", "ElevenLabs + база знань", "<b>Термін: 5 днів</b>", "Telegram-бот · 1 правка"),
+      tf("<b>Голос + HD-аватар</b> · 200 відп.", "ElevenLabs + HeyGen + RAG", "<b>Термін: 7 днів</b>", "Telegram + Web · 3 правки"),
+      tf("<b>Повний twin</b> · WhatsApp/Web/CRM", "Custom AI + voice + video", "<b>Термін: 10 днів</b>", "Безлім. правки · інтеграція CRM"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Цифровий двійник власника: клонуємо голос (ElevenLabs), створюємо HD-аватар (HeyGen), завантажуємо базу знань (відео, тексти, FAQ). Бот відповідає клієнтам у відео-форматі 24/7 — про продукт, ціни, кейси.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Збір матеріалів: голос, фото, тексти, відео", "Клонування голосу та створення аватара", "Тренування на вашій базі знань (RAG)", "Інтеграція в Telegram / Web / WhatsApp", "Підключення до CRM та автоматизацій", "Тестування та калібрування відповідей"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Масштабувати особистий бренд і продажі без фізичної присутності.", type: "text" },
+    ],
+  },
+  {
+    id: "mvp-on-demand",
+    name: "MVP-on-Demand",
+    emoji: "🚀",
+    subtitle: "Робочий MVP з оплатою за обсяг ТЗ — чесна модель «за символ ідеї»",
+    goal: "Отримати робочий MVP з прозорою ціною, що залежить від глибини вашого технічного завдання",
+    blockId: "b8",
+    photo: imgMvpOnDemand,
+    tag: "🔥 Унікально",
+    hot: true,
+    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tierFeatures: [
+      tf("<b>ТЗ до 1 500 симв.</b> · мікро-MVP", "1 екран + 1 функція · no-code", "<b>Термін: 3 дні</b>", "1 правка · хостинг"),
+      tf("<b>ТЗ до 5 000 симв.</b> · повний MVP", "3-5 екранів + auth + DB", "<b>Термін: 7 днів</b>", "3 правки · оплата · email"),
+      tf("<b>ТЗ до 15 000 симв.</b> · складний MVP", "Інтеграції + AI + payments", "<b>Термін: 14 днів</b>", "Безлім. правки · 1 міс. підтримка"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Створення робочого MVP за вашим технічним завданням з прозорою моделлю ціноутворення: чим деталізованіше ТЗ — тим складніший продукт. Понад 15 000 символів — індивідуальний прорахунок (+0.08 €/символ).", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Аналіз вашого ТЗ та визначення обсягу", "Уточнюючий бриф та архітектура рішення", "Розробка на оптимальному стеку", "Інтеграція auth, DB, оплати (за потреби)", "Деплой на продакшн з доменом", "Документація та передача проєкту"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Прозорість: ви платите рівно за обсяг своєї ідеї, без «оцінки на око».", type: "text" },
+    ],
+  },
+  {
+    id: "ai-video-catalog",
+    name: "AI Video Catalog",
+    emoji: "🎬",
+    subtitle: "AI-промо-відео для всього вашого каталогу — 1 відео на товар",
+    goal: "Замінити статичні фото в каталозі на залучаючі AI-відео без зйомок та бюджетів на продакшн",
+    blockId: "b8",
+    photo: imgAiVideoCatalog,
+    tag: "🔥 Унікально",
+    hot: true,
+    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tierFeatures: [
+      tf("<b>10 відео</b> · 5-8 сек кожне", "Runway / Kling · 720p", "<b>Термін: 5 днів</b>", "1 правка на відео"),
+      tf("<b>30 відео</b> · 5-15 сек · озвучка", "Runway + Sora + ElevenLabs", "<b>Термін: 10 днів</b>", "2 правки · музика · сабтайтли"),
+      tf("<b>100+ відео</b> · повний каталог", "Multi-tool + автоматизація", "<b>Термін: 21 день</b>", "Безлім. правки · API-інтеграція"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Генерація промо-відео для всіх позицій каталогу через AI (Runway, Sora, Kling). 1 відео на товар: динамічна анімація, голос, музика, субтитри. Заміна студійним зйомкам за частку бюджету.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Аналіз каталогу та концепт відео", "Генерація відео через AI-моделі", "Озвучка (ElevenLabs) та підбір музики", "Субтитри та брендування", "Експорт під різні платформи (TikTok / IG / Web)", "Завантаження та інтеграція в каталог"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Збільшити конверсію картки товару на 30-60% за рахунок відео.", type: "text" },
+    ],
+  },
+  {
+    id: "reverse-engineering",
+    name: "Reverse-Engineering конкурента",
+    emoji: "🛸",
+    subtitle: "AI-розбір воронки топ-конкурента + план як обійти за 14 днів",
+    goal: "Зрозуміти точно, чому конкурент продає краще, і отримати покроковий план як його обійти",
+    blockId: "b8",
+    photo: imgReverseEngineering,
+    tag: "🔥 Унікально",
+    hot: true,
+    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tierFeatures: [
+      tf("<b>1 конкурент</b> · лендінг + ціни", "PDF-звіт 20+ стор.", "<b>Термін: 5 днів</b>", "1 zoom-розбір 30 хв"),
+      tf("<b>3 конкуренти</b> · вся воронка", "Лендінг + email + ads + UX", "<b>Термін: 7 днів</b>", "1h розбір · 14-денний план"),
+      tf("<b>5 конкурентів</b> · повний бенчмарк", "Усі канали + AI-моніторинг", "<b>Термін: 10 днів</b>", "2h стратегсесія · 90-дн. план"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "AI-аналіз воронки топ-конкурента: лендінг, реклама (Facebook Ads Library, Google), email-послідовності, ціноутворення, UX-патерни. Повний звіт + покроковий план дій як обійти за 14-90 днів.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Збір усіх публічних точок дотику конкурента", "AI-розбір лендінгу: структура, тригери, CTA", "Аналіз реклами через Ads Library", "Реверс email-воронки та цінової стратегії", "PDF-звіт з висновками та слабкими місцями", "План дій: що повторити, що покращити, що уникати"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Економити роки експериментів через готовий розбір того, що вже працює.", type: "text" },
     ],
   },
 ];
