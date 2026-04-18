@@ -42,6 +42,10 @@ import imgAiTwin from "@/assets/services/ai-twin.jpg";
 import imgMvpOnDemand from "@/assets/services/mvp-on-demand.jpg";
 import imgAiVideoCatalog from "@/assets/services/ai-video-catalog.jpg";
 import imgReverseEngineering from "@/assets/services/reverse-engineering.jpg";
+import imgPromptDna from "@/assets/services/prompt-dna.jpg";
+import imgTelegramAiAgent from "@/assets/services/telegram-ai-agent.jpg";
+import imgGenerativeIdentity from "@/assets/services/generative-identity.jpg";
+import imgAiForecast from "@/assets/services/ai-forecast.jpg";
 
 export interface TierFeature {
   icon: "size" | "format" | "clock" | "check";
@@ -1071,6 +1075,95 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "AI-аналіз воронки топ-конкурента: лендінг, реклама (Facebook Ads Library, Google), email-послідовності, ціноутворення, UX-патерни. Повний звіт + покроковий план дій як обійти за 14-90 днів.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Збір усіх публічних точок дотику конкурента", "AI-розбір лендінгу: структура, тригери, CTA", "Аналіз реклами через Ads Library", "Реверс email-воронки та цінової стратегії", "PDF-звіт з висновками та слабкими місцями", "План дій: що повторити, що покращити, що уникати"], type: "list" },
       { kind: "goal", label: "Мета", text: "Економити роки експериментів через готовий розбір того, що вже працює.", type: "text" },
+    ],
+  },
+  // ───── Унікальні AI-офери 2026 (ітерація 2) ─────
+  {
+    id: "prompt-dna",
+    name: "Prompt DNA бренду",
+    emoji: "🧬",
+    subtitle: "Майстер-промпт вашого бренду для всіх AI-інструментів",
+    goal: "Щоб ChatGPT, Midjourney, Claude та інші AI завжди говорили й малювали голосом вашого бренду",
+    blockId: "b8",
+    photo: imgPromptDna,
+    tag: "🔥 Унікально",
+    hot: true,
+    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tierFeatures: [
+      tf("<b>Текстовий DNA</b> · ChatGPT/Claude", "1 master + 5 шаблонів", "<b>Термін: 5 днів</b>", "1 правка · інструкція"),
+      tf("<b>Текст + візуал</b> · MJ/DALL·E", "Master + 15 шаблонів + стилі", "<b>Термін: 7 днів</b>", "3 правки · Loom-навчання"),
+      tf("<b>Повна DNA</b> · текст + візуал + відео", "30+ шаблонів + автоматизація", "<b>Термін: 10 днів</b>", "Безлім. правки · Notion-база"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Майстер-промпт вашого бренду: тон голосу, лексика, табу-слова, візуальні референси, кольори, композиція. Один документ, який підключається до ChatGPT, Claude, Midjourney, DALL·E, Sora — і весь AI-контент відразу звучить як ваш бренд.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Аудит існуючих матеріалів і tone of voice", "Розробка master prompt для текстових AI", "Візуальні промпт-шаблони для Midjourney/DALL·E", "Бібліотека готових сценаріїв (пости, email, ads)", "Notion-база з усіма промптами", "Навчання команди (Loom-відео)"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Усунути різноголосся AI-контенту та зекономити години на «причісування».", type: "text" },
+    ],
+  },
+  {
+    id: "telegram-ai-agent",
+    name: "Telegram AI-агент продажів",
+    emoji: "📡",
+    subtitle: "Бот, що кваліфікує ліди голосом засновника та бронює дзвінки",
+    goal: "Перетворити Telegram-канал у машину продажів, що кваліфікує ліди та бронює дзвінки 24/7",
+    blockId: "b8",
+    photo: imgTelegramAiAgent,
+    tag: "🔥 Унікально",
+    hot: true,
+    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tierFeatures: [
+      tf("<b>Кваліфікація + бронювання</b>", "Telegram + Google Calendar", "<b>Термін: 5 днів</b>", "1 правка · сценарій"),
+      tf("<b>Голос засновника</b> + CRM", "ElevenLabs + HubSpot/Pipedrive", "<b>Термін: 7 днів</b>", "3 правки · аналітика"),
+      tf("<b>Повна екосистема</b> · мультиканал", "TG + WhatsApp + CRM + payments", "<b>Термін: 10 днів</b>", "Безлім. правки · 1 міс. ведення"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "AI-агент у Telegram, що відповідає голосом засновника, кваліфікує лідів за вашим скриптом, бронює дзвінки в Calendar, передає дані в CRM і нагадує про оплату. Працює 24/7 без операторів.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Розробка скрипта кваліфікації лідів", "Створення бота з voice-replies (ElevenLabs)", "Інтеграція з Google Calendar / Cal.com", "Підключення до CRM (HubSpot, Pipedrive, Notion)", "Платіжна інтеграція (Stripe / Wayforpay)", "Дашборд аналітики та A/B-тести"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Замінити SDR-менеджера першої лінії й освободити команду для closing.", type: "text" },
+    ],
+  },
+  {
+    id: "generative-identity",
+    name: "Generative айдентика",
+    emoji: "🎨",
+    subtitle: "Логотип і патерни, що мутують під контекст через AI",
+    goal: "Жива бренд-система, що автоматично адаптується під канал, кампанію або сезон без дизайнера",
+    blockId: "b8",
+    photo: imgGenerativeIdentity,
+    tag: "🔥 Унікально",
+    hot: true,
+    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tierFeatures: [
+      tf("<b>Логотип + 5 варіацій</b>", "SVG / PNG · base palette", "<b>Термін: 5 днів</b>", "1 правка · brand-guide PDF"),
+      tf("<b>Лого + патерни + ілюстрації</b>", "Generative system + Figma", "<b>Термін: 10 днів</b>", "3 правки · API-генератор"),
+      tf("<b>Повна жива система</b> · API", "Custom AI + automations", "<b>Термін: 14 днів</b>", "Безлім. правки · self-host"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "Не статичний логотип, а генеративна бренд-система: логомарк, патерни та ілюстрації, що мутують під контекст (свято, кампанія, аудиторія) через AI. Команда отримує безлім варіацій без дизайнера.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Концепт генеративної системи", "Розробка базового логомарку та правил мутацій", "Бібліотека патернів і ілюстрацій", "Brand-guide PDF з прикладами використання", "Figma-шаблон з компонентами", "API/скрипт для автогенерації варіацій"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Бренд, що ніколи не виглядає однаково, але завжди впізнаваний.", type: "text" },
+    ],
+  },
+  {
+    id: "ai-forecast",
+    name: "AI-Forecast ринку",
+    emoji: "🔮",
+    subtitle: "Прогноз трендів вашої ніші на 6 місяців на основі 1000+ джерел",
+    goal: "Бачити завтрашній попит сьогодні: запускати продукти й контент під тренди, що тільки зароджуються",
+    blockId: "b8",
+    photo: imgAiForecast,
+    tag: "🔥 Унікально",
+    hot: true,
+    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tierFeatures: [
+      tf("<b>1 ніша</b> · 100 джерел · 3 міс", "PDF-звіт 30+ стор.", "<b>Термін: 7 днів</b>", "1 zoom-розбір 1h"),
+      tf("<b>1 ніша</b> · 1000 джерел · 6 міс", "Notion + Loom + ідеї продуктів", "<b>Термін: 10 днів</b>", "2 розбори · 5 product-ідей"),
+      tf("<b>3 ніші</b> · повний моніторинг", "Live dashboard + щотижневі алерти", "<b>Термін: 14 днів</b>", "3 міс. підтримки · стратегсесія"),
+    ],
+    info: [
+      { kind: "description", label: "Опис", text: "AI-прогноз трендів вашої ніші на 6 місяців: аналіз TikTok, Reddit, Product Hunt, патентів, Google Trends, GitHub. Виявляємо сигнали попиту, що тільки зароджуються, і даємо конкретні product/контент ідеї для запуску раніше за конкурентів.", type: "text" },
+      { kind: "content", label: "Зміст", items: ["Налаштування моніторингу 1000+ джерел", "AI-аналіз сигналів та виявлення трендів", "Прогнозна модель попиту на 6 міс", "Notion-звіт з кейсами та інсайтами", "5+ конкретних ідей продуктів/контенту", "Live-дашборд з алертами (Pro/Max)"], type: "list" },
+      { kind: "goal", label: "Мета", text: "Перестати реагувати на тренди — почати їх передбачати.", type: "text" },
     ],
   },
 ];
