@@ -65,6 +65,13 @@ export interface InfoSection {
   type: "text" | "list";
 }
 
+export interface Tool2026 {
+  name: string;
+  purpose: string;
+  premium?: boolean;
+  url?: string;
+}
+
 export interface ServiceCard {
   id: string;
   name: string;
@@ -79,6 +86,7 @@ export interface ServiceCard {
   tiers: Tier[];
   tierFeatures: TierFeature[][];
   info: InfoSection[];
+  tools?: Tool2026[];
 }
 
 export interface Block {
