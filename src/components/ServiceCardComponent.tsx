@@ -151,7 +151,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </button>
 
         <div className={`grid transition-all duration-400 ease-out ${expanded ? "grid-rows-[1fr] opacity-100 mb-3" : "grid-rows-[0fr] opacity-0"}`} style={{ overflow: "hidden" }}>
-          <div className="space-y-2.5 pb-1">
+          <div className="space-y-2.5 pb-1 min-h-0 overflow-hidden">
             {service.info
               .filter((section) => section.kind !== "goal") /* skip goal — already shown above */
               .map((section, i) => {
