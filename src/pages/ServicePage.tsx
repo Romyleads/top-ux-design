@@ -5,6 +5,7 @@ import { useCart } from "@/hooks/useCart";
 import { useState } from "react";
 import FeatureIcon from "@/components/FeatureIcon";
 import SEOHead from "@/components/SEOHead";
+import ToolsStack from "@/components/ToolsStack";
 import CartFab from "@/components/CartFab";
 import CartDrawer from "@/components/CartDrawer";
 import { ArrowLeft, ChevronRight } from "lucide-react";
@@ -220,6 +221,10 @@ export default function ServicePage() {
                 );
               })}
           </div>
+
+          {service.tools && service.tools.length > 0 && (
+            <ToolsStack tools={service.tools} variant="page" />
+          )}
         </div>
       </div>
 
