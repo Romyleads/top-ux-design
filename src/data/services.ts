@@ -1026,6 +1026,14 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Збір матеріалів: голос, фото, тексти, відео", "Клонування голосу та створення аватара", "Тренування на вашій базі знань (RAG)", "Інтеграція в Telegram / Web / WhatsApp", "Підключення до CRM та автоматизацій", "Тестування та калібрування відповідей"], type: "list" },
       { kind: "goal", label: "Мета", text: "Масштабувати особистий бренд і продажі без фізичної присутності.", type: "text" },
     ],
+    tools: [
+      { name: "ElevenLabs", purpose: "Клонування голосу й мультимовний TTS", premium: true, url: "https://elevenlabs.io" },
+      { name: "HeyGen", purpose: "HD AI-аватари з ліпсинком", premium: true, url: "https://heygen.com" },
+      { name: "OpenAI GPT-4o", purpose: "Мовна модель для RAG і діалогу", premium: true, url: "https://openai.com" },
+      { name: "Pinecone", purpose: "Векторна база для бази знань (RAG)", premium: true, url: "https://pinecone.io" },
+      { name: "Make.com", purpose: "Автоматизація інтеграцій з CRM", premium: true, url: "https://make.com" },
+      { name: "n8n", purpose: "Open-source оркестратор воркфлоу", url: "https://n8n.io" },
+    ],
   },
   {
     id: "mvp-on-demand",
