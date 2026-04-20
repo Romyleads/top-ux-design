@@ -996,6 +996,14 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Глибинний бриф та аналіз ідеї", "Генерація 3-5 прототипів на різних AI-платформах", "Порівняльний UX-розбір (Loom-відео)", "Раунди правок на обраному прототипі", "Передача коду та інструкцій з масштабування"], type: "list" },
       { kind: "goal", label: "Мета", text: "Не вгадувати на першій ітерації, а отримати кілька реальних варіантів і обрати найкращий.", type: "text" },
     ],
+    tools: [
+      { name: "Lovable", purpose: "Full-stack AI builder для production-проєктів", premium: true, url: "https://lovable.dev" },
+      { name: "v0 by Vercel", purpose: "Генерація React/Next.js UI з shadcn", premium: true, url: "https://v0.dev" },
+      { name: "Bolt.new", purpose: "Швидкі fullstack-прототипи у браузері", premium: true, url: "https://bolt.new" },
+      { name: "Replit Agent", purpose: "AI-агент для збірки апок із бекендом", premium: true, url: "https://replit.com" },
+      { name: "Cursor", purpose: "AI IDE для парного програмування", premium: true, url: "https://cursor.com" },
+      { name: "Loom", purpose: "Запис UX-розборів і пояснень", url: "https://loom.com" },
+    ],
   },
   {
     id: "ai-twin",
