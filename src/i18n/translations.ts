@@ -38,6 +38,10 @@ export const translations: Record<string, Record<Locale, string>> = {
   "card.inCart": { uk: "✓ В кошику", en: "✓ In cart", de: "✓ Im Warenkorb" },
   "card.add": { uk: "Додати", en: "Add", de: "Hinzufügen" },
   "card.goal": { uk: "🎯 Мета", en: "🎯 Goal", de: "🎯 Ziel" },
+  "tools.title": { uk: "Інструменти та сервіси 2026", en: "Tools & services 2026", de: "Tools & Services 2026" },
+  "tools.subtitle": { uk: "Найсучасніший AI-стек для виконання цього замовлення", en: "Cutting-edge AI stack we use for this offer", de: "Modernster AI-Stack für diesen Auftrag" },
+  "tools.premium": { uk: "Premium", en: "Premium", de: "Premium" },
+  "tools.premiumHint": { uk: "Платний сервіс — оплата інструментів вже включена у вартість послуги", en: "Paid service — tooling cost already included in the offer price", de: "Kostenpflichtig — Toolkosten bereits im Preis enthalten" },
 
   // Cart
   "cart.step": { uk: "Крок", en: "Step", de: "Schritt" },
