@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
+import ToolsStack from "./ToolsStack";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const serviceIcons: Record<string, React.ElementType> = {
@@ -179,6 +180,9 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
                   </div>
                 );
               })}
+            {service.tools && service.tools.length > 0 && (
+              <ToolsStack tools={service.tools} variant="card" />
+            )}
           </div>
         </div>
 
