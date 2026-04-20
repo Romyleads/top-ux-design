@@ -1056,6 +1056,14 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Аналіз вашого ТЗ та визначення обсягу", "Уточнюючий бриф та архітектура рішення", "Розробка на оптимальному стеку", "Інтеграція auth, DB, оплати (за потреби)", "Деплой на продакшн з доменом", "Документація та передача проєкту"], type: "list" },
       { kind: "goal", label: "Мета", text: "Прозорість: ви платите рівно за обсяг своєї ідеї, без «оцінки на око».", type: "text" },
     ],
+    tools: [
+      { name: "Lovable Cloud", purpose: "Backend, auth, DB і edge-функції з коробки", premium: true, url: "https://lovable.dev" },
+      { name: "Supabase", purpose: "Postgres + auth + storage", url: "https://supabase.com" },
+      { name: "Stripe", purpose: "Платежі та підписки", premium: true, url: "https://stripe.com" },
+      { name: "Resend", purpose: "Транзакційні email через API", premium: true, url: "https://resend.com" },
+      { name: "Vercel", purpose: "Деплой і хостинг продакшну", premium: true, url: "https://vercel.com" },
+      { name: "Cloudflare", purpose: "Домен, CDN, захист", url: "https://cloudflare.com" },
+    ],
   },
   {
     id: "ai-video-catalog",
@@ -1078,6 +1086,14 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Аналіз каталогу та концепт відео", "Генерація відео через AI-моделі", "Озвучка (ElevenLabs) та підбір музики", "Субтитри та брендування", "Експорт під різні платформи (TikTok / IG / Web)", "Завантаження та інтеграція в каталог"], type: "list" },
       { kind: "goal", label: "Мета", text: "Збільшити конверсію картки товару на 30-60% за рахунок відео.", type: "text" },
     ],
+    tools: [
+      { name: "Runway Gen-3", purpose: "AI-генерація кінематографічного відео", premium: true, url: "https://runwayml.com" },
+      { name: "OpenAI Sora", purpose: "Фотореалістичне text-to-video", premium: true, url: "https://openai.com/sora" },
+      { name: "Kling AI", purpose: "Якісна анімація продуктів і людей", premium: true, url: "https://klingai.com" },
+      { name: "ElevenLabs", purpose: "Озвучка багатьма мовами", premium: true, url: "https://elevenlabs.io" },
+      { name: "Suno", purpose: "AI-генерація фонової музики", premium: true, url: "https://suno.com" },
+      { name: "CapCut", purpose: "Субтитри, монтаж, експорт під соцмережі", url: "https://capcut.com" },
+    ],
   },
   {
     id: "reverse-engineering",
@@ -1099,6 +1115,14 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "AI-аналіз воронки топ-конкурента: лендінг, реклама (Facebook Ads Library, Google), email-послідовності, ціноутворення, UX-патерни. Повний звіт + покроковий план дій як обійти за 14-90 днів.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Збір усіх публічних точок дотику конкурента", "AI-розбір лендінгу: структура, тригери, CTA", "Аналіз реклами через Ads Library", "Реверс email-воронки та цінової стратегії", "PDF-звіт з висновками та слабкими місцями", "План дій: що повторити, що покращити, що уникати"], type: "list" },
       { kind: "goal", label: "Мета", text: "Економити роки експериментів через готовий розбір того, що вже працює.", type: "text" },
+    ],
+    tools: [
+      { name: "SimilarWeb", purpose: "Трафік, джерела, поведінка конкурента", premium: true, url: "https://similarweb.com" },
+      { name: "SEMrush", purpose: "SEO/PPC-аналіз ключових слів", premium: true, url: "https://semrush.com" },
+      { name: "Meta Ads Library", purpose: "Усі активні рекламні креативи", url: "https://facebook.com/ads/library" },
+      { name: "Mailcharts", purpose: "Реверс email-послідовностей", premium: true, url: "https://mailcharts.com" },
+      { name: "Perplexity Pro", purpose: "AI-research конкурентів і ринку", premium: true, url: "https://perplexity.ai" },
+      { name: "Wayback Machine", purpose: "Історія змін сайту конкурента", url: "https://web.archive.org" },
     ],
   },
   // ───── Унікальні AI-офери 2026 (ітерація 2) ─────
@@ -1123,6 +1147,14 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Аудит існуючих матеріалів і tone of voice", "Розробка master prompt для текстових AI", "Візуальні промпт-шаблони для Midjourney/DALL·E", "Бібліотека готових сценаріїв (пости, email, ads)", "Notion-база з усіма промптами", "Навчання команди (Loom-відео)"], type: "list" },
       { kind: "goal", label: "Мета", text: "Усунути різноголосся AI-контенту та зекономити години на «причісування».", type: "text" },
     ],
+    tools: [
+      { name: "ChatGPT Pro", purpose: "Текстові master-промпти й Custom GPTs", premium: true, url: "https://chatgpt.com" },
+      { name: "Claude Sonnet 4.5", purpose: "Довгий контекст і tone-of-voice", premium: true, url: "https://claude.ai" },
+      { name: "Midjourney v7", purpose: "Візуальні промпти й стилі бренду", premium: true, url: "https://midjourney.com" },
+      { name: "DALL·E 3", purpose: "Візуали з точним textual control", premium: true, url: "https://openai.com" },
+      { name: "Notion AI", purpose: "Бібліотека промптів і шаблонів", premium: true, url: "https://notion.so" },
+      { name: "PromptLayer", purpose: "Версіонування й аналітика промптів", premium: true, url: "https://promptlayer.com" },
+    ],
   },
   {
     id: "telegram-ai-agent",
@@ -1144,6 +1176,14 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "AI-агент у Telegram, що відповідає голосом засновника, кваліфікує лідів за вашим скриптом, бронює дзвінки в Calendar, передає дані в CRM і нагадує про оплату. Працює 24/7 без операторів.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Розробка скрипта кваліфікації лідів", "Створення бота з voice-replies (ElevenLabs)", "Інтеграція з Google Calendar / Cal.com", "Підключення до CRM (HubSpot, Pipedrive, Notion)", "Платіжна інтеграція (Stripe / Wayforpay)", "Дашборд аналітики та A/B-тести"], type: "list" },
       { kind: "goal", label: "Мета", text: "Замінити SDR-менеджера першої лінії й освободити команду для closing.", type: "text" },
+    ],
+    tools: [
+      { name: "Telegram Bot API", purpose: "Платформа для ботів і voice-меседжів", url: "https://core.telegram.org/bots" },
+      { name: "ElevenLabs", purpose: "Голосові відповіді засновника", premium: true, url: "https://elevenlabs.io" },
+      { name: "Cal.com", purpose: "Бронювання дзвінків з календарем", url: "https://cal.com" },
+      { name: "HubSpot", purpose: "CRM для лідів і pipeline", premium: true, url: "https://hubspot.com" },
+      { name: "Stripe", purpose: "Прийом передоплат у боті", premium: true, url: "https://stripe.com" },
+      { name: "OpenAI GPT-4o", purpose: "Розуміння намірів і кваліфікація", premium: true, url: "https://openai.com" },
     ],
   },
   {
@@ -1167,6 +1207,14 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Концепт генеративної системи", "Розробка базового логомарку та правил мутацій", "Бібліотека патернів і ілюстрацій", "Brand-guide PDF з прикладами використання", "Figma-шаблон з компонентами", "API/скрипт для автогенерації варіацій"], type: "list" },
       { kind: "goal", label: "Мета", text: "Бренд, що ніколи не виглядає однаково, але завжди впізнаваний.", type: "text" },
     ],
+    tools: [
+      { name: "Midjourney v7", purpose: "Генеративні візуальні концепти", premium: true, url: "https://midjourney.com" },
+      { name: "Figma", purpose: "Компоненти бренду й варіації", premium: true, url: "https://figma.com" },
+      { name: "Recraft AI", purpose: "Векторна AI-генерація логотипів і SVG", premium: true, url: "https://recraft.ai" },
+      { name: "Stable Diffusion XL", purpose: "Open-source кастомні моделі стилю", url: "https://stability.ai" },
+      { name: "Replicate", purpose: "API-хостинг кастомних AI-моделей", premium: true, url: "https://replicate.com" },
+      { name: "p5.js", purpose: "Креативне кодування генеративних патернів", url: "https://p5js.org" },
+    ],
   },
   {
     id: "ai-forecast",
@@ -1188,6 +1236,14 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "AI-прогноз трендів вашої ніші на 6 місяців: аналіз TikTok, Reddit, Product Hunt, патентів, Google Trends, GitHub. Виявляємо сигнали попиту, що тільки зароджуються, і даємо конкретні product/контент ідеї для запуску раніше за конкурентів.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Налаштування моніторингу 1000+ джерел", "AI-аналіз сигналів та виявлення трендів", "Прогнозна модель попиту на 6 міс", "Notion-звіт з кейсами та інсайтами", "5+ конкретних ідей продуктів/контенту", "Live-дашборд з алертами (Pro/Max)"], type: "list" },
       { kind: "goal", label: "Мета", text: "Перестати реагувати на тренди — почати їх передбачати.", type: "text" },
+    ],
+    tools: [
+      { name: "Exploding Topics", purpose: "Раннє виявлення трендів за роками", premium: true, url: "https://explodingtopics.com" },
+      { name: "Glimpse", purpose: "Google Trends на стероїдах", premium: true, url: "https://meetglimpse.com" },
+      { name: "Brandwatch", purpose: "Соц-моніторинг і sentiment", premium: true, url: "https://brandwatch.com" },
+      { name: "Product Hunt", purpose: "Сигнали запуску нових продуктів", url: "https://producthunt.com" },
+      { name: "Perplexity Pro", purpose: "AI-research із цитуваннями", premium: true, url: "https://perplexity.ai" },
+      { name: "Reddit + GummySearch", purpose: "Pain points аудиторії в реальному часі", premium: true, url: "https://gummysearch.com" },
     ],
   },
 ];
