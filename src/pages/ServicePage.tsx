@@ -5,6 +5,7 @@ import { useCart } from "@/hooks/useCart";
 import { useState } from "react";
 import FeatureIcon from "@/components/FeatureIcon";
 import SEOHead from "@/components/SEOHead";
+import ToolsStack from "@/components/ToolsStack";
 import CartFab from "@/components/CartFab";
 import CartDrawer from "@/components/CartDrawer";
 import { ArrowLeft, ChevronRight } from "lucide-react";
