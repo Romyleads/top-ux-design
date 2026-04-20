@@ -62,19 +62,12 @@ export default function ToolsStack({ tools, variant = "page" }: Props) {
                       {tool.name}
                     </span>
                     {tool.premium && (
-                      <span
-                        className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, hsl(45 95% 55%), hsl(35 95% 50%))",
-                          color: "hsl(30 80% 18%)",
-                          boxShadow: "0 1px 4px hsl(38 92% 50% / 0.35)",
-                        }}
-                        title={t("tools.premiumHint")}
-                      >
-                        <Crown className="w-2.5 h-2.5" strokeWidth={2.5} />
-                        {t("tools.premium")}
-                      </span>
+                      <Crown
+                        className="w-3 h-3 flex-shrink-0"
+                        strokeWidth={2.4}
+                        style={{ color: "hsl(38 92% 50%)" }}
+                        aria-label={t("tools.premiumHint")}
+                      />
                     )}
                     {tool.url && (
                       <ExternalLink
