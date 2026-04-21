@@ -362,6 +362,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Дослідження ніші та конкурентів", "Мудборд та 2–8 концептів", "Векторизація обраного варіанту", "Адаптація для різних носіїв", "Гайдлайн використання логотипу"], type: "list" },
       { kind: "goal", label: "Мета", text: "Створити запам'ятовуваний та масштабований знак бренду.", type: "text" },
     ],
+    tools: [
+      { name: "Recraft V3", purpose: "Векторна AI-генерація концептів логотипу в SVG", premium: true },
+      { name: "Midjourney v7", purpose: "Мудборди й стилістичні референси", premium: true },
+      { name: "Adobe Illustrator + Firefly", purpose: "Фінальна векторизація і деталізація", premium: true },
+    ],
   },
   {
     id: "business-card",
@@ -382,6 +387,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Професійна візитна картка, яка запам'ятовується з першого дотику. Включає дизайн обох сторін, підбір паперу та фінішингу (тиснення, ламінація, soft-touch). Можливість NFC-версії.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Дизайн лицьової та зворотної сторін", "Підбір паперу та фінішингу", "Мокапи для презентації", "QR-код та NFC варіант", "Підготовка файлу для друку"], type: "list" },
       { kind: "goal", label: "Мета", text: "Створити тактильне враження професіоналізму при першому знайомстві.", type: "text" },
+    ],
+    tools: [
+      { name: "Figma", purpose: "Швидка верстка двосторонніх макетів", premium: true },
+      { name: "Recraft V3", purpose: "AI-генерація унікальних патернів і фонів", premium: true },
+      { name: "Adobe Substance 3D", purpose: "Реалістичні мокапи з фінішингом", premium: true },
     ],
   },
   {
@@ -404,6 +414,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Розробка концепції та стилістики", "Дизайн усіх поверхонь упаковки", "3D-мокапи та візуалізація", "Розгортка для друку (die-cut)", "Супровід на етапі виробництва"], type: "list" },
       { kind: "goal", label: "Мета", text: "Перетворити упаковку на потужний інструмент продажів.", type: "text" },
     ],
+    tools: [
+      { name: "Adobe Substance 3D Stager", purpose: "3D-мокапи упаковки з реалістичними матеріалами", premium: true },
+      { name: "Midjourney v7", purpose: "Концепти стилістики й ілюстрації для поверхонь", premium: true },
+      { name: "Adobe Illustrator", purpose: "Розгортка die-cut і підготовка для друку", premium: true },
+    ],
   },
   {
     id: "brandbook",
@@ -424,6 +439,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Комплексний документ, що фіксує всі правила використання бренду: логотип, кольори, типографіка, фотостиль, тон комунікацій та приклади застосування. Служить «біблією» для всіх підрядників та відділів.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Місія, візія та цінності бренду", "Правила використання логотипу", "Палітра кольорів та типографіка", "Фотостиль та ілюстрації", "Tone of voice та приклади комунікацій", "Шаблони документів та презентацій"], type: "list" },
       { kind: "goal", label: "Мета", text: "Забезпечити консистентність бренду на всіх носіях.", type: "text" },
+    ],
+    tools: [
+      { name: "Figma", purpose: "Інтерактивний digital brandbook з компонентами", premium: true },
+      { name: "Notion AI", purpose: "База знань і документація для команди", premium: true },
+      { name: "Claude Sonnet 4.6", purpose: "Tone of voice і вербальна ідентичність", premium: true },
     ],
   },
 
@@ -450,6 +470,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Keyword research та кластеризація", "Структурована стаття з H1–H3", "Внутрішня перелінковка", "Мета-теги та alt-тексти", "CTA для конверсії читачів"], type: "list" },
       { kind: "goal", label: "Мета", text: "Зайняти ТОП-позиції в Google та залучити цільовий трафік.", type: "text" },
     ],
+    tools: [
+      { name: "Claude Sonnet 4.6", purpose: "Лонгрід-копірайтинг з 1M контекстом", premium: true },
+      { name: "SEMrush", purpose: "Keyword research і конкурентний SEO-аналіз", premium: true },
+      { name: "Surfer SEO", purpose: "Оптимізація на сторінці й SERP-аналіз", premium: true },
+    ],
   },
   {
     id: "infographic",
@@ -470,6 +495,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Перетворення складних даних, статистики та процесів у привабливу візуалізацію. Кожна інфографіка проєктується з урахуванням когнітивних патернів сприйняття для максимального розуміння.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Структурування даних та сторітелінг", "Кастомні ікони та ілюстрації", "Кольорове кодування та ієрархія", "Адаптація під друк та digital", "Інтерактивна версія для web"], type: "list" },
       { kind: "goal", label: "Мета", text: "Зробити складне простим і підвищити залученість аудиторії.", type: "text" },
+    ],
+    tools: [
+      { name: "Figma + AI plugins", purpose: "Дизайн і структурування інфографіки", premium: true },
+      { name: "Recraft V3", purpose: "Векторні іконки та ілюстрації під стиль", premium: true },
+      { name: "Flourish", purpose: "Інтерактивні data-driven візуалізації" },
     ],
   },
   {
@@ -492,6 +522,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Огляд проблеми та контекст ринку", "Методологія дослідження", "Дані, графіки та аналітика", "Практичні рекомендації та висновки", "Промо-план для дистрибуції"], type: "list" },
       { kind: "goal", label: "Мета", text: "Генерувати якісні B2B-ліди через експертний контент.", type: "text" },
     ],
+    tools: [
+      { name: "Perplexity Computer", purpose: "Глибокий research із цитуваннями джерел", premium: true },
+      { name: "Claude Sonnet 4.6", purpose: "Аналітичні розділи з 1M контекстом", premium: true },
+      { name: "Adobe InDesign", purpose: "Преміум-верстка PDF-документу", premium: true },
+    ],
   },
   {
     id: "case-study",
@@ -512,6 +547,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Детальна документація успішного проєкту у форматі «Проблема → Рішення → Результат». Включає вимірювані метрики, відгуки клієнта та візуалізацію процесу роботи.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Контекст та завдання клієнта", "Процес роботи та рішення", "Конкретні результати з метриками", "Відгук та цитата клієнта", "Візуалізація: до/після, графіки"], type: "list" },
       { kind: "goal", label: "Мета", text: "Перетворити успішний досвід у потужний інструмент продажів.", type: "text" },
+    ],
+    tools: [
+      { name: "Claude Sonnet 4.6", purpose: "Структуроване письмо «Проблема → Рішення → Результат»", premium: true },
+      { name: "HeyGen Avatar IV", purpose: "Відео-версія кейсу з аватаром клієнта", premium: true },
+      { name: "Figma", purpose: "Верстка PDF, web і social-форматів" },
     ],
   },
 
@@ -539,6 +579,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Структура та написання контенту", "Професійний дизайн та верстка", "Обкладинка та 3D-мокапи", "Landing page для завантаження", "Промо-матеріали та email-воронка"], type: "list" },
       { kind: "goal", label: "Мета", text: "Побудувати email-базу через цінний контент.", type: "text" },
     ],
+    tools: [
+      { name: "Claude Sonnet 4.6", purpose: "Написання довгого контенту з єдиним стилем", premium: true },
+      { name: "Adobe InDesign + Firefly", purpose: "Преміум-верстка та AI-ілюстрації", premium: true },
+      { name: "Lovable", purpose: "Landing для завантаження + email-воронка", premium: true },
+    ],
   },
   {
     id: "email-campaign",
@@ -559,6 +604,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Кросплатформний email з високою конверсією, що коректно відображається у всіх поштових клієнтах (Gmail, Outlook, Apple Mail). Включає адаптивну верстку, dark mode підтримку та персоналізацію.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Дизайн та верстка листа (MJML/HTML)", "Копірайтинг із персоналізацією", "A/B тестування subject lines", "Dark mode адаптація", "Налаштування в ESP (Mailchimp, Klaviyo)"], type: "list" },
       { kind: "goal", label: "Мета", text: "Досягти open rate вище за ринковий та конвертувати у цільову дію.", type: "text" },
+    ],
+    tools: [
+      { name: "Klaviyo AI", purpose: "Send-time AI, predictive analytics і ESP-доставка", premium: true },
+      { name: "Resend", purpose: "Транзакційна доставка через API", premium: true },
+      { name: "Maizzle", purpose: "MJML/HTML збірка з dark mode підтримкою" },
     ],
   },
   {
@@ -582,6 +632,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Стратегія воронки та карта листів", "Тригери та умови розгалуження", "Копірайтинг та дизайн кожного листа", "Налаштування в ESP з автоматизацією", "Аналітика та оптимізація конверсій"], type: "list" },
       { kind: "goal", label: "Мета", text: "Автоматично конвертувати ліди в клієнтів на автопілоті.", type: "text" },
     ],
+    tools: [
+      { name: "Customer.io", purpose: "Поведінкові тригери й розгалужені воронки", premium: true },
+      { name: "Claude Sonnet 4.6", purpose: "Копірайтинг персоналізованих серій", premium: true },
+      { name: "n8n", purpose: "Open-source оркестрація між ESP, CRM і даними" },
+    ],
   },
   {
     id: "newsletter",
@@ -602,6 +657,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Регулярні email-розсилки, що тримають бренд у свідомості аудиторії. Включають курирування контенту, оригінальні інсайти, промо-блоки та аналітику залученості для постійної оптимізації.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Розробка формату та рубрик", "Копірайтинг та курирування контенту", "Дизайн та верстка шаблону", "Планування контент-календаря", "Аналітика: open rate, CTR, відписки"], type: "list" },
       { kind: "goal", label: "Мета", text: "Будувати довгострокові відносини з аудиторією та монетизувати базу.", type: "text" },
+    ],
+    tools: [
+      { name: "Beehiiv", purpose: "Newsletter-платформа з growth і монетизацією", premium: true },
+      { name: "Perplexity Pro", purpose: "Курування інсайтів і research для рубрик", premium: true },
+      { name: "Claude Sonnet 4.6", purpose: "Авторський tone-of-voice і редактура", premium: true },
     ],
   },
 
@@ -628,6 +688,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Розробка програми та контенту", "Дизайн слайдів та матеріалів", "Технічна організація трансляції", "Промо-кампанія для реєстрації", "Запис, монтаж та post-event розсилка"], type: "list" },
       { kind: "goal", label: "Мета", text: "Конвертувати учасників у клієнтів через освітню цінність.", type: "text" },
     ],
+    tools: [
+      { name: "Riverside.fm", purpose: "Студійна якість запису й AI-монтаж", premium: true },
+      { name: "Gamma 2.0", purpose: "AI-генерація навчальних слайдів", premium: true },
+      { name: "Descript", purpose: "Транскрипція, монтаж за текстом і клипи" },
+    ],
   },
   {
     id: "product-tour",
@@ -649,6 +714,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Сценарій та розкадровка", "Screen recording або зйомка", "Професійна озвучка та музика", "Монтаж та пост-продакшн", "Адаптація під різні платформи"], type: "list" },
       { kind: "goal", label: "Мета", text: "Знизити бар'єри до покупки через наочну демонстрацію.", type: "text" },
     ],
+    tools: [
+      { name: "Tella", purpose: "Кінематографічний screen recording з ефектами", premium: true },
+      { name: "ElevenLabs v3", purpose: "Професійна озвучка багатьма мовами", premium: true },
+      { name: "Descript", purpose: "Монтаж за текстом і AI-видалення \"е-е\"" },
+    ],
   },
   {
     id: "testimonials",
@@ -669,6 +739,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Професійні відеовідгуки задоволених клієнтів — найпотужніший соціальний доказ. Включає підбір респондентів, підготовку запитань, зйомку (або remote-інтерв'ю), монтаж та адаптацію під всі платформи.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Підбір респондентів та підготовка", "Зйомка або remote-інтерв'ю", "Монтаж із субтитрами та брендингом", "Короткі clips для соцмереж", "Embed-версія для сайту"], type: "list" },
       { kind: "goal", label: "Мета", text: "Перетворити задоволених клієнтів у найкращих продавців.", type: "text" },
+    ],
+    tools: [
+      { name: "Riverside.fm", purpose: "Remote-інтерв'ю студійної якості", premium: true },
+      { name: "Opus Clip", purpose: "AI-нарізка клипів і автосубтитри", premium: true },
+      { name: "VideoAsk", purpose: "Збір відеовідгуків від клієнтів асинхронно", premium: true },
     ],
   },
 
@@ -695,6 +770,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Keyword research та негативні ключі", "Створення кампаній та оголошень", "Налаштування конверсій та аналітики", "A/B тестування оголошень", "Щомісячна оптимізація та звіти"], type: "list" },
       { kind: "goal", label: "Мета", text: "Отримати максимум цільових лідів за мінімальну вартість.", type: "text" },
     ],
+    tools: [
+      { name: "Google Ads + AI Max", purpose: "Performance Max і автоматизовані ставки", premium: true },
+      { name: "Optmyzr", purpose: "AI-оптимізація PPC і скрипти для масштабу", premium: true },
+      { name: "Looker Studio", purpose: "Дашборди звітності з GA4 і Ads" },
+    ],
   },
   {
     id: "retargeting",
@@ -715,6 +795,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Повернення «загублених» відвідувачів через таргетовану рекламу на Facebook, Google, Instagram та LinkedIn. Сегментація за поведінкою на сайті, етапом воронки та часом останнього візиту.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Налаштування пікселів та API конверсій", "Створення аудиторій за поведінкою", "Дизайн персоналізованих креативів", "Налаштування bid-стратегій", "Аналітика ROAS та оптимізація"], type: "list" },
       { kind: "goal", label: "Мета", text: "Конвертувати «теплих» відвідувачів у клієнтів з мінімальними витратами.", type: "text" },
+    ],
+    tools: [
+      { name: "Meta Ads + Advantage+", purpose: "AI-аудиторії та автоматизована оптимізація", premium: true },
+      { name: "AdCreative.ai", purpose: "Генерація десятків ретаргет-креативів", premium: true },
+      { name: "Hyros", purpose: "Точне атрибутування ROAS по каналах", premium: true },
     ],
   },
   {
@@ -737,6 +822,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Дослідження цільових майданчиків", "Написання нативних статей", "Узгодження з редакціями", "Промо-план та посилення через paid", "Аналітика: охоплення, конверсії, ROI"], type: "list" },
       { kind: "goal", label: "Мета", text: "Побудувати довіру через авторитетні медіа.", type: "text" },
     ],
+    tools: [
+      { name: "Outbrain / Taboola", purpose: "Нативна дистрибуція в преміум-медіа", premium: true },
+      { name: "Claude Sonnet 4.6", purpose: "Редакційний tone-of-voice статей", premium: true },
+      { name: "BuzzSumo", purpose: "Дослідження вірусних тем і майданчиків", premium: true },
+    ],
   },
   {
     id: "landing-ad",
@@ -758,6 +848,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Простий та ефективний лендінг для рекламних кампаній з фокусом на одну конверсійну дію. Включає інтеграцію з CRM, аналітикою та heatmaps для постійної оптимізації.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Дизайн та розробка лендінгу", "Інтеграція з CRM та формами", "Налаштування GA4 та конверсій", "A/B тестування елементів", "Heatmaps та аналітика поведінки"], type: "list" },
       { kind: "goal", label: "Мета", text: "Максимізувати конверсію рекламного трафіку.", type: "text" },
+    ],
+    tools: [
+      { name: "Lovable", purpose: "Швидкий лендінг з backend і CRM-інтеграцією", premium: true },
+      { name: "Microsoft Clarity", purpose: "Безкоштовні heatmaps і session recordings" },
+      { name: "Unbounce Smart Traffic", purpose: "AI-роутинг трафіку до найкращої версії", premium: true },
     ],
   },
 
@@ -786,6 +881,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Кастинг та підбір криейторів", "Розробка брифів та сценаріїв", "Контроль якості та монтаж", "Адаптація під TikTok, Reels, Shorts", "Передача прав на контент"], type: "list" },
       { kind: "goal", label: "Мета", text: "Збільшити довіру та конверсію через «людський» контент.", type: "text" },
     ],
+    tools: [
+      { name: "Billo", purpose: "Маркетплейс верифікованих UGC-криейторів", premium: true },
+      { name: "Opus Clip", purpose: "AI-нарізка під TikTok/Reels із субтитрами", premium: true },
+      { name: "CapCut Pro", purpose: "Монтаж і трендові ефекти для соцмереж", premium: true },
+    ],
   },
   {
     id: "ai-content",
@@ -808,6 +908,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Впровадження AI-інструментів (ChatGPT, Midjourney, Jasper тощо) у маркетингові процеси компанії. Включає створення кастомних промптів, workflows та навчання команди для 5-10x масштабування контенту.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Аудит поточних процесів контенту", "Підбір та налаштування AI-інструментів", "Створення бібліотеки промптів", "Автоматизація workflows", "Навчання команди та документація"], type: "list" },
       { kind: "goal", label: "Мета", text: "Масштабувати контент у 5–10 разів без збільшення команди.", type: "text" },
+    ],
+    tools: [
+      { name: "Claude Sonnet 4.6", purpose: "Master-промпти й tone-of-voice бренду", premium: true },
+      { name: "Midjourney v7", purpose: "Візуальний стиль і асет-бібліотека", premium: true },
+      { name: "Notion AI", purpose: "Бібліотека промптів і workflows для команди", premium: true },
     ],
   },
   {
@@ -832,6 +937,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Welcome email-серія з поступовим навчанням", "In-app product tours та tooltips", "Відео-гайди та скрінкасти", "Чекліст активації та milestone emails", "Аналітика retention та оптимізація"], type: "list" },
       { kind: "goal", label: "Мета", text: "Довести користувача до «Aha moment» якомога швидше.", type: "text" },
     ],
+    tools: [
+      { name: "Userflow", purpose: "In-app тури, чеклісти й tooltips без коду", premium: true },
+      { name: "Customer.io", purpose: "Welcome email-серія за поведінковими тригерами", premium: true },
+      { name: "Tella", purpose: "Кінематографічні скрінкасти-гайди", premium: true },
+    ],
   },
   {
     id: "linkedin-brand",
@@ -854,6 +964,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Побудова сильного LinkedIn-профілю: від оптимізації та контент-стратегії до нетворкінгу та outreach-кампаній. Системний підхід до thought leadership у B2B-середовищі.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Оптимізація профілю під пошук", "Контент-стратегія та план публікацій", "Thought leadership тексти та статті", "Outreach та нетворкінг стратегія", "LinkedIn Newsletter та Events"], type: "list" },
       { kind: "goal", label: "Мета", text: "Побудувати pipeline B2B-лідів через органічний LinkedIn.", type: "text" },
+    ],
+    tools: [
+      { name: "Taplio", purpose: "AI-контент і планування LinkedIn-постів", premium: true },
+      { name: "Claude Sonnet 4.6", purpose: "Thought-leadership лонгріди й сторітелінг", premium: true },
+      { name: "Clay", purpose: "Збагачення лідів і персональний outreach", premium: true },
     ],
   },
   {
@@ -878,6 +993,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Валідація ідеї та конкурентний аналіз", "UI/UX дизайн та прототип", "Розробка MVP (Landing + Dashboard + API)", "Інтеграція Stripe та платіжної системи", "Стратегія запуску та Product Hunt"], type: "list" },
       { kind: "goal", label: "Мета", text: "Запустити MRR-продукт з мінімальними інвестиціями.", type: "text" },
     ],
+    tools: [
+      { name: "Lovable + Cloud", purpose: "Full-stack MVP з auth, DB і edge-функціями", premium: true },
+      { name: "Stripe", purpose: "Підписки, payments і customer portal", premium: true },
+      { name: "PostHog", purpose: "Product analytics, feature flags і session replay" },
+    ],
   },
   {
     id: "interactive-content",
@@ -900,6 +1020,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Розробка концепції та механіки", "UX/UI дизайн інтерактиву", "Програмування та тестування", "Інтеграція з CRM та email", "Аналітика результатів та A/B тести"], type: "list" },
       { kind: "goal", label: "Мета", text: "Генерувати кваліфіковані ліди через залучення.", type: "text" },
     ],
+    tools: [
+      { name: "Typeform AI", purpose: "Конверсійні квізи з логікою розгалуження", premium: true },
+      { name: "Lovable", purpose: "Кастомні калькулятори й гейміфіковані інтерактиви", premium: true },
+      { name: "Outgrow", purpose: "ROI-калькулятори і lead-capture інструменти", premium: true },
+    ],
   },
   {
     id: "podcast",
@@ -921,6 +1046,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Від ідеї до регулярного подкасту з аудиторією. Повний продакшн-цикл: концепція, брендинг, запис, монтаж, дистрибуція на Spotify/Apple Podcasts та просування через соцмережі та newsletter.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Концепція, назва та формат подкасту", "Брендинг: обкладинка, intro/outro", "Запис, монтаж та пост-продакшн", "Дистрибуція (Spotify, Apple, YouTube)", "Промо-стратегія та зростання аудиторії"], type: "list" },
       { kind: "goal", label: "Мета", text: "Створити медіа-актив для довгострокового зростання бренду.", type: "text" },
+    ],
+    tools: [
+      { name: "Riverside.fm", purpose: "Студійний запис, AI-монтаж і shownotes", premium: true },
+      { name: "Descript", purpose: "Монтаж за текстом і Overdub voice-cloning", premium: true },
+      { name: "Opus Clip", purpose: "Автонарізка вірусних відео-клипів", premium: true },
     ],
   },
   // ═══════════════════════════════════════
@@ -947,6 +1077,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Валідація ідеї та бізнес-модель", "UX/UI дизайн продукту", "Розробка MVP з core-функціоналом", "Інтеграція Stripe/LemonSqueezy підписок", "Landing page + onboarding flow", "Аналітика та метрики (MRR, churn, LTV)"], type: "list" },
       { kind: "goal", label: "Мета", text: "Запустити підписний SaaS з рекурентним доходом.", type: "text" },
     ],
+    tools: [
+      { name: "Lovable + Cloud", purpose: "Full-stack SaaS з auth, DB і edge-функціями", premium: true },
+      { name: "Cursor 3.0", purpose: "AI IDE з паралельними агентами на репозиторій", premium: true },
+      { name: "Stripe Billing", purpose: "Підписки, метрики MRR і customer portal", premium: true },
+    ],
   },
   {
     id: "telegram-twa",
@@ -968,6 +1103,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Telegram Web App (TWA) — міні-додаток прямо всередині месенджера. Виглядає як повноцінний мобільний додаток, але не потребує завантаження з App Store. Ідеально для сервісів, магазинів, записів, освітніх платформ та будь-яких бізнесів з аудиторією в Telegram.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Дизайн інтерфейсу під Telegram UI", "Розробка TWA (React + Telegram SDK)", "Telegram Bot для взаємодії", "Інтеграція оплати (Telegram Payments / Stripe)", "База даних та авторизація через Telegram", "Деплой та налаштування бота"], type: "list" },
       { kind: "goal", label: "Мета", text: "Отримати повноцінний сервіс всередині Telegram без окремого додатку.", type: "text" },
+    ],
+    tools: [
+      { name: "Lovable", purpose: "Frontend TWA з Telegram SDK і backend на Cloud", premium: true },
+      { name: "grammY", purpose: "Сучасний TypeScript-фреймворк для ботів" },
+      { name: "Stripe + Telegram Payments", purpose: "Прийом оплат прямо в боті", premium: true },
     ],
   },
   {
@@ -991,6 +1131,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Аудит процесів для автоматизації", "Розробка AI-ботів та агентів", "Інтеграція з CRM, email, месенджерами", "Навчання AI на даних компанії", "Дашборд аналітики та моніторинг", "Документація та навчання команди"], type: "list" },
       { kind: "goal", label: "Мета", text: "Зменшити ручну роботу на 70% через AI-автоматизацію.", type: "text" },
     ],
+    tools: [
+      { name: "Claude Sonnet 4.6", purpose: "Ядро AI-агентів з 1M контекстом і tool use", premium: true },
+      { name: "n8n", purpose: "Open-source оркестрація workflow і інтеграцій" },
+      { name: "Manus AI", purpose: "Автономний агент: ціль → план → інструменти → результат" },
+    ],
   },
   {
     id: "nocode-mvp",
@@ -1012,6 +1157,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Запуск повноцінного цифрового продукту без програмування за допомогою no-code інструментів: Bubble, Framer, Glide, Make, Supabase. Ідеально для стартапів, які хочуть швидко валідувати ідею з мінімальним бюджетом.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Аналіз ідеї та вибір інструментів", "Дизайн та прототипування", "Збірка MVP на no-code платформі", "Інтеграція оплати та email", "Деплой та налаштування домену", "Гайд по самостійному управлінню"], type: "list" },
       { kind: "goal", label: "Мета", text: "Валідувати бізнес-ідею за мінімальний бюджет та час.", type: "text" },
+    ],
+    tools: [
+      { name: "Lovable", purpose: "AI-builder full-stack апок без коду", premium: true },
+      { name: "Framer AI", purpose: "Лендінги й маркетингові сайти з анімаціями", premium: true },
+      { name: "Make.com", purpose: "Візуальна оркестрація 1500+ інтеграцій", premium: true },
     ],
   },
   // ───── Унікальні AI-офери 2026 (ітерація 1) ─────
