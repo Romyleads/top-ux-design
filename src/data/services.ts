@@ -140,6 +140,11 @@ export const services: ServiceCard[] = [
       { kind: "goal", label: "Мета", text: "Перетворити увагу аудиторії на конкретне рішення: угоду, інвестицію або наступну зустріч.", type: "text" },
       { kind: "formats", label: "Формати", text: "PDF, PPTX, Keynote, Google Slides", type: "text" },
     ],
+    tools: [
+      { name: "Gamma 2.0", purpose: "AI-генерація слайдів і брендованих презентацій", premium: true },
+      { name: "Midjourney v7", purpose: "Кастомні візуали та обкладинки слайдів", premium: true },
+      { name: "Figma Slides", purpose: "Фінальна верстка й анімації переходів" },
+    ],
   },
   {
     id: "brochure",
@@ -161,6 +166,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Обкладинка з фото та слоганом", "Опис компанії та ключових цінностей", "Детальний опис продуктів / послуг", "Конкурентні переваги", "Відгуки та кейси клієнтів", "Контакти, адреса, QR-код"], type: "list" },
       { kind: "goal", label: "Мета", text: "Дати потенційному клієнту повне уявлення про пропозицію.", type: "text" },
       { kind: "formats", label: "Формати", text: "PDF для цифрових каналів + макет для друку (CMYK)", type: "text" },
+    ],
+    tools: [
+      { name: "Adobe InDesign + Firefly", purpose: "Професійна верстка з AI-генерацією візуалів", premium: true },
+      { name: "Claude Sonnet 4.6", purpose: "Копірайтинг із tone-of-voice бренду", premium: true },
+      { name: "Recraft V3", purpose: "Векторні ілюстрації та іконки під брендинг", premium: true },
     ],
   },
   {
@@ -184,6 +194,11 @@ export const services: ServiceCard[] = [
       { kind: "goal", label: "Мета", text: "Спростити процес вибору та замовлення для B2B-клієнтів.", type: "text" },
       { kind: "formats", label: "Формати", text: "PDF для цифрових каналів, Print-ready (CMYK), Web-версія з пошуком", type: "text" },
     ],
+    tools: [
+      { name: "Adobe InDesign", purpose: "Професійна верстка багатосторінкових каталогів", premium: true },
+      { name: "Sora 2 Pro", purpose: "AI-фото товарів на брендованих сценах", premium: true },
+      { name: "Lovable", purpose: "Web-версія каталогу з пошуком і фільтрами", premium: true },
+    ],
   },
   {
     id: "flyer",
@@ -205,6 +220,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Сильний заголовок з унікальною торговою пропозицією", "Основна пропозиція або акція з дедлайном", "Ключові переваги (3–5 пунктів)", "Заклик до дії з конкретним наступним кроком", "Контакти, сайт, QR-код для переходу"], type: "list" },
       { kind: "goal", label: "Мета", text: "Миттєво привернути увагу та конвертувати у дію.", type: "text" },
       { kind: "formats", label: "Формати", text: "PDF, PNG, Print-ready CMYK, HTML5 банер", type: "text" },
+    ],
+    tools: [
+      { name: "Recraft V3", purpose: "Швидка AI-генерація layout і векторних деталей", premium: true },
+      { name: "Midjourney v7", purpose: "Hero-візуал і фонові композиції", premium: true },
+      { name: "Figma", purpose: "Фінальна верстка та експорт під формати", premium: true },
     ],
   },
 
@@ -233,6 +253,11 @@ export const services: ServiceCard[] = [
       { kind: "goal", label: "Мета", text: "Конвертувати трафік у заявки з максимальним ROI.", type: "text" },
       { kind: "formats", label: "Формати", text: "HTML/CSS, React, Webflow, WordPress", type: "text" },
     ],
+    tools: [
+      { name: "Lovable", purpose: "Full-stack AI builder з backend і CRM-інтеграцією", premium: true },
+      { name: "Cursor 3.0", purpose: "Доточування кастомного коду та A/B варіантів", premium: true },
+      { name: "Vercel", purpose: "Деплой, edge-функції та аналітика конверсій", premium: true },
+    ],
   },
   {
     id: "video-ad",
@@ -255,6 +280,11 @@ export const services: ServiceCard[] = [
       { kind: "goal", label: "Мета", text: "Збільшити впізнаваність бренду та залучення аудиторії через відеоконтент.", type: "text" },
       { kind: "formats", label: "Формати", text: "MP4 (1080p/4K), GIF, Social cuts (9:16, 1:1, 16:9)", type: "text" },
     ],
+    tools: [
+      { name: "Sora 2 Pro", purpose: "Фотореалістичне text-to-video до 60 сек", premium: true },
+      { name: "Kling 2.5", purpose: "Анімація персонажів і продуктів з ліпсинком", premium: true },
+      { name: "ElevenLabs v3", purpose: "Емоційна озвучка 113 мовами", premium: true },
+    ],
   },
   {
     id: "smm",
@@ -276,6 +306,11 @@ export const services: ServiceCard[] = [
       { kind: "content", label: "Зміст", items: ["Розробка контент-стратегії та tone of voice", "Дизайн постів, Stories, Reels", "Копірайтинг та хештег-стратегія", "Модерація коментарів та DM", "Щомісячна аналітика та звіти"], type: "list" },
       { kind: "goal", label: "Мета", text: "Побудувати активну спільноту та конвертувати підписників у клієнтів.", type: "text" },
     ],
+    tools: [
+      { name: "ChatGPT Agent", purpose: "Контент-плани, копірайтинг і модерація DM", premium: true },
+      { name: "Midjourney v7", purpose: "Візуали для постів, Stories і Reels", premium: true },
+      { name: "Buffer AI", purpose: "Постинг, аналітика й оптимізація часу публікацій", premium: true },
+    ],
   },
   {
     id: "banners",
@@ -296,6 +331,11 @@ export const services: ServiceCard[] = [
       { kind: "description", label: "Опис", text: "Комплект рекламних банерів для Google Ads, Facebook, Instagram, LinkedIn та інших платформ. Всі розміри адаптовані під вимоги кожної рекламної мережі з оптимізацією під CTR.", type: "text" },
       { kind: "content", label: "Зміст", items: ["Дизайн банерів у всіх необхідних розмірах", "Статичні та анімовані версії (GIF/HTML5)", "A/B варіанти для тестування", "Адаптація під ретаргетинг-кампанії", "Оптимізація ваги файлів для швидкого завантаження"], type: "list" },
       { kind: "goal", label: "Мета", text: "Забезпечити високий CTR та конверсію рекламних кампаній.", type: "text" },
+    ],
+    tools: [
+      { name: "Recraft V3", purpose: "Векторні AI-банери у всіх розмірах за хвилини", premium: true },
+      { name: "Midjourney v7", purpose: "Hero-візуали і креативні концепти", premium: true },
+      { name: "Bannerbear", purpose: "Автоматизація сотень варіацій через API", premium: true },
     ],
   },
 
