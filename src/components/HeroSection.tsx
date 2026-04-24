@@ -2,6 +2,7 @@ import { Search, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import SearchConstellation from "@/components/SearchConstellation";
 import promoLogo from "@/assets/promovisions-hero.png";
 
 interface HeroSectionProps {
@@ -75,13 +76,26 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       {/* Search */}
       <div className={`relative max-w-[500px] mx-auto aurora-border ${focused ? "focus-within" : ""}`}>
         <div
-          className={`relative z-[1] flex items-center rounded-full py-[6px] pl-[20px] pr-[6px] gap-2.5 border-[1.5px] transition-all duration-200 backdrop-blur-xl ${
+          className={`relative z-[1] flex items-center rounded-full py-[6px] pl-[20px] pr-[6px] gap-2.5 border-[1.5px] transition-all duration-300 overflow-hidden ${
             focused
-              ? "bg-white/10 border-primary/40 shadow-[0_8px_32px_-4px_rgba(74,222,128,0.25),0_0_60px_-10px_rgba(74,222,128,0.1)]"
-              : "bg-white/[0.07] border-white/[0.12] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.3)]"
+              ? "border-primary/50 shadow-[0_8px_32px_-4px_rgba(74,222,128,0.35),0_0_60px_-10px_rgba(74,222,128,0.2),inset_0_0_0_1px_rgba(74,222,128,0.08)]"
+              : "border-white/[0.14] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.5)]"
           }`}
+          style={{
+            background: focused
+              ? "linear-gradient(135deg, hsl(220, 40%, 8%) 0%, hsl(220, 35%, 11%) 50%, hsl(150, 30%, 9%) 100%)"
+              : "linear-gradient(135deg, hsl(220, 38%, 9%) 0%, hsl(220, 30%, 12%) 100%)",
+          }}
         >
-          <Search className={`flex-shrink-0 w-[17px] h-[17px] transition-all duration-300 ${focused ? "text-primary scale-115 -rotate-[5deg]" : "text-white/40"}`} />
+          {/* Animated constellation backdrop */}
+          <SearchConstellation active={focused} />
+
+          {/* Subtle inner gradient sheen */}
+          <div className="absolute inset-0 pointer-events-none rounded-full" style={{
+            background: "radial-gradient(ellipse at top, rgba(74,222,128,0.06) 0%, transparent 60%)"
+          }} />
+
+          <Search className={`relative z-[2] flex-shrink-0 w-[17px] h-[17px] transition-all duration-300 ${focused ? "text-primary scale-115 -rotate-[5deg] drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]" : "text-white/50"}`} />
           <input
             ref={inputRef}
             type="text"
@@ -90,22 +104,23 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             placeholder={t("hero.search")}
-            className="flex-1 border-none outline-none text-[14px] text-white bg-transparent font-sans tracking-tight min-w-0 placeholder:text-white/30 placeholder:font-normal"
+            className="relative z-[2] flex-1 border-none outline-none text-[14px] text-white bg-transparent font-sans tracking-tight min-w-0 placeholder:text-white/40 placeholder:font-normal caret-primary selection:bg-primary/30 selection:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]"
+            style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
           />
           {searchQuery.length > 0 && (
-            <button onClick={() => onSearchChange("")} className="flex-shrink-0 flex items-center justify-center w-[22px] h-[22px] rounded-full bg-transparent text-white/40 hover:text-white hover:bg-white/10 transition-colors">
+            <button onClick={() => onSearchChange("")} className="relative z-[2] flex-shrink-0 flex items-center justify-center w-[22px] h-[22px] rounded-full bg-white/5 text-white/60 hover:text-white hover:bg-white/15 transition-colors">
               <X className="w-3.5 h-3.5" />
             </button>
           )}
           {!searchQuery && !focused && (
-            <div className="flex-shrink-0 flex items-center gap-[3px] opacity-40">
-              <kbd className="bg-white/10 border border-white/10 rounded-[5px] px-1.5 py-0.5 text-[10px] font-semibold text-white/50 leading-snug">Ctrl</kbd>
-              <kbd className="bg-white/10 border border-white/10 rounded-[5px] px-1.5 py-0.5 text-[10px] font-semibold text-white/50 leading-snug">K</kbd>
+            <div className="relative z-[2] flex-shrink-0 flex items-center gap-[3px] opacity-50">
+              <kbd className="bg-white/10 border border-white/15 rounded-[5px] px-1.5 py-0.5 text-[10px] font-semibold text-white/70 leading-snug">Ctrl</kbd>
+              <kbd className="bg-white/10 border border-white/15 rounded-[5px] px-1.5 py-0.5 text-[10px] font-semibold text-white/70 leading-snug">K</kbd>
             </div>
           )}
           <button
             onClick={() => inputRef.current?.focus()}
-            className="flex-shrink-0 gradient-primary border-none text-primary-foreground w-[40px] h-[40px] rounded-full flex items-center justify-center shadow-green hover:scale-[1.08] hover:shadow-green-hover active:scale-95 transition-all duration-200"
+            className="relative z-[2] flex-shrink-0 gradient-primary border-none text-primary-foreground w-[40px] h-[40px] rounded-full flex items-center justify-center shadow-green hover:scale-[1.08] hover:shadow-green-hover active:scale-95 transition-all duration-200"
           >
             <Search className="w-[16px] h-[16px]" />
           </button>
