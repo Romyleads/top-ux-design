@@ -74,7 +74,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       </p>
 
       {/* Search */}
-      <div className={`relative max-w-[500px] mx-auto aurora-border ${focused ? "focus-within" : ""}`}>
+      <div className={`relative max-w-[500px] mx-auto aurora-border beam-border ${focused ? "focus-within" : ""}`}>
         <div
           className={`relative z-[1] flex items-center rounded-full py-[6px] pl-[20px] pr-[6px] gap-2.5 border-[1.5px] transition-all duration-300 overflow-hidden backdrop-blur-xl ${
             focused
