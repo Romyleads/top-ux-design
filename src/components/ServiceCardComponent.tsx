@@ -144,7 +144,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         {/* Details expand — between goal and tier picker */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1.5 mb-3 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary self-start"
+          className="flex items-center gap-1.5 mb-3 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary self-end"
         >
           <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
           <span>{t("card.details")}</span>
