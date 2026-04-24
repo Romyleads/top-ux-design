@@ -175,6 +175,38 @@
   opacity: 1;
 }
 
+/* Periodic light beam sweeping around the border */
+@keyframes border-beam-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.beam-border::after {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 9999px;
+  padding: 1.5px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 280deg,
+    hsl(142, 90%, 55% / 0.6) 320deg,
+    hsl(160, 100%, 75%) 350deg,
+    #ffffff 360deg,
+    hsl(160, 100%, 75%) 370deg,
+    hsl(142, 90%, 55% / 0.6) 400deg,
+    transparent 440deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: border-beam-rotate 4s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+  filter: drop-shadow(0 0 4px hsl(142, 90%, 60% / 0.8));
+}
+
 @keyframes fpop {
   50% { transform: scale(1.22); }
 }
