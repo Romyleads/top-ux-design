@@ -196,7 +196,7 @@ export const services: ServiceCard[] = [
     ],
     tools: [
       { name: "Adobe InDesign", purpose: "Професійна верстка багатосторінкових каталогів", premium: true },
-      { name: "Sora 2 Pro", purpose: "AI-фото товарів на брендованих сценах", premium: true },
+      { name: "Nano Banana Pro", purpose: "AI-фото товарів на брендованих сценах", premium: true },
       { name: "Lovable", purpose: "Web-версія каталогу з пошуком і фільтрами", premium: true },
     ],
   },
@@ -223,7 +223,7 @@ export const services: ServiceCard[] = [
     ],
     tools: [
       { name: "Recraft V3", purpose: "Швидка AI-генерація layout і векторних деталей", premium: true },
-      { name: "Midjourney v7", purpose: "Hero-візуал і фонові композиції", premium: true },
+      { name: "Nano Banana Pro", purpose: "Hero-сцени і фонові композиції", premium: true },
       { name: "Figma", purpose: "Фінальна верстка та експорт під формати", premium: true },
     ],
   },
@@ -281,8 +281,10 @@ export const services: ServiceCard[] = [
       { kind: "formats", label: "Формати", text: "MP4 (1080p/4K), GIF, Social cuts (9:16, 1:1, 16:9)", type: "text" },
     ],
     tools: [
-      { name: "Sora 2 Pro", purpose: "Фотореалістичне text-to-video до 60 сек", premium: true },
-      { name: "Kling 2.5", purpose: "Анімація персонажів і продуктів з ліпсинком", premium: true },
+      { name: "Veo 3.1", purpose: "Кінематографічне text-to-video з нативним звуком", premium: true },
+      { name: "Seedance 2.0", purpose: "Динамічні сцени і продуктові кліпи у 1080p", premium: true },
+      { name: "Kling 3.0", purpose: "Анімація персонажів з точним ліпсинком", premium: true },
+      { name: "GPT Image 2", purpose: "Розкадровка з реалістичними обличчями і консистентністю", premium: true },
       { name: "ElevenLabs v3", purpose: "Емоційна озвучка 113 мовами", premium: true },
     ],
   },
@@ -308,7 +310,8 @@ export const services: ServiceCard[] = [
     ],
     tools: [
       { name: "ChatGPT Agent", purpose: "Контент-плани, копірайтинг і модерація DM", premium: true },
-      { name: "Midjourney v7", purpose: "Візуали для постів, Stories і Reels", premium: true },
+      { name: "Nano Banana Pro", purpose: "Сцени для постів, Stories і Reels", premium: true },
+      { name: "GPT Image 2", purpose: "Контент із обличчями: портрети, лайфстайл, UGC", premium: true },
       { name: "Buffer AI", purpose: "Постинг, аналітика й оптимізація часу публікацій", premium: true },
     ],
   },
@@ -334,7 +337,8 @@ export const services: ServiceCard[] = [
     ],
     tools: [
       { name: "Recraft V3", purpose: "Векторні AI-банери у всіх розмірах за хвилини", premium: true },
-      { name: "Midjourney v7", purpose: "Hero-візуали і креативні концепти", premium: true },
+      { name: "Nano Banana Pro", purpose: "Hero-сцени і креативні концепти", premium: true },
+      { name: "GPT Image 2", purpose: "Креативи з людьми та обличчями", premium: true },
       { name: "Bannerbear", purpose: "Автоматизація сотень варіацій через API", premium: true },
     ],
   },
@@ -551,6 +555,7 @@ export const services: ServiceCard[] = [
     tools: [
       { name: "Claude Sonnet 4.6", purpose: "Структуроване письмо «Проблема → Рішення → Результат»", premium: true },
       { name: "HeyGen Avatar IV", purpose: "Відео-версія кейсу з аватаром клієнта", premium: true },
+      { name: "GPT Image 2", purpose: "Портрети героїв кейсу та before/after сцени", premium: true },
       { name: "Figma", purpose: "Верстка PDF, web і social-форматів" },
     ],
   },
@@ -911,7 +916,8 @@ export const services: ServiceCard[] = [
     ],
     tools: [
       { name: "Claude Sonnet 4.6", purpose: "Master-промпти й tone-of-voice бренду", premium: true },
-      { name: "Midjourney v7", purpose: "Візуальний стиль і асет-бібліотека", premium: true },
+      { name: "Nano Banana Pro", purpose: "Сцени і асет-бібліотека під бренд", premium: true },
+      { name: "GPT Image 2", purpose: "Контент з людьми та портретами", premium: true },
       { name: "Notion AI", purpose: "Бібліотека промптів і workflows для команди", premium: true },
     ],
   },
@@ -1268,8 +1274,10 @@ export const services: ServiceCard[] = [
       { kind: "goal", label: "Мета", text: "Збільшити конверсію картки товару на 30-60% за рахунок відео.", type: "text" },
     ],
     tools: [
-      { name: "Sora 2 Pro", purpose: "Фотореалістичне text-to-video до 60 сек", premium: true },
-      { name: "Kling 2.5", purpose: "Якісна анімація товарів і персонажів", premium: true },
+      { name: "Seedance 2.0", purpose: "Динамічні промо-кліпи товарів у 1080p", premium: true },
+      { name: "Veo 3.1", purpose: "Кінематографічне text-to-video з нативним звуком", premium: true },
+      { name: "Kling 3.0", purpose: "Анімація персонажів і складних рухів", premium: true },
+      { name: "GPT Image 2", purpose: "Розкадровка та кадри з обличчями моделей", premium: true },
       { name: "ElevenLabs v3", purpose: "Озвучка та фонова музика мультимовно", premium: true },
     ],
   },
