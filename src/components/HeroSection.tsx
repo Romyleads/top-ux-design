@@ -76,26 +76,28 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       {/* Search */}
       <div className={`relative max-w-[500px] mx-auto aurora-border ${focused ? "focus-within" : ""}`}>
         <div
-          className={`relative z-[1] flex items-center rounded-full py-[6px] pl-[20px] pr-[6px] gap-2.5 border-[1.5px] transition-all duration-300 overflow-hidden ${
+          className={`relative z-[1] flex items-center rounded-full py-[6px] pl-[20px] pr-[6px] gap-2.5 border-[1.5px] transition-all duration-300 overflow-hidden backdrop-blur-xl ${
             focused
               ? "border-primary/50 shadow-[0_8px_32px_-4px_rgba(74,222,128,0.35),0_0_60px_-10px_rgba(74,222,128,0.2),inset_0_0_0_1px_rgba(74,222,128,0.08)]"
-              : "border-white/[0.14] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.5)]"
+              : "bg-white/[0.07] border-white/[0.12] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.3)]"
           }`}
-          style={{
-            background: focused
-              ? "linear-gradient(135deg, hsl(220, 40%, 8%) 0%, hsl(220, 35%, 11%) 50%, hsl(150, 30%, 9%) 100%)"
-              : "linear-gradient(135deg, hsl(220, 38%, 9%) 0%, hsl(220, 30%, 12%) 100%)",
-          }}
+          style={
+            focused
+              ? { background: "linear-gradient(135deg, hsl(220, 40%, 8%) 0%, hsl(220, 35%, 11%) 50%, hsl(150, 30%, 9%) 100%)" }
+              : undefined
+          }
         >
-          {/* Animated constellation backdrop */}
-          <SearchConstellation active={focused} />
+          {/* Animated constellation backdrop — only when focused */}
+          {focused && <SearchConstellation active={focused} />}
 
-          {/* Subtle inner gradient sheen */}
-          <div className="absolute inset-0 pointer-events-none rounded-full" style={{
-            background: "radial-gradient(ellipse at top, rgba(74,222,128,0.06) 0%, transparent 60%)"
-          }} />
+          {/* Subtle inner gradient sheen — only when focused */}
+          {focused && (
+            <div className="absolute inset-0 pointer-events-none rounded-full" style={{
+              background: "radial-gradient(ellipse at top, rgba(74,222,128,0.06) 0%, transparent 60%)"
+            }} />
+          )}
 
-          <Search className={`relative z-[2] flex-shrink-0 w-[17px] h-[17px] transition-all duration-300 ${focused ? "text-primary scale-115 -rotate-[5deg] drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]" : "text-white/50"}`} />
+          <Search className={`relative z-[2] flex-shrink-0 w-[17px] h-[17px] transition-all duration-300 ${focused ? "text-primary scale-115 -rotate-[5deg] drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]" : "text-white/40"}`} />
           <input
             ref={inputRef}
             type="text"
