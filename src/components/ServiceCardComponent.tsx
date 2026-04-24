@@ -138,17 +138,20 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
-          <span className="text-[12px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
+          <div className="flex-1 min-w-0">
+            <span className="text-[12px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
+            {/* Details expand — aligned to right edge of goal text column */}
+            <div className="flex justify-end mt-1.5 mb-1.5">
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="flex items-center gap-1.5 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary"
+              >
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+                <span>{t("card.details")}</span>
+              </button>
+            </div>
+          </div>
         </div>
-
-        {/* Details expand — between goal and tier picker */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1.5 mb-3 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary self-center"
-        >
-          <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
-          <span>{t("card.details")}</span>
-        </button>
 
         <div className={`grid transition-all duration-400 ease-out ${expanded ? "grid-rows-[1fr] opacity-100 mb-3" : "grid-rows-[0fr] opacity-0"}`} style={{ overflow: "hidden" }}>
           <div className="space-y-2.5 pb-1 min-h-0 overflow-hidden">
