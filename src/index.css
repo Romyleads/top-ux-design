@@ -181,30 +181,48 @@
   100% { transform: rotate(360deg); }
 }
 
+@keyframes beam-pulse {
+  0%, 100% { opacity: 0; }
+  10%, 70% { opacity: 1; }
+  85% { opacity: 0; }
+}
+
+.beam-border {
+  position: relative;
+}
+
+.beam-border::before,
 .beam-border::after {
   content: '';
   position: absolute;
-  inset: -1.5px;
+  inset: -2px;
   border-radius: 9999px;
-  padding: 1.5px;
+  padding: 2px;
+  pointer-events: none;
+  z-index: 4;
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 280deg,
-    hsl(142, 90%, 55% / 0.6) 320deg,
-    hsl(160, 100%, 75%) 350deg,
+    transparent 300deg,
+    hsl(142, 90%, 55% / 0.5) 330deg,
+    hsl(160, 100%, 80%) 352deg,
     #ffffff 360deg,
-    hsl(160, 100%, 75%) 370deg,
-    hsl(142, 90%, 55% / 0.6) 400deg,
-    transparent 440deg
+    hsl(160, 100%, 80%) 368deg,
+    hsl(142, 90%, 55% / 0.5) 390deg,
+    transparent 420deg
   );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
-  animation: border-beam-rotate 4s linear infinite;
-  pointer-events: none;
-  z-index: 3;
-  filter: drop-shadow(0 0 4px hsl(142, 90%, 60% / 0.8));
+  animation: border-beam-rotate 3.5s linear infinite, beam-pulse 3.5s linear infinite;
+  filter: drop-shadow(0 0 6px hsl(142, 90%, 60%)) drop-shadow(0 0 12px hsl(142, 90%, 60% / 0.5));
+}
+
+.beam-border::after {
+  animation-delay: -1.75s;
+  opacity: 0.7;
 }
 
 @keyframes fpop {
