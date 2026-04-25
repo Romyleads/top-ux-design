@@ -177,19 +177,19 @@
 
 /* Border beam follows the real stroke path via SVG instead of a CSS mask */
 @keyframes border-beam-path {
-  0%, 60% {
+  0% {
     opacity: 0;
-    stroke-dashoffset: 1180;
+    stroke-dashoffset: 1000;
   }
-  68% {
-    opacity: 0.9;
+  12% {
+    opacity: 1;
   }
-  84% {
+  88% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    stroke-dashoffset: 160;
+    stroke-dashoffset: 0;
   }
 }
 
@@ -203,24 +203,24 @@
 
 .beam-stroke-glow {
   fill: none;
-  stroke: hsl(0 0% 100% / 0.96);
-  stroke-width: 2.25;
+  stroke: hsl(0 0% 100% / 0.55);
+  stroke-width: 1.1;
   stroke-linecap: round;
-  stroke-dasharray: 132 868;
-  animation: border-beam-path 4.2s cubic-bezier(0.4, 0.05, 0.2, 1) infinite;
+  stroke-dasharray: 220 780;
+  animation: border-beam-path 5.6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
   filter:
-    drop-shadow(0 0 4px hsl(0 0% 100% / 0.72))
-    drop-shadow(0 0 9px hsl(142 90% 55% / 0.48));
+    drop-shadow(0 0 2px hsl(0 0% 100% / 0.5))
+    drop-shadow(0 0 6px hsl(142 85% 60% / 0.35));
 }
 
 .beam-stroke-core {
   fill: none;
-  stroke: hsl(160 100% 84% / 0.95);
-  stroke-width: 1.25;
+  stroke: hsl(160 100% 88% / 0.85);
+  stroke-width: 0.65;
   stroke-linecap: round;
-  stroke-dasharray: 96 904;
-  animation: border-beam-path 4.2s cubic-bezier(0.4, 0.05, 0.2, 1) infinite;
-  animation-delay: 0.04s;
+  stroke-dasharray: 160 840;
+  animation: border-beam-path 5.6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  animation-delay: 0.08s;
 }
 
 .beam-border.beam-debug {
