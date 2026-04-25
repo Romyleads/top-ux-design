@@ -101,6 +101,16 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
             ry="27.25"
           />
           <rect
+            className="beam-stroke-tail"
+            x="0.75"
+            y="0.75"
+            width="498.5"
+            height="54.5"
+            rx="27.25"
+            ry="27.25"
+            pathLength="1000"
+          />
+          <rect
             className="beam-stroke-glow"
             x="0.75"
             y="0.75"
