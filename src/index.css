@@ -175,10 +175,25 @@
   opacity: 1;
 }
 
-/* Periodic light beam sweeping around the border */
-@keyframes border-beam-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* Diagonal light beam sweeping across the masked border */
+@keyframes border-beam-sweep {
+  0%, 58% {
+    opacity: 0;
+    transform: translate3d(-38%, -38%, 0);
+  }
+  64% {
+    opacity: 0.95;
+  }
+  78% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(38%, 38%, 0);
+  }
 }
 
 .beam-border::after {
@@ -187,24 +202,27 @@
   inset: -1.5px;
   border-radius: 9999px;
   padding: 1.5px;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 280deg,
-    hsl(142, 90%, 55% / 0.6) 320deg,
-    hsl(160, 100%, 75%) 350deg,
-    #ffffff 360deg,
-    hsl(160, 100%, 75%) 370deg,
-    hsl(142, 90%, 55% / 0.6) 400deg,
-    transparent 440deg
-  );
+  background:
+    linear-gradient(
+      135deg,
+      transparent 43%,
+      hsl(0 0% 100% / 0.08) 46%,
+      hsl(0 0% 100% / 0.96) 49.5%,
+      hsl(160 100% 82% / 0.92) 50.5%,
+      hsl(142 90% 55% / 0.48) 53%,
+      transparent 57%
+    );
+  background-size: 220% 220%;
+  background-position: center;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
-  animation: border-beam-rotate 4s linear infinite;
+  animation: border-beam-sweep 3.8s ease-in-out infinite;
   pointer-events: none;
   z-index: 3;
-  filter: drop-shadow(0 0 4px hsl(142, 90%, 60% / 0.8));
+  filter:
+    drop-shadow(0 0 5px hsl(0 0% 100% / 0.65))
+    drop-shadow(0 0 10px hsl(142 90% 55% / 0.45));
 }
 
 @keyframes fpop {
