@@ -181,10 +181,10 @@
     opacity: 0;
     stroke-dashoffset: 1000;
   }
-  12% {
+  8% {
     opacity: 1;
   }
-  88% {
+  92% {
     opacity: 1;
   }
   100% {
@@ -203,24 +203,25 @@
 
 .beam-stroke-glow {
   fill: none;
-  stroke: hsl(0 0% 100% / 0.55);
-  stroke-width: 1.1;
+  stroke: hsl(0 0% 100% / 0.45);
+  stroke-width: 0.9;
   stroke-linecap: round;
-  stroke-dasharray: 220 780;
-  animation: border-beam-path 5.6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  stroke-dasharray: 180 820;
+  animation: border-beam-path 9s linear infinite;
   filter:
-    drop-shadow(0 0 2px hsl(0 0% 100% / 0.5))
-    drop-shadow(0 0 6px hsl(142 85% 60% / 0.35));
+    drop-shadow(0 0 1.5px hsl(0 0% 100% / 0.55))
+    drop-shadow(0 0 5px hsl(142 90% 60% / 0.35))
+    drop-shadow(0 0 10px hsl(142 90% 55% / 0.2));
 }
 
 .beam-stroke-core {
   fill: none;
-  stroke: hsl(160 100% 88% / 0.85);
-  stroke-width: 0.65;
+  stroke: hsl(150 100% 92% / 0.95);
+  stroke-width: 0.5;
   stroke-linecap: round;
-  stroke-dasharray: 160 840;
-  animation: border-beam-path 5.6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
-  animation-delay: 0.08s;
+  stroke-dasharray: 120 880;
+  animation: border-beam-path 9s linear infinite;
+  animation-delay: 0.12s;
 }
 
 .beam-border.beam-debug {
