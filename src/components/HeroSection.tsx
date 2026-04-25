@@ -22,6 +22,7 @@ const plural = (n: number, one: string, few: string, many: string) => {
 export default function HeroSection({ searchQuery, onSearchChange, resultCount }: HeroSectionProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [focused, setFocused] = useState(false);
+  const [beamDebug, setBeamDebug] = useState(false);
   const { t, locale } = useLanguage();
 
   useEffect(() => {
@@ -74,7 +75,16 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       </p>
 
       {/* Search */}
-      <div className={`relative max-w-[500px] mx-auto aurora-border beam-border ${focused ? "focus-within" : ""}`}>
+      <div className="max-w-[500px] mx-auto mb-2 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setBeamDebug((v) => !v)}
+          className="text-[10px] uppercase tracking-wider px-2 py-1 rounded border border-white/20 text-white/60 hover:text-white hover:border-white/50 transition"
+        >
+          {beamDebug ? "debug beam: ON" : "debug beam"}
+        </button>
+      </div>
+      <div className={`relative max-w-[500px] mx-auto aurora-border beam-border ${focused ? "focus-within" : ""} ${beamDebug ? "beam-debug" : ""}`}>
         <div
           className={`relative z-[1] flex items-center rounded-full py-[6px] pl-[20px] pr-[6px] gap-2.5 border-[1.5px] transition-all duration-300 overflow-hidden backdrop-blur-xl ${
             focused
