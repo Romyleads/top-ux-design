@@ -175,22 +175,19 @@
   opacity: 1;
 }
 
-/* Border beam follows the real stroke path via SVG instead of a CSS mask */
+/* Border beam: comet-like trail traveling along the SVG stroke path */
 @keyframes border-beam-path {
   0% {
-    opacity: 0;
     stroke-dashoffset: 1000;
   }
-  8% {
-    opacity: 1;
-  }
-  92% {
-    opacity: 1;
-  }
   100% {
-    opacity: 0;
     stroke-dashoffset: 0;
   }
+}
+
+@keyframes border-beam-fade {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
 }
 
 .beam-border {
@@ -201,27 +198,47 @@
   overflow: visible;
 }
 
-.beam-stroke-glow {
+/* Long soft tail */
+.beam-stroke-tail {
   fill: none;
-  stroke: hsl(0 0% 100% / 0.45);
-  stroke-width: 0.9;
+  stroke: hsl(150 90% 70% / 0.35);
+  stroke-width: 1;
   stroke-linecap: round;
-  stroke-dasharray: 180 820;
-  animation: border-beam-path 9s linear infinite;
-  filter:
-    drop-shadow(0 0 1.5px hsl(0 0% 100% / 0.55))
-    drop-shadow(0 0 5px hsl(142 90% 60% / 0.35))
-    drop-shadow(0 0 10px hsl(142 90% 55% / 0.2));
+  stroke-dasharray: 320 680;
+  animation:
+    border-beam-path 7s linear infinite,
+    border-beam-fade 7s linear infinite;
+  filter: blur(2px);
 }
 
+/* Medium glow halo */
+.beam-stroke-glow {
+  fill: none;
+  stroke: hsl(150 100% 80% / 0.7);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  stroke-dasharray: 140 860;
+  stroke-dashoffset: 1000;
+  animation:
+    border-beam-path 7s linear infinite,
+    border-beam-fade 7s linear infinite;
+  filter:
+    drop-shadow(0 0 3px hsl(150 100% 70% / 0.6))
+    drop-shadow(0 0 8px hsl(142 90% 55% / 0.4));
+}
+
+/* Bright crisp head */
 .beam-stroke-core {
   fill: none;
-  stroke: hsl(150 100% 92% / 0.95);
-  stroke-width: 0.5;
+  stroke: hsl(0 0% 100% / 0.95);
+  stroke-width: 0.6;
   stroke-linecap: round;
-  stroke-dasharray: 120 880;
-  animation: border-beam-path 9s linear infinite;
-  animation-delay: 0.12s;
+  stroke-dasharray: 40 960;
+  stroke-dashoffset: 1000;
+  animation:
+    border-beam-path 7s linear infinite,
+    border-beam-fade 7s linear infinite;
+  filter: drop-shadow(0 0 2px hsl(0 0% 100% / 0.9));
 }
 
 .beam-border.beam-debug {
