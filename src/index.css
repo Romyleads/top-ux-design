@@ -244,6 +244,29 @@
   will-change: auto;
 }
 
+/* Static mode — completely disable animation & JS gradient updates.
+   Renders a soft, evenly-faded outline using a fixed CSS gradient stroke. */
+.beam-border.beam-static .beam-stroke-4 {
+  stroke: hsl(150 85% 78% / 0.55) !important;
+  stroke-width: 0.5;
+  filter: none;
+  animation: none !important;
+  will-change: auto;
+  opacity: 1;
+}
+.beam-border.beam-static .beam-border-svg {
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam-border .beam-stroke-4 {
+    animation: none !important;
+    opacity: 1;
+    stroke: hsl(150 85% 78% / 0.55) !important;
+    filter: none;
+  }
+}
+
 .beam-debug-outline {
   fill: none;
   stroke: hsl(0 100% 70% / 0.8);
