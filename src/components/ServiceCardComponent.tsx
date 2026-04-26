@@ -236,6 +236,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
               display: '-webkit-box',
               WebkitLineClamp: 3,
               WebkitBoxOrient: 'vertical',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
             }}
           >
             {serviceGoal}
