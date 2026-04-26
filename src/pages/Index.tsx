@@ -138,6 +138,7 @@ export default function Index() {
               cards={groupedByBlock[block.id] || []}
               orderedNames={orderedIds}
               onAddToCart={handleAddToCart}
+              disableReveal={Boolean(searchQuery.trim())}
             />
           ))}
 

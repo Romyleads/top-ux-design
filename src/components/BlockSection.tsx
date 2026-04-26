@@ -14,14 +14,16 @@ interface BlockSectionProps {
   cards: ServiceCard[];
   orderedNames: Set<string>;
   onAddToCart: (id: string, emoji: string, price: string, tierName: string) => void;
+  disableReveal?: boolean;
 }
 
-export default function BlockSection({ block, cards, orderedNames, onAddToCart }: BlockSectionProps) {
+export default function BlockSection({ block, cards, orderedNames, onAddToCart, disableReveal = false }: BlockSectionProps) {
   const { t } = useLanguage();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (disableReveal) return;
     const el = sectionRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -30,17 +32,18 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [disableReveal]);
 
   if (cards.length === 0) return null;
 
   const blockTitle = t(`block.${block.id}.title`);
   const IconComponent = blockIcons[block.id];
+  const isVisible = disableReveal || visible;
 
   return (
     <section ref={sectionRef} className="mb-20">
       {/* Block Header — premium minimal */}
-      <div className={`flex items-center gap-4 mb-8 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <div className={`flex items-center gap-4 mb-8 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
         <div className="w-10 h-10 rounded-2xl flex items-center justify-center" style={{
           background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.12), hsl(142, 76%, 48% / 0.04))',
           boxShadow: '0 0 0 1px hsl(142 76% 48% / 0.1)',
@@ -57,8 +60,8 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart }
         {cards.map((card, i) => (
           <div
             key={card.id}
-            className={`transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            style={{ transitionDelay: visible ? `${i * 60}ms` : "0ms" }}
+            className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            style={{ transitionDelay: isVisible ? `${i * 60}ms` : "0ms" }}
           >
             <ServiceCardComponent
               service={card}
