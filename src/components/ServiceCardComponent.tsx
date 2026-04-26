@@ -222,7 +222,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Card body */}
-      <div className="px-5 pt-5 flex-1 flex flex-col relative z-[1]">
+      <div className="px-6 pt-4 flex-1 flex flex-col relative z-[1]">
 
         {/* Goal — fixed height for vertical alignment across cards */}
         <div className="flex h-[60px] items-start gap-2.5 mb-3 overflow-hidden">
