@@ -171,12 +171,21 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       {/* Card body */}
       <div className="px-5 pt-3.5 flex-1 flex flex-col relative z-[1]">
 
-        {/* Goal */}
-        <div className="flex items-start gap-2.5 py-1.5 mb-1.5">
+        {/* Goal — fixed height for vertical alignment across cards */}
+        <div className="flex items-start gap-2.5 py-1.5 mb-1.5 min-h-[58px]">
           <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
-          <span className="text-[12px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
+          <span
+            className="text-[12px] text-foreground leading-[1.45] font-medium overflow-hidden"
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+            }}
+          >
+            {serviceGoal}
+          </span>
         </div>
 
         {/* Details expand — between goal and tier picker */}
