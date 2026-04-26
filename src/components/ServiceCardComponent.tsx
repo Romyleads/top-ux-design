@@ -74,11 +74,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   const handleTierChange = (idx: number) => {
     if (idx === activeTier) return;
-    setFading(true);
-    setTimeout(() => {
-      setActiveTier(idx);
-      setFading(false);
-    }, 150);
+    setActiveTier(idx);
   };
 
   const serviceName = t(`service.${service.id}.name`);
