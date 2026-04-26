@@ -65,7 +65,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
   }, []);
 
   useEffect(() => {
-    if (staticBeam) return; // CSS-only static stroke, no JS animation
+    if (staticBeam || focused) return; // CSS-only static stroke, no JS animation
 
     const stroke = beamStrokeRef.current;
     const gradient = beamGradientRef.current;
@@ -106,7 +106,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
     frameId = requestAnimationFrame(animateBeam);
 
     return () => cancelAnimationFrame(frameId);
-  }, [staticBeam]);
+  }, [staticBeam, focused]);
 
   const conceptWord = (n: number) =>
     locale === "uk"
@@ -146,7 +146,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       </p>
 
       {/* Search */}
-      <div className={`relative max-w-[500px] mx-auto beam-border ${focused ? "focus-within" : ""} ${staticBeam ? "beam-static" : lowPowerGpu ? "beam-fallback" : ""}`}>
+      <div className={`relative max-w-[500px] mx-auto beam-border ${focused ? "focus-within beam-static" : ""} ${!focused && staticBeam ? "beam-static" : ""} ${!focused && !staticBeam && lowPowerGpu ? "beam-fallback" : ""}`}>
         <svg
           aria-hidden="true"
           className="beam-border-svg pointer-events-none absolute inset-0 z-[3] h-full w-full"
