@@ -146,7 +146,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       </p>
 
       {/* Search */}
-      <div className={`relative max-w-[500px] mx-auto beam-border ${focused ? "focus-within beam-static" : ""} ${!focused && staticBeam ? "beam-static" : ""} ${!focused && !staticBeam && lowPowerGpu ? "beam-fallback" : ""}`}>
+      <div className={`relative max-w-[500px] mx-auto beam-border ${focused ? "focus-within" : ""} ${!focused && staticBeam ? "beam-static" : ""} ${!focused && !staticBeam && lowPowerGpu ? "beam-fallback" : ""}`}>
         <svg
           aria-hidden="true"
           className="beam-border-svg pointer-events-none absolute inset-0 z-[3] h-full w-full"
