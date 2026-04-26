@@ -132,7 +132,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           </Link>
         </div>
         <p
-          className="text-[11.5px] text-t3 leading-snug overflow-hidden"
+          className="text-[11.5px] text-t3 leading-snug overflow-hidden transition-colors duration-300 group-hover:text-t1"
           style={{
             display: '-webkit-box',
             WebkitLineClamp: 2,
@@ -191,7 +191,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
           <span
-            className="text-[11.5px] text-t3 leading-snug overflow-hidden"
+            className="text-[11.5px] text-t3 leading-snug overflow-hidden transition-colors duration-300 group-hover:text-t1"
             style={{
               display: '-webkit-box',
               WebkitLineClamp: 3,
