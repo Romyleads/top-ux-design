@@ -139,26 +139,44 @@ export default function ServicePage() {
             </div>
 
             {/* Tier picker */}
-            <div className="rounded-xl p-1 mb-4" style={{ background: 'hsl(220 14% 96%)' }}>
-              <div className="relative grid grid-cols-3 gap-0.5">
+            <div
+              className="rounded-2xl p-1.5 mb-4"
+              style={{
+                background: 'linear-gradient(180deg, hsl(220 16% 95%) 0%, hsl(220 14% 97%) 100%)',
+                border: '1px solid hsl(220 13% 88% / 0.7)',
+                boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.04), inset 0 -1px 0 rgba(255,255,255,0.6)',
+              }}
+            >
+              <div className="relative grid grid-cols-3 gap-0">
+                {/* Soft glow under active */}
+                <div
+                  className="absolute -inset-y-1 rounded-2xl pointer-events-none transition-all duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+                  style={{
+                    left: `calc(${activeTier} * (100% / 3))`,
+                    width: `calc(100% / 3)`,
+                    background: 'radial-gradient(60% 70% at 50% 50%, hsl(142 76% 48% / 0.2), transparent 70%)',
+                    filter: 'blur(8px)',
+                  }}
+                />
                 {/* Sliding active indicator */}
                 <div
-                  className="absolute top-0 bottom-0 rounded-lg pointer-events-none transition-all duration-300 ease-out"
+                  className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-all duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
                   style={{
-                    left: `calc(${activeTier} * (100% / 3) + 1px)`,
-                    width: `calc(100% / 3 - 2px)`,
-                    background: 'white',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-                    border: '1px solid hsl(142 71% 42% / 0.2)',
+                    left: `calc(${activeTier} * (100% / 3))`,
+                    width: `calc(100% / 3)`,
+                    background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(142 40% 99%) 100%)',
+                    boxShadow:
+                      '0 1px 0 rgba(255,255,255,0.9) inset, 0 -1px 0 hsl(142 71% 42% / 0.08) inset, 0 4px 16px -2px hsl(142 71% 42% / 0.2), 0 2px 6px -1px rgba(0,0,0,0.06)',
+                    border: '1px solid hsl(142 71% 42% / 0.28)',
                   }}
                 />
                 {service.tiers.map((tierItem, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveTier(i)}
-                    className="relative z-[1] flex flex-col items-center py-3 px-2 rounded-lg cursor-pointer select-none"
+                    className="relative z-[1] flex flex-col items-center py-3 px-2 rounded-xl cursor-pointer select-none"
                   >
-                    <span className={`text-[11px] font-semibold leading-none mb-1 transition-colors duration-300 ${i === activeTier ? "text-primary font-bold" : "text-t4"}`}>
+                    <span className={`text-[11px] font-semibold leading-none mb-1 tracking-wide uppercase transition-colors duration-300 ${i === activeTier ? "text-primary font-bold" : "text-t4"}`}>
                       {tierItem.name}
                     </span>
                     <span className={`text-[17px] font-extrabold leading-none transition-colors duration-300 ${i === activeTier ? "text-foreground" : "text-t3"}`}>
