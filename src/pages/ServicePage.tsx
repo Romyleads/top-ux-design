@@ -150,17 +150,18 @@ export default function ServicePage() {
               <div className="relative grid grid-cols-3 gap-0">
                 {/* Soft glow under active */}
                 <div
-                  className="absolute -inset-y-1 rounded-2xl pointer-events-none transition-all duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+                  className="absolute -inset-y-1 rounded-2xl pointer-events-none transition-[left,transform,opacity] duration-[420ms] will-change-transform"
                   style={{
                     left: `calc(${activeTier} * (100% / 3))`,
                     width: `calc(100% / 3)`,
                     background: 'radial-gradient(60% 70% at 50% 50%, hsl(142 76% 48% / 0.2), transparent 70%)',
                     filter: 'blur(8px)',
+                    transform: 'translateY(0) scale(1)',
                   }}
                 />
                 {/* Sliding active indicator */}
                 <div
-                  className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-all duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+                  className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left,transform,box-shadow,border-color] duration-[420ms] will-change-transform"
                   style={{
                     left: `calc(${activeTier} * (100% / 3))`,
                     width: `calc(100% / 3)`,
@@ -168,13 +169,14 @@ export default function ServicePage() {
                     boxShadow:
                       '0 1px 0 rgba(255,255,255,0.9) inset, 0 -1px 0 hsl(142 71% 42% / 0.08) inset, 0 4px 16px -2px hsl(142 71% 42% / 0.2), 0 2px 6px -1px rgba(0,0,0,0.06)',
                     border: '1px solid hsl(142 71% 42% / 0.28)',
+                    transform: 'scale(1)',
                   }}
                 />
                 {service.tiers.map((tierItem, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveTier(i)}
-                    className="relative z-[1] flex flex-col items-center py-3 px-2 rounded-xl cursor-pointer select-none"
+                    className="relative z-[1] flex flex-col items-center py-3 px-2 rounded-xl cursor-pointer select-none transition-[color,transform,opacity] duration-[320ms]"
                   >
                     <span className={`text-[11px] font-semibold leading-none mb-1 tracking-wide uppercase transition-colors duration-300 ${i === activeTier ? "text-primary font-bold" : "text-t4"}`}>
                       {tierItem.name}
@@ -188,7 +190,7 @@ export default function ServicePage() {
             </div>
 
             {/* Features */}
-            <div className="space-y-2 mb-6">
+            <div key={activeTier} className="space-y-2 mb-6 animate-switch-in">
               {features.map((feat, i) => {
                 const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
                 return (
