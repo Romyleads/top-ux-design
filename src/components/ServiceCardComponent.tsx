@@ -111,17 +111,35 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       )}
 
       {/* Title + Subtitle — above photo */}
-      <div className="flex items-start gap-3 px-5 pt-4 pb-2.5">
+      <div className="flex min-h-[76px] items-start gap-3 px-5 pt-4 pb-2.5">
         <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{
           background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.1), hsl(142, 76%, 48% / 0.04))',
         }}>
           {SvcIcon ? <SvcIcon className="w-[18px] h-[18px] text-primary" strokeWidth={1.8} /> : <span className="text-base">{service.emoji}</span>}
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1 self-stretch flex flex-col justify-center">
           <Link to={`/${locale}/services/${service.id}`} className="hover:text-primary transition-colors">
-            <h3 className="text-[15px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5">{serviceName}</h3>
+            <h3
+              className="text-[15px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5 overflow-hidden"
+              style={{
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+              }}
+            >
+              {serviceName}
+            </h3>
           </Link>
-          <p className="text-[11.5px] text-t3 leading-snug">{serviceSubtitle}</p>
+          <p
+            className="text-[11.5px] text-t3 leading-snug overflow-hidden"
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+            }}
+          >
+            {serviceSubtitle}
+          </p>
         </div>
       </div>
 
@@ -168,7 +186,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       <div className="px-5 pt-3.5 flex-1 flex flex-col relative z-[1]">
 
         {/* Goal — fixed height for vertical alignment across cards */}
-        <div className="flex items-start gap-2.5 py-1.5 mb-1.5 min-h-[58px]">
+        <div className="flex h-[60px] items-start gap-2.5 py-1.5 mb-1.5 overflow-hidden">
           <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
