@@ -273,7 +273,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Features */}
-        <div className={`transition-opacity duration-150 mb-2 ${fading ? "opacity-0" : "opacity-100"}`}>
+        <div className="mb-2">
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
