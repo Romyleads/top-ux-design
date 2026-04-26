@@ -297,7 +297,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           <div className="relative grid grid-cols-3 gap-0">
             {/* Sliding active indicator — clean, sharp */}
             <div
-              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left,transform,border-color] duration-[420ms] will-change-transform"
+              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left,transform,border-color] duration-500 will-change-transform"
               style={{
                 left: `calc(${activeTier} * (100% / 3))`,
                 width: `calc(100% / 3)`,
@@ -310,7 +310,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
               <button
                 key={i}
                 onClick={() => handleTierChange(i)}
-                className="relative z-[1] flex flex-col items-center py-2 px-1.5 rounded-xl cursor-pointer select-none transition-[color,transform,opacity] duration-[320ms]"
+                className="relative z-[1] flex flex-col items-center py-2 px-1.5 rounded-xl cursor-pointer select-none transition-[color,transform,opacity] duration-300"
               >
                 <span className={`text-[10px] font-semibold leading-none mb-1 tracking-wide uppercase transition-colors duration-300 ${
                   i === activeTier ? "text-primary font-bold" : "text-t4"
