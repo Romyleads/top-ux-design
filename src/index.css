@@ -248,7 +248,7 @@
   .text-t3 { color: hsl(var(--text-tertiary)); }
   .text-t4 { color: hsl(var(--text-quaternary)); }
   .font-card-title {
-    font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Tektur', 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 700;
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
