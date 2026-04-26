@@ -46,7 +46,7 @@ interface ServiceCardProps {
 export default function ServiceCardComponent({ service, isOrdered, onAddToCart }: ServiceCardProps) {
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const [fading, setFading] = useState(false);
+  
   const [imageLoaded, setImageLoaded] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -74,11 +74,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   const handleTierChange = (idx: number) => {
     if (idx === activeTier) return;
-    setFading(true);
-    setTimeout(() => {
-      setActiveTier(idx);
-      setFading(false);
-    }, 150);
+    setActiveTier(idx);
   };
 
   const serviceName = t(`service.${service.id}.name`);
@@ -171,12 +167,21 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       {/* Card body */}
       <div className="px-5 pt-3.5 flex-1 flex flex-col relative z-[1]">
 
-        {/* Goal */}
-        <div className="flex items-start gap-2.5 py-1.5 mb-1.5">
+        {/* Goal — fixed height for vertical alignment across cards */}
+        <div className="flex items-start gap-2.5 py-1.5 mb-1.5 min-h-[58px]">
           <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
-          <span className="text-[12px] text-foreground leading-[1.45] font-medium">{serviceGoal}</span>
+          <span
+            className="text-[12px] text-foreground leading-[1.45] font-medium overflow-hidden"
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+            }}
+          >
+            {serviceGoal}
+          </span>
         </div>
 
         {/* Details expand — between goal and tier picker */}
@@ -234,25 +239,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           }}
         >
           <div className="relative grid grid-cols-3 gap-0">
-            {/* Soft glow under active */}
+            {/* Sliding active indicator — clean, no blur */}
             <div
-              className="absolute -inset-y-1 rounded-2xl pointer-events-none transition-all duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left] duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
               style={{
                 left: `calc(${activeTier} * (100% / 3))`,
                 width: `calc(100% / 3)`,
-                background: 'radial-gradient(60% 70% at 50% 50%, hsl(142 76% 48% / 0.18), transparent 70%)',
-                filter: 'blur(6px)',
-              }}
-            />
-            {/* Sliding active indicator */}
-            <div
-              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-all duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
-              style={{
-                left: `calc(${activeTier} * (100% / 3))`,
-                width: `calc(100% / 3)`,
-                background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(142 40% 99%) 100%)',
+                background: 'hsl(0 0% 100%)',
                 boxShadow:
-                  '0 1px 0 rgba(255,255,255,0.9) inset, 0 -1px 0 hsl(142 71% 42% / 0.08) inset, 0 4px 14px -2px hsl(142 71% 42% / 0.18), 0 2px 6px -1px rgba(0,0,0,0.06)',
+                  '0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 8px -2px hsl(142 71% 42% / 0.18), 0 1px 3px rgba(0,0,0,0.05)',
                 border: '1px solid hsl(142 71% 42% / 0.28)',
               }}
             />
@@ -278,7 +273,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Features */}
-        <div className={`transition-opacity duration-150 mb-2 ${fading ? "opacity-0" : "opacity-100"}`}>
+        <div className="mb-2">
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
