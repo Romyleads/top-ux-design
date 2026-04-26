@@ -112,21 +112,29 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart, 
 
       {/* Photo with curved bottom mask */}
       <div className="relative h-[140px] flex-shrink-0 overflow-hidden rounded-b-[28px] bg-muted/60">
-        <div className={`absolute inset-0 transition-opacity duration-300 ${imageLoaded ? "opacity-0" : "opacity-100"}`}>
+        <div className={`absolute inset-0 transition-opacity duration-500 ${imageLoaded ? "opacity-0" : "opacity-100"}`}>
           <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/40 to-background" />
           <div
             className="absolute inset-0 opacity-70"
             style={{ background: "radial-gradient(circle at top left, hsl(var(--primary) / 0.14), transparent 48%)" }}
           />
+          {/* Shimmer sweep */}
+          <div
+            className="absolute inset-0 -translate-x-full animate-[shimmer_1.6s_ease-in-out_infinite]"
+            style={{
+              background: "linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.55) 50%, transparent 100%)",
+            }}
+          />
         </div>
         <img
           src={service.photo}
           alt={serviceName}
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
           decoding="async"
+          fetchPriority={eager ? "high" : "auto"}
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageLoaded(true)}
-          className={`absolute inset-0 block w-full h-full object-cover transition-[transform,opacity] duration-[800ms] ease-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 block w-full h-full object-cover transition-[transform,opacity] duration-[600ms] ease-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
           style={{ transform: "translateZ(0)" }}
         />
         {service.hot && (
