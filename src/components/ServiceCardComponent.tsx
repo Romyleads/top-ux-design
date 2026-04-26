@@ -222,15 +222,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Card body */}
-      <div className="px-5 pt-3.5 flex-1 flex flex-col relative z-[1]">
+      <div className="px-5 pt-5 flex-1 flex flex-col relative z-[1]">
 
         {/* Goal — fixed height for vertical alignment across cards */}
-        <div className="flex h-[60px] items-start gap-2.5 py-1.5 mb-1.5 overflow-hidden">
+        <div className="flex h-[60px] items-start gap-2.5 mb-3 overflow-hidden">
           <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
           <span
-            className="text-[11.5px] text-t3 leading-snug overflow-hidden transition-colors duration-300 group-hover:text-t1"
+            className="text-[12px] text-t3 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t1"
             style={{
               display: '-webkit-box',
               WebkitLineClamp: 3,
@@ -244,7 +244,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         {/* Details expand — between goal and tier picker */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1.5 mb-3 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary self-start"
+          className="flex items-center gap-1.5 mb-4 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary self-start"
         >
           <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
           <span>{t("card.details")}</span>
