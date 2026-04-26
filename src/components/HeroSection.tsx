@@ -81,21 +81,10 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
           viewBox="0 0 500 56"
           preserveAspectRatio="none"
         >
-          <defs>
-            {/* Linear fade along the dash: bright head -> fully transparent tail.
-                Applied as the stroke of the single beam line. */}
-            <linearGradient id="beamFade" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"   stopColor="hsl(150, 90%, 75%)" stopOpacity="0.85" />
-              <stop offset="40%"  stopColor="hsl(150, 85%, 65%)" stopOpacity="0.45" />
-              <stop offset="75%"  stopColor="hsl(150, 80%, 60%)" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="hsl(150, 80%, 60%)" stopOpacity="0" />
-            </linearGradient>
-          </defs>
           <rect
             className="beam-stroke beam-stroke-4"
             x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
             pathLength="1000"
-            stroke="url(#beamFade)"
           />
         </svg>
         <div
