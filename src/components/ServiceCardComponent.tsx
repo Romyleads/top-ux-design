@@ -265,8 +265,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
                 width: `calc(100% / 3)`,
                 background: 'hsl(0 0% 100%)',
                 boxShadow:
-                  '0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 8px -2px hsl(142 71% 42% / 0.18), 0 1px 3px rgba(0,0,0,0.05)',
-                border: '1px solid hsl(142 71% 42% / 0.28)',
+                  '0 1px 0 rgba(255,255,255,0.95) inset, 0 0 0 1px hsl(142 71% 38% / 0.55), 0 2px 8px -2px hsl(142 71% 42% / 0.22), 0 1px 3px rgba(0,0,0,0.08)',
+                border: '1.5px solid hsl(142 71% 36%)',
               }}
             />
             {service.tiers.map((tierItem, i) => (
