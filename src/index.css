@@ -286,36 +286,23 @@
     box-shadow: 0 0 30px -8px rgba(34, 197, 94, 0.35), 0 0 60px -16px rgba(34, 197, 94, 0.15);
   }
 
-  /* Premium icon — soft radial glow + crisp duo-tone stroke */
+  /* Premium icon — transparent bg, elegant thin grey strokes */
   .icon-premium {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    isolation: isolate;
-  }
-  .icon-premium::before {
-    content: '';
-    position: absolute;
-    inset: -35%;
-    background: radial-gradient(closest-side,
-      hsl(142 76% 48% / 0.32) 0%,
-      hsl(142 76% 48% / 0.14) 45%,
-      transparent 75%);
-    filter: blur(2px);
-    z-index: -1;
-    pointer-events: none;
   }
   .icon-premium > svg {
-    color: hsl(148 65% 26%);
+    color: hsl(220 12% 38%);
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill: hsl(142 76% 48% / 0.10);
-    filter:
-      drop-shadow(0 0.5px 0 rgba(255,255,255,0.7))
-      drop-shadow(0 1px 2px hsl(148 65% 25% / 0.18));
-    transition: transform 0.3s ease, filter 0.3s ease;
+    fill: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  .group:hover .icon-premium > svg {
+    color: hsl(220 18% 22%);
   }
   .group:hover .icon-premium > svg {
     transform: translateY(-1px) scale(1.04);
