@@ -81,30 +81,13 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
           viewBox="0 0 500 56"
           preserveAspectRatio="none"
         >
-          {/* Single beam — built from graduated segments of one continuous trail
-              (head bright → tail fading to full transparency) */}
           <rect
-            className="beam-stroke beam-seg-head"
+            className="beam-stroke beam-stroke-3"
             x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
             pathLength="1000"
           />
           <rect
-            className="beam-stroke beam-seg-1"
-            x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
-            pathLength="1000"
-          />
-          <rect
-            className="beam-stroke beam-seg-2"
-            x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
-            pathLength="1000"
-          />
-          <rect
-            className="beam-stroke beam-seg-3"
-            x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
-            pathLength="1000"
-          />
-          <rect
-            className="beam-stroke beam-seg-4"
+            className="beam-stroke beam-stroke-4"
             x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
             pathLength="1000"
           />
