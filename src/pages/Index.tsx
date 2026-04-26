@@ -30,12 +30,14 @@ export default function Index() {
       result = result.filter((s) => s.blockId === activeBlock);
     }
     if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
+      const q = searchQuery.trim().toLowerCase();
+      // Match whole words / start-of-word only — so "cat" doesn't match "communication", "location", etc.
+      const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const wordRe = new RegExp(`(?:^|[^\\p{L}\\p{N}])${escaped}`, "iu");
       result = result.filter((s) => {
         const translatedName = t(`service.${s.id}.name`);
         const translatedSubtitle = t(`service.${s.id}.subtitle`);
         const translatedGoal = t(`service.${s.id}.goal`);
-        // Translated info sections
         const translatedInfo: string[] = [];
         s.info.forEach((section) => {
           if (section.kind === "content") {
@@ -50,7 +52,6 @@ export default function Index() {
             translatedInfo.push(val);
           }
         });
-        // Translated tier features
         const translatedTiers: string[] = [];
         s.tierFeatures.forEach((tier, ti) => {
           tier.forEach((_, fi) => {
@@ -63,8 +64,8 @@ export default function Index() {
           ...s.tierFeatures.flat().map((f) => f.text),
           ...translatedInfo,
           ...translatedTiers,
-        ].join(" ").toLowerCase();
-        return searchable.includes(q);
+        ].join(" ");
+        return wordRe.test(searchable);
       });
     }
     return result;
