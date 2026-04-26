@@ -199,80 +199,87 @@
 }
 
 /*
-  Snake-beam — four concentric strokes whose FRONT EDGES are aligned.
-  The visible dash for each layer ends at the same point (the head),
-  and longer/softer layers extend backwards as a graceful tail.
+  Single snake-beam built from 5 contiguous segments along ONE travel path.
+  Head is bright, each successive segment is dimmer + softer, the last
+  segment fades to full transparency — a true linear-alpha tail.
 
-  For a layer with dash length L (out of pathLength=1000), front edge
-  position = (1000 - dashoffset + L) mod 1000. We keep that constant
-  across layers by shifting each layer's offset by its own L.
+  All segments share the same period (7s) and are offset so they sit
+  immediately behind one another, forming one continuous moving trail.
+
+  Segment lengths (out of pathLength=1000):
+    head: 14   seg-1: 26   seg-2: 40   seg-3: 60   seg-4: 90
+  Cumulative tail start positions (distance behind head front):
+    head ends at 14, seg-1 ends at 40, seg-2 at 80, seg-3 at 140, seg-4 at 230
 */
 .beam-stroke {
   fill: none;
   stroke-linecap: round;
-  animation: border-beam-fade 7s linear infinite;
+  stroke-linejoin: round;
 }
 
-/* Layer 1 — bright sharp head (front of the snake) */
-.beam-stroke-1 {
-  stroke: hsl(150 100% 88% / 0.95);
+/* Bright sharp head */
+.beam-seg-head {
+  stroke: hsl(150 100% 90% / 0.95);
   stroke-width: 1.6;
-  stroke-dasharray: 22 978;
+  stroke-dasharray: 14 986;
   filter: drop-shadow(0 0 4px hsl(150 95% 70% / 0.85));
-  animation:
-    beam-path-1 7s linear infinite,
-    border-beam-fade 7s linear infinite;
+  animation: beam-seg-head 7s linear infinite;
+}
+@keyframes beam-seg-head {
+  from { stroke-dashoffset: 986; }
+  to   { stroke-dashoffset: -14; }
 }
 
-/* Layer 2 — soft green halo, slightly longer */
-.beam-stroke-2 {
-  stroke: hsl(150 90% 65% / 0.55);
-  stroke-width: 2;
-  stroke-dasharray: 70 930;
-  filter: blur(1px) drop-shadow(0 0 6px hsl(150 90% 60% / 0.45));
-  animation:
-    beam-path-2 7s linear infinite,
-    border-beam-fade 7s linear infinite;
+/* Segment 1 — just behind head, slightly dimmer */
+.beam-seg-1 {
+  stroke: hsl(150 95% 78% / 0.65);
+  stroke-width: 1.5;
+  stroke-dasharray: 26 974;
+  filter: blur(0.4px) drop-shadow(0 0 3px hsl(150 90% 65% / 0.5));
+  animation: beam-seg-1 7s linear infinite;
+}
+@keyframes beam-seg-1 {
+  from { stroke-dashoffset: 960; }   /* 986 - 26 (head length) */
+  to   { stroke-dashoffset: -40; }
 }
 
-/* Layer 3 — diffuse mid body */
-.beam-stroke-3 {
-  stroke: hsl(150 85% 60% / 0.28);
+/* Segment 2 */
+.beam-seg-2 {
+  stroke: hsl(150 90% 70% / 0.4);
   stroke-width: 1.4;
-  stroke-dasharray: 170 830;
-  filter: blur(2px);
-  animation:
-    beam-path-3 7s linear infinite,
-    border-beam-fade 7s linear infinite;
+  stroke-dasharray: 40 960;
+  filter: blur(0.9px);
+  animation: beam-seg-2 7s linear infinite;
+}
+@keyframes beam-seg-2 {
+  from { stroke-dashoffset: 920; }   /* 960 - 40 */
+  to   { stroke-dashoffset: -80; }
 }
 
-/* Layer 4 — long whisper-soft tail fading into nothing */
-.beam-stroke-4 {
-  stroke: hsl(150 80% 65% / 0.14);
-  stroke-width: 1;
-  stroke-dasharray: 320 680;
-  filter: blur(3px);
-  animation:
-    beam-path-4 7s linear infinite,
-    border-beam-fade 7s linear infinite;
+/* Segment 3 */
+.beam-seg-3 {
+  stroke: hsl(150 85% 65% / 0.22);
+  stroke-width: 1.25;
+  stroke-dasharray: 60 940;
+  filter: blur(1.6px);
+  animation: beam-seg-3 7s linear infinite;
+}
+@keyframes beam-seg-3 {
+  from { stroke-dashoffset: 860; }
+  to   { stroke-dashoffset: -140; }
 }
 
-/* Each layer's offset shifted by its dash length so all front edges meet at the same point */
-@keyframes beam-path-1 {
-  from { stroke-dashoffset: 978; }   /* 1000 - 22 */
-  to   { stroke-dashoffset: -22; }
+/* Segment 4 — longest, faintest, fades fully into transparency */
+.beam-seg-4 {
+  stroke: hsl(150 80% 65% / 0.09);
+  stroke-width: 1.1;
+  stroke-dasharray: 90 910;
+  filter: blur(2.6px);
+  animation: beam-seg-4 7s linear infinite;
 }
-@keyframes beam-path-2 {
-  from { stroke-dashoffset: 930; }
-  to   { stroke-dashoffset: -70; }
-}
-@keyframes beam-path-3 {
-  from { stroke-dashoffset: 830; }
-  to   { stroke-dashoffset: -170; }
-}
-@keyframes beam-path-4 {
-  from { stroke-dashoffset: 680; }
-  to   { stroke-dashoffset: -320; }
+@keyframes beam-seg-4 {
+  from { stroke-dashoffset: 770; }
+  to   { stroke-dashoffset: -230; }
 }
 
 .beam-debug-outline {
