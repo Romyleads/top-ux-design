@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { services, blocks } from "@/data/services";
 import { useCart } from "@/hooks/useCart";
 import { useLanguage } from "@/i18n/LanguageContext";
