@@ -246,12 +246,18 @@
     border-beam-fade 7s linear infinite;
 }
 
-/* Layer 4 — single beam line with linear opacity fade applied via SVG gradient stroke */
+/* Layer 4 — single beam line.
+   The "fade-out tail" is achieved on the SAME stroke by chopping the visible
+   dash into progressively shorter sub-segments separated by growing gaps.
+   Head sub-segments are long & dense (look solid + bright), tail sub-segments
+   become tiny dots with large gaps (visually fade into nothing).
+   Total cycle still equals pathLength=1000. */
 .beam-stroke-4 {
-  /* stroke color comes from inline url(#beamFade) gradient — do NOT set stroke here */
+  stroke: hsl(150 85% 70% / 0.55);
   stroke-width: 1;
-  stroke-dasharray: 320 680;
-  filter: blur(3px);
+  /* head ──────  body ─── ─ ─  tail · · ·   ·   ·     gap-to-loop */
+  stroke-dasharray: 40 6 24 10 14 16 8 22 4 28 2 36 1 789;
+  filter: blur(0.6px) drop-shadow(0 0 3px hsl(150 90% 60% / 0.35));
   animation:
     beam-path-4 7s linear infinite,
     border-beam-fade 7s linear infinite;
