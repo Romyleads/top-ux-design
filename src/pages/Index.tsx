@@ -18,6 +18,15 @@ export default function Index() {
   const cart = useCart();
   const { t } = useLanguage();
 
+  // Preload all service photos once so switching categories never shows empty cards
+  useEffect(() => {
+    services.forEach((s) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = s.photo;
+    });
+  }, []);
+
   const orderedIds = useMemo(() => {
     const ids = new Set<string>();
     cart.items.forEach((item) => ids.add(item.id));
