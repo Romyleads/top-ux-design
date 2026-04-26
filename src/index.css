@@ -271,6 +271,18 @@ a,
     will-change: opacity, transform, filter;
   }
 
+  /* Accessibility: respect user motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-switch-in,
+    .animate-switch-row {
+      animation: none !important;
+      animation-delay: 0ms !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+
   .gradient-primary {
     background: linear-gradient(135deg, hsl(142, 76%, 48%) 0%, hsl(142, 71%, 42%) 40%, hsl(148, 60%, 34%) 100%);
   }
