@@ -43,16 +43,11 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
   return (
     <section ref={sectionRef} className="mb-20">
       {/* Block Header — premium minimal */}
-      <div className={`flex items-center gap-4 mb-8 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-        <div className="w-10 h-10 rounded-2xl flex items-center justify-center" style={{
-          background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.12), hsl(142, 76%, 48% / 0.04))',
-          boxShadow: '0 0 0 1px hsl(142 76% 48% / 0.1)',
-        }}>
-          {IconComponent && <IconComponent className="w-[18px] h-[18px] text-primary" strokeWidth={1.7} />}
-        </div>
+      <div className={`flex items-center gap-2 mb-8 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        {IconComponent && <IconComponent className="w-[20px] h-[20px] text-primary flex-shrink-0" strokeWidth={1.8} />}
         <h2 className="text-xl font-extrabold text-foreground tracking-tight">{blockTitle}</h2>
-        <span className="text-[11px] font-bold text-primary-foreground bg-primary px-2 rounded-full tabular-nums leading-none inline-flex items-center justify-center min-w-[20px] h-[18px]">{cards.length}</span>
-        <div className="flex-1 h-px bg-gradient-to-r from-border/60 to-transparent" />
+        <span className="text-[11px] font-bold text-primary-foreground bg-primary px-2 rounded-full tabular-nums leading-none inline-flex items-center justify-center min-w-[20px] h-[18px] ml-1">{cards.length}</span>
+        <div className="flex-1 h-px bg-gradient-to-r from-border/60 to-transparent ml-2" />
       </div>
 
       {/* Cards Grid */}
