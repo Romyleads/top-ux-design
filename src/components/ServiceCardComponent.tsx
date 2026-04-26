@@ -129,8 +129,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
       )}
 
-      {/* Title + Subtitle — above photo. Icon sits as a small accent above the title so title aligns flush-left with subtitle. */}
-      <div className="min-h-[88px] px-5 pt-5 pb-3 flex flex-col justify-center">
+      {/* Title + Subtitle — above photo. */}
+      <div className="min-h-[88px] px-6 pt-5 pb-3 flex flex-col justify-center">
         <div className="flex items-center gap-2 mb-2">
           {SvcIcon ? (
             <span className="icon-premium w-[22px] h-[22px]">
@@ -222,7 +222,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Card body */}
-      <div className="px-5 pt-5 flex-1 flex flex-col relative z-[1]">
+      <div className="px-6 pt-4 flex-1 flex flex-col relative z-[1]">
 
         {/* Goal — fixed height for vertical alignment across cards */}
         <div className="flex h-[60px] items-start gap-2.5 mb-3 overflow-hidden">
@@ -327,7 +327,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Features */}
-        <div className="mb-4">
+        <div className="mb-3">
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
@@ -340,7 +340,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* CTA */}
-        <div className="mt-auto pb-5">
+        <div className="mt-auto pb-4">
           <button
             onClick={handleAdd}
             className={`block w-full rounded-xl text-[13px] font-bold py-3 px-5 text-center relative overflow-hidden transition-all duration-300 ${
