@@ -62,6 +62,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
               service={card}
               isOrdered={orderedNames.has(card.id)}
               onAddToCart={onAddToCart}
+              eager={i < 3}
             />
           </div>
         ))}

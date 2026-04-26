@@ -125,6 +125,10 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.75" },
         },
+        "skeleton-sweep": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -136,6 +140,7 @@ export default {
         float: "float 15s ease-in-out infinite",
         "float-delayed": "float-delayed 18s ease-in-out infinite",
         "pulse-subtle": "pulse-subtle 3s ease-in-out infinite",
+        "skeleton-sweep": "skeleton-sweep 1.6s ease-in-out infinite",
       },
     },
   },
