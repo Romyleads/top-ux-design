@@ -51,7 +51,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
           {IconComponent && <IconComponent className="w-[18px] h-[18px] text-primary" strokeWidth={1.7} />}
         </div>
         <h2 className="text-xl font-extrabold text-foreground tracking-tight">{blockTitle}</h2>
-        <span className="text-[11px] font-bold text-primary bg-primary/[.07] px-2.5 py-1 rounded-full">{cards.length}</span>
+        <span className="text-[11px] font-bold text-primary bg-primary/15 border border-primary/25 px-2 py-0.5 rounded-full tabular-nums leading-none inline-flex items-center justify-center min-w-[22px] h-[20px]">{cards.length}</span>
         <div className="flex-1 h-px bg-gradient-to-r from-border/60 to-transparent" />
       </div>
 
