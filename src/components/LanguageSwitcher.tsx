@@ -57,7 +57,7 @@ export default function LanguageSwitcher() {
     <div className="relative inline-grid grid-cols-3 items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)] overflow-hidden">
       {/* Sliding indicator */}
       <div
-        className="absolute top-[3px] bottom-[3px] rounded-full gradient-primary shadow-green transition-[left,right,transform,box-shadow] duration-[420ms] pointer-events-none will-change-transform"
+        className="absolute top-[3px] bottom-[3px] rounded-full gradient-primary shadow-green transition-[left,right,transform,box-shadow] duration-500 pointer-events-none will-change-transform"
         style={{
           left: `calc(${activeIdx} * 33.333% + 3px)`,
           right: `calc(${2 - activeIdx} * 33.333% + 3px)`,
@@ -70,7 +70,7 @@ export default function LanguageSwitcher() {
           onClick={() => handleSwitch(lang.code)}
           onMouseUp={() => setPressedCode(null)}
           onMouseLeave={() => setPressedCode(null)}
-          className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-[color,transform,opacity] duration-[320ms] select-none ${
+          className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-[color,transform,opacity] duration-300 select-none ${
             locale === lang.code
               ? "text-primary-foreground scale-[1.03]"
               : "text-white/60 hover:text-white/90"
