@@ -81,12 +81,16 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
           viewBox="0 0 500 56"
           preserveAspectRatio="none"
         >
-          <rect className="beam-stroke beam-stroke-s1" x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25" pathLength="1000" />
-          <rect className="beam-stroke beam-stroke-s2" x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25" pathLength="1000" />
-          <rect className="beam-stroke beam-stroke-s3" x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25" pathLength="1000" />
-          <rect className="beam-stroke beam-stroke-s4" x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25" pathLength="1000" />
-          <rect className="beam-stroke beam-stroke-s5" x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25" pathLength="1000" />
-          <rect className="beam-stroke beam-stroke-s6" x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25" pathLength="1000" />
+          <rect
+            className="beam-stroke beam-stroke-3"
+            x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
+            pathLength="1000"
+          />
+          <rect
+            className="beam-stroke beam-stroke-4"
+            x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
+            pathLength="1000"
+          />
         </svg>
         <div
           className={`relative z-[1] flex items-center rounded-full py-[6px] pl-[20px] pr-[6px] gap-2.5 border-[1.5px] transition-all duration-300 overflow-hidden backdrop-blur-xl ${
