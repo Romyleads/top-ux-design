@@ -257,22 +257,6 @@
     font-synthesis: none;
     text-shadow: none;
   }
-  /* Block category title — maximum sharpness, no GPU compositing blur */
-  .block-title {
-    /* Almost black for high contrast against light/glass surfaces */
-    color: hsl(220 30% 8%);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    /* Subpixel-AA on light bg renders sharper than grayscale-AA */
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto;
-    text-rendering: geometricPrecision;
-    font-synthesis: none;
-    text-shadow: none;
-    /* Force CPU paint — avoids fractional-pixel blur from animated parents */
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    will-change: auto;
-  }
   .glow-green {
     box-shadow: 0 0 30px -8px rgba(34, 197, 94, 0.35), 0 0 60px -16px rgba(34, 197, 94, 0.15);
   }
