@@ -251,22 +251,19 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         <div
           className="rounded-2xl p-1.5 mb-3"
           style={{
-            background: 'linear-gradient(180deg, hsl(220 16% 95%) 0%, hsl(220 14% 97%) 100%)',
-            boxShadow:
-              'inset 0 1px 3px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.7), inset 0 -1px 2px rgba(0,0,0,0.03)',
+            background: 'hsl(220 15% 96%)',
+            border: '1px solid hsl(220 13% 88%)',
           }}
         >
           <div className="relative grid grid-cols-3 gap-0">
-            {/* Sliding active indicator — clean, no blur */}
+            {/* Sliding active indicator — clean, sharp */}
             <div
               className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left] duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
               style={{
                 left: `calc(${activeTier} * (100% / 3))`,
                 width: `calc(100% / 3)`,
                 background: 'hsl(0 0% 100%)',
-                boxShadow:
-                  '0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 8px -2px hsl(142 71% 42% / 0.18), 0 1px 3px rgba(0,0,0,0.05)',
-                border: '1px solid hsl(142 71% 42% / 0.28)',
+                border: '1px solid hsl(142 71% 42% / 0.45)',
               }}
             />
             {service.tiers.map((tierItem, i) => (
