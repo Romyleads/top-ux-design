@@ -106,7 +106,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
     frameId = requestAnimationFrame(animateBeam);
 
     return () => cancelAnimationFrame(frameId);
-  }, []);
+  }, [staticBeam]);
 
   const conceptWord = (n: number) =>
     locale === "uk"
