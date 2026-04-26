@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -265,9 +265,10 @@
     contain: layout style;
   }
   .category-title-static {
-    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-    font-feature-settings: "ss01", "ss02", "tnum";
-    letter-spacing: -0.015em;
+    font-family: 'Orbitron', 'Inter', system-ui, sans-serif;
+    font-feature-settings: "tnum";
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
     transform: none;
     translate: none;
     filter: none;
