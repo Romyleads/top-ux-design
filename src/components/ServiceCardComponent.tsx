@@ -47,6 +47,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [fading, setFading] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const { t, locale } = useLanguage();
 
   const features = service.tierFeatures[activeTier] || [];
@@ -109,14 +110,23 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Photo with curved bottom mask */}
-      <div className="relative h-[140px] flex-shrink-0 overflow-hidden" style={{
-        clipPath: 'ellipse(120% 100% at 50% 0%)',
-      }}>
+      <div className="relative h-[140px] flex-shrink-0 overflow-hidden rounded-b-[28px] bg-muted/60">
+        <div className={`absolute inset-0 transition-opacity duration-300 ${imageLoaded ? "opacity-0" : "opacity-100"}`}>
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/40 to-background" />
+          <div
+            className="absolute inset-0 opacity-70"
+            style={{ background: "radial-gradient(circle at top left, hsl(var(--primary) / 0.14), transparent 48%)" }}
+          />
+        </div>
         <img
           src={service.photo}
           alt={serviceName}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
+          decoding="async"
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageLoaded(true)}
+          className={`absolute inset-0 block w-full h-full object-cover transition-[transform,opacity] duration-[800ms] ease-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+          style={{ transform: "translateZ(0)" }}
         />
         {service.hot && (
           <div className="absolute top-3.5 left-3.5 z-[3]">
