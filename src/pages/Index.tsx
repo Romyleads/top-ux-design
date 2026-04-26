@@ -31,9 +31,10 @@ export default function Index() {
     }
     if (searchQuery.trim()) {
       const q = searchQuery.trim().toLowerCase();
-      // Match whole words / start-of-word only — so "cat" doesn't match "communication", "location", etc.
+      // Match only at the start of a standalone word.
+      // Hyphenated fragments count as the same word, so "cat" won't match "eye-catching".
       const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      const wordRe = new RegExp(`(?:^|[^\\p{L}\\p{N}])${escaped}`, "iu");
+      const wordRe = new RegExp(`(?:^|[^\\p{L}\\p{N}-])${escaped}`, "iu");
       result = result.filter((s) => {
         const translatedName = t(`service.${s.id}.name`);
         const translatedSubtitle = t(`service.${s.id}.subtitle`);
