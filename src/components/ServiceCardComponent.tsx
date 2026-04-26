@@ -41,9 +41,10 @@ interface ServiceCardProps {
   service: ServiceCard;
   isOrdered: boolean;
   onAddToCart: (id: string, emoji: string, price: string, tierName: string) => void;
+  eager?: boolean;
 }
 
-export default function ServiceCardComponent({ service, isOrdered, onAddToCart }: ServiceCardProps) {
+export default function ServiceCardComponent({ service, isOrdered, onAddToCart, eager = false }: ServiceCardProps) {
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [fading, setFading] = useState(false);
