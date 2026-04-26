@@ -172,7 +172,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           onError={() => {
             setImageError(true);
           }}
-          className={`absolute inset-0 block w-full h-full object-cover transform-gpu will-change-transform group-hover:scale-[1.18] ${imageError ? "opacity-0" : "opacity-100"}`}
+          className={`absolute inset-0 block w-full h-full object-cover transform-gpu will-change-transform group-hover:scale-[1.27] ${imageError ? "opacity-0" : "opacity-100"}`}
           style={{
             transitionProperty: 'transform',
             transitionDuration: '2000ms',
