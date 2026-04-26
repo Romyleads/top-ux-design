@@ -145,17 +145,17 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             }}
           />
         </div>
-        <img
-          src={service.photo}
-          alt={serviceName}
-          loading={eager ? "eager" : "lazy"}
-          decoding="async"
-          fetchPriority={eager ? "high" : "auto"}
-          onLoad={() => setImageLoaded(true)}
-          onError={() => setImageLoaded(true)}
-          className={`absolute inset-0 block w-full h-full object-cover transition-[transform,opacity] duration-[600ms] ease-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
-          style={{ transform: "translateZ(0)" }}
-        />
+        {shouldLoad && (
+          <img
+            src={service.photo}
+            alt={serviceName}
+            decoding="async"
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageLoaded(true)}
+            className={`absolute inset-0 block w-full h-full object-cover transition-[transform,opacity] duration-[600ms] ease-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            style={{ transform: "translateZ(0)" }}
+          />
+        )}
         {service.hot && (
           <div className="absolute top-3.5 left-3.5 z-[3]">
             <span className="inline-flex items-center gap-1 text-[10px] font-bold px-3 py-1.5 rounded-full tracking-wider text-white animate-pulse-subtle" style={{
