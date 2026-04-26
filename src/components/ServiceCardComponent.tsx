@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import goalIcon from "@/assets/goal-icon.png";
 import { 
@@ -41,15 +41,33 @@ interface ServiceCardProps {
   service: ServiceCard;
   isOrdered: boolean;
   onAddToCart: (id: string, emoji: string, price: string, tierName: string) => void;
-  eager?: boolean;
 }
 
-export default function ServiceCardComponent({ service, isOrdered, onAddToCart, eager = false }: ServiceCardProps) {
+export default function ServiceCardComponent({ service, isOrdered, onAddToCart }: ServiceCardProps) {
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [fading, setFading] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
   const { t, locale } = useLanguage();
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    // Preload image well before the card enters the viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "1500px 0px 1500px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const features = service.tierFeatures[activeTier] || [];
   const tier = service.tiers[activeTier];
@@ -75,6 +93,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart, 
 
   return (
     <div
+      ref={cardRef}
       className={`rounded-[20px] overflow-hidden flex flex-col relative h-full transition-all duration-500 hover:-translate-y-2 group ${
         isOrdered ? "ring-[2px] ring-primary glow-green" : ""
       }`}
@@ -126,17 +145,17 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart, 
             }}
           />
         </div>
-        <img
-          src={service.photo}
-          alt={serviceName}
-          loading={eager ? "eager" : "lazy"}
-          decoding="async"
-          fetchPriority={eager ? "high" : "auto"}
-          onLoad={() => setImageLoaded(true)}
-          onError={() => setImageLoaded(true)}
-          className={`absolute inset-0 block w-full h-full object-cover transition-[transform,opacity] duration-[600ms] ease-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
-          style={{ transform: "translateZ(0)" }}
-        />
+        {shouldLoad && (
+          <img
+            src={service.photo}
+            alt={serviceName}
+            decoding="async"
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageLoaded(true)}
+            className={`absolute inset-0 block w-full h-full object-cover transition-[transform,opacity] duration-[600ms] ease-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            style={{ transform: "translateZ(0)" }}
+          />
+        )}
         {service.hot && (
           <div className="absolute top-3.5 left-3.5 z-[3]">
             <span className="inline-flex items-center gap-1 text-[10px] font-bold px-3 py-1.5 rounded-full tracking-wider text-white animate-pulse-subtle" style={{
