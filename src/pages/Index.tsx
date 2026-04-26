@@ -19,6 +19,8 @@ export default function Index() {
   const { t } = useLanguage();
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const preloadImages = () => {
       services.forEach((service) => {
         const img = new Image();
@@ -26,7 +28,7 @@ export default function Index() {
       });
     };
 
-    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+    if ("requestIdleCallback" in window) {
       const idleId = window.requestIdleCallback(preloadImages, { timeout: 1200 });
       return () => window.cancelIdleCallback(idleId);
     }
