@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import goalIcon from "@/assets/goal-icon.png";
 import { 
@@ -46,9 +46,48 @@ interface ServiceCardProps {
 export default function ServiceCardComponent({ service, isOrdered, onAddToCart }: ServiceCardProps) {
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  
+  const mediaRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [shouldLoadImage, setShouldLoadImage] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const { t, locale } = useLanguage();
+
+  useEffect(() => {
+    const mediaEl = mediaRef.current;
+    if (!mediaEl) return;
+
+    if (typeof IntersectionObserver !== "function") {
+      setShouldLoadImage(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoadImage(true);
+        observer.disconnect();
+      },
+      { rootMargin: "280px 0px", threshold: 0.01 }
+    );
+
+    observer.observe(mediaEl);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    setImageLoaded(false);
+    setImageError(false);
+  }, [service.photo]);
+
+  useEffect(() => {
+    if (!shouldLoadImage) return;
+    const imgEl = imgRef.current;
+    if (imgEl?.complete && imgEl.naturalWidth > 0) {
+      setImageLoaded(true);
+      setImageError(false);
+    }
+  }, [shouldLoadImage, service.photo]);
 
   const features = service.tierFeatures[activeTier] || [];
   const tier = service.tiers[activeTier];
@@ -137,8 +176,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Photo with curved bottom mask */}
-      <div className="relative h-[140px] flex-shrink-0 overflow-hidden rounded-b-[28px] bg-muted/60">
-        <div className={`absolute inset-0 transition-opacity duration-500 ${imageLoaded ? "opacity-0" : "opacity-100"}`}>
+      <div ref={mediaRef} className="relative h-[140px] flex-shrink-0 overflow-hidden rounded-b-[28px] bg-muted/60">
+        <div className={`absolute inset-0 transition-opacity duration-500 ${imageLoaded || imageError ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
           <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/40 to-background" />
           <div
             className="absolute inset-0 opacity-70"
@@ -152,13 +191,30 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             }}
           />
         </div>
+        {imageError && (
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              background: "radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.14), transparent 42%), linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.78) 100%)",
+            }}
+          >
+            <span className="text-[28px] opacity-60 select-none" aria-hidden="true">{service.emoji}</span>
+          </div>
+        )}
         <img
-          src={service.photo}
+          ref={imgRef}
+          src={shouldLoadImage ? service.photo : undefined}
           alt={serviceName}
-          loading="lazy"
+          loading="eager"
           decoding="async"
-          onLoad={() => setImageLoaded(true)}
-          onError={() => setImageLoaded(true)}
+          onLoad={() => {
+            setImageLoaded(true);
+            setImageError(false);
+          }}
+          onError={() => {
+            setImageLoaded(false);
+            setImageError(true);
+          }}
           className={`absolute inset-0 block w-full h-full object-cover transition-[transform,opacity] duration-[600ms] ease-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
           style={{ transform: "translateZ(0)" }}
         />
