@@ -252,7 +252,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           className="rounded-2xl p-1.5 mb-3"
           style={{
             background: 'hsl(220 15% 96%)',
-            border: '1px solid hsl(220 13% 88%)',
+            boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.08), inset 0 -1px 2px rgba(0,0,0,0.04)',
           }}
         >
           <div className="relative grid grid-cols-3 gap-0">
