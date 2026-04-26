@@ -172,7 +172,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           onError={() => {
             setImageError(true);
           }}
-          className={`absolute inset-0 block w-full h-full object-cover ${imageError ? "opacity-0" : "opacity-100"}`}
+          className={`absolute inset-0 block w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:scale-[1.08] ${imageError ? "opacity-0" : "opacity-100"}`}
           style={{ transform: "translateZ(0)" }}
         />
         {service.hot && (
