@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { services, blocks } from "@/data/services";
 import { useCart } from "@/hooks/useCart";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -17,6 +17,15 @@ export default function Index() {
   const [activeBlock, setActiveBlock] = useState("all");
   const cart = useCart();
   const { t } = useLanguage();
+
+  // Preload all service photos once so switching categories never shows empty cards
+  useEffect(() => {
+    services.forEach((s) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = s.photo;
+    });
+  }, []);
 
   const orderedIds = useMemo(() => {
     const ids = new Set<string>();

@@ -115,7 +115,9 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         <img
           src={service.photo}
           alt={serviceName}
-          loading="lazy"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
           className="w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
         />
         {service.hot && (
