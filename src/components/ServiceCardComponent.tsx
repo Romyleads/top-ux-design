@@ -120,7 +120,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart, 
           />
           {/* Shimmer sweep */}
           <div
-            className="absolute inset-0 -translate-x-full animate-[shimmer_1.6s_ease-in-out_infinite]"
+            className="absolute inset-0 animate-skeleton-sweep"
             style={{
               background: "linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.55) 50%, transparent 100%)",
             }}
