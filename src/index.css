@@ -258,6 +258,11 @@
   will-change: auto;
 }
 
+/* When the input is focused, completely remove the animated outline */
+.beam-border.focus-within .beam-border-svg {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .beam-border .beam-stroke-4 {
     animation: none !important;
