@@ -48,32 +48,10 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
   const [expanded, setExpanded] = useState(false);
   const mediaRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
-  const [shouldLoadImage, setShouldLoadImage] = useState(false);
+  const [shouldLoadImage, setShouldLoadImage] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const { t, locale } = useLanguage();
-
-  useEffect(() => {
-    const mediaEl = mediaRef.current;
-    if (!mediaEl) return;
-
-    if (typeof IntersectionObserver !== "function") {
-      setShouldLoadImage(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setShouldLoadImage(true);
-        observer.disconnect();
-      },
-      { rootMargin: "280px 0px", threshold: 0.01 }
-    );
-
-    observer.observe(mediaEl);
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     setImageLoaded(false);
