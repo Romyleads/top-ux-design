@@ -110,26 +110,6 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
             ry="27.25"
             pathLength="1000"
           />
-          <rect
-            className="beam-stroke-glow"
-            x="0.75"
-            y="0.75"
-            width="498.5"
-            height="54.5"
-            rx="27.25"
-            ry="27.25"
-            pathLength="1000"
-          />
-          <rect
-            className="beam-stroke-core"
-            x="0.75"
-            y="0.75"
-            width="498.5"
-            height="54.5"
-            rx="27.25"
-            ry="27.25"
-            pathLength="1000"
-          />
         </svg>
         <div
           className={`relative z-[1] flex items-center rounded-full py-[6px] pl-[20px] pr-[6px] gap-2.5 border-[1.5px] transition-all duration-300 overflow-hidden backdrop-blur-xl ${
@@ -139,7 +119,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
           }`}
           style={
             focused
-              ? { background: "linear-gradient(135deg, hsl(220, 40%, 8%) 0%, hsl(220, 35%, 11%) 50%, hsl(150, 30%, 9%) 100%)" }
+              ? { background: "linear-gradient(135deg, hsl(220, 30%, 14%) 0%, hsl(220, 25%, 17%) 50%, hsl(150, 22%, 15%) 100%)" }
               : undefined
           }
         >
