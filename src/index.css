@@ -271,8 +271,8 @@
   to   { stroke-dashoffset: -170; }
 }
 @keyframes beam-path-4 {
-  from { stroke-dashoffset: 640; }
-  to   { stroke-dashoffset: -360; }
+  from { stroke-dashoffset: 680; }
+  to   { stroke-dashoffset: -320; }
 }
 
 .beam-debug-outline {
