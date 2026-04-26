@@ -198,11 +198,18 @@
 
 .beam-border-svg {
   overflow: visible;
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: opacity;
 }
 
 .beam-stroke {
   fill: none;
   stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
 }
 
 /* Layer 4 — single continuous beam with JS-driven gradient tail. */
@@ -210,6 +217,8 @@
   stroke-width: 0.35;
   filter: blur(0.25px) drop-shadow(0 0 1px hsl(var(--primary) / 0.15));
   animation: border-beam-fade 7s ease-in-out infinite;
+  transform: translateZ(0);
+  will-change: opacity, stroke-dashoffset;
 }
 
 .beam-debug-outline {
