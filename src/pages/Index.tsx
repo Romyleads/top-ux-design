@@ -24,6 +24,27 @@ export default function Index() {
     return ids;
   }, [cart.items]);
 
+  // Background-prefetch all card images on idle so they're cached before scroll
+  useEffect(() => {
+    const prefetch = () => {
+      services.forEach((s, i) => {
+        // Stagger to avoid clogging the network
+        setTimeout(() => {
+          const img = new Image();
+          img.decoding = "async";
+          (img as HTMLImageElement & { fetchPriority?: string }).fetchPriority = "low";
+          img.src = s.photo;
+        }, i * 30);
+      });
+    };
+    const w = window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number };
+    if (typeof w.requestIdleCallback === "function") {
+      w.requestIdleCallback(prefetch, { timeout: 2000 });
+    } else {
+      setTimeout(prefetch, 800);
+    }
+  }, []);
+
   const filteredServices = useMemo(() => {
     let result = services;
     if (activeBlock !== "all") {
