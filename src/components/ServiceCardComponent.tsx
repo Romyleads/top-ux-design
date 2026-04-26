@@ -130,8 +130,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       )}
 
       {/* Title + Subtitle — above photo. Icon sits as a small accent above the title so title aligns flush-left with subtitle. */}
-      <div className="min-h-[76px] px-5 pt-3.5 pb-2.5 flex flex-col justify-center">
-        <div className="flex items-center gap-2 mb-1.5">
+      <div className="min-h-[88px] px-5 pt-5 pb-3 flex flex-col justify-center">
+        <div className="flex items-center gap-2 mb-2">
           {SvcIcon ? (
             <span className="icon-premium w-[22px] h-[22px]">
               <SvcIcon size={20} strokeWidth={1.5} absoluteStrokeWidth />
@@ -155,7 +155,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           </Link>
         </div>
         <p
-          className="text-[11.5px] text-t3 leading-snug overflow-hidden transition-colors duration-300 group-hover:text-t1"
+          className="text-[12px] text-t3 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t1"
           style={{
             display: '-webkit-box',
             WebkitLineClamp: 2,
