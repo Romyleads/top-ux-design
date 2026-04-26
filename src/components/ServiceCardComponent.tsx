@@ -111,15 +111,16 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           ) : (
             <span className="text-base flex-shrink-0">{service.emoji}</span>
           )}
-          <Link to={`/${locale}/services/${service.id}`} className="hover:text-primary transition-colors min-w-0 flex-1">
+          <Link to={`/${locale}/services/${service.id}`} className="min-w-0 flex-1">
             <h3
-              className="font-card-title text-[17px] text-foreground leading-[1.15] overflow-hidden transition-colors duration-300 group-hover:text-primary"
+              className="font-card-title text-[17px] text-foreground leading-[1.15] overflow-hidden group-hover:font-semibold"
               style={{
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
                 fontKerning: 'normal',
                 fontFeatureSettings: '"liga" 1, "kern" 1, "ss01" 1',
+                transition: 'font-weight 600ms cubic-bezier(0.16, 0.84, 0.24, 1), font-variation-settings 600ms cubic-bezier(0.16, 0.84, 0.24, 1)',
               }}
             >
               {serviceName}
