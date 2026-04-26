@@ -120,18 +120,13 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           </div>
           <Link to={`/${locale}/services/${service.id}`} className="hover:text-primary transition-colors min-w-0 flex-1">
             <h3
-              className="text-[19px] font-[800] leading-[1.08] tracking-[-0.005em] overflow-hidden"
+              className="font-card-title text-[18px] text-t2 leading-[1.1] overflow-hidden transition-colors duration-300 group-hover:text-t1"
               style={{
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
-                WebkitFontSmoothing: 'subpixel-antialiased',
-                MozOsxFontSmoothing: 'auto',
-                textRendering: 'optimizeLegibility',
                 fontKerning: 'normal',
                 fontFeatureSettings: '"liga" 1, "kern" 1',
-                color: 'hsl(220 18% 22%)',
-                textShadow: '0 1px 0 hsl(0 0% 100% / 0.6)',
               }}
             >
               {serviceName}
