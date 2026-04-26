@@ -297,19 +297,20 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           <div className="relative grid grid-cols-3 gap-0">
             {/* Sliding active indicator — clean, sharp */}
             <div
-              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left] duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left,transform,border-color] duration-[420ms] will-change-transform"
               style={{
                 left: `calc(${activeTier} * (100% / 3))`,
                 width: `calc(100% / 3)`,
                 background: 'hsl(0 0% 100%)',
                 border: '1px solid hsl(142 71% 42% / 0.45)',
+                transform: 'scale(1)',
               }}
             />
             {service.tiers.map((tierItem, i) => (
               <button
                 key={i}
                 onClick={() => handleTierChange(i)}
-                className="relative z-[1] flex flex-col items-center py-2 px-1.5 rounded-xl cursor-pointer select-none"
+                className="relative z-[1] flex flex-col items-center py-2 px-1.5 rounded-xl cursor-pointer select-none transition-[color,transform,opacity] duration-[320ms]"
               >
                 <span className={`text-[10px] font-semibold leading-none mb-1 tracking-wide uppercase transition-colors duration-300 ${
                   i === activeTier ? "text-primary font-bold" : "text-t4"
@@ -327,7 +328,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Features */}
-        <div className="mb-3">
+        <div key={activeTier} className="mb-3 animate-switch-in">
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
