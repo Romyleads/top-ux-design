@@ -236,6 +236,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
               display: '-webkit-box',
               WebkitLineClamp: 3,
               WebkitBoxOrient: 'vertical',
+              fontFamily: '"Exo 2", "Inter", system-ui, sans-serif',
             }}
           >
             {serviceGoal}
