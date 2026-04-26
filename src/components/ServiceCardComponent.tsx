@@ -327,7 +327,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Features */}
-        <div className="mb-4">
+        <div className="mb-3">
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
@@ -340,7 +340,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* CTA */}
-        <div className="mt-auto pb-5">
+        <div className="mt-auto pb-4">
           <button
             onClick={handleAdd}
             className={`block w-full rounded-xl text-[13px] font-bold py-3 px-5 text-center relative overflow-hidden transition-all duration-300 ${
