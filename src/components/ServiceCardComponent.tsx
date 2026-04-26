@@ -332,7 +332,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
-            <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-1.5">
+            <div key={`${activeTier}-${i}`} className="flex items-center gap-2.5 py-0.5">
                 <FeatureIcon icon={feat.icon} />
                 <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
               </div>
