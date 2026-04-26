@@ -41,15 +41,33 @@ interface ServiceCardProps {
   service: ServiceCard;
   isOrdered: boolean;
   onAddToCart: (id: string, emoji: string, price: string, tierName: string) => void;
-  eager?: boolean;
 }
 
-export default function ServiceCardComponent({ service, isOrdered, onAddToCart, eager = false }: ServiceCardProps) {
+export default function ServiceCardComponent({ service, isOrdered, onAddToCart }: ServiceCardProps) {
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [fading, setFading] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
   const { t, locale } = useLanguage();
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    // Preload image well before the card enters the viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "1500px 0px 1500px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const features = service.tierFeatures[activeTier] || [];
   const tier = service.tiers[activeTier];
