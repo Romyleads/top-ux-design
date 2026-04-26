@@ -90,7 +90,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
   return (
     <div
       ref={cardRef}
-      className={`rounded-[20px] overflow-hidden flex flex-col relative h-full transition-all duration-500 hover:-translate-y-2 group ${
+      className={`service-card rounded-[20px] overflow-hidden flex flex-col relative h-full transition-[box-shadow] duration-300 ease-out group ${
         isOrdered ? "ring-[2px] ring-primary glow-green" : ""
       }`}
       style={{ 
