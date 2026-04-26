@@ -206,8 +206,8 @@
 
 /* Layer 4 — single continuous beam with JS-driven gradient tail. */
 .beam-stroke-4 {
-  stroke-width: 0.6;
-  filter: blur(0.35px) drop-shadow(0 0 1.5px hsl(var(--primary) / 0.18));
+  stroke-width: 0.35;
+  filter: blur(0.25px) drop-shadow(0 0 1px hsl(var(--primary) / 0.15));
   animation: border-beam-fade 7s linear infinite;
 }
 
