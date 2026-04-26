@@ -172,7 +172,12 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           onError={() => {
             setImageError(true);
           }}
-          className={`absolute inset-0 block w-full h-full object-cover transform-gpu transition-transform duration-[1800ms] ease-[cubic-bezier(0.16,0.84,0.24,1)] will-change-transform group-hover:scale-[1.16] ${imageError ? "opacity-0" : "opacity-100"}`}
+          className={`absolute inset-0 block w-full h-full object-cover transform-gpu will-change-transform group-hover:scale-[1.18] ${imageError ? "opacity-0" : "opacity-100"}`}
+          style={{
+            transitionProperty: 'transform',
+            transitionDuration: '2000ms',
+            transitionTimingFunction: 'cubic-bezier(0.16, 0.84, 0.24, 1)',
+          }}
         />
         {service.hot && (
           <div className="absolute top-3.5 left-3.5 z-[3]">
