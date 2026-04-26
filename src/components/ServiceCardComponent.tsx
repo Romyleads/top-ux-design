@@ -81,13 +81,13 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   return (
     <div
-      className={`service-card rounded-[20px] overflow-hidden flex flex-col relative transition-[box-shadow] duration-300 ease-out group ${
+      className={`service-card service-card-hover rounded-[20px] overflow-hidden flex flex-col relative transition-[box-shadow,transform,border-color] duration-500 ease-out group ${
         isOrdered ? "ring-[2px] ring-primary glow-green" : ""
       }`}
-      style={{ 
+      style={{
         background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 99%) 100%)',
-        boxShadow: isOrdered 
-          ? '0 0 30px -8px rgba(34, 197, 94, 0.35)' 
+        boxShadow: isOrdered
+          ? '0 0 30px -8px rgba(34, 197, 94, 0.35)'
           : '0 1px 2px rgba(0,0,0,0.04), 0 8px 32px -12px rgba(0,0,0,0.08)',
         border: '1px solid hsl(220 13% 91% / 0.5)',
       }}

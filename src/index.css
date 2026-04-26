@@ -266,6 +266,58 @@ a,
     will-change: opacity, transform;
   }
 
+  /* Premium hover for service cards */
+  .service-card-hover {
+    position: relative;
+  }
+  .service-card-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(142 76% 48% / 0.55), hsl(142 71% 42% / 0) 45%, hsl(142 71% 42% / 0) 55%, hsl(148 60% 40% / 0.45));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 500ms var(--ease-premium);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .service-card-hover::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: radial-gradient(120% 80% at 50% 0%, hsl(142 76% 48% / 0.10), transparent 60%);
+    opacity: 0;
+    transition: opacity 500ms var(--ease-premium);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .service-card-hover:hover {
+    transform: translateY(-4px);
+    border-color: hsl(142 71% 42% / 0.45) !important;
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.04),
+      0 18px 40px -16px rgba(22, 163, 74, 0.28),
+      0 8px 24px -10px rgba(0,0,0,0.10) !important;
+  }
+  .service-card-hover:hover::before { opacity: 1; }
+  .service-card-hover:hover::after { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-card-hover,
+    .service-card-hover::before,
+    .service-card-hover::after {
+      transition: none !important;
+    }
+    .service-card-hover:hover {
+      transform: none !important;
+    }
+  }
+
   .animate-switch-row {
     animation: switch-in-row 720ms var(--ease-premium) both;
     will-change: opacity, transform, filter;
