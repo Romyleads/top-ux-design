@@ -288,7 +288,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
         {/* Tier Picker */}
         <div
-          className="rounded-2xl p-1.5 mb-3"
+          className="rounded-2xl p-1.5 mb-4"
           style={{
             background: 'hsl(220 15% 96%)',
             boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.08), inset 0 -1px 2px rgba(0,0,0,0.04)',
@@ -327,7 +327,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Features */}
-        <div className="mb-2">
+        <div className="mb-4">
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
@@ -340,7 +340,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* CTA */}
-        <div className="mt-auto pt-1.5 pb-4">
+        <div className="mt-auto pb-5">
           <button
             onClick={handleAdd}
             className={`block w-full rounded-xl text-[13px] font-bold py-3 px-5 text-center relative overflow-hidden transition-all duration-300 ${
