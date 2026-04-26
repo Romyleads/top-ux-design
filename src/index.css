@@ -211,22 +211,24 @@
 
 
 /* ---------- Premium global easing ----------
- * Fast start, soft landing — applied to all Tailwind transition-* utilities.
- * Override per-element by setting an explicit transition-timing-function.
+ * Fast start, soft landing. Applies to any Tailwind transition-* utility.
  */
 :root {
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
-.transition,
-.transition-all,
-.transition-colors,
-.transition-opacity,
-.transition-shadow,
-.transition-transform,
-.transition-\[transform\2c opacity\],
-.transition-\[box-shadow\],
-.transition-\[left\],
-.transition-\[transform\2c opacity\] {
+
+/* Match any element using a Tailwind transition utility */
+[class*="transition-"],
+[class~="transition"] {
+  transition-timing-function: var(--ease-premium) !important;
+}
+
+/* For elements that set transition via inline style or custom timing,
+   we still nudge to premium easing on common interactive elements. */
+button,
+a,
+[role="tab"],
+[role="button"] {
   transition-timing-function: var(--ease-premium);
 }
 
