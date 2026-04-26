@@ -52,7 +52,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
         </div>
         <h2 className="text-xl font-extrabold text-foreground tracking-tight">{blockTitle}</h2>
         <span className="text-[11px] font-bold text-primary bg-primary/[.07] px-2.5 py-1 rounded-full">{cards.length}</span>
-        <div className="flex-1 bg-gradient-to-r from-border/60 to-transparent" style={{ height: '1px', maxHeight: '1px', minHeight: '1px', flexShrink: 0 }} />
+        <div className="flex-1 h-px bg-gradient-to-r from-border/60 to-transparent" />
       </div>
 
       {/* Cards Grid */}
