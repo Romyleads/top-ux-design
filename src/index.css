@@ -220,11 +220,22 @@
 @keyframes switch-in {
   0% {
     opacity: 0;
-    transform: translateY(8px) scale(0.985);
+    transform: translate3d(0, 6px, 0);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes switch-in-row {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 4px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -246,7 +257,13 @@ a,
 
 @layer utilities {
   .animate-switch-in {
-    animation: switch-in 420ms var(--ease-premium);
+    animation: switch-in 380ms var(--ease-premium) both;
+    will-change: opacity, transform;
+  }
+
+  .animate-switch-row {
+    animation: switch-in-row 420ms var(--ease-premium) both;
+    will-change: opacity, transform;
   }
 
   .gradient-primary {
