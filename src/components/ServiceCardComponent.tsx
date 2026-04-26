@@ -243,25 +243,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           }}
         >
           <div className="relative grid grid-cols-3 gap-0">
-            {/* Soft glow under active */}
+            {/* Sliding active indicator — clean, no blur */}
             <div
-              className="absolute -inset-y-1 rounded-2xl pointer-events-none transition-all duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left] duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
               style={{
                 left: `calc(${activeTier} * (100% / 3))`,
                 width: `calc(100% / 3)`,
-                background: 'radial-gradient(60% 70% at 50% 50%, hsl(142 76% 48% / 0.18), transparent 70%)',
-                filter: 'blur(6px)',
-              }}
-            />
-            {/* Sliding active indicator */}
-            <div
-              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-all duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
-              style={{
-                left: `calc(${activeTier} * (100% / 3))`,
-                width: `calc(100% / 3)`,
-                background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(142 40% 99%) 100%)',
+                background: 'hsl(0 0% 100%)',
                 boxShadow:
-                  '0 1px 0 rgba(255,255,255,0.9) inset, 0 -1px 0 hsl(142 71% 42% / 0.08) inset, 0 4px 14px -2px hsl(142 71% 42% / 0.18), 0 2px 6px -1px rgba(0,0,0,0.06)',
+                  '0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 8px -2px hsl(142 71% 42% / 0.18), 0 1px 3px rgba(0,0,0,0.05)',
                 border: '1px solid hsl(142 71% 42% / 0.28)',
               }}
             />
