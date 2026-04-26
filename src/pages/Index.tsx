@@ -33,8 +33,8 @@ export default function Index() {
       return () => window.cancelIdleCallback(idleId);
     }
 
-    const timeoutId = window.setTimeout(preloadImages, 250);
-    return () => window.clearTimeout(timeoutId);
+    const timeoutId = globalThis.setTimeout(preloadImages, 250);
+    return () => globalThis.clearTimeout(timeoutId);
   }, []);
 
   const orderedIds = useMemo(() => {
