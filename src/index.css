@@ -217,6 +217,17 @@
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+@keyframes switch-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* Match any element using a Tailwind transition utility */
 [class*="transition-"],
 [class~="transition"] {
@@ -234,6 +245,10 @@ a,
 
 
 @layer utilities {
+  .animate-switch-in {
+    animation: switch-in 420ms var(--ease-premium);
+  }
+
   .gradient-primary {
     background: linear-gradient(135deg, hsl(142, 76%, 48%) 0%, hsl(142, 71%, 42%) 40%, hsl(148, 60%, 34%) 100%);
   }
