@@ -199,81 +199,36 @@
 }
 
 /*
-  Snake-beam — four concentric strokes whose FRONT EDGES are aligned.
-  The visible dash for each layer ends at the same point (the head),
-  and longer/softer layers extend backwards as a graceful tail.
-
-  For a layer with dash length L (out of pathLength=1000), front edge
-  position = (1000 - dashoffset + L) mod 1000. We keep that constant
-  across layers by shifting each layer's offset by its own L.
+  Snake-beam — multiple stacked dashes form a smooth, linearly-fading tail.
+  All layers share the same FRONT edge (the head). Each subsequent layer is
+  longer and softer, so the trail naturally dissolves into transparency at
+  the very end.
 */
 .beam-stroke {
   fill: none;
   stroke-linecap: round;
+  stroke: hsl(150 85% 65%);
   animation: border-beam-fade 7s linear infinite;
 }
 
-/* Layer 1 — bright sharp head (front of the snake) */
-.beam-stroke-1 {
-  stroke: hsl(150 100% 88% / 0.95);
-  stroke-width: 1.6;
-  stroke-dasharray: 22 978;
-  filter: drop-shadow(0 0 4px hsl(150 95% 70% / 0.85));
-  animation:
-    beam-path-1 7s linear infinite,
-    border-beam-fade 7s linear infinite;
-}
+/* Tail segments — increasing length, decreasing opacity towards the end.
+   Front edge of every dash sits at the same point on the path: when
+   stroke-dashoffset reaches -L, the leading edge is at position 0.
+   So we animate dashoffset from (1000 - L) to -L for each layer. */
 
-/* Layer 2 — soft green halo, slightly longer */
-.beam-stroke-2 {
-  stroke: hsl(150 90% 65% / 0.55);
-  stroke-width: 2;
-  stroke-dasharray: 70 930;
-  filter: blur(1px) drop-shadow(0 0 6px hsl(150 90% 60% / 0.45));
-  animation:
-    beam-path-2 7s linear infinite,
-    border-beam-fade 7s linear infinite;
-}
+.beam-stroke-s1 { stroke-width: 1.5; stroke-dasharray: 40 960;  opacity: 0.55; filter: blur(0.4px); animation: beam-s1 7s linear infinite, border-beam-fade 7s linear infinite; }
+.beam-stroke-s2 { stroke-width: 1.4; stroke-dasharray: 90 910;  opacity: 0.40; filter: blur(0.7px); animation: beam-s2 7s linear infinite, border-beam-fade 7s linear infinite; }
+.beam-stroke-s3 { stroke-width: 1.3; stroke-dasharray: 150 850; opacity: 0.28; filter: blur(1.1px); animation: beam-s3 7s linear infinite, border-beam-fade 7s linear infinite; }
+.beam-stroke-s4 { stroke-width: 1.2; stroke-dasharray: 220 780; opacity: 0.18; filter: blur(1.6px); animation: beam-s4 7s linear infinite, border-beam-fade 7s linear infinite; }
+.beam-stroke-s5 { stroke-width: 1.1; stroke-dasharray: 300 700; opacity: 0.10; filter: blur(2.2px); animation: beam-s5 7s linear infinite, border-beam-fade 7s linear infinite; }
+.beam-stroke-s6 { stroke-width: 1;   stroke-dasharray: 390 610; opacity: 0.05; filter: blur(2.8px); animation: beam-s6 7s linear infinite, border-beam-fade 7s linear infinite; }
 
-/* Layer 3 — diffuse mid body */
-.beam-stroke-3 {
-  stroke: hsl(150 85% 60% / 0.28);
-  stroke-width: 1.4;
-  stroke-dasharray: 170 830;
-  filter: blur(2px);
-  animation:
-    beam-path-3 7s linear infinite,
-    border-beam-fade 7s linear infinite;
-}
-
-/* Layer 4 — long whisper-soft tail fading into nothing */
-.beam-stroke-4 {
-  stroke: hsl(150 80% 65% / 0.14);
-  stroke-width: 1;
-  stroke-dasharray: 320 680;
-  filter: blur(3px);
-  animation:
-    beam-path-4 7s linear infinite,
-    border-beam-fade 7s linear infinite;
-}
-
-/* Each layer's offset shifted by its dash length so all front edges meet at the same point */
-@keyframes beam-path-1 {
-  from { stroke-dashoffset: 978; }   /* 1000 - 22 */
-  to   { stroke-dashoffset: -22; }
-}
-@keyframes beam-path-2 {
-  from { stroke-dashoffset: 930; }
-  to   { stroke-dashoffset: -70; }
-}
-@keyframes beam-path-3 {
-  from { stroke-dashoffset: 830; }
-  to   { stroke-dashoffset: -170; }
-}
-@keyframes beam-path-4 {
-  from { stroke-dashoffset: 680; }
-  to   { stroke-dashoffset: -320; }
-}
+@keyframes beam-s1 { from { stroke-dashoffset: 960; }  to { stroke-dashoffset: -40;  } }
+@keyframes beam-s2 { from { stroke-dashoffset: 910; }  to { stroke-dashoffset: -90;  } }
+@keyframes beam-s3 { from { stroke-dashoffset: 850; }  to { stroke-dashoffset: -150; } }
+@keyframes beam-s4 { from { stroke-dashoffset: 780; }  to { stroke-dashoffset: -220; } }
+@keyframes beam-s5 { from { stroke-dashoffset: 700; }  to { stroke-dashoffset: -300; } }
+@keyframes beam-s6 { from { stroke-dashoffset: 610; }  to { stroke-dashoffset: -390; } }
 
 .beam-debug-outline {
   fill: none;
