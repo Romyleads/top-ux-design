@@ -339,30 +339,10 @@
 
 /* Service card premium hover — no lift, refined shadow + soft primary halo */
 .service-card {
-  position: relative;
-}
-.service-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg,
-    rgba(148, 163, 184, 0.28) 0%,
-    rgba(148, 163, 184, 0.06) 50%,
-    rgba(100, 116, 139, 0.18) 100%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 320ms ease-out;
-  pointer-events: none;
-  z-index: 2;
-}
-.service-card:hover:not(.ring-primary)::after {
-  opacity: 1;
+  transition: border-color 320ms ease-out, box-shadow 320ms ease-out;
 }
 .service-card:hover:not(.ring-primary) {
+  border-color: hsl(220 13% 80% / 0.55) !important;
   box-shadow:
     0 1px 2px rgba(0,0,0,0.04),
     0 22px 56px -22px rgba(15, 23, 42, 0.16),
