@@ -50,7 +50,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
           </span>
         )}
         <h2 className="category-title-static text-[16px] sm:text-[18px] leading-[20px] sm:leading-[22px] font-bold text-foreground tracking-tight">{blockTitle}</h2>
-        <span className="text-[11px] font-semibold text-muted-foreground bg-muted px-2 rounded-full tabular-nums leading-none inline-flex items-center justify-center min-w-[20px] h-[18px] ring-1 ring-border/60">{cards.length}</span>
+        <span className="text-[11px] font-semibold text-muted-foreground bg-muted/50 px-2 rounded-full tabular-nums leading-none inline-flex items-center justify-center min-w-[20px] h-[18px] ring-1 ring-border/40">{cards.length}</span>
         <div className="flex-1 h-px bg-gradient-to-r from-border/60 to-transparent ml-1" />
       </div>
 
