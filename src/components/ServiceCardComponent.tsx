@@ -74,7 +74,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
   return (
     <div
-      className={`rounded-[20px] overflow-hidden flex flex-col relative transition-all duration-500 hover:-translate-y-2 group ${
+      className={`rounded-[20px] overflow-hidden flex flex-col relative h-full transition-all duration-500 hover:-translate-y-2 group ${
         isOrdered ? "ring-[2px] ring-primary glow-green" : ""
       }`}
       style={{ 
