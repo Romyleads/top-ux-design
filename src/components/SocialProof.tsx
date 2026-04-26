@@ -75,7 +75,7 @@ export default function SocialProof() {
         visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0 pointer-events-none"
       }`}
     >
-      <div className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.12)] px-4 py-3 flex items-start gap-3">
+      <div className="bg-white/45 backdrop-blur-2xl border border-white/35 rounded-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.10)] px-4 py-3 flex items-start gap-3">
         <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-lg flex-shrink-0">
           {notification.emoji}
         </div>
