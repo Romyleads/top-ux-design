@@ -46,9 +46,7 @@ interface ServiceCardProps {
 export default function ServiceCardComponent({ service, isOrdered, onAddToCart }: ServiceCardProps) {
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const mediaRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
-  const [shouldLoadImage, setShouldLoadImage] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const { t, locale } = useLanguage();
@@ -59,13 +57,12 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
   }, [service.photo]);
 
   useEffect(() => {
-    if (!shouldLoadImage) return;
     const imgEl = imgRef.current;
     if (imgEl?.complete && imgEl.naturalWidth > 0) {
       setImageLoaded(true);
       setImageError(false);
     }
-  }, [shouldLoadImage, service.photo]);
+  }, [service.id, service.photo]);
 
   const features = service.tierFeatures[activeTier] || [];
   const tier = service.tiers[activeTier];
@@ -145,7 +142,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Photo with curved bottom mask */}
-      <div ref={mediaRef} className="relative h-[140px] flex-shrink-0 overflow-hidden rounded-b-[28px] bg-muted/60">
+      <div className="relative h-[140px] flex-shrink-0 overflow-hidden rounded-b-[28px] bg-muted/60">
         <div className={`absolute inset-0 transition-opacity duration-500 ${imageLoaded || imageError ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
           <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/40 to-background" />
           <div
@@ -171,8 +168,9 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           </div>
         )}
         <img
+          key={`${service.id}-${service.photo}`}
           ref={imgRef}
-          src={shouldLoadImage ? service.photo : undefined}
+          src={service.photo}
           alt={serviceName}
           loading="eager"
           decoding="async"
@@ -184,7 +182,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             setImageLoaded(false);
             setImageError(true);
           }}
-          className={`absolute inset-0 block w-full h-full object-cover transition-[transform,opacity] duration-[600ms] ease-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 block w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105 ${imageError ? "opacity-0" : "opacity-100"}`}
           style={{ transform: "translateZ(0)" }}
         />
         {service.hot && (
