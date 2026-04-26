@@ -186,8 +186,10 @@
 }
 
 @keyframes border-beam-fade {
-  0%, 100% { opacity: 0; }
-  10%, 90% { opacity: 1; }
+  0%   { opacity: 0; }
+  25%  { opacity: 1; }
+  75%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .beam-border {
@@ -201,14 +203,13 @@
 .beam-stroke {
   fill: none;
   stroke-linecap: round;
-  animation: border-beam-fade 7s linear infinite;
 }
 
 /* Layer 4 — single continuous beam with JS-driven gradient tail. */
 .beam-stroke-4 {
   stroke-width: 0.35;
   filter: blur(0.25px) drop-shadow(0 0 1px hsl(var(--primary) / 0.15));
-  animation: border-beam-fade 7s linear infinite;
+  animation: border-beam-fade 7s ease-in-out infinite;
 }
 
 .beam-debug-outline {
