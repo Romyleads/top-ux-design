@@ -191,12 +191,11 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
           <span
-            className="text-[12px] text-foreground leading-snug font-medium tracking-tight overflow-hidden"
+            className="text-[11.5px] text-t3 leading-snug overflow-hidden"
             style={{
               display: '-webkit-box',
               WebkitLineClamp: 3,
               WebkitBoxOrient: 'vertical',
-              fontFamily: 'Inter, system-ui, sans-serif',
             }}
           >
             {serviceGoal}
