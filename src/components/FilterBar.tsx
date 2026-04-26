@@ -19,7 +19,7 @@ export default function FilterBar({ activeBlock, onFilter }: FilterBarProps) {
     <div className="flex gap-2 flex-wrap justify-center mb-8">
       <button
         onClick={() => onFilter("all")}
-        className={`px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-all duration-200 ${
+        className={`px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-[transform,color,border-color,box-shadow,background-color] duration-[320ms] ${
           activeBlock === "all"
             ? "gradient-primary border-primary text-primary-foreground shadow-green"
             : "glass border-border/60 text-t2 hover:border-primary/40 hover:text-primary hover:shadow-sm"
@@ -35,7 +35,7 @@ export default function FilterBar({ activeBlock, onFilter }: FilterBarProps) {
           <button
             key={b.id}
             onClick={() => onFilter(b.id)}
-            className={`inline-flex items-center gap-1.5 px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-all duration-200 ${
+            className={`inline-flex items-center gap-1.5 px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-[transform,color,border-color,box-shadow,background-color] duration-[320ms] ${
               isActive
                 ? "gradient-primary border-primary text-primary-foreground shadow-green"
                 : "glass border-border/60 text-t2 hover:border-primary/40 hover:text-primary hover:shadow-sm"
