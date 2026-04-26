@@ -231,17 +231,17 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
                 return (
                   <div key={i} className="flex flex-col gap-1">
-                    <span className="text-[10px] font-bold tracking-[0.1em] uppercase" style={{ color: 'hsl(0 84% 50%)' }}>{sectionLabel}</span>
+                    <span className="text-[11px] font-bold tracking-[0.1em] uppercase" style={{ color: 'hsl(0 84% 50%)' }}>{sectionLabel}</span>
                     {isContentList && contentItems ? (
-                      <ul className="list-none p-0 m-0 flex flex-col gap-0.5">
+                      <ul className="list-none p-0 m-0 flex flex-col gap-1">
                         {contentItems.map((item, j) => (
-                          <li key={j} className="text-[11.5px] text-t2 leading-snug pl-3 relative before:content-['›'] before:absolute before:left-0 before:text-primary before:font-bold">
+                          <li key={j} className="text-[13px] text-t2 leading-relaxed pl-3 relative before:content-['›'] before:absolute before:left-0 before:text-primary before:font-bold">
                             {item}
                           </li>
                         ))}
                       </ul>
                     ) : (
-                      <span className="text-[12px] text-t2 leading-relaxed">{sectionText}</span>
+                      <span className="text-[13.5px] text-t2 leading-relaxed">{sectionText}</span>
                     )}
                   </div>
                 );
