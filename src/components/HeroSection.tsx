@@ -22,7 +22,6 @@ const plural = (n: number, one: string, few: string, many: string) => {
 export default function HeroSection({ searchQuery, onSearchChange, resultCount }: HeroSectionProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [focused, setFocused] = useState(false);
-  const [beamDebug, setBeamDebug] = useState(false);
   const { t, locale } = useLanguage();
 
   useEffect(() => {
@@ -75,31 +74,13 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       </p>
 
       {/* Search */}
-      <div className="max-w-[500px] mx-auto mb-2 flex justify-end">
-        <button
-          type="button"
-          onClick={() => setBeamDebug((v) => !v)}
-          className="text-[10px] uppercase tracking-wider px-2 py-1 rounded border border-white/20 text-white/60 hover:text-white hover:border-white/50 transition"
-        >
-          {beamDebug ? "debug beam: ON" : "debug beam"}
-        </button>
-      </div>
-      <div className={`relative max-w-[500px] mx-auto aurora-border beam-border ${focused ? "focus-within" : ""} ${beamDebug ? "beam-debug" : ""}`}>
+      <div className={`relative max-w-[500px] mx-auto beam-border ${focused ? "focus-within" : ""}`}>
         <svg
           aria-hidden="true"
           className="beam-border-svg pointer-events-none absolute inset-0 z-[3] h-full w-full"
           viewBox="0 0 500 56"
           preserveAspectRatio="none"
         >
-          <rect
-            className="beam-debug-outline"
-            x="0.75"
-            y="0.75"
-            width="498.5"
-            height="54.5"
-            rx="27.25"
-            ry="27.25"
-          />
           <rect
             className="beam-stroke-tail"
             x="0.75"
@@ -119,7 +100,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
           }`}
           style={
             focused
-              ? { background: "linear-gradient(135deg, hsl(220, 30%, 14%) 0%, hsl(220, 25%, 17%) 50%, hsl(150, 22%, 15%) 100%)" }
+              ? { background: "linear-gradient(135deg, hsl(220, 24%, 22%) 0%, hsl(220, 20%, 26%) 50%, hsl(150, 18%, 23%) 100%)" }
               : undefined
           }
         >
