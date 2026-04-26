@@ -231,11 +231,16 @@
 @keyframes switch-in-row {
   0% {
     opacity: 0;
-    transform: translate3d(0, 4px, 0);
+    transform: translate3d(-6px, 0, 0);
+    filter: blur(4px);
+  }
+  60% {
+    filter: blur(0);
   }
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+    filter: blur(0);
   }
 }
 
@@ -262,8 +267,8 @@ a,
   }
 
   .animate-switch-row {
-    animation: switch-in-row 420ms var(--ease-premium) both;
-    will-change: opacity, transform;
+    animation: switch-in-row 720ms var(--ease-premium) both;
+    will-change: opacity, transform, filter;
   }
 
   .gradient-primary {
