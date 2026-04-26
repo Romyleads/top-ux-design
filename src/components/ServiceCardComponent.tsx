@@ -113,18 +113,23 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       {/* Title + Subtitle — above photo */}
       <div className="min-h-[76px] px-5 pt-4 pb-2.5 flex flex-col justify-center">
         <div className="flex items-center gap-2.5 mb-1">
-          <div className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style={{
-            background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.12), hsl(142, 76%, 48% / 0.04))',
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{
+            background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.14), hsl(142, 76%, 48% / 0.05))',
           }}>
-            {SvcIcon ? <SvcIcon className="w-[18px] h-[18px] text-primary" strokeWidth={1.8} /> : <span className="text-sm">{service.emoji}</span>}
+            {SvcIcon ? <SvcIcon className="w-[22px] h-[22px] text-primary" strokeWidth={2} /> : <span className="text-base">{service.emoji}</span>}
           </div>
           <Link to={`/${locale}/services/${service.id}`} className="hover:text-primary transition-colors min-w-0 flex-1">
             <h3
-              className="text-[17px] font-extrabold text-foreground leading-tight tracking-tight overflow-hidden"
+              className="text-[18px] font-extrabold text-foreground leading-tight tracking-tight overflow-hidden antialiased"
               style={{
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale',
+                textRendering: 'geometricPrecision',
+                transform: 'translateZ(0)',
+                backfaceVisibility: 'hidden',
               }}
             >
               {serviceName}
