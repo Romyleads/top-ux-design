@@ -249,37 +249,38 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
         {/* Tier Picker */}
         <div
-          className="rounded-2xl p-1 mb-3"
+          className="rounded-2xl p-1.5 mb-3"
           style={{
-            background: 'linear-gradient(180deg, hsl(220 14% 96%) 0%, hsl(220 13% 98%) 100%)',
+            background: 'linear-gradient(180deg, hsl(220 16% 95%) 0%, hsl(220 14% 97%) 100%)',
             boxShadow:
-              'inset 0 1px 2px rgba(15,23,42,0.05), inset 0 0 0 1px rgba(15,23,42,0.04)',
+              'inset 0 1px 3px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.7), inset 0 -1px 2px rgba(0,0,0,0.03)',
           }}
         >
           <div className="relative grid grid-cols-3 gap-0">
-            {/* Sliding active indicator — crisp, premium */}
+            {/* Sliding active indicator — clean, no blur */}
             <div
-              className="absolute top-0 bottom-0 rounded-[10px] pointer-events-none transition-[left] duration-[420ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left] duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
               style={{
                 left: `calc(${activeTier} * (100% / 3))`,
                 width: `calc(100% / 3)`,
-                background: 'linear-gradient(180deg, #ffffff 0%, hsl(220 20% 99%) 100%)',
+                background: 'hsl(0 0% 100%)',
                 boxShadow:
-                  '0 0 0 1px rgba(15,23,42,0.06), 0 1px 1px rgba(15,23,42,0.04), 0 4px 10px -4px rgba(15,23,42,0.12)',
+                  '0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 8px -2px hsl(142 71% 42% / 0.18), 0 1px 3px rgba(0,0,0,0.05)',
+                border: '1px solid hsl(142 71% 42% / 0.28)',
               }}
             />
             {service.tiers.map((tierItem, i) => (
               <button
                 key={i}
                 onClick={() => handleTierChange(i)}
-                className="relative z-[1] flex flex-col items-center py-2 px-1.5 rounded-[10px] cursor-pointer select-none"
+                className="relative z-[1] flex flex-col items-center py-2 px-1.5 rounded-xl cursor-pointer select-none"
               >
-                <span className={`text-[10px] leading-none mb-1 tracking-[0.08em] uppercase transition-colors duration-300 ${
-                  i === activeTier ? "text-primary font-bold" : "text-t4 font-semibold"
+                <span className={`text-[10px] font-semibold leading-none mb-1 tracking-wide uppercase transition-colors duration-300 ${
+                  i === activeTier ? "text-primary font-bold" : "text-t4"
                 }`}>
                   {tierItem.name}
                 </span>
-                <span className={`text-[15px] font-extrabold leading-none tracking-tight transition-colors duration-300 ${
+                <span className={`text-[15px] font-extrabold leading-none transition-colors duration-300 ${
                   i === activeTier ? "text-foreground" : "text-t3"
                 }`}>
                   {tierItem.price}
