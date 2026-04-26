@@ -301,7 +301,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
               <div
                 key={`${activeTier}-${i}`}
                 className="flex items-center gap-2.5 py-0.5 animate-switch-row"
-                style={{ animationDelay: `${i * 45}ms` }}
+                style={{ animationDelay: `${i * 90}ms` }}
               >
                 <FeatureIcon icon={feat.icon} />
                 <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
