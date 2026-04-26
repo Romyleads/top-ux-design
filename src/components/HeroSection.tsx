@@ -1,5 +1,5 @@
 import { Search, X } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useId } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SearchConstellation from "@/components/SearchConstellation";
@@ -21,8 +21,11 @@ const plural = (n: number, one: string, few: string, many: string) => {
 
 export default function HeroSection({ searchQuery, onSearchChange, resultCount }: HeroSectionProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const beamStrokeRef = useRef<SVGRectElement>(null);
+  const beamGradientRef = useRef<SVGLinearGradientElement>(null);
   const [focused, setFocused] = useState(false);
   const { t, locale } = useLanguage();
+  const beamGradientId = `beam-fade-${useId().replace(/:/g, "")}`;
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -34,6 +37,48 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
+  }, []);
+
+  useEffect(() => {
+    const stroke = beamStrokeRef.current;
+    const gradient = beamGradientRef.current;
+    const geometry = stroke as unknown as SVGGeometryElement | null;
+
+    if (!stroke || !gradient || !geometry || typeof geometry.getTotalLength !== "function") {
+      return;
+    }
+
+    const totalLength = geometry.getTotalLength();
+    const beamLength = totalLength * 0.12;
+    stroke.style.strokeDasharray = `${beamLength} ${Math.max(totalLength - beamLength, 0.01)}`;
+
+    const duration = 7000;
+    let animationStart: number | null = null;
+    let frameId = 0;
+
+    const animateBeam = (timestamp: number) => {
+      if (animationStart === null) animationStart = timestamp;
+
+      const progress = ((timestamp - animationStart) % duration) / duration;
+      const head = (beamLength + progress * totalLength) % totalLength;
+      const tail = (head - beamLength + totalLength) % totalLength;
+
+      stroke.style.strokeDashoffset = `${totalLength - tail}`;
+
+      const headPoint = geometry.getPointAtLength(head);
+      const tailPoint = geometry.getPointAtLength(tail);
+
+      gradient.setAttribute("x1", `${tailPoint.x}`);
+      gradient.setAttribute("y1", `${tailPoint.y}`);
+      gradient.setAttribute("x2", `${headPoint.x}`);
+      gradient.setAttribute("y2", `${headPoint.y}`);
+
+      frameId = requestAnimationFrame(animateBeam);
+    };
+
+    frameId = requestAnimationFrame(animateBeam);
+
+    return () => cancelAnimationFrame(frameId);
   }, []);
 
   const conceptWord = (n: number) =>
@@ -81,10 +126,21 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
           viewBox="0 0 500 56"
           preserveAspectRatio="none"
         >
+          <defs>
+            <linearGradient
+              id={beamGradientId}
+              ref={beamGradientRef}
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0%" style={{ stopColor: "hsl(var(--primary))" }} stopOpacity="0" />
+              <stop offset="100%" style={{ stopColor: "hsl(var(--primary))" }} stopOpacity="0.9" />
+            </linearGradient>
+          </defs>
           <rect
+            ref={beamStrokeRef}
             className="beam-stroke beam-stroke-4"
             x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
-            pathLength="1000"
+            stroke={`url(#${beamGradientId})`}
           />
         </svg>
         <div
