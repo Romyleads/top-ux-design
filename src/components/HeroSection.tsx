@@ -82,43 +82,23 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
           preserveAspectRatio="none"
         >
           <rect
-            className="beam-stroke-tail"
-            x="0.75"
-            y="0.75"
-            width="498.5"
-            height="54.5"
-            rx="27.25"
-            ry="27.25"
+            className="beam-stroke beam-stroke-1"
+            x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
             pathLength="1000"
           />
           <rect
-            className="beam-stroke-mid"
-            x="0.75"
-            y="0.75"
-            width="498.5"
-            height="54.5"
-            rx="27.25"
-            ry="27.25"
+            className="beam-stroke beam-stroke-2"
+            x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
             pathLength="1000"
           />
           <rect
-            className="beam-stroke-head"
-            x="0.75"
-            y="0.75"
-            width="498.5"
-            height="54.5"
-            rx="27.25"
-            ry="27.25"
+            className="beam-stroke beam-stroke-3"
+            x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
             pathLength="1000"
           />
           <rect
-            className="beam-stroke-core"
-            x="0.75"
-            y="0.75"
-            width="498.5"
-            height="54.5"
-            rx="27.25"
-            ry="27.25"
+            className="beam-stroke beam-stroke-4"
+            x="0.75" y="0.75" width="498.5" height="54.5" rx="27.25" ry="27.25"
             pathLength="1000"
           />
         </svg>
