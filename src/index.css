@@ -221,6 +221,29 @@
   will-change: opacity, stroke-dashoffset;
 }
 
+/* Fallback for low-power GPUs / slow refresh devices / reduced motion:
+   drop expensive filters that cause flicker, keep the beam clean & crisp. */
+@media (prefers-reduced-motion: reduce), (update: slow) {
+  .beam-stroke-4 {
+    stroke-width: 0.5;
+    filter: none;
+    will-change: auto;
+  }
+  .beam-border-svg {
+    will-change: auto;
+  }
+}
+
+/* Manual opt-out class — applied when JS detects a weak GPU. */
+.beam-border.beam-fallback .beam-stroke-4 {
+  stroke-width: 0.5;
+  filter: none;
+  will-change: auto;
+}
+.beam-border.beam-fallback .beam-border-svg {
+  will-change: auto;
+}
+
 .beam-debug-outline {
   fill: none;
   stroke: hsl(0 100% 70% / 0.8);

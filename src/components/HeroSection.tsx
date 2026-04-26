@@ -24,8 +24,26 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
   const beamStrokeRef = useRef<SVGRectElement>(null);
   const beamGradientRef = useRef<SVGLinearGradientElement>(null);
   const [focused, setFocused] = useState(false);
+  const [lowPowerGpu, setLowPowerGpu] = useState(false);
   const { t, locale } = useLanguage();
   const beamGradientId = `beam-fade-${useId().replace(/:/g, "")}`;
+
+  useEffect(() => {
+    try {
+      const canvas = document.createElement("canvas");
+      const gl = (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")) as WebGLRenderingContext | null;
+      if (!gl) { setLowPowerGpu(true); return; }
+      const dbg = gl.getExtension("WEBGL_debug_renderer_info");
+      const renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || "") : "";
+      const weak = /swiftshader|llvmpipe|software|microsoft basic|mesa offscreen/i.test(renderer);
+      const lowCores = (navigator.hardwareConcurrency || 8) <= 2;
+      const lowMem = (navigator as Navigator & { deviceMemory?: number }).deviceMemory !== undefined
+        && ((navigator as Navigator & { deviceMemory?: number }).deviceMemory as number) <= 2;
+      if (weak || lowCores || lowMem) setLowPowerGpu(true);
+    } catch {
+      setLowPowerGpu(true);
+    }
+  }, []);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -119,7 +137,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
       </p>
 
       {/* Search */}
-      <div className={`relative max-w-[500px] mx-auto beam-border ${focused ? "focus-within" : ""}`}>
+      <div className={`relative max-w-[500px] mx-auto beam-border ${focused ? "focus-within" : ""} ${lowPowerGpu ? "beam-fallback" : ""}`}>
         <svg
           aria-hidden="true"
           className="beam-border-svg pointer-events-none absolute inset-0 z-[3] h-full w-full"
