@@ -105,8 +105,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       <div className="min-h-[88px] px-6 pt-5 pb-3 flex flex-col justify-center">
         <div className="flex items-center gap-2 mb-2">
           {SvcIcon ? (
-            <span className="icon-premium w-[22px] h-[22px]">
-              <SvcIcon size={20} strokeWidth={1.5} absoluteStrokeWidth />
+            <span className="icon-premium card-title-ink-icon w-[22px] h-[22px]">
+              <SvcIcon size={20} strokeWidth={1.25} absoluteStrokeWidth />
             </span>
           ) : (
             <span className="text-base flex-shrink-0">{service.emoji}</span>
