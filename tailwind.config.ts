@@ -140,6 +140,7 @@ export default {
         float: "float 15s ease-in-out infinite",
         "float-delayed": "float-delayed 18s ease-in-out infinite",
         "pulse-subtle": "pulse-subtle 3s ease-in-out infinite",
+        "skeleton-sweep": "skeleton-sweep 1.6s ease-in-out infinite",
       },
     },
   },
