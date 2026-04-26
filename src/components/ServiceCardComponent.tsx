@@ -46,7 +46,7 @@ interface ServiceCardProps {
 export default function ServiceCardComponent({ service, isOrdered, onAddToCart }: ServiceCardProps) {
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const [fading, setFading] = useState(false);
+  
   const [imageLoaded, setImageLoaded] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
