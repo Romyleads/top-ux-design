@@ -210,6 +210,27 @@
 }
 
 
+/* ---------- Premium global easing ----------
+ * Fast start, soft landing — applied to all Tailwind transition-* utilities.
+ * Override per-element by setting an explicit transition-timing-function.
+ */
+:root {
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.transition,
+.transition-all,
+.transition-colors,
+.transition-opacity,
+.transition-shadow,
+.transition-transform,
+.transition-\[transform\2c opacity\],
+.transition-\[box-shadow\],
+.transition-\[left\],
+.transition-\[transform\2c opacity\] {
+  transition-timing-function: var(--ease-premium);
+}
+
+
 @layer utilities {
   .gradient-primary {
     background: linear-gradient(135deg, hsl(142, 76%, 48%) 0%, hsl(142, 71%, 42%) 40%, hsl(148, 60%, 34%) 100%);
