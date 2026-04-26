@@ -111,16 +111,16 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       )}
 
       {/* Title + Subtitle — above photo */}
-      <div className="flex min-h-[76px] items-center gap-3 px-5 pt-4 pb-2.5">
-        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{
-          background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.1), hsl(142, 76%, 48% / 0.04))',
-        }}>
-          {SvcIcon ? <SvcIcon className="w-[18px] h-[18px] text-primary" strokeWidth={1.8} /> : <span className="text-base">{service.emoji}</span>}
-        </div>
-        <div className="min-w-0 flex-1 flex flex-col justify-center">
-          <Link to={`/${locale}/services/${service.id}`} className="hover:text-primary transition-colors">
+      <div className="min-h-[76px] px-5 pt-4 pb-2.5 flex flex-col justify-center">
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style={{
+            background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.12), hsl(142, 76%, 48% / 0.04))',
+          }}>
+            {SvcIcon ? <SvcIcon className="w-[14px] h-[14px] text-primary" strokeWidth={1.8} /> : <span className="text-xs">{service.emoji}</span>}
+          </div>
+          <Link to={`/${locale}/services/${service.id}`} className="hover:text-primary transition-colors min-w-0 flex-1">
             <h3
-              className="text-[15px] font-extrabold text-foreground leading-tight tracking-tight mb-0.5 overflow-hidden"
+              className="text-[15px] font-extrabold text-foreground leading-tight tracking-tight overflow-hidden"
               style={{
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
@@ -130,17 +130,17 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
               {serviceName}
             </h3>
           </Link>
-          <p
-            className="text-[11.5px] text-t3 leading-snug overflow-hidden"
-            style={{
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-            }}
-          >
-            {serviceSubtitle}
-          </p>
         </div>
+        <p
+          className="text-[11.5px] text-t3 leading-snug overflow-hidden"
+          style={{
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+          }}
+        >
+          {serviceSubtitle}
+        </p>
       </div>
 
       {/* Photo with curved bottom mask */}
