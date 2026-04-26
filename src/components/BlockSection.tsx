@@ -45,11 +45,9 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
       {/* Block Header — premium minimal, tightly grouped */}
       <div className="category-header-static flex items-center gap-2.5 mb-8 pl-5">
         {IconComponent && (
-          <IconComponent
-            className="w-[26px] h-[26px] text-primary-dark flex-shrink-0"
-            strokeWidth={2.25}
-            style={{ fill: 'hsl(142 76% 48% / 0.18)' }}
-          />
+          <span className="icon-premium w-[26px] h-[26px]">
+            <IconComponent size={24} strokeWidth={2} absoluteStrokeWidth />
+          </span>
         )}
         <h2 className="category-title-static text-[16px] sm:text-[18px] leading-[20px] sm:leading-[22px] font-bold text-foreground tracking-tight">{blockTitle}</h2>
         <span className="text-[11px] font-bold text-primary-foreground bg-primary px-2 rounded-full tabular-nums leading-none inline-flex items-center justify-center min-w-[20px] h-[18px]">{cards.length}</span>
