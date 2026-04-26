@@ -46,7 +46,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
       <div className="category-header-static flex items-center gap-2.5 mb-8 pl-5">
         {IconComponent && (
           <span className="icon-premium w-[26px] h-[26px]">
-            <IconComponent size={24} strokeWidth={2} absoluteStrokeWidth />
+            <IconComponent size={24} strokeWidth={1.25} absoluteStrokeWidth />
           </span>
         )}
         <h2 className="category-title-static text-[16px] sm:text-[18px] leading-[20px] sm:leading-[22px] font-bold text-foreground tracking-tight">{blockTitle}</h2>
