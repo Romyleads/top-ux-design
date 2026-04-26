@@ -217,11 +217,20 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           onClick={() => setExpanded(!expanded)}
           className="flex items-center gap-1.5 mb-4 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary self-start"
         >
-          <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+          <ChevronDown
+            className={`w-3.5 h-3.5 ${expanded ? "rotate-180" : ""}`}
+            style={{ transition: 'transform 900ms cubic-bezier(0.16, 0.84, 0.24, 1)' }}
+          />
           <span>{t("card.details")}</span>
         </button>
 
-        <div className={`grid transition-all duration-400 ease-out ${expanded ? "grid-rows-[1fr] opacity-100 mb-3" : "grid-rows-[0fr] opacity-0"}`} style={{ overflow: "hidden" }}>
+        <div
+          className={`grid ${expanded ? "grid-rows-[1fr] opacity-100 mb-3" : "grid-rows-[0fr] opacity-0"}`}
+          style={{
+            overflow: "hidden",
+            transition: 'grid-template-rows 900ms cubic-bezier(0.16, 0.84, 0.24, 1), opacity 700ms cubic-bezier(0.16, 0.84, 0.24, 1), margin 900ms cubic-bezier(0.16, 0.84, 0.24, 1)',
+          }}
+        >
           <div className="space-y-2.5 pb-1 min-h-0 overflow-hidden">
             {service.info
               .filter((section) => section.kind !== "goal") /* skip goal — already shown above */
