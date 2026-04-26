@@ -132,8 +132,9 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
               ref={beamGradientRef}
               gradientUnits="userSpaceOnUse"
             >
-              <stop offset="0%" style={{ stopColor: "hsl(var(--primary))" }} stopOpacity="0" />
-              <stop offset="100%" style={{ stopColor: "hsl(var(--primary))" }} stopOpacity="0.9" />
+              <stop offset="0%" stopColor="hsl(150 90% 88%)" stopOpacity="0" />
+              <stop offset="70%" stopColor="hsl(150 85% 80%)" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="hsl(150 90% 88%)" stopOpacity="0.85" />
             </linearGradient>
           </defs>
           <rect
