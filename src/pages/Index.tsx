@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { services, blocks } from "@/data/services";
 import { useCart } from "@/hooks/useCart";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -17,25 +17,6 @@ export default function Index() {
   const [activeBlock, setActiveBlock] = useState("all");
   const cart = useCart();
   const { t } = useLanguage();
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const preloadImages = () => {
-      services.forEach((service) => {
-        const img = new Image();
-        img.src = service.photo;
-      });
-    };
-
-    if ("requestIdleCallback" in window) {
-      const idleId = window.requestIdleCallback(preloadImages, { timeout: 1200 });
-      return () => window.cancelIdleCallback(idleId);
-    }
-
-    const timeoutId = globalThis.setTimeout(preloadImages, 250);
-    return () => globalThis.clearTimeout(timeoutId);
-  }, []);
 
   const orderedIds = useMemo(() => {
     const ids = new Set<string>();

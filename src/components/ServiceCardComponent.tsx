@@ -47,19 +47,16 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
   const [activeTier, setActiveTier] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const { t, locale } = useLanguage();
 
   useEffect(() => {
-    setImageLoaded(false);
     setImageError(false);
   }, [service.photo]);
 
   useEffect(() => {
     const imgEl = imgRef.current;
     if (imgEl?.complete && imgEl.naturalWidth > 0) {
-      setImageLoaded(true);
       setImageError(false);
     }
   }, [service.id, service.photo]);
@@ -143,19 +140,13 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
       {/* Photo with curved bottom mask */}
       <div className="relative h-[140px] flex-shrink-0 overflow-hidden rounded-b-[28px] bg-muted/60">
-        <div className={`absolute inset-0 transition-opacity duration-500 ${imageLoaded || imageError ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/40 to-background" />
-          <div
-            className="absolute inset-0 opacity-70"
-            style={{ background: "radial-gradient(circle at top left, hsl(var(--primary) / 0.14), transparent 48%)" }}
-          />
-          {/* Shimmer sweep */}
-          <div
-            className="absolute inset-0 animate-skeleton-sweep"
-            style={{
-              background: "linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.55) 50%, transparent 100%)",
-            }}
-          />
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/40 to-background" />
+        <div
+          className="absolute inset-0 opacity-70"
+          style={{ background: "radial-gradient(circle at top left, hsl(var(--primary) / 0.14), transparent 48%)" }}
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-[28px] opacity-35 select-none" aria-hidden="true">{service.emoji}</span>
         </div>
         {imageError && (
           <div
@@ -173,13 +164,12 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           src={service.photo}
           alt={serviceName}
           loading="eager"
+          fetchPriority="high"
           decoding="async"
           onLoad={() => {
-            setImageLoaded(true);
             setImageError(false);
           }}
           onError={() => {
-            setImageLoaded(false);
             setImageError(true);
           }}
           className={`absolute inset-0 block w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105 ${imageError ? "opacity-0" : "opacity-100"}`}
