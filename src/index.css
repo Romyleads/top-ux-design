@@ -198,55 +198,36 @@
   overflow: visible;
 }
 
-/* Long soft tail */
+/* Single soft tail with subtle brightness pulse */
+@keyframes beam-tail-pulse {
+  0%, 100% {
+    stroke: hsl(150 90% 70% / 0.32);
+    filter: blur(2px) drop-shadow(0 0 2px hsl(150 80% 60% / 0.2));
+  }
+  50% {
+    stroke: hsl(150 95% 78% / 0.6);
+    filter: blur(1.5px) drop-shadow(0 0 6px hsl(150 90% 65% / 0.5));
+  }
+}
+
 .beam-stroke-tail {
   fill: none;
-  stroke: hsl(150 90% 70% / 0.35);
+  stroke: hsl(150 90% 70% / 0.32);
   stroke-width: 1;
   stroke-linecap: round;
   stroke-dasharray: 320 680;
   animation:
     border-beam-path 7s linear infinite,
-    border-beam-fade 7s linear infinite;
+    border-beam-fade 7s linear infinite,
+    beam-tail-pulse 3.5s ease-in-out infinite;
   filter: blur(2px);
-}
-
-/* Medium glow halo */
-.beam-stroke-glow {
-  fill: none;
-  stroke: hsl(150 100% 80% / 0.7);
-  stroke-width: 0.9;
-  stroke-linecap: round;
-  stroke-dasharray: 140 860;
-  stroke-dashoffset: 1000;
-  animation:
-    border-beam-path 7s linear infinite,
-    border-beam-fade 7s linear infinite;
-  filter:
-    drop-shadow(0 0 3px hsl(150 100% 70% / 0.6))
-    drop-shadow(0 0 8px hsl(142 90% 55% / 0.4));
-}
-
-/* Bright crisp head */
-.beam-stroke-core {
-  fill: none;
-  stroke: hsl(0 0% 100% / 0.95);
-  stroke-width: 0.6;
-  stroke-linecap: round;
-  stroke-dasharray: 40 960;
-  stroke-dashoffset: 1000;
-  animation:
-    border-beam-path 7s linear infinite,
-    border-beam-fade 7s linear infinite;
-  filter: drop-shadow(0 0 2px hsl(0 0% 100% / 0.9));
 }
 
 .beam-border.beam-debug {
   outline: 1px dashed hsl(120 100% 60% / 0.6);
 }
 
-.beam-border.beam-debug .beam-stroke-glow,
-.beam-border.beam-debug .beam-stroke-core {
+.beam-border.beam-debug .beam-stroke-tail {
   animation-play-state: paused;
   opacity: 1;
   stroke-dasharray: 1000 0;
