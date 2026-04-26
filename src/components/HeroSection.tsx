@@ -25,22 +25,29 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
   const beamGradientRef = useRef<SVGLinearGradientElement>(null);
   const [focused, setFocused] = useState(false);
   const [lowPowerGpu, setLowPowerGpu] = useState(false);
+  const [staticBeam, setStaticBeam] = useState(false);
   const { t, locale } = useLanguage();
   const beamGradientId = `beam-fade-${useId().replace(/:/g, "")}`;
 
   useEffect(() => {
+    const reduceMotion = typeof window !== "undefined"
+      && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) { setStaticBeam(true); setLowPowerGpu(true); return; }
+
     try {
       const canvas = document.createElement("canvas");
       const gl = (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")) as WebGLRenderingContext | null;
-      if (!gl) { setLowPowerGpu(true); return; }
+      if (!gl) { setStaticBeam(true); setLowPowerGpu(true); return; }
       const dbg = gl.getExtension("WEBGL_debug_renderer_info");
       const renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || "") : "";
-      const weak = /swiftshader|llvmpipe|software|microsoft basic|mesa offscreen/i.test(renderer);
+      const veryWeak = /swiftshader|llvmpipe|software|microsoft basic|mesa offscreen/i.test(renderer);
       const lowCores = (navigator.hardwareConcurrency || 8) <= 2;
       const lowMem = (navigator as Navigator & { deviceMemory?: number }).deviceMemory !== undefined
         && ((navigator as Navigator & { deviceMemory?: number }).deviceMemory as number) <= 2;
-      if (weak || lowCores || lowMem) setLowPowerGpu(true);
+      if (veryWeak) { setStaticBeam(true); setLowPowerGpu(true); return; }
+      if (lowCores || lowMem) setLowPowerGpu(true);
     } catch {
+      setStaticBeam(true);
       setLowPowerGpu(true);
     }
   }, []);
