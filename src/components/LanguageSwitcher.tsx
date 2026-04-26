@@ -1,6 +1,7 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import type { Locale } from "@/i18n/translations";
+import { useState } from "react";
 
 const FlagUA = () => (
   <svg width="18" height="13" viewBox="0 0 18 13" className="rounded-[2px] shadow-sm">
@@ -41,8 +42,11 @@ export default function LanguageSwitcher() {
   const navigate = useNavigate();
   const location = useLocation();
   const activeIdx = langs.findIndex((l) => l.code === locale);
+  const [pressedCode, setPressedCode] = useState<Locale | null>(null);
 
   const handleSwitch = (code: Locale) => {
+    if (code === locale) return;
+    setPressedCode(code);
     setLocale(code);
     // Replace the locale prefix in the current path
     const pathWithoutLocale = location.pathname.replace(/^\/(en|de|uk)/, "");
@@ -50,27 +54,33 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="relative inline-grid grid-cols-3 items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+    <div className="relative inline-grid grid-cols-3 items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)] overflow-hidden">
       {/* Sliding indicator */}
       <div
-        className="absolute top-[3px] bottom-[3px] rounded-full gradient-primary shadow-green transition-all duration-300 ease-out pointer-events-none"
+        className="absolute top-[3px] bottom-[3px] rounded-full gradient-primary shadow-green transition-[left,right,transform,box-shadow] duration-500 pointer-events-none will-change-transform"
         style={{
           left: `calc(${activeIdx} * 33.333% + 3px)`,
           right: `calc(${2 - activeIdx} * 33.333% + 3px)`,
+          transform: pressedCode && pressedCode !== locale ? 'scale(0.985)' : 'scale(1)',
         }}
       />
       {langs.map((lang) => (
         <button
           key={lang.code}
           onClick={() => handleSwitch(lang.code)}
-          className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-all duration-200 select-none ${
+          onMouseUp={() => setPressedCode(null)}
+          onMouseLeave={() => setPressedCode(null)}
+          className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-[color,transform,opacity] duration-300 select-none ${
             locale === lang.code
-              ? "text-primary-foreground scale-[1.05]"
-              : "text-white/60 hover:text-white"
+              ? "text-primary-foreground scale-[1.03]"
+              : "text-white/60 hover:text-white/90"
           }`}
+          style={{
+            transform: pressedCode === lang.code ? 'translateY(0.5px) scale(0.985)' : undefined,
+          }}
         >
           <lang.Flag />
-          <span>{lang.label}</span>
+          <span className={locale === lang.code ? "animate-switch-in" : undefined}>{lang.label}</span>
         </button>
       ))}
     </div>
