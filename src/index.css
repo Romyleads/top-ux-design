@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -100,7 +100,7 @@
 @layer base {
   *, *::before, *::after {
     @apply border-border;
-    font-family: 'Oxanium', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Tektur', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   }
   html {
     font-size: 16px;
@@ -108,7 +108,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Oxanium', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Tektur', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     font-feature-settings: 'tnum';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -126,7 +126,7 @@
      Brakpoints override with calibrated size / line-height / letter-spacing
      pairs so the rhythm stays even at every width. */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Oxanium', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Tektur', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: hsl(var(--foreground));
     text-wrap: balance;
     font-synthesis: none;
@@ -253,7 +253,7 @@
   .text-t3 { color: hsl(var(--text-tertiary)); }
   .text-t4 { color: hsl(var(--text-quaternary)); }
   .font-card-title {
-    font-family: 'Oxanium', 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Tektur', 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 700;
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
@@ -270,7 +270,7 @@
     contain: layout style;
   }
   .category-title-static {
-    font-family: 'Oxanium', 'Inter', system-ui, sans-serif;
+    font-family: 'Tektur', 'Inter', system-ui, sans-serif;
     font-feature-settings: "tnum";
     letter-spacing: 0.045em;
     text-transform: uppercase;
