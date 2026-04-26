@@ -257,6 +257,24 @@
     font-synthesis: none;
     text-shadow: none;
   }
+  .category-header-static {
+    transform: none;
+    translate: none;
+    will-change: auto;
+    backface-visibility: visible;
+    contain: layout style;
+  }
+  .category-title-static {
+    transform: none;
+    translate: none;
+    filter: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: visible;
+    will-change: auto;
+    isolation: auto;
+  }
   .glow-green {
     box-shadow: 0 0 30px -8px rgba(34, 197, 94, 0.35), 0 0 60px -16px rgba(34, 197, 94, 0.15);
   }
