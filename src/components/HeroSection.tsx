@@ -91,6 +91,36 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
             ry="27.25"
             pathLength="1000"
           />
+          <rect
+            className="beam-stroke-mid"
+            x="0.75"
+            y="0.75"
+            width="498.5"
+            height="54.5"
+            rx="27.25"
+            ry="27.25"
+            pathLength="1000"
+          />
+          <rect
+            className="beam-stroke-head"
+            x="0.75"
+            y="0.75"
+            width="498.5"
+            height="54.5"
+            rx="27.25"
+            ry="27.25"
+            pathLength="1000"
+          />
+          <rect
+            className="beam-stroke-core"
+            x="0.75"
+            y="0.75"
+            width="498.5"
+            height="54.5"
+            rx="27.25"
+            ry="27.25"
+            pathLength="1000"
+          />
         </svg>
         <div
           className={`relative z-[1] flex items-center rounded-full py-[6px] pl-[20px] pr-[6px] gap-2.5 border-[1.5px] transition-all duration-300 overflow-hidden backdrop-blur-xl ${
@@ -100,7 +130,7 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
           }`}
           style={
             focused
-              ? { background: "linear-gradient(135deg, hsl(220, 24%, 22%) 0%, hsl(220, 20%, 26%) 50%, hsl(150, 18%, 23%) 100%)" }
+              ? { background: "linear-gradient(135deg, hsl(168, 35%, 7%) 0%, hsl(165, 30%, 9%) 50%, hsl(160, 28%, 8%) 100%)" }
               : undefined
           }
         >
