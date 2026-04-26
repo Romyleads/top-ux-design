@@ -559,14 +559,19 @@ a,
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
 
-/* Service card premium hover — no lift / no scale, single soft shadow + thin contrast border */
+/* Service card premium hover — no lift / no scale, only refined shadow + thin grey border */
 .service-card {
   transition: border-color 360ms ease-out, box-shadow 360ms ease-out;
   transform: none !important;
 }
 .service-card:hover:not(.ring-primary) {
-  border-color: hsl(220 12% 55% / 0.7) !important;
-  box-shadow: 0 18px 40px -16px rgba(15, 23, 42, 0.28) !important;
+  border-color: hsl(220 9% 70% / 0.7) !important;
+  border-width: 1px !important;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 12px 28px -12px rgba(15, 23, 42, 0.18),
+    0 30px 70px -28px rgba(15, 23, 42, 0.28),
+    0 0 0 1px hsl(220 9% 78% / 0.35) !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .service-card { transition: none !important; }
