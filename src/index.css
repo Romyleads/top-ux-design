@@ -565,13 +565,11 @@ a,
   transform: none !important;
 }
 .service-card:hover:not(.ring-primary) {
-  border-color: hsl(220 9% 75% / 0.35) !important;
-  border-width: 1px !important;
+  border-color: transparent !important;
   box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.05),
-    0 12px 28px -12px rgba(15, 23, 42, 0.18),
-    0 30px 70px -28px rgba(15, 23, 42, 0.28),
-    0 0 0 0.5px hsl(220 9% 80% / 0.18) !important;
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 14px 32px -14px rgba(15, 23, 42, 0.20),
+    0 36px 80px -30px rgba(15, 23, 42, 0.32) !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .service-card { transition: none !important; }
