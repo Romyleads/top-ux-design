@@ -228,26 +228,30 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         <div className="rounded-xl p-1 mb-3" style={{
           background: 'hsl(220 14% 96%)',
         }}>
-          <div className="grid grid-cols-3 gap-0.5">
+          <div className="relative grid grid-cols-3 gap-0.5">
+            {/* Sliding active indicator */}
+            <div
+              className="absolute top-0 bottom-0 rounded-lg pointer-events-none transition-all duration-300 ease-out"
+              style={{
+                left: `calc(${activeTier} * (100% / 3) + 1px)`,
+                width: `calc(100% / 3 - 2px)`,
+                background: 'hsl(0 0% 100%)',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                border: '1px solid hsl(142 71% 42% / 0.2)',
+              }}
+            />
             {service.tiers.map((tierItem, i) => (
               <button
                 key={i}
                 onClick={() => handleTierChange(i)}
-                className={`flex flex-col items-center py-2 px-1.5 rounded-lg cursor-pointer transition-all duration-200 select-none ${
-                  i === activeTier ? "" : "hover:bg-white/50"
-                }`}
-                style={i === activeTier ? {
-                  background: 'hsl(0 0% 100%)',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-                  border: '1px solid hsl(142 71% 42% / 0.2)',
-                } : undefined}
+                className="relative z-[1] flex flex-col items-center py-2 px-1.5 rounded-lg cursor-pointer select-none"
               >
-                <span className={`text-[10px] font-semibold leading-none mb-1 transition-colors ${
+                <span className={`text-[10px] font-semibold leading-none mb-1 transition-colors duration-300 ${
                   i === activeTier ? "text-primary font-bold" : "text-t4"
                 }`}>
                   {tierItem.name}
                 </span>
-                <span className={`text-[15px] font-extrabold leading-none transition-colors ${
+                <span className={`text-[15px] font-extrabold leading-none transition-colors duration-300 ${
                   i === activeTier ? "text-foreground" : "text-t3"
                 }`}>
                   {tierItem.price}
