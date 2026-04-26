@@ -127,7 +127,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           </Link>
         </div>
         <p
-          className="text-[12px] text-t4 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t2"
+          className="text-[13.5px] text-t4 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t2"
           style={{
             display: '-webkit-box',
             WebkitLineClamp: 2,
@@ -196,7 +196,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
           <span
-            className="text-[12px] text-t4 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t2"
+            className="text-[13.5px] text-t4 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t2"
             style={{
               display: '-webkit-box',
               WebkitLineClamp: 3,
