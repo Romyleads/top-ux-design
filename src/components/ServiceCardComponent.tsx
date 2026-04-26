@@ -229,8 +229,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           className="rounded-2xl p-1.5 mb-3"
           style={{
             background: 'linear-gradient(180deg, hsl(220 16% 95%) 0%, hsl(220 14% 97%) 100%)',
-            border: '1px solid hsl(220 13% 88% / 0.7)',
-            boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.04), inset 0 -1px 0 rgba(255,255,255,0.6)',
+            boxShadow:
+              'inset 0 1px 3px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.7), inset 0 -1px 2px rgba(0,0,0,0.03)',
           }}
         >
           <div className="relative grid grid-cols-3 gap-0">
