@@ -337,15 +337,14 @@
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
 
-/* Service card premium hover — light, airy emphasis without dark borders */
+/* Service card premium hover — no lift, refined shadow + soft primary halo */
 .service-card {
   transition: border-color 320ms ease-out, box-shadow 320ms ease-out;
 }
 .service-card:hover:not(.ring-primary) {
-  border-color: hsl(var(--border) / 0.78) !important;
+  border-color: hsl(220 13% 80% / 0.55) !important;
   box-shadow:
-    0 1px 2px rgba(255,255,255,0.7),
-    0 18px 44px -24px rgba(15, 23, 42, 0.12),
-    0 0 0 3px hsl(0 0% 100% / 0.72),
-    0 0 24px -8px hsl(220 20% 100% / 0.9) !important;
+    0 1px 2px rgba(0,0,0,0.04),
+    0 22px 56px -22px rgba(15, 23, 42, 0.16),
+    0 0 32px -10px rgba(100, 116, 139, 0.16) !important;
 }
