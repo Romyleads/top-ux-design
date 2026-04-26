@@ -129,8 +129,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
       )}
 
-      {/* Title + Subtitle — above photo. Icon sits as a small accent above the title so title aligns flush-left with subtitle. */}
-      <div className="min-h-[88px] px-5 pt-5 pb-3 flex flex-col justify-center">
+      {/* Title + Subtitle — above photo. */}
+      <div className="min-h-[88px] px-6 pt-5 pb-3 flex flex-col justify-center">
         <div className="flex items-center gap-2 mb-2">
           {SvcIcon ? (
             <span className="icon-premium w-[22px] h-[22px]">
