@@ -54,14 +54,14 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="relative inline-grid grid-cols-3 items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)] overflow-hidden">
+    <div className="relative inline-grid grid-cols-3 items-center bg-white/10 backdrop-blur-xl border border-white/15 rounded-full p-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
       {/* Sliding indicator */}
       <div
-        className="absolute top-[3px] bottom-[3px] rounded-full gradient-primary shadow-green transition-[left,right,transform,box-shadow] duration-500 pointer-events-none will-change-transform"
+        className="absolute top-[3px] bottom-[3px] left-[3px] rounded-full gradient-primary shadow-green pointer-events-none will-change-transform"
         style={{
-          left: `calc(${activeIdx} * 33.333% + 3px)`,
-          right: `calc(${2 - activeIdx} * 33.333% + 3px)`,
-          transform: pressedCode && pressedCode !== locale ? 'scale(0.985)' : 'scale(1)',
+          width: `calc((100% - 6px) / 3)`,
+          transform: `translateX(${activeIdx * 100}%) scale(${pressedCode && pressedCode !== locale ? 0.96 : 1})`,
+          transition: 'transform 550ms cubic-bezier(0.22, 1, 0.36, 1)',
         }}
       />
       {langs.map((lang) => (
