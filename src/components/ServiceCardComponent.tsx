@@ -112,15 +112,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
       {/* Title + Subtitle — above photo */}
       <div className="min-h-[76px] px-5 pt-4 pb-2.5 flex flex-col justify-center">
-        <div className="flex items-center gap-2 mb-1">
-          <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style={{
+        <div className="flex items-center gap-2.5 mb-1">
+          <div className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style={{
             background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.12), hsl(142, 76%, 48% / 0.04))',
           }}>
-            {SvcIcon ? <SvcIcon className="w-[14px] h-[14px] text-primary" strokeWidth={1.8} /> : <span className="text-xs">{service.emoji}</span>}
+            {SvcIcon ? <SvcIcon className="w-[18px] h-[18px] text-primary" strokeWidth={1.8} /> : <span className="text-sm">{service.emoji}</span>}
           </div>
           <Link to={`/${locale}/services/${service.id}`} className="hover:text-primary transition-colors min-w-0 flex-1">
             <h3
-              className="text-[15px] font-extrabold text-foreground leading-tight tracking-tight overflow-hidden"
+              className="text-[17px] font-extrabold text-foreground leading-tight tracking-tight overflow-hidden"
               style={{
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
