@@ -249,9 +249,9 @@
 /* Layer 4 — single beam line with linear opacity fade applied via SVG gradient stroke */
 .beam-stroke-4 {
   /* stroke color comes from inline url(#beamFade) gradient — do NOT set stroke here */
-  stroke-width: 1.4;
-  stroke-dasharray: 360 640;
-  filter: blur(1.2px) drop-shadow(0 0 3px hsl(150 90% 60% / 0.35));
+  stroke-width: 1;
+  stroke-dasharray: 320 680;
+  filter: blur(3px);
   animation:
     beam-path-4 7s linear infinite,
     border-beam-fade 7s linear infinite;
