@@ -559,6 +559,15 @@ a,
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
 
+/* Card title — smooth faux-bold on card hover (no color change) */
+.card-title-bold-on-hover {
+  text-shadow: 0 0 0 transparent;
+}
+.group:hover .card-title-bold-on-hover {
+  text-shadow: 0.4px 0 0 currentColor, -0.2px 0 0 currentColor;
+  letter-spacing: -0.014em;
+}
+
 /* Service card premium hover — no lift / no scale, only refined shadow + thin grey border */
 .service-card {
   transition: border-color 360ms ease-out, box-shadow 360ms ease-out;
