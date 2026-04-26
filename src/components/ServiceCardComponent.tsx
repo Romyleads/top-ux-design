@@ -130,8 +130,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       )}
 
       {/* Title + Subtitle — above photo. Icon sits as a small accent above the title so title aligns flush-left with subtitle. */}
-      <div className="min-h-[76px] px-5 pt-3.5 pb-2.5 flex flex-col justify-center">
-        <div className="flex items-center gap-2 mb-1.5">
+      <div className="min-h-[88px] px-5 pt-5 pb-3 flex flex-col justify-center">
+        <div className="flex items-center gap-2 mb-2">
           {SvcIcon ? (
             <span className="icon-premium w-[22px] h-[22px]">
               <SvcIcon size={20} strokeWidth={1.5} absoluteStrokeWidth />
@@ -155,7 +155,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           </Link>
         </div>
         <p
-          className="text-[11.5px] text-t3 leading-snug overflow-hidden transition-colors duration-300 group-hover:text-t1"
+          className="text-[12px] text-t3 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t1"
           style={{
             display: '-webkit-box',
             WebkitLineClamp: 2,
@@ -222,15 +222,15 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       </div>
 
       {/* Card body */}
-      <div className="px-5 pt-3.5 flex-1 flex flex-col relative z-[1]">
+      <div className="px-5 pt-5 flex-1 flex flex-col relative z-[1]">
 
         {/* Goal — fixed height for vertical alignment across cards */}
-        <div className="flex h-[60px] items-start gap-2.5 py-1.5 mb-1.5 overflow-hidden">
+        <div className="flex h-[60px] items-start gap-2.5 mb-3 overflow-hidden">
           <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
           <span
-            className="text-[11.5px] text-t3 leading-snug overflow-hidden transition-colors duration-300 group-hover:text-t1"
+            className="text-[12px] text-t3 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t1"
             style={{
               display: '-webkit-box',
               WebkitLineClamp: 3,
@@ -244,7 +244,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         {/* Details expand — between goal and tier picker */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1.5 mb-3 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary self-start"
+          className="flex items-center gap-1.5 mb-4 text-t4 text-[11.5px] font-medium cursor-pointer transition-colors hover:text-primary self-start"
         >
           <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
           <span>{t("card.details")}</span>
@@ -288,7 +288,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
         {/* Tier Picker */}
         <div
-          className="rounded-2xl p-1.5 mb-3"
+          className="rounded-2xl p-1.5 mb-4"
           style={{
             background: 'hsl(220 15% 96%)',
             boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.08), inset 0 -1px 2px rgba(0,0,0,0.04)',
@@ -327,7 +327,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* Features */}
-        <div className="mb-2">
+        <div className="mb-4">
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             return (
@@ -340,7 +340,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
 
         {/* CTA */}
-        <div className="mt-auto pt-1.5 pb-4">
+        <div className="mt-auto pb-5">
           <button
             onClick={handleAdd}
             className={`block w-full rounded-xl text-[13px] font-bold py-3 px-5 text-center relative overflow-hidden transition-all duration-300 ${
