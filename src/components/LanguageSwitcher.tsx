@@ -70,17 +70,14 @@ export default function LanguageSwitcher() {
           onClick={() => handleSwitch(lang.code)}
           onMouseUp={() => setPressedCode(null)}
           onMouseLeave={() => setPressedCode(null)}
-          className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-[color,transform,opacity] duration-300 select-none ${
+          className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-bold transition-colors duration-300 select-none ${
             locale === lang.code
-              ? "text-primary-foreground scale-[1.03]"
+              ? "text-primary-foreground"
               : "text-white/60 hover:text-white/90"
           }`}
-          style={{
-            transform: pressedCode === lang.code ? 'translateY(0.5px) scale(0.985)' : undefined,
-          }}
         >
           <lang.Flag />
-          <span className={locale === lang.code ? "animate-switch-in" : undefined}>{lang.label}</span>
+          <span>{lang.label}</span>
         </button>
       ))}
     </div>
