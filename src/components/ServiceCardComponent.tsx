@@ -90,24 +90,23 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         </div>
       )}
 
-      {/* Title + Subtitle — above photo */}
-      <div className="min-h-[76px] px-5 pt-4 pb-2.5 flex flex-col justify-center">
-        <div className="flex items-center gap-2 mb-1">
+      {/* Title + Subtitle — above photo. Icon sits as a small accent above the title so title aligns flush-left with subtitle. */}
+      <div className="min-h-[76px] px-5 pt-3.5 pb-2.5 flex flex-col justify-center">
+        <div className="flex items-center gap-2 mb-1.5">
           <div
-            className="w-9 h-9 rounded-[10px] flex items-center justify-center flex-shrink-0 ring-1 ring-primary/15"
+            className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 ring-1 ring-primary/15"
             style={{
-              background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.22), hsl(142, 76%, 48% / 0.10))',
-              boxShadow: 'inset 0 1px 0 hsl(0 0% 100% / 0.5), 0 1px 2px hsl(142 76% 30% / 0.08)',
+              background: 'linear-gradient(135deg, hsl(142, 76%, 48% / 0.20), hsl(142, 76%, 48% / 0.08))',
             }}
           >
             {SvcIcon ? (
               <SvcIcon
-                className="w-[19px] h-[19px] text-primary-dark"
+                className="w-[14px] h-[14px] text-primary-dark"
                 strokeWidth={2.25}
                 style={{ fill: 'hsl(142 76% 48% / 0.18)' }}
               />
             ) : (
-              <span className="text-base">{service.emoji}</span>
+              <span className="text-xs">{service.emoji}</span>
             )}
           </div>
           <Link to={`/${locale}/services/${service.id}`} className="hover:text-primary transition-colors min-w-0 flex-1">
