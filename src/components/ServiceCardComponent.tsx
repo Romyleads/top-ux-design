@@ -155,12 +155,11 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           </Link>
         </div>
         <p
-          className="text-[12px] text-t3 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t1"
+          className="text-[12px] text-t4 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t2"
           style={{
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
-            fontFamily: '"Exo 2", "Inter", system-ui, sans-serif',
           }}
         >
           {serviceSubtitle}
