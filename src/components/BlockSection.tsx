@@ -51,7 +51,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6 items-start">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6 items-stretch">
         {cards.map((card, i) => (
           <div
             key={card.id}
