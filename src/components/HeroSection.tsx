@@ -65,6 +65,8 @@ export default function HeroSection({ searchQuery, onSearchChange, resultCount }
   }, []);
 
   useEffect(() => {
+    if (staticBeam) return; // CSS-only static stroke, no JS animation
+
     const stroke = beamStrokeRef.current;
     const gradient = beamGradientRef.current;
     const geometry = stroke as unknown as SVGGeometryElement | null;
