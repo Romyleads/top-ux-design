@@ -278,8 +278,9 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
               style={{
                 left: `calc(${activeTier} * (100% / 3))`,
                 width: `calc(100% / 3)`,
-                background: 'hsl(0 0% 100%)',
+                background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(142 40% 97%) 100%)',
                 border: '1px solid hsl(142 71% 42% / 0.45)',
+                boxShadow: '0 1px 0 hsl(0 0% 100%) inset, 0 1px 2px hsl(220 15% 20% / 0.06), 0 2px 6px -2px hsl(142 71% 42% / 0.12)',
                 transform: 'scale(1)',
               }}
             />
