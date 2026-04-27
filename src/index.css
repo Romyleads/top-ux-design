@@ -605,19 +605,16 @@ a,
 
 /* Icon ink-sweep — pulses through primary in sync with title gradient midpoint */
 .card-title-ink-icon {
-  color: hsl(var(--foreground));
+  color: hsl(220 12% 38%);
   transition: color 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
-}
-.card-title-ink-icon svg {
-  transition: stroke 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
 }
 .group:hover .card-title-ink-icon {
   animation: icon-ink-pulse 1100ms cubic-bezier(0.16, 0.84, 0.24, 1) forwards;
 }
 @keyframes icon-ink-pulse {
-  0%   { color: hsl(var(--foreground)); }
+  0%   { color: hsl(220 12% 38%); }
   50%  { color: hsl(var(--primary)); }
-  100% { color: hsl(var(--foreground)); }
+  100% { color: hsl(220 12% 38%); }
 }
 @media (prefers-reduced-motion: reduce) {
   .card-title-ink-icon { animation: none !important; }
