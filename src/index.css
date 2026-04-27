@@ -580,7 +580,7 @@ a,
   .card-title-ink { background-position: 0% 0 !important; transition: none !important; }
 }
 
-/* Premium ink-sweep title — gradient fill smoothly travels across letters on hover */
+/* Legacy ink-sweep (kept for compatibility) */
 .card-title-ink {
   background-image: linear-gradient(
     90deg,
@@ -599,23 +599,55 @@ a,
   color: transparent;
   transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
 }
-.group:hover .card-title-ink {
+.group:hover .card-title-ink { background-position: 0% 0; }
+
+/* ===== Unified ink-sweep — icon + title read as ONE phrase =====
+ * Single coordinated wave: icon brightens as the wave enters from the left,
+ * then text gradient sweeps left→right with the highlight peak passing through.
+ * On leave, icon fades back AFTER the text sweep completes — wave exits right.
+ */
+.card-title-row {
+  display: inline-flex;
+  isolation: isolate;
+}
+.card-title-row-icon {
+  color: hsl(220 12% 38%);
+  transition: color 380ms cubic-bezier(0.16, 0.84, 0.24, 1) 720ms;
+}
+.card-title-row-icon > svg {
+  color: inherit;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.card-title-row-text {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--foreground)) 0%,
+    hsl(var(--foreground)) 35%,
+    hsl(var(--primary)) 50%,
+    hsl(var(--foreground)) 65%,
+    hsl(var(--foreground)) 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
+}
+.group:hover .card-title-row-icon {
+  color: hsl(var(--primary));
+  transition: color 380ms cubic-bezier(0.16, 0.84, 0.24, 1);
+}
+.group:hover .card-title-row-text {
   background-position: 0% 0;
 }
-
-/* Icon ink-sweep — pulses through primary in sync with title gradient midpoint */
-.card-title-ink-icon {
-  color: hsl(220 12% 38%);
-  transition: color 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
-}
-.group:hover .card-title-ink-icon {
-  animation: icon-ink-pulse 1100ms cubic-bezier(0.16, 0.84, 0.24, 1) forwards;
-}
-@keyframes icon-ink-pulse {
-  0%   { color: hsl(220 12% 38%); }
-  50%  { color: hsl(var(--primary)); }
-  100% { color: hsl(220 12% 38%); }
-}
 @media (prefers-reduced-motion: reduce) {
-  .card-title-ink-icon { animation: none !important; }
+  .card-title-row-icon,
+  .card-title-row-text { transition: none !important; }
+  .card-title-row-text { background-position: 0% 0 !important; }
 }
