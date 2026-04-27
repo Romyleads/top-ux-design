@@ -272,20 +272,17 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           }}
         >
           <div className="relative grid grid-cols-3 gap-0">
-            {/* Sliding active indicator — premium convex pill */}
+            {/* Sliding active indicator — clean, sharp */}
             <div
-              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left,transform] duration-500 will-change-transform"
+              className="absolute top-0 bottom-0 rounded-xl pointer-events-none transition-[left,transform,border-color] duration-500 will-change-transform"
               style={{
                 left: `calc(${activeTier} * (100% / 3))`,
                 width: `calc(100% / 3)`,
-                background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 100%) 45%, hsl(142 30% 96%) 100%)',
-                border: '1px solid hsl(142 71% 42% / 0.35)',
-                borderTopColor: 'hsl(142 71% 42% / 0.5)',
-                boxShadow: 'inset 0 1px 0 hsl(0 0% 100% / 0.9), inset 0 -1px 0 hsl(142 30% 70% / 0.25), 0 1px 2px hsl(142 40% 30% / 0.08), 0 2px 6px -2px hsl(142 71% 42% / 0.18)',
+                background: 'hsl(0 0% 100%)',
+                border: '1px solid hsl(142 71% 42% / 0.45)',
                 transform: 'scale(1)',
               }}
             />
-
             {service.tiers.map((tierItem, i) => (
               <button
                 key={i}
