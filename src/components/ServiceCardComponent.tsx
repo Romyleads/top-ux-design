@@ -103,29 +103,27 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
       {/* Title + Subtitle — above photo. */}
       <div className="min-h-[88px] px-6 pt-5 pb-3 flex flex-col justify-center">
-        <div className="flex items-center gap-2 mb-2">
+        <Link to={`/${locale}/services/${service.id}`} className="card-title-row mb-2 flex items-center gap-2 min-w-0">
           {SvcIcon ? (
-            <span className="icon-premium card-title-ink-icon w-[22px] h-[22px]">
+            <span className="card-title-row-icon inline-flex items-center justify-center w-[22px] h-[22px] flex-shrink-0">
               <SvcIcon size={20} strokeWidth={1.25} absoluteStrokeWidth />
             </span>
           ) : (
             <span className="text-base flex-shrink-0">{service.emoji}</span>
           )}
-          <Link to={`/${locale}/services/${service.id}`} className="min-w-0 flex-1">
-            <h3
-              className="font-card-title card-title-ink text-[17px] leading-[1.15] overflow-hidden"
-              style={{
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                fontKerning: 'normal',
-                fontFeatureSettings: '"liga" 1, "kern" 1, "ss01" 1',
-              }}
-            >
-              {serviceName}
-            </h3>
-          </Link>
-        </div>
+          <h3
+            className="font-card-title card-title-row-text text-[17px] leading-[1.15] overflow-hidden min-w-0 flex-1"
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              fontKerning: 'normal',
+              fontFeatureSettings: '"liga" 1, "kern" 1, "ss01" 1',
+            }}
+          >
+            {serviceName}
+          </h3>
+        </Link>
         <p
           className="text-[13.5px] text-t4 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t2"
           style={{
