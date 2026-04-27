@@ -372,6 +372,10 @@ a,
     stroke-linejoin: round;
     fill: none;
   }
+  /* When ink-sweep is active, let the icon inherit color from the animated parent */
+  .icon-premium.card-title-ink-icon > svg {
+    color: inherit;
+  }
 }
 
 /* Aurora search animation */
