@@ -577,103 +577,55 @@ a,
 }
 @media (prefers-reduced-motion: reduce) {
   .service-card { transition: none !important; }
-  .card-title-ink-row::before { transition: none !important; transform: translateX(0) !important; }
+  .card-title-ink-row::before { transition: none !important; opacity: 0 !important; }
 }
 
 /*
-  Premium unified ink-sweep — single gradient wave travels across the icon + title row
-  as one continuous expression. The wave is owned by the row container; both the icon
-  (via SVG mask) and the title (via background-clip: text) read from the same moving
-  gradient, so the highlight slides from the icon through to the end of the title in
-  perfect sync.
+  Unified ink-sweep: icon + title behave as ONE element.
+  A single gradient overlay sits on top of the whole row and uses
+  mix-blend-mode: plus-lighter to tint the dark icon strokes and dark text
+  with a primary-colored highlight that travels left→right in one motion.
+  Because there is only ONE animated layer covering both children, the icon
+  and title light up in perfect sync — like a single wave passing through.
 */
 .card-title-ink-row {
   position: relative;
   isolation: isolate;
 }
 
-/* The moving gradient layer — sits behind, drives both icon and title coloring */
 .card-title-ink-row::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -2px -4px;
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    hsl(220 12% 38%) 0%,
-    hsl(220 12% 38%) 35%,
-    hsl(var(--primary)) 50%,
-    hsl(var(--foreground)) 65%,
-    hsl(var(--foreground)) 100%
+    transparent 0%,
+    transparent 30%,
+    hsl(var(--primary) / 0.95) 50%,
+    transparent 70%,
+    transparent 100%
   );
   background-size: 220% 100%;
   background-position: 100% 0;
   background-repeat: no-repeat;
-  /* Mask everything by default — children punch through with their own clipping */
-  -webkit-mask: linear-gradient(#000, #000);
-          mask: linear-gradient(#000, #000);
+  mix-blend-mode: plus-lighter;
   opacity: 0;
   transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1),
-              opacity 200ms ease-out;
-  z-index: -1;
+              opacity 220ms ease-out;
+  z-index: 2;
 }
 
-/* Title text reads from the row's gradient via its own clipped copy synced 1:1 */
+.group:hover .card-title-ink-row::before {
+  opacity: 1;
+  background-position: 0% 0;
+}
+
+/* Title and icon stay in their natural dark state — overlay does the magic */
 .card-title-ink {
-  background-image: linear-gradient(
-    90deg,
-    hsl(220 12% 38%) 0%,
-    hsl(220 12% 38%) 35%,
-    hsl(var(--primary)) 50%,
-    hsl(var(--foreground)) 65%,
-    hsl(var(--foreground)) 100%
-  );
-  /* Match row width so a single wave spans icon + title */
-  background-size: calc(220% * var(--ink-row-ratio, 1)) 100%;
-  background-position: 100% 0;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  -webkit-background-clip: text;
-          background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
+  color: hsl(var(--foreground));
 }
-
-/* Icon also reads the same gradient — applied as background, masked by SVG shape */
 .card-title-ink-icon {
-  position: relative;
   color: hsl(220 12% 38%);
-  background-image: linear-gradient(
-    90deg,
-    hsl(220 12% 38%) 0%,
-    hsl(220 12% 38%) 35%,
-    hsl(var(--primary)) 50%,
-    hsl(var(--foreground)) 65%,
-    hsl(var(--foreground)) 100%
-  );
-  background-size: calc(220% * var(--ink-row-ratio, 1)) 100%;
-  /* Position so the wave's leading edge starts at the icon and travels rightward
-     through the title — icon is on the left, so it sees the wave first. */
-  background-position: 0% 0;
-  background-repeat: no-repeat;
-  transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1),
-              color 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
-}
-
-/* Mask the icon background to the SVG silhouette via currentColor->mask trick */
-.card-title-ink-icon > svg {
-  color: transparent;
-  -webkit-text-fill-color: initial;
-  mix-blend-mode: normal;
-}
-
-/* On hover: the wave sweeps from right (start) to left-end across the whole row.
-   Both title and icon share identical timing/easing so it reads as ONE motion. */
-.group:hover .card-title-ink {
-  background-position: 0% 0;
-}
-.group:hover .card-title-ink-icon {
-  background-position: 100% 0;
 }
 
