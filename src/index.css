@@ -577,45 +577,55 @@ a,
 }
 @media (prefers-reduced-motion: reduce) {
   .service-card { transition: none !important; }
-  .card-title-ink { background-position: 0% 0 !important; transition: none !important; }
+  .card-title-ink-row::before { transition: none !important; opacity: 0 !important; }
 }
 
-/* Premium ink-sweep title — gradient fill smoothly travels across letters on hover */
-.card-title-ink {
-  background-image: linear-gradient(
+/*
+  Unified ink-sweep: icon + title behave as ONE element.
+  A single gradient overlay sits on top of the whole row and uses
+  mix-blend-mode: plus-lighter to tint the dark icon strokes and dark text
+  with a primary-colored highlight that travels left→right in one motion.
+  Because there is only ONE animated layer covering both children, the icon
+  and title light up in perfect sync — like a single wave passing through.
+*/
+.card-title-ink-row {
+  position: relative;
+  isolation: isolate;
+}
+
+.card-title-ink-row::before {
+  content: "";
+  position: absolute;
+  inset: -2px -4px;
+  pointer-events: none;
+  background: linear-gradient(
     90deg,
-    hsl(var(--foreground)) 0%,
-    hsl(var(--foreground)) 35%,
-    hsl(var(--primary)) 50%,
-    hsl(var(--foreground)) 65%,
-    hsl(var(--foreground)) 100%
+    transparent 0%,
+    transparent 30%,
+    hsl(var(--primary) / 0.95) 50%,
+    transparent 70%,
+    transparent 100%
   );
   background-size: 220% 100%;
   background-position: 100% 0;
   background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
+  mix-blend-mode: plus-lighter;
+  opacity: 0;
+  transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1),
+              opacity 220ms ease-out;
+  z-index: 2;
 }
-.group:hover .card-title-ink {
+
+.group:hover .card-title-ink-row::before {
+  opacity: 1;
   background-position: 0% 0;
 }
 
-/* Icon ink-sweep — pulses through primary in sync with title gradient midpoint */
+/* Title and icon stay in their natural dark state — overlay does the magic */
+.card-title-ink {
+  color: hsl(var(--foreground));
+}
 .card-title-ink-icon {
   color: hsl(220 12% 38%);
-  transition: color 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
 }
-.group:hover .card-title-ink-icon {
-  animation: icon-ink-pulse 1100ms cubic-bezier(0.16, 0.84, 0.24, 1) forwards;
-}
-@keyframes icon-ink-pulse {
-  0%   { color: hsl(220 12% 38%); }
-  50%  { color: hsl(var(--primary)); }
-  100% { color: hsl(220 12% 38%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .card-title-ink-icon { animation: none !important; }
-}
+
