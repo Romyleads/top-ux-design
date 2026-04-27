@@ -45,7 +45,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
       {/* Block Header — premium minimal, tightly grouped */}
       <div className="category-header-static flex items-center gap-2.5 mb-8 pl-5">
         {IconComponent && (
-          <span className="inline-flex items-center justify-center w-[26px] h-[26px] rounded-full bg-primary/35 text-white/80 [&>svg]:!text-white/80 [&>svg]:!stroke-current">
+          <span className={`inline-flex items-center justify-center w-[26px] h-[26px] rounded-full bg-primary/35 ${block.id === "b1" ? "text-white/50 [&>svg]:!text-white/50" : "text-white/80 [&>svg]:!text-white/80"} [&>svg]:!stroke-current`}>
             <IconComponent size={16} strokeWidth={1.75} absoluteStrokeWidth />
           </span>
         )}
