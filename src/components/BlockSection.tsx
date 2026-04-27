@@ -45,7 +45,7 @@ export default function BlockSection({ block, cards, orderedNames, onAddToCart, 
       {/* Block Header — premium minimal, tightly grouped */}
       <div className="category-header-static flex items-center gap-2.5 mb-8 pl-5">
         {IconComponent && (
-          <span className="icon-premium w-[26px] h-[26px]">
+          <span className="icon-premium w-[26px] h-[26px] text-white [&>svg]:!text-white [&>svg]:!stroke-white">
             <IconComponent size={24} strokeWidth={1.25} absoluteStrokeWidth />
           </span>
         )}
