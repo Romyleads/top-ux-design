@@ -577,15 +577,31 @@ a,
 }
 @media (prefers-reduced-motion: reduce) {
   .service-card { transition: none !important; }
-  .card-title-ink { background-position: 0% 0 !important; transition: none !important; }
+  .card-title-ink-row::before { transition: none !important; transform: translateX(0) !important; }
 }
 
-/* Premium ink-sweep title — gradient fill smoothly travels across letters on hover */
-.card-title-ink {
-  background-image: linear-gradient(
+/*
+  Premium unified ink-sweep — single gradient wave travels across the icon + title row
+  as one continuous expression. The wave is owned by the row container; both the icon
+  (via SVG mask) and the title (via background-clip: text) read from the same moving
+  gradient, so the highlight slides from the icon through to the end of the title in
+  perfect sync.
+*/
+.card-title-ink-row {
+  position: relative;
+  isolation: isolate;
+}
+
+/* The moving gradient layer — sits behind, drives both icon and title coloring */
+.card-title-ink-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
     90deg,
-    hsl(var(--foreground)) 0%,
-    hsl(var(--foreground)) 35%,
+    hsl(220 12% 38%) 0%,
+    hsl(220 12% 38%) 35%,
     hsl(var(--primary)) 50%,
     hsl(var(--foreground)) 65%,
     hsl(var(--foreground)) 100%
@@ -593,29 +609,71 @@ a,
   background-size: 220% 100%;
   background-position: 100% 0;
   background-repeat: no-repeat;
+  /* Mask everything by default — children punch through with their own clipping */
+  -webkit-mask: linear-gradient(#000, #000);
+          mask: linear-gradient(#000, #000);
+  opacity: 0;
+  transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1),
+              opacity 200ms ease-out;
+  z-index: -1;
+}
+
+/* Title text reads from the row's gradient via its own clipped copy synced 1:1 */
+.card-title-ink {
+  background-image: linear-gradient(
+    90deg,
+    hsl(220 12% 38%) 0%,
+    hsl(220 12% 38%) 35%,
+    hsl(var(--primary)) 50%,
+    hsl(var(--foreground)) 65%,
+    hsl(var(--foreground)) 100%
+  );
+  /* Match row width so a single wave spans icon + title */
+  background-size: calc(220% * var(--ink-row-ratio, 1)) 100%;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
   -webkit-background-clip: text;
-  background-clip: text;
+          background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
 }
+
+/* Icon also reads the same gradient — applied as background, masked by SVG shape */
+.card-title-ink-icon {
+  position: relative;
+  color: hsl(220 12% 38%);
+  background-image: linear-gradient(
+    90deg,
+    hsl(220 12% 38%) 0%,
+    hsl(220 12% 38%) 35%,
+    hsl(var(--primary)) 50%,
+    hsl(var(--foreground)) 65%,
+    hsl(var(--foreground)) 100%
+  );
+  background-size: calc(220% * var(--ink-row-ratio, 1)) 100%;
+  /* Position so the wave's leading edge starts at the icon and travels rightward
+     through the title — icon is on the left, so it sees the wave first. */
+  background-position: 0% 0;
+  background-repeat: no-repeat;
+  transition: background-position 1100ms cubic-bezier(0.16, 0.84, 0.24, 1),
+              color 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
+}
+
+/* Mask the icon background to the SVG silhouette via currentColor->mask trick */
+.card-title-ink-icon > svg {
+  color: transparent;
+  -webkit-text-fill-color: initial;
+  mix-blend-mode: normal;
+}
+
+/* On hover: the wave sweeps from right (start) to left-end across the whole row.
+   Both title and icon share identical timing/easing so it reads as ONE motion. */
 .group:hover .card-title-ink {
   background-position: 0% 0;
 }
-
-/* Icon ink-sweep — pulses through primary in sync with title gradient midpoint */
-.card-title-ink-icon {
-  color: hsl(220 12% 38%);
-  transition: color 1100ms cubic-bezier(0.16, 0.84, 0.24, 1);
-}
 .group:hover .card-title-ink-icon {
-  animation: icon-ink-pulse 1100ms cubic-bezier(0.16, 0.84, 0.24, 1) forwards;
+  background-position: 100% 0;
 }
-@keyframes icon-ink-pulse {
-  0%   { color: hsl(220 12% 38%); }
-  50%  { color: hsl(var(--primary)); }
-  100% { color: hsl(220 12% 38%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .card-title-ink-icon { animation: none !important; }
-}
+
