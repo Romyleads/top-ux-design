@@ -5,9 +5,10 @@ import { useLanguage } from "@/i18n/LanguageContext";
 interface Props {
   tools: Tool2026[];
   variant?: "page" | "card";
+  serviceId?: string;
 }
 
-export default function ToolsStack({ tools, variant = "page" }: Props) {
+export default function ToolsStack({ tools, variant = "page", serviceId }: Props) {
   const { t } = useLanguage();
   if (!tools || tools.length === 0) return null;
 
