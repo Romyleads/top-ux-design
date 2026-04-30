@@ -194,32 +194,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
 
         {/* Goal — fixed height for vertical alignment across cards */}
         <div className="flex h-[60px] items-start gap-2.5 mb-3 overflow-hidden">
-          <div
-            className="relative w-9 h-9 flex items-center justify-center flex-shrink-0 mt-0.5 rounded-xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-6deg]"
-            style={{
-              background: 'linear-gradient(135deg, hsl(0 75% 55% / 0.18) 0%, hsl(45 95% 55% / 0.18) 50%, hsl(142 71% 45% / 0.22) 100%)',
-              boxShadow: 'inset 0 1px 0 hsl(0 0% 100% / 0.12), 0 4px 14px -4px hsl(142 71% 45% / 0.35), 0 2px 6px -2px hsl(0 75% 55% / 0.15)',
-              border: '1px solid hsl(142 71% 45% / 0.28)',
-            }}
-            aria-hidden="true"
-          >
-            <Target
-              className="w-[20px] h-[20px] relative z-[1]"
-              strokeWidth={2.25}
-              style={{
-                stroke: 'url(#goal-icon-gradient)',
-                filter: 'drop-shadow(0 1px 2px hsl(0 0% 0% / 0.35))',
-              }}
-            />
-            <svg width="0" height="0" className="absolute">
-              <defs>
-                <linearGradient id="goal-icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(0 85% 62%)" />
-                  <stop offset="50%" stopColor="hsl(45 95% 58%)" />
-                  <stop offset="100%" stopColor="hsl(142 76% 50%)" />
-                </linearGradient>
-              </defs>
-            </svg>
+          <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
           <span
             className="text-[13.5px] text-t4 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t2"
