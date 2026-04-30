@@ -231,16 +231,14 @@
 @keyframes switch-in-row {
   0% {
     opacity: 0;
-    transform: translate3d(0, -4px, 0) scaleY(0.4);
-    transform-origin: top center;
+    transform: translate3d(0, 6px, 0);
   }
   60% {
     opacity: 1;
   }
   100% {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scaleY(1);
-    transform-origin: top center;
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -269,7 +267,6 @@ a,
   .animate-switch-row {
     /* Paper-unfold easing: strong deceleration at the end, slow & graceful finish */
     animation: switch-in-row 880ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
-    transform-origin: top center;
     will-change: opacity, transform;
   }
 
