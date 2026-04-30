@@ -265,7 +265,8 @@ a,
   }
 
   .animate-switch-row {
-    animation: switch-in-row 520ms var(--ease-premium) both;
+    /* Paper-unfold easing: strong deceleration at the end, slow & graceful finish */
+    animation: switch-in-row 880ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
     will-change: opacity, transform;
   }
 
