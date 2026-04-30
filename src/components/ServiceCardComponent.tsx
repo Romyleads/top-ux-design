@@ -258,7 +258,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
                 );
               })}
             {service.tools && service.tools.length > 0 && (
-              <ToolsStack tools={service.tools} variant="card" />
+              <ToolsStack tools={service.tools} variant="card" serviceId={service.id} />
             )}
           </div>
         </div>

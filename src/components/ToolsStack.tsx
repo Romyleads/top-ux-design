@@ -5,9 +5,10 @@ import { useLanguage } from "@/i18n/LanguageContext";
 interface Props {
   tools: Tool2026[];
   variant?: "page" | "card";
+  serviceId?: string;
 }
 
-export default function ToolsStack({ tools, variant = "page" }: Props) {
+export default function ToolsStack({ tools, variant = "page", serviceId }: Props) {
   const { t } = useLanguage();
   if (!tools || tools.length === 0) return null;
 
@@ -67,7 +68,7 @@ export default function ToolsStack({ tools, variant = "page" }: Props) {
                 <span
                   className={`${isCard ? "text-[11px]" : "text-[12px]"} text-t3 leading-snug`}
                 >
-                  {tool.purpose}
+                  {serviceId ? (() => { const k = `tool.${serviceId}.${i}.purpose`; const v = t(k); return v === k ? tool.purpose : v; })() : tool.purpose}
                 </span>
               </div>
             </div>
