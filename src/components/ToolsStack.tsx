@@ -68,7 +68,7 @@ export default function ToolsStack({ tools, variant = "page", serviceId }: Props
                 <span
                   className={`${isCard ? "text-[11px]" : "text-[12px]"} text-t3 leading-snug`}
                 >
-                  {tool.purpose}
+                  {serviceId ? (() => { const k = `tool.${serviceId}.${i}.purpose`; const v = t(k); return v === k ? tool.purpose : v; })() : tool.purpose}
                 </span>
               </div>
             </div>
