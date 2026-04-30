@@ -247,7 +247,7 @@ export default function ServicePage() {
           </div>
 
           {service.tools && service.tools.length > 0 && (
-            <ToolsStack tools={service.tools} variant="page" />
+            <ToolsStack tools={service.tools} variant="page" serviceId={service.id} />
           )}
         </div>
       </div>
