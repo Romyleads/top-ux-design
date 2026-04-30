@@ -262,8 +262,8 @@ a,
   }
 
   .animate-switch-row {
-    animation: switch-in-row 720ms var(--ease-premium) both;
-    will-change: opacity, transform, filter;
+    animation: switch-in-row 520ms var(--ease-premium) both;
+    will-change: opacity, transform;
   }
 
   /* Accessibility: respect user motion preferences */
