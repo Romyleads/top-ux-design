@@ -19,10 +19,10 @@ export default function FilterBar({ activeBlock, onFilter }: FilterBarProps) {
     <div className="flex gap-2 flex-wrap justify-center mb-8">
       <button
         onClick={() => onFilter("all")}
-        className={`px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-[transform,color,border-color,box-shadow,background-color] duration-300 ${
+        className={`px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-[transform,color,border-color,box-shadow,background-color] duration-500 ${
           activeBlock === "all"
             ? "gradient-primary border-primary text-primary-foreground shadow-green"
-            : "glass border-border/60 text-t2 hover:border-primary/40 hover:text-primary hover:shadow-sm"
+            : "glass border-border/60 text-t2 hover:border-white hover:text-white hover:bg-white/10 hover:shadow-[0_2px_12px_-2px_rgba(255,255,255,0.25)]"
         }`}
       >
         {t("filter.all")}
@@ -35,10 +35,10 @@ export default function FilterBar({ activeBlock, onFilter }: FilterBarProps) {
           <button
             key={b.id}
             onClick={() => onFilter(b.id)}
-            className={`inline-flex items-center gap-1.5 px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-[transform,color,border-color,box-shadow,background-color] duration-300 ${
+            className={`inline-flex items-center gap-1.5 px-4 py-[7px] rounded-full text-[13px] font-semibold border-[1.5px] transition-[transform,color,border-color,box-shadow,background-color] duration-500 ${
               isActive
                 ? "gradient-primary border-primary text-primary-foreground shadow-green"
-                : "glass border-border/60 text-t2 hover:border-primary/40 hover:text-primary hover:shadow-sm"
+                : "glass border-border/60 text-t2 hover:border-white hover:text-white hover:bg-white/10 hover:shadow-[0_2px_12px_-2px_rgba(255,255,255,0.25)]"
             }`}
           >
             {Icon && <Icon className="w-3.5 h-3.5" strokeWidth={2} />}
