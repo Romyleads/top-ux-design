@@ -316,17 +316,17 @@ a,
   }
 
   .animate-row-from-right {
-    animation: switch-row-from-right 760ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
+    animation: switch-row-from-right 1100ms cubic-bezier(0.19, 1, 0.22, 1) both;
     will-change: opacity, transform;
   }
 
   .animate-row-from-left {
-    animation: switch-row-from-left 760ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
+    animation: switch-row-from-left 1100ms cubic-bezier(0.19, 1, 0.22, 1) both;
     will-change: opacity, transform;
   }
 
   .animate-icon-bg {
-    animation: switch-icon-bg-in 320ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
+    animation: switch-icon-bg-in 720ms cubic-bezier(0.19, 1, 0.22, 1) both;
     will-change: opacity, transform;
   }
 
