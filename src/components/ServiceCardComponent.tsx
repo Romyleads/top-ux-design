@@ -311,8 +311,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             const fromRight = i % 2 === 0;
             // Icon backgrounds appear first (staggered, paper-unfold), then rows slide in
-            const bgDelay = i * 140; // ms — placeholder fade-in stagger (1, 2, 3, 4)
-            const rowDelay = features.length * 140 + 120 + i * 180; // ms — rows arrive after all bgs
+            const bgDelay = i * 70; // ms — placeholder fade-in stagger (1, 2, 3, 4) — 2x faster
+            const rowDelay = features.length * 70 + 80 + i * 160; // ms — rows arrive after all bgs
             return (
               <div
                 key={`${activeTier}-${i}`}
