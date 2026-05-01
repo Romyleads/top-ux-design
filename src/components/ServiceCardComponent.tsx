@@ -310,9 +310,9 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             const fromRight = i % 2 === 0;
-            // Icon backgrounds appear first (staggered), then rows slide in
-            const bgDelay = i * 60; // ms — placeholder fade-in stagger
-            const rowDelay = features.length * 60 + i * 140; // ms — rows arrive after all bgs
+            // Icon backgrounds appear first (staggered, paper-unfold), then rows slide in
+            const bgDelay = i * 140; // ms — placeholder fade-in stagger (1, 2, 3, 4)
+            const rowDelay = features.length * 140 + 120 + i * 180; // ms — rows arrive after all bgs
             return (
               <div
                 key={`${activeTier}-${i}`}
