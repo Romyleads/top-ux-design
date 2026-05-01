@@ -309,14 +309,29 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
         <div key={activeTier} className="mb-3">
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
+            const fromRight = i % 2 === 0;
+            // Icon backgrounds appear first (staggered), then rows slide in
+            const bgDelay = i * 60; // ms — placeholder fade-in stagger
+            const rowDelay = features.length * 60 + i * 140; // ms — rows arrive after all bgs
             return (
               <div
                 key={`${activeTier}-${i}`}
-                className="flex items-center gap-2.5 py-0.5 animate-switch-row"
-                style={{ animationDelay: `${i * 45}ms` }}
+                className="relative flex items-center py-0.5"
               >
-                <FeatureIcon icon={feat.icon} />
-                <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
+                {/* Empty icon-background placeholder — appears first */}
+                <div
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-lg bg-primary/[.07] animate-icon-bg pointer-events-none"
+                  style={{ animationDelay: `${bgDelay}ms` }}
+                  aria-hidden="true"
+                />
+                {/* Row content (icon + text) — slides from right or left */}
+                <div
+                  className={`relative flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
+                  style={{ animationDelay: `${rowDelay}ms` }}
+                >
+                  <FeatureIcon icon={feat.icon} />
+                  <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
+                </div>
               </div>
             );
           })}

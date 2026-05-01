@@ -242,6 +242,48 @@
   }
 }
 
+/* Row slides in from the right — paired with icon */
+@keyframes switch-row-from-right {
+  0% {
+    opacity: 0;
+    transform: translate3d(28px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Row slides in from the left — paired with icon */
+@keyframes switch-row-from-left {
+  0% {
+    opacity: 0;
+    transform: translate3d(-28px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Empty icon placeholders fade in first, before rows arrive */
+@keyframes switch-icon-bg-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Match any element using a Tailwind transition utility */
 [class*="transition-"],
 [class~="transition"] {
@@ -270,10 +312,28 @@ a,
     will-change: opacity, transform;
   }
 
+  .animate-row-from-right {
+    animation: switch-row-from-right 760ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
+    will-change: opacity, transform;
+  }
+
+  .animate-row-from-left {
+    animation: switch-row-from-left 760ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
+    will-change: opacity, transform;
+  }
+
+  .animate-icon-bg {
+    animation: switch-icon-bg-in 320ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
+    will-change: opacity, transform;
+  }
+
   /* Accessibility: respect user motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .animate-switch-in,
-    .animate-switch-row {
+    .animate-switch-row,
+    .animate-row-from-right,
+    .animate-row-from-left,
+    .animate-icon-bg {
       animation: none !important;
       animation-delay: 0ms !important;
       opacity: 1 !important;
