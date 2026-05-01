@@ -246,9 +246,9 @@
 @keyframes switch-row-from-right {
   0% {
     opacity: 0;
-    transform: translate3d(28px, 0, 0);
+    transform: translate3d(36px, 0, 0);
   }
-  60% {
+  55% {
     opacity: 1;
   }
   100% {
@@ -261,9 +261,9 @@
 @keyframes switch-row-from-left {
   0% {
     opacity: 0;
-    transform: translate3d(-28px, 0, 0);
+    transform: translate3d(-36px, 0, 0);
   }
-  60% {
+  55% {
     opacity: 1;
   }
   100% {
@@ -272,15 +272,18 @@
   }
 }
 
-/* Empty icon placeholders fade in first, before rows arrive */
+/* Empty icon placeholders fade in first, before rows arrive — paper-unfold */
 @keyframes switch-icon-bg-in {
   0% {
     opacity: 0;
-    transform: scale(0.85);
+    transform: translate3d(0, 4px, 0) scale(0.94);
+  }
+  60% {
+    opacity: 1;
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
