@@ -310,23 +310,22 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             const fromRight = i % 2 === 0;
-            // Icon backgrounds appear first (staggered, paper-unfold), then rows slide in
-            const bgDelay = i * 70; // ms — placeholder fade-in stagger (1, 2, 3, 4) — 2x faster
-            const rowDelay = features.length * 70 + 80 + i * 160; // ms — rows arrive after all bgs
+            const bgDelay = i * 70;
+            const rowDelay = features.length * 70 + 80 + i * 160;
             return (
               <div
                 key={`${activeTier}-${i}`}
                 className="relative flex items-center py-0.5"
               >
-                {/* Empty icon-background placeholder — appears first */}
+                {/* Placeholder — fixed at the icon's final position; row docks exactly on it */}
                 <div
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-lg bg-primary/[.07] animate-icon-bg pointer-events-none"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-lg bg-primary/[.07] animate-icon-bg pointer-events-none z-0"
                   style={{ animationDelay: `${bgDelay}ms` }}
                   aria-hidden="true"
                 />
-                {/* Row content (icon + text) — slides from right or left */}
+                {/* Row (icon + text) slides in and lands exactly on the placeholder */}
                 <div
-                  className={`relative flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
+                  className={`relative z-10 flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
                   style={{ animationDelay: `${rowDelay}ms` }}
                 >
                   <FeatureIcon icon={feat.icon} />
