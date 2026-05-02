@@ -310,29 +310,26 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           {features.map((feat, i) => {
             const tierFeatText = t(`service.${service.id}.tier.${activeTier}.${i}`);
             const fromRight = i % 2 === 0;
-            // Placeholders fade in first (staggered), then row+icon slide in together as one unit
             const bgDelay = i * 70;
             const rowDelay = features.length * 70 + 80 + i * 160;
             return (
               <div
                 key={`${activeTier}-${i}`}
-                className="flex items-center py-0.5"
+                className="relative flex items-center py-0.5"
               >
-                {/* Row content (icon + text) — icon and its placeholder share the same box and slide together */}
+                {/* Placeholder — fixed at the icon's final position; row docks exactly on it */}
                 <div
-                  className={`flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-lg bg-primary/[.07] animate-icon-bg pointer-events-none z-0"
+                  style={{ animationDelay: `${bgDelay}ms` }}
+                  aria-hidden="true"
+                />
+                {/* Row (icon + text) slides in and lands exactly on the placeholder */}
+                <div
+                  className={`relative z-10 flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
                   style={{ animationDelay: `${rowDelay}ms` }}
                 >
-                  <div className="relative w-6 h-6 flex-shrink-0">
-                    {/* Placeholder — sits exactly behind the icon, fades in first */}
-                    <div
-                      className="absolute inset-0 rounded-lg bg-primary/[.07] animate-icon-bg pointer-events-none"
-                      style={{ animationDelay: `${bgDelay}ms` }}
-                      aria-hidden="true"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <FeatureIcon icon={feat.icon} />
-                    </div>
+                  <div className="w-6 h-6 flex items-center justify-center flex-shrink-0">
+                    <FeatureIcon icon={feat.icon} />
                   </div>
                   <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
                 </div>
