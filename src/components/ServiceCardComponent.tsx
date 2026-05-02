@@ -328,9 +328,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
                   className={`relative z-10 flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
                   style={{ animationDelay: `${rowDelay}ms` }}
                 >
-                  <div className="w-6 h-6 flex items-center justify-center flex-shrink-0">
-                    <FeatureIcon icon={feat.icon} />
-                  </div>
+                  <FeatureIcon icon={feat.icon} />
                   <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
                 </div>
               </div>
