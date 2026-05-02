@@ -317,22 +317,12 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
                 key={`${activeTier}-${i}`}
                 className="relative flex items-center py-0.5"
               >
-                {/* Placeholder — positioned in a fixed slot so animation transforms never break alignment */}
+                {/* Row (icon + text) slides in as one unit; icon background is rendered inside the icon slot */}
                 <div
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 pointer-events-none z-0"
-                  aria-hidden="true"
-                >
-                  <div
-                    className="w-full h-full rounded-lg bg-primary/[.07] animate-icon-bg"
-                    style={{ animationDelay: `${bgDelay}ms` }}
-                  />
-                </div>
-                {/* Row (icon + text) slides in and lands exactly on the placeholder */}
-                <div
-                  className={`relative z-10 flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
+                  className={`relative flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
                   style={{ animationDelay: `${rowDelay}ms` }}
                 >
-                  <FeatureIcon icon={feat.icon} />
+                  <FeatureIcon icon={feat.icon} bgStyle={{ animationDelay: `${bgDelay}ms` }} />
                   <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
                 </div>
               </div>
