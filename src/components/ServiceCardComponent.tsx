@@ -318,12 +318,19 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
                 className="relative flex items-center py-0.5"
               >
                 {/* Row (icon + text) slides in as one unit; icon background is rendered inside the icon slot */}
-                <div
-                  className={`relative flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
-                  style={{ animationDelay: `${rowDelay}ms` }}
-                >
-                  <FeatureIcon icon={feat.icon} bgStyle={{ animationDelay: `${bgDelay}ms` }} />
+                <div className="relative flex items-center py-0.5">
+                  <div
+                    className="pointer-events-none absolute left-0 top-1/2 h-6 w-6 -translate-y-1/2 rounded-lg bg-primary/[.07] animate-icon-bg"
+                    style={{ animationDelay: `${bgDelay}ms` }}
+                    aria-hidden="true"
+                  />
+                  <div
+                    className={`relative z-10 flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
+                    style={{ animationDelay: `${rowDelay}ms` }}
+                  >
+                    <FeatureIcon icon={feat.icon} />
                   <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
+                  </div>
                 </div>
               </div>
             );
