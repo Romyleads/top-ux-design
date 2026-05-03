@@ -313,14 +313,14 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             const bgDelay = i * 70;
             const rowDelay = features.length * 70 + 80 + i * 160;
             return (
-              <div key={`${activeTier}-${i}`} className="relative flex items-center py-0.5">
+              <div key={`${activeTier}-${i}`} className="relative min-h-6 py-0.5">
                   <div
-                    className="pointer-events-none absolute left-0 top-1/2 h-6 w-6 -translate-y-1/2 rounded-lg bg-primary/[.07] animate-icon-bg"
+                    className="pointer-events-none absolute left-0 top-0.5 h-6 w-6 rounded-lg bg-primary/[.07] animate-icon-bg"
                     style={{ animationDelay: `${bgDelay}ms` }}
                     aria-hidden="true"
                   />
                   <div
-                    className={`relative z-10 flex items-center gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
+                    className={`relative z-10 flex items-start gap-2.5 ${fromRight ? "animate-row-from-right" : "animate-row-from-left"}`}
                     style={{ animationDelay: `${rowDelay}ms` }}
                   >
                     <FeatureIcon icon={feat.icon} />
