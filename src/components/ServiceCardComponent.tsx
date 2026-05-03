@@ -313,12 +313,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
             const bgDelay = i * 70;
             const rowDelay = features.length * 70 + 80 + i * 160;
             return (
-              <div
-                key={`${activeTier}-${i}`}
-                className="relative flex items-center py-0.5"
-              >
-                {/* Row (icon + text) slides in as one unit; icon background is rendered inside the icon slot */}
-                <div className="relative flex items-center py-0.5">
+              <div key={`${activeTier}-${i}`} className="relative flex items-center py-0.5">
                   <div
                     className="pointer-events-none absolute left-0 top-1/2 h-6 w-6 -translate-y-1/2 rounded-lg bg-primary/[.07] animate-icon-bg"
                     style={{ animationDelay: `${bgDelay}ms` }}
@@ -329,9 +324,8 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
                     style={{ animationDelay: `${rowDelay}ms` }}
                   >
                     <FeatureIcon icon={feat.icon} />
-                  <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
+                    <span className="text-[13px] text-t2 leading-snug [&>b]:font-semibold [&>b]:text-foreground" dangerouslySetInnerHTML={{ __html: feat.icon === "clock" ? tierFeatText.replace(/(\d+)/g, '<span style="color: hsl(0 84% 50%); font-weight: 700;">$1</span>') : tierFeatText }} />
                   </div>
-                </div>
               </div>
             );
           })}
