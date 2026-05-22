@@ -120,6 +120,16 @@ export const translations: Record<string, Record<Locale, string>> = {
   "footer.newsletter.sub": { uk: "Маркетингові тренди ЄС — без спаму, відписка в один клік.", en: "EU marketing trends — no spam, one-click unsubscribe.", de: "EU-Marketing-Trends — kein Spam, Abmeldung mit einem Klick." },
   "footer.newsletter.placeholder": { uk: "Ваш e-mail", en: "Your e-mail", de: "Ihre E-Mail" },
   "footer.newsletter.cta": { uk: "Підписатися", en: "Subscribe", de: "Abonnieren" },
+  "footer.newsletter.consent": {
+    uk: "Я погоджуюсь з обробкою моїх персональних даних відповідно до Політики конфіденційності (GDPR) та хочу отримувати маркетингову розсилку. Відписка — в один клік.",
+    en: "I agree to the processing of my personal data under the Privacy Policy (GDPR) and consent to receive marketing emails. Unsubscribe anytime in one click.",
+    de: "Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der Datenschutzerklärung (DSGVO) zu und möchte den Marketing-Newsletter erhalten. Abmeldung jederzeit mit einem Klick.",
+  },
+  "footer.newsletter.consentRequired": {
+    uk: "Будь ласка, підтвердьте згоду на обробку даних (GDPR).",
+    en: "Please confirm your consent to data processing (GDPR).",
+    de: "Bitte bestätigen Sie Ihre Einwilligung zur Datenverarbeitung (DSGVO).",
+  },
   "footer.allRights": { uk: "Усі права захищено.", en: "All rights reserved.", de: "Alle Rechte vorbehalten." },
   "footer.vat": { uk: "VAT EU000000000 · Berlin, Germany", en: "VAT EU000000000 · Berlin, Germany", de: "USt-IdNr. EU000000000 · Berlin, Deutschland" },
   "footer.address": { uk: "Friedrichstraße 123, 10117 Berlin, DE", en: "Friedrichstraße 123, 10117 Berlin, DE", de: "Friedrichstraße 123, 10117 Berlin, DE" },
