@@ -37,9 +37,11 @@ export default function CartDrawer({
 
   const isEmpty = items.length === 0;
 
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
   const handleSubmit = () => {
     if (!name.trim()) { alert(t("alert.name")); return; }
-    if (!contact.trim() && !email.trim()) { alert(t("alert.contact")); return; }
+    if (!email.trim() || !emailRe.test(email.trim())) { alert(t("alert.email")); return; }
     if (!dsgvo) { alert(t("alert.dsgvo")); return; }
     if (isEmpty) { alert(t("alert.empty")); return; }
     setSubmitted(true);
@@ -223,15 +225,15 @@ export default function CartDrawer({
                   </div>
                   <div>
                     <label className="flex items-center gap-1.5 text-[11.5px] font-semibold text-foreground/70 mb-1.5">
-                      <MessageSquare className="w-3 h-3" /> {t("cart.slackTg")} *
+                      <MessageSquare className="w-3 h-3" /> {t("cart.slackTg")} <span className="font-normal text-muted-foreground">({t("cart.optional")})</span>
                     </label>
                     <input value={contact} onChange={(e) => setContact(e.target.value)} placeholder="@slack or @telegram" className={inputClass} />
                   </div>
                   <div>
                     <label className="flex items-center gap-1.5 text-[11.5px] font-semibold text-foreground/70 mb-1.5">
-                      <Mail className="w-3 h-3" /> {t("cart.email")}
+                      <Mail className="w-3 h-3" /> {t("cart.email")} *
                     </label>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="you@example.com" className={inputClass} />
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required placeholder="you@example.com" className={inputClass} />
                   </div>
                   <div>
                     <label className="flex items-center gap-1.5 text-[11.5px] font-semibold text-foreground/70 mb-1.5">
