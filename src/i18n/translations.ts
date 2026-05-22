@@ -70,9 +70,9 @@ export const translations: Record<string, Record<Locale, string>> = {
   "cart.submit": { uk: "Надіслати запит →", en: "Send request →", de: "Anfrage senden →" },
   "cart.sent": { uk: "Запит надіслано!", en: "Request sent!", de: "Anfrage gesendet!" },
   "cart.sentMsg": {
-    uk: "Ми зв'яжемося у Slack або Telegram протягом 24 годин. Дякуємо!",
-    en: "We'll contact you via Slack or Telegram within 24 hours. Thank you!",
-    de: "Wir melden uns innerhalb von 24 Stunden per Slack oder Telegram. Danke!",
+    uk: "Ми зв'яжемося з вами електронною поштою протягом 24 годин. Дякуємо!",
+    en: "We'll contact you by email within 24 hours. Thank you!",
+    de: "Wir melden uns innerhalb von 24 Stunden per E-Mail. Danke!",
   },
 
   // Confirm
