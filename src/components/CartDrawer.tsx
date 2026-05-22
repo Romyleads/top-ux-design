@@ -37,9 +37,11 @@ export default function CartDrawer({
 
   const isEmpty = items.length === 0;
 
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
   const handleSubmit = () => {
     if (!name.trim()) { alert(t("alert.name")); return; }
-    if (!contact.trim() && !email.trim()) { alert(t("alert.contact")); return; }
+    if (!email.trim() || !emailRe.test(email.trim())) { alert(t("alert.email")); return; }
     if (!dsgvo) { alert(t("alert.dsgvo")); return; }
     if (isEmpty) { alert(t("alert.empty")); return; }
     setSubmitted(true);
