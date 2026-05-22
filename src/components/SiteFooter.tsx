@@ -130,30 +130,60 @@ export default function SiteFooter() {
                   </p>
                 </div>
               </div>
-              <form onSubmit={handleSubscribe} className="flex gap-2">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={t("footer.newsletter.placeholder")}
-                  className="flex-1 min-w-0 px-3.5 py-2.5 rounded-xl bg-white/80 border border-primary/15 text-[13px] text-t1 placeholder:text-t4 outline-none focus:border-primary/50 focus:bg-white transition"
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2.5 rounded-xl gradient-primary text-primary-foreground text-[13px] font-bold shadow-green hover:shadow-green-hover transition flex items-center gap-1.5 whitespace-nowrap"
+              <form onSubmit={handleSubscribe} className="space-y-2.5">
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t("footer.newsletter.placeholder")}
+                    className="flex-1 min-w-0 px-3.5 py-2.5 rounded-xl bg-white/80 border border-primary/15 text-[13px] text-t1 placeholder:text-t4 outline-none focus:border-primary/50 focus:bg-white transition"
+                  />
+                  <button
+                    type="submit"
+                    className="px-4 py-2.5 rounded-xl gradient-primary text-primary-foreground text-[13px] font-bold shadow-green hover:shadow-green-hover transition flex items-center gap-1.5 whitespace-nowrap"
+                  >
+                    {subscribed ? (
+                      <>
+                        <CheckCircle2 className="w-3.5 h-3.5" /> ✓
+                      </>
+                    ) : (
+                      <>
+                        {t("footer.newsletter.cta")} <ArrowRight className="w-3.5 h-3.5" />
+                      </>
+                    )}
+                  </button>
+                </div>
+                <label
+                  className={`flex items-start gap-2 cursor-pointer select-none rounded-lg px-1 py-1 transition-colors ${
+                    consentError ? "bg-red-500/[.08]" : ""
+                  }`}
                 >
-                  {subscribed ? (
-                    <>
-                      <CheckCircle2 className="w-3.5 h-3.5" /> ✓
-                    </>
-                  ) : (
-                    <>
-                      {t("footer.newsletter.cta")} <ArrowRight className="w-3.5 h-3.5" />
-                    </>
-                  )}
-                </button>
+                  <input
+                    type="checkbox"
+                    checked={consent}
+                    onChange={(e) => handleConsentChange(e.target.checked)}
+                    aria-invalid={consentError}
+                    aria-describedby="newsletter-consent-text"
+                    className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 rounded border-primary/40 text-primary accent-[hsl(142,76%,42%)] cursor-pointer"
+                  />
+                  <span
+                    id="newsletter-consent-text"
+                    className={`text-[11px] leading-snug ${
+                      consentError ? "text-red-600" : "text-t3"
+                    }`}
+                  >
+                    {t("footer.newsletter.consent")}
+                  </span>
+                </label>
+                {consentError && (
+                  <p className="text-[11px] text-red-600 pl-1" role="alert">
+                    {t("footer.newsletter.consentRequired")}
+                  </p>
+                )}
               </form>
+
             </div>
           </div>
 
