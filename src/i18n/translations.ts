@@ -84,6 +84,7 @@ export const translations: Record<string, Record<Locale, string>> = {
   // Alerts
   "alert.name": { uk: "Введіть ім'я", en: "Enter your name", de: "Geben Sie Ihren Namen ein" },
   "alert.contact": { uk: "Вкажіть Slack/Telegram або Email", en: "Enter Slack/Telegram or Email", de: "Geben Sie Slack/Telegram oder E-Mail ein" },
+  "alert.email": { uk: "Вкажіть коректну email-адресу", en: "Please enter a valid email address", de: "Bitte geben Sie eine gültige E-Mail-Adresse ein" },
   "alert.dsgvo": { uk: "Погодьтесь з умовами", en: "Accept the terms", de: "Bitte stimmen Sie den Bedingungen zu" },
   "alert.empty": { uk: "Кошик порожній", en: "Cart is empty", de: "Warenkorb ist leer" },
 
