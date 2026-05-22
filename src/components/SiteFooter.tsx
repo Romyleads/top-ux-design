@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import {
@@ -15,15 +15,59 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+const CONSENT_STORAGE_KEY = "newsletter.gdpr.consent";
+
 export default function SiteFooter() {
   const { t, locale } = useLanguage();
   const lp = (p: string) => `/${locale}${p ? `/${p}` : ""}`;
   const [email, setEmail] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [consentError, setConsentError] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+
+  // Restore previous GDPR choice
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(CONSENT_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed?.consent === true) setConsent(true);
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  const persistConsent = (granted: boolean) => {
+    try {
+      localStorage.setItem(
+        CONSENT_STORAGE_KEY,
+        JSON.stringify({
+          consent: granted,
+          locale,
+          timestamp: new Date().toISOString(),
+          version: "gdpr-v1",
+        }),
+      );
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const handleConsentChange = (checked: boolean) => {
+    setConsent(checked);
+    if (checked) setConsentError(false);
+    persistConsent(checked);
+  };
 
   const handleSubscribe = (e: FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
+    if (!consent) {
+      setConsentError(true);
+      return;
+    }
+    persistConsent(true);
     setSubscribed(true);
     setEmail("");
     setTimeout(() => setSubscribed(false), 3500);
