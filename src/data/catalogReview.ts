@@ -33,9 +33,9 @@ const toolPurposes: Record<string, Localized> = {
   "OpenAI Realtime API": { en: "Real-time voice conversations with controlled actions", de: "Echtzeit-Sprachdialoge mit kontrollierten Aktionen", uk: "Голосові діалоги в реальному часі з контролем дій" },
   "GPT Image": { en: "Reference-led image generation and editing", de: "Referenzbasierte Bilderzeugung und Bearbeitung", uk: "Генерація та редагування зображень за референсами" },
   "Gemini image generation": { en: "Product-scene concepts and image editing", de: "Produktszenen-Konzepte und Bildbearbeitung", uk: "Концепції товарних сцен і редагування зображень" },
-  "Adobe Firefly": { en: "Visual concepts and controlled asset adaptations", de: "Bildkonzepte und kontrollierte Materialanpassungen", uk: "Візуальні концепції та контрольовані адаптації" },
+  "Adobe Firefly": { en: "Generative AI for image concepts and reference-led editing", de: "Generative KI für Bildkonzepte und referenzbasierte Bearbeitung", uk: "Генеративна нейромережа для візуальних концепцій і редагування за референсами" },
   "Recraft": { en: "SVG vector drafts, refined and checked before handover", de: "SVG-Vektorentwürfe, vor Übergabe überarbeitet und geprüft", uk: "SVG-чернетки векторів, доопрацьовані й перевірені перед передачею" },
-  "Lovable": { en: "Web interfaces and scoped connected app workflows", de: "Weboberflächen und abgegrenzte App-Abläufe", uk: "Вебінтерфейси та визначені сценарії застосунків" },
+  "Lovable": { en: "AI-generated web interfaces and code, tested before handover", de: "KI-generierte Weboberflächen und Code, vor Übergabe getestet", uk: "AI-генерація вебінтерфейсів і коду з тестуванням перед передачею" },
   "n8n": { en: "Integrations with configured logs, approval gates and handoffs", de: "Integrationen mit eingerichteten Protokollen, Freigaben und Übergaben", uk: "Інтеграції з налаштованими журналами, погодженнями та передачею" },
   "Telegram Stars": { en: "Platform-compliant digital-goods payments", de: "Plattformkonforme Zahlungen für digitale Güter", uk: "Оплата цифрових товарів за правилами платформи" },
   "Perplexity": { en: "Source discovery with independent fact checking", de: "Quellenrecherche mit unabhängiger Faktenprüfung", uk: "Пошук джерел із незалежним фактчекінгом" },
@@ -55,7 +55,7 @@ const toolRoles: Record<string, Localized> = {
   "Looker Studio": { en: "Campaign reporting and metric dashboards", de: "Kampagnenberichte und Kennzahl-Dashboards", uk: "Звіти кампаній та дашборди метрик" },
   "Microsoft Clarity": { en: "Session insights and usability diagnostics", de: "Sitzungsanalyse und Nutzbarkeitsdiagnose", uk: "Аналіз сесій та діагностика зручності" },
   "PostHog": { en: "Product events, funnels and usage measurement", de: "Produktergebnisse, Funnels und Nutzungsmessung", uk: "Події продукту, воронки та вимірювання використання" },
-  "Notion": { en: "Brand knowledge and team handover documentation", de: "Markenwissen und Übergabedokumentation", uk: "Знання бренду та документація для команди" },
+  "Notion AI": { en: "AI-assisted synthesis of approved brand knowledge and documentation", de: "KI-gestützte Zusammenfassung freigegebenen Markenwissens und Dokumentation", uk: "AI-узагальнення погоджених знань бренду та документації" },
   "Flourish": { en: "Data charts with validated scales and labels", de: "Datencharts mit geprüften Skalen und Labels", uk: "Діаграми з перевіреними шкалами й підписами" },
   "Buffer": { en: "Approved social publishing and editorial scheduling", de: "Freigegebene Social-Veröffentlichung und Redaktionsplanung", uk: "Погоджені соціальні публікації та розклад" },
   "Bannerbear": { en: "Template-based multi-format creative exports", de: "Vorlagenbasierte Kreativexporte in mehreren Formaten", uk: "Шаблонний експорт креативів у різних форматах" },
@@ -76,25 +76,20 @@ const toolRoles: Record<string, Localized> = {
   "Stripe": { en: "Payment flows and checkout testing", de: "Zahlungsabläufe und Checkout-Tests", uk: "Платіжні сценарії та перевірка оформлення" },
   "Stripe Billing": { en: "Subscription billing and customer portal", de: "Abo-Abrechnung und Kundenportal", uk: "Підписний білінг та кабінет клієнта" },
   "grammY": { en: "Telegram bot interactions and validated updates", de: "Telegram-Bot-Interaktionen und geprüfte Updates", uk: "Взаємодія Telegram-бота та перевірені події" },
-  "Cursor": { en: "Code refinement and acceptance-test implementation", de: "Code-Verfeinerung und Abnahmetests", uk: "Доопрацювання коду та приймальні тести" },
-  "Claude Code": { en: "Implementation assistance and code review", de: "Implementierungshilfe und Code-Prüfung", uk: "Допомога розробці та перевірка коду" },
-  "Replit": { en: "Comparable working prototypes and pilot deployment", de: "Vergleichbare Prototypen und Pilotbereitstellung", uk: "Порівнювані прототипи та розгортання пілота" },
+  "Cursor": { en: "AI coding agent for implementation and test drafts with specialist review", de: "KI-Coding-Agent für Implementierung und Testentwürfe mit fachlicher Prüfung", uk: "AI-агент для розробки й чернеток тестів із перевіркою фахівця" },
+  "Claude Code": { en: "AI coding agent for implementation and code review", de: "KI-Coding-Agent für Implementierung und Code-Prüfung", uk: "AI-агент для розробки та перевірки коду" },
+  "Replit Agent": { en: "AI-generated prototypes and pilot apps with acceptance testing", de: "KI-generierte Prototypen und Pilot-Apps mit Abnahmetests", uk: "AI-генерація прототипів і пілотних застосунків із приймальними тестами" },
   "Framer": { en: "Marketing-page layout and publication", de: "Marketingseiten-Layout und Veröffentlichung", uk: "Макети маркетингових сторінок і публікація" },
   "Make": { en: "Visual integrations with controlled handoffs", de: "Visuelle Integrationen mit kontrollierten Übergaben", uk: "Візуальні інтеграції з контрольованою передачею" },
   "Gamma": { en: "Slide drafting and presentation structure", de: "Folienentwürfe und Präsentationsstruktur", uk: "Чернетки слайдів і структура презентації" },
-  "Figma": { en: "Editable layouts and reusable design components", de: "Editierbare Layouts und wiederverwendbare Gestaltungselemente", uk: "Редаговані макети та повторні дизайн-елементи" },
-  "Figma Slides": { en: "Editable presentation layouts", de: "Editierbare Präsentationslayouts", uk: "Редаговані макети презентацій" },
-  "Adobe InDesign": { en: "Publication layout and print-ready export", de: "Publikationslayout und druckfertiger Export", uk: "Верстка видань та друкарський експорт" },
-  "Adobe Illustrator": { en: "Precise vectors and production artwork", de: "Präzise Vektoren und Produktionsgrafiken", uk: "Точні вектори та виробничі макети" },
-  "Adobe Substance 3D": { en: "Product and packaging mockups", de: "Produkt- und Verpackungsmockups", uk: "Мокапи товарів та упаковки" },
-  "Figma Make": { en: "AI layout drafts; delivered as editable Figma files", de: "KI-Layoutentwürfe; Übergabe als editierbare Figma-Dateien", uk: "AI-чернетки макетів; передаються як редаговані файли Figma" },
-  "Google Stitch": { en: "AI interface drafts with Figma and HTML export", de: "KI-Interface-Entwürfe mit Figma- und HTML-Export", uk: "AI-чернетки інтерфейсів з експортом у Figma та HTML" },
-  "Beautiful.ai": { en: "AI slide layouts that keep brand rules automatically", de: "KI-Folienlayouts mit automatischen Markenregeln", uk: "AI-макети слайдів з автоматичними правилами бренду" },
+  "Figma Make": { en: "Prompt-driven AI interface prototypes; output checked before handover", de: "Promptbasierte KI-Interface-Prototypen; Ergebnis vor Übergabe geprüft", uk: "AI-прототипи інтерфейсів за промптами; результат перевіряється перед передачею" },
+  "Google Stitch": { en: "AI interface drafts; export and handover scope agreed", de: "KI-Interface-Entwürfe; Export- und Übergabeumfang vereinbart", uk: "AI-чернетки інтерфейсів; експорт і формат передачі погоджуються" },
+  "Beautiful.ai": { en: "AI-assisted slide layouts with brand consistency review", de: "KI-gestützte Folienlayouts mit Prüfung der Markenkonsistenz", uk: "AI-макети слайдів із перевіркою відповідності бренду" },
   "Canva Magic Studio": { en: "AI-assisted layout, resizing and PDF export; print specs confirmed with your printer", de: "KI-gestütztes Layout, Formatanpassung und PDF-Export; Druckvorgaben mit Ihrer Druckerei abgestimmt", uk: "AI-верстка, адаптація форматів і PDF-експорт; вимоги друку погоджуються з друкарнею" },
-  "Ideogram": { en: "AI typography-accurate graphics and concepts", de: "KI-Grafiken mit präziser Typografie", uk: "AI-графіка з точною типографікою" },
+  "Ideogram": { en: "AI image concepts with text rendering checked for accuracy", de: "KI-Bildkonzepte mit auf Richtigkeit geprüfter Textdarstellung", uk: "AI-візуальні концепції з перевіркою точності тексту" },
   "Meshy": { en: "AI 3D previews for packaging and product mockups", de: "KI-3D-Vorschauen für Verpackungs- und Produktmockups", uk: "AI-3D-превʼю для мокапів упаковки й товарів" },
   "Captions": { en: "AI video editing, captions and social exports", de: "KI-Videoschnitt, Untertitel und Social-Exporte", uk: "AI-монтаж, субтитри та експорт для соцмереж" },
-  "Descript": { en: "Transcript-based editing and captions", de: "Transkriptbasierter Schnitt und Untertitel", uk: "Монтаж за транскриптом і субтитри" },
+  "Descript": { en: "AI transcription, assisted editing and reviewed captions", de: "KI-Transkription, assistierter Schnitt und geprüfte Untertitel", uk: "AI-транскрипція, допомога монтажу та перевірені субтитри" },
   "Riverside": { en: "Interview and podcast recording", de: "Interview- und Podcastaufnahmen", uk: "Запис інтерв’ю та подкастів" },
   "OpusClip": { en: "Short-clip candidates for editorial review", de: "Kurzclip-Vorschläge zur redaktionellen Prüfung", uk: "Чернетки коротких кліпів для редактури" },
 };
@@ -176,7 +171,7 @@ export const newOffers: NewOffer[] = [
     outcome: { en: "Measure sampled visibility and brand accuracy without promising rankings or citations", de: "Stichproben-Sichtbarkeit und Markenrichtigkeit messen, ohne Ranking- oder Zitatversprechen", uk: "Виміряти вибіркову видимість і точність бренду без обіцянок позицій або цитувань" },
     scopes: [{ en: "15 prompts · 1 market", de: "15 Prompts · 1 Markt", uk: "15 запитів · 1 ринок" }, { en: "30 prompts · 3 content updates", de: "30 Prompts · 3 Inhaltsupdates", uk: "30 запитів · 3 оновлення контенту" }, { en: "60 prompts · 6 updates · retest", de: "60 Prompts · 6 Updates · Nachtest", uk: "60 запитів · 6 оновлень · повторний тест" }],
     formats: "PDF · CSV · HTML / JSON-LD",
-    tools: ["ChatGPT", "Perplexity", "Google Search Console"], days: [5, 10, 14],
+    tools: ["ChatGPT", "Perplexity", "Claude"], days: [5, 10, 14],
   },
   {
     id: "voice-agent",
@@ -194,7 +189,7 @@ export const newOffers: NewOffer[] = [
     outcome: { en: "Get more approved assets from existing expertise with traceable source references", de: "Mehr freigegebene Materialien aus vorhandener Expertise mit nachvollziehbaren Quellen gewinnen", uk: "Отримати більше погоджених матеріалів із наявної експертизи з посиланнями на джерело" },
     scopes: [{ en: "1 source · 5 assets", de: "1 Quelle · 5 Materialien", uk: "1 джерело · 5 матеріалів" }, { en: "1 source · 10 assets", de: "1 Quelle · 10 Materialien", uk: "1 джерело · 10 матеріалів" }, { en: "2 sources · 20 assets", de: "2 Quellen · 20 Materialien", uk: "2 джерела · 20 матеріалів" }],
     formats: "MP4 · SRT · DOCX · PNG · ≤ 60 min / source",
-    tools: ["Claude", "Descript", "OpusClip", "Figma Make"], days: [5, 7, 10],
+    tools: ["Claude", "Descript", "OpusClip", "Canva Magic Studio"], days: [5, 7, 10],
   },
 ];
 
@@ -254,7 +249,7 @@ export function applyCatalogTranslations(dictionary: Dictionary): void {
     dictionary[`service.${id}.goal`] = goal;
     dictionary[`service.${id}.info.goal`] = goal;
     dictionary[`service.${id}.info.description`] = localize((l) => `${summary[l]}. ${copy.approach[l]} ${["ai-twin", "avatar-localization", "voice-agent", "creative-testing", "telegram-ai-agent"].includes(id) ? copy.consent[l] : copy.measurement[l]}`);
-    const production = localize((l) => `${l === "en" ? "Production workflow" : l === "de" ? "Produktionsablauf" : "Виробничий процес"}: ${tools.join(" · ")}`);
+    const production = localize((l) => `${l === "en" ? "AI-assisted production" : l === "de" ? "KI-gestützte Produktion" : "Виробництво з нейромережами"}: ${tools.join(" · ")}`);
     [summary, copy.acceptance, production, copy.handover].forEach((item, index) => { dictionary[`service.${id}.info.content.${index}`] = item; });
     dictionary[`service.${id}.info.formats`] = formats
       ? localize(() => formats)
