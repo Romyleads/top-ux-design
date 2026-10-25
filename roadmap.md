@@ -1,5 +1,9 @@
 # Catalog review — September–October 2026
 
+## AI-first production update
+- [ ] Research official AI creative/development alternatives and refresh EN/DE/UK production descriptions and tool mappings without changing prices, IDs or outputs.
+- [ ] Validate all reviewed offers, record dated sources and check expanded details in preview.
+
 - [x] Verify market offers and technology names against official sources.
 - [x] Review every existing offer; refresh descriptions, deliverables and tool stacks in EN, DE and UK.
 - [x] Remove previous HOT flags and add researched new offers with HOT.
