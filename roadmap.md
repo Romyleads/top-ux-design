@@ -13,5 +13,6 @@
 - [x] Record audit findings and remaining verification limits (account access, licenses and historical release dates not independently verified).
 
 ## Cart payment
-- [ ] Move external payment into the shared cart and remove separate offer payment buttons.
-- [ ] Preserve all selected plans and quantities in the cabinet handoff; verify EN/DE/UK cart flows and tests.
+- [x] Move external payment into the shared cart and remove separate offer payment buttons.
+- [x] Preserve all selected plans and quantities in the cabinet handoff; verify EN/DE/UK cart flows and tests (20 tests; captured redirects, no runtime errors).
+- [ ] Verify real multi-item payment in the owner's cabinet — blocked: the external cabinet is unavailable here and must support the documented `cart`/`quantity` parameters; captured redirects do not verify payment processing.
