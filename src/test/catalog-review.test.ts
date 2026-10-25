@@ -16,7 +16,7 @@ describe("Autumn 2026 catalog requirements", () => {
     expect(Object.keys(profiles)).toHaveLength(47);
     expect(services).toHaveLength(52);
     expect(new Set(services.map((s) => s.id)).size).toBe(52);
-    expect(services.find((s) => s.id === "landing-page")?.tiers.map((t) => t.price)).toEqual(["99 €", "199 €", "399 €"]);
+    expect(services.find((s) => s.id === "landing-page")?.tiers.map((t) => t.price)).toEqual(["79 €", "349 €", "690 €"]);
   });
   it("has complete reviewed content and tool purposes in English, German and Ukrainian", () => {
     for (const service of services) {
@@ -32,7 +32,7 @@ describe("Autumn 2026 catalog requirements", () => {
     expect(catalogReview.period).toBe("September–October 2026");
     expect(catalogReview.checkedOn).toBe("2026-10-25");
   });
-  it("preserves every existing tier price and leaves all new prices quote-only", () => {
+  it("matches the approved October 2026 price grid and leaves all new prices quote-only", () => {
     for (const [id, prices] of Object.entries(priceBaseline)) expect(services.find((s) => s.id === id)?.tiers.map((t) => t.price)).toEqual(prices);
     for (const id of catalogReview.newOfferIds) expect(services.find((s) => s.id === id)?.tiers.map((t) => t.price)).toEqual(["—", "—", "—"]);
   });
