@@ -16,7 +16,7 @@ describe("Autumn 2026 catalog requirements", () => {
     expect(Object.keys(profiles)).toHaveLength(47);
     expect(services).toHaveLength(52);
     expect(new Set(services.map((s) => s.id)).size).toBe(52);
-    expect(services.find((s) => s.id === "landing-page")?.tiers.map((t) => t.price)).toEqual(["79 €", "349 €", "690 €"]);
+    expect(services.find((s) => s.id === "landing-page")?.tiers.map((t) => t.price)).toEqual(["99 €", "349 €", "690 €"]);
   });
   it("has complete reviewed content and tool purposes in English, German and Ukrainian", () => {
     for (const service of services) {

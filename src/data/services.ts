@@ -248,7 +248,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgLandingPage,
     tag: "💻 Цифрова",
     hot: true,
-    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "690 €" }],
+    tiers: [{ name: "Lite", price: "99 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "690 €" }],
     tierFeatures: [
       tf("<b>до 5</b> сторінок · Landing page", "HTML / WordPress", "<b>Термін: 7 днів</b>", "2 правки дизайну"),
       tf("<b>8–12</b> секцій · адаптивний + анімації", "React / Webflow", "<b>Термін: 5 днів</b>", "5 правок · CRM-інтеграція"),
@@ -440,7 +440,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b3",
     photo: imgBrandbook,
     tag: "🎨 Брендинг",
-    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "399 €" }, { name: "Pro", price: "890 €" }],
+    tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "399 €" }, { name: "Pro", price: "890 €" }],
     tierFeatures: [
       tf("<b>15–20</b> сторінок · логотип + кольори + шрифти", "PDF", "<b>Термін: 10 днів</b>", "2 правки"),
       tf("<b>30–40</b> сторінок · повний гайдлайн", "PDF + Figma", "<b>Термін: 7 днів</b>", "4 правки · шаблони документів"),
