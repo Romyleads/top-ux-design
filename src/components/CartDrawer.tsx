@@ -8,8 +8,9 @@ import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { parseCatalogPrice } from "@/lib/catalogPricing";
 import { saveCartAsOrder } from "@/lib/portalOrders";
-import { CartPaymentButton, PaymentReturnDialog } from "@/components/PayDialog";
+import { CartPaymentStep, PaymentReturnDialog } from "@/components/PayDialog";
 import { Button } from "@/components/ui/button";
+import { canContinueToPayment } from "@/lib/cartCheckout";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -18,8 +19,8 @@ interface CartDrawerProps {
   totalPrice: number;
   hasPrice: boolean;
   formatEur: (n: number) => string;
-  step: 1 | 2;
-  setStep: (s: 1 | 2) => void;
+  step: 1 | 2 | 3;
+  setStep: (s: 1 | 2 | 3) => void;
   onClose: () => void;
   onChangeQty: (id: string, tierName: string, delta: number) => void;
   onRemove: (id: string, tierName: string) => void;
@@ -39,6 +40,8 @@ export default function CartDrawer({
   const [dsgvo, setDsgvo] = useState(false);
   const { t, locale } = useLanguage();
   const requestLabel = locale === "uk" ? "Запросити пропозицію" : locale === "de" ? "Angebot anfordern" : "Request a quote";
+  const paymentLabel = locale === "uk" ? "Оплата" : locale === "de" ? "Zahlung" : "Payment";
+  const continueLabel = locale === "uk" ? "Далі до оплати" : locale === "de" ? "Weiter zur Zahlung" : "Continue to payment";
   const quoteNote = locale === "uk" ? "Оплата після погодження вартості всіх послуг." : locale === "de" ? "Zahlung nach Preisvereinbarung für alle Leistungen." : "Payment after prices for all services are agreed.";
 
   const isEmpty = items.length === 0;
@@ -51,6 +54,10 @@ export default function CartDrawer({
     if (!email.trim() || !emailRe.test(email.trim())) { alert(t("alert.email")); return; }
     if (!dsgvo) { alert(t("alert.dsgvo")); return; }
     if (isEmpty) { alert(t("alert.empty")); return; }
+    if (!hasQuoteItems && canContinueToPayment({ name, email, consent: dsgvo }, items.length)) {
+      setStep(3);
+      return;
+    }
     // Signed-in clients get the request saved as an order in their account
     void saveCartAsOrder(items, (i) => t(`service.${i.id}.name`), comment.trim());
     setSubmitted(true);
@@ -108,8 +115,8 @@ export default function CartDrawer({
               )}
             </div>
             <div>
-              <span className="text-sm font-bold text-foreground block leading-tight">{t("cart.step")} {step} / 2</span>
-              <span className="text-[10px] text-muted-foreground">{step === 1 ? t("cart.selected") : t("cart.contact")}</span>
+              <span className="text-sm font-bold text-foreground block leading-tight">{t("cart.step")} {step} / {hasQuoteItems ? 2 : 3}</span>
+              <span className="text-[10px] text-muted-foreground">{step === 1 ? t("cart.selected") : step === 2 ? t("cart.contact") : paymentLabel}</span>
             </div>
           </div>
           <button onClick={onClose} className="text-muted-foreground w-8 h-8 rounded-xl flex items-center justify-center hover:bg-secondary hover:text-foreground transition-all">
@@ -184,14 +191,17 @@ export default function CartDrawer({
             {/* CTA */}
             {!isEmpty && (
               <div className="px-5 py-4 pb-6 flex-shrink-0">
-                <CartPaymentButton items={items} total={formatEur(totalPrice)} />
                 {hasQuoteItems && <p className="text-[12px] text-muted-foreground mb-2">{quoteNote}</p>}
-                <Button variant={hasQuoteItems ? "default" : "outline"} onClick={() => setStep(2)} className="w-full h-auto py-3 mt-2 rounded-lg text-[13px] font-semibold">
-                  {requestLabel} <ArrowRight className="w-4 h-4" />
+                <Button onClick={() => { setSubmitted(false); setStep(2); }} className="w-full h-auto py-3 mt-2 rounded-lg text-[13px] font-semibold">
+                  {hasQuoteItems ? requestLabel : t("cart.proceed")} <ArrowRight className="w-4 h-4" />
                 </Button>
                 <p className="text-center text-[11px] text-muted-foreground mt-2">{t("cart.noObligation")}</p>
               </div>
             )}
+          </div>
+        ) : step === 3 ? (
+          <div className="flex-1 overflow-y-auto">
+            <CartPaymentStep items={items} total={formatEur(totalPrice)} onBack={() => setStep(2)} />
           </div>
         ) : (
           <div className="flex-1 flex flex-col overflow-y-auto">
@@ -221,7 +231,6 @@ export default function CartDrawer({
                 </div>
                 <div className="text-lg font-extrabold text-foreground mb-1">{t("cart.sent")}</div>
                 <p className="text-muted-foreground text-[13px] leading-relaxed max-w-[260px]">{t("cart.sentMsg")}</p>
-                <div className="w-full mt-5"><CartPaymentButton items={items} total={formatEur(totalPrice)} /></div>
               </div>
             ) : (
               <div className="px-5 py-4 flex-1">
@@ -263,11 +272,10 @@ export default function CartDrawer({
                       <span className="text-[11.5px] text-muted-foreground leading-relaxed">{t("cart.dsgvo")} *</span>
                     </div>
                   </label>
-                  <CartPaymentButton items={items} total={formatEur(totalPrice)} />
                   {hasQuoteItems && <p className="text-[12px] text-muted-foreground">{quoteNote}</p>}
-                  <Button variant={hasQuoteItems ? "default" : "outline"} onClick={handleSubmit} className="w-full h-auto py-3 rounded-lg text-[13px] font-semibold">
+                  <Button onClick={handleSubmit} className="w-full h-auto py-3 rounded-lg text-[13px] font-semibold">
                     <ArrowRight className="w-4 h-4" />
-                    {t("cart.submit")}
+                    {hasQuoteItems ? t("cart.submit") : continueLabel}
                   </Button>
                 </div>
               </div>

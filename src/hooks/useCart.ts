@@ -13,7 +13,7 @@ export interface CartItem {
 export function useCart() {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState<1 | 2>(1);
+  const [step, setStep] = useState<1 | 2 | 3>(1);
 
   const totalItems = items.reduce((s, i) => s + i.qty, 0);
 

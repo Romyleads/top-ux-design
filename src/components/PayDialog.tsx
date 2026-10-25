@@ -32,30 +32,11 @@ const tr = (k: keyof typeof txt, l: string) => txt[k][(l as L)] ?? txt[k].en;
 const primaryBtn = "w-full inline-flex items-center justify-center gap-2 rounded-xl py-3 px-5 text-[13px] font-bold text-primary-foreground bg-primary transition-opacity duration-300 hover:opacity-90 disabled:opacity-70";
 const ghostBtn = "w-full rounded-xl py-2.5 text-[13px] font-semibold text-muted-foreground hover:text-foreground transition-colors duration-300";
 
-export function CartPaymentButton(props: { items: CartItem[]; total: string }) {
-  const { locale } = useLanguage();
-  const [open, setOpen] = useState(false);
-  if (!props.items.length || props.items.some((item) => parseCatalogPrice(item.price) === null)) return null;
-  return (
-    <>
-      <Button
-        onClick={() => setOpen(true)}
-        className="w-full h-auto rounded-lg py-3.5 text-[14px] font-bold"
-      >
-        <CreditCard className="w-4 h-4" strokeWidth={1.5} />
-        {tr("pay", locale)} — {props.total}
-      </Button>
-      <PayDialog {...props} open={open} onOpenChange={setOpen} />
-    </>
-  );
-}
-
-function PayDialog({ items, total, open, onOpenChange }: {
-  items: CartItem[]; total: string; open: boolean; onOpenChange: (o: boolean) => void;
+export function CartPaymentStep({ items, total, onBack }: {
+  items: CartItem[]; total: string; onBack: () => void;
 }) {
   const { locale, t } = useLanguage();
   const [state, setState] = useState<"idle" | "loading" | "error">("idle");
-  useEffect(() => { if (open) setState("idle"); }, [open]);
 
   const go = () => {
     setState("loading");
@@ -67,19 +48,21 @@ function PayDialog({ items, total, open, onOpenChange }: {
   };
 
   return (
-    <Dialog open={open} onOpenChange={(o) => state !== "loading" && onOpenChange(o)}>
-      <DialogContent overlayClassName="z-[3000]" className="z-[3001] sm:max-w-md rounded-lg max-h-[90dvh] overflow-y-auto">
+    <div className="px-5 py-5 space-y-5">
         {state === "error" ? (
-          <StatusView icon={<AlertCircle className="w-7 h-7 text-destructive" strokeWidth={1.5} />} title={tr("errTitle", locale)} body={tr("errBody", locale)}>
+          <div role="alert" className="space-y-3">
+            <AlertCircle className="w-7 h-7 text-destructive" strokeWidth={1.5} />
+            <h2 className="text-lg font-bold">{tr("errTitle", locale)}</h2>
+            <p className="text-sm text-muted-foreground">{tr("errBody", locale)}</p>
             <Button className={primaryBtn} onClick={go}>{tr("retry", locale)}</Button>
-            <Button variant="ghost" className={ghostBtn} onClick={() => onOpenChange(false)}>{tr("close", locale)}</Button>
-          </StatusView>
+            <Button variant="ghost" className={ghostBtn} onClick={onBack}>{t("cart.edit")}</Button>
+          </div>
         ) : (
           <>
-            <DialogHeader>
-              <DialogTitle>{tr("title", locale)}</DialogTitle>
-              <DialogDescription>{tr("desc", locale)}</DialogDescription>
-            </DialogHeader>
+            <div className="space-y-2">
+              <h2 className="text-lg font-bold flex items-center gap-2"><CreditCard className="w-5 h-5 text-muted-foreground" strokeWidth={1.5} />{tr("title", locale)}</h2>
+              <p className="text-sm text-muted-foreground">{tr("desc", locale)}</p>
+            </div>
             <div className="rounded-xl bg-muted/50 p-4 space-y-2 text-[13.5px]">
               {items.map((item) => (
                 <div key={`${item.id}__${item.tierName}`} className="flex justify-between gap-4">
@@ -91,14 +74,13 @@ function PayDialog({ items, total, open, onOpenChange }: {
               <div className="flex justify-between gap-4"><span className="text-muted-foreground">{tr("total", locale)}</span><span className="font-bold text-[15px]">{total}</span></div>
               <p className="text-[11.5px] text-muted-foreground">{tr("vat", locale)}</p>
             </div>
-            <Button className={primaryBtn} onClick={go} disabled={state === "loading"}>
-              {state === "loading" ? <><Loader2 className="w-4 h-4 animate-spin" />{tr("loading", locale)}</> : <><ShieldCheck className="w-4 h-4" strokeWidth={1.5} />{tr("go", locale)}</>}
+            <Button className={primaryBtn} onClick={go} disabled={state === "loading" || !items.length || items.some((item) => parseCatalogPrice(item.price) === null)}>
+              {state === "loading" ? <><Loader2 className="w-4 h-4 animate-spin" />{tr("loading", locale)}</> : <><ShieldCheck className="w-4 h-4" strokeWidth={1.5} />{tr("pay", locale)} — {total}</>}
             </Button>
-            <Button variant="ghost" className={ghostBtn} onClick={() => onOpenChange(false)} disabled={state === "loading"}>{tr("cancel", locale)}</Button>
+            <Button variant="ghost" className={ghostBtn} onClick={onBack} disabled={state === "loading"}>{t("cart.edit")}</Button>
           </>
         )}
-      </DialogContent>
-    </Dialog>
+    </div>
   );
 }
 
