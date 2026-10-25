@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, Loader2, AlertCircle, CreditCard, ShieldCheck } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { buildCabinetUrl, planSlug } from "@/config/payment";
+import { buildCartCabinetUrl } from "@/config/payment";
+import type { CartItem } from "@/hooks/useCart";
+import { parseCatalogPrice } from "@/lib/catalogPricing";
+import { Button } from "@/components/ui/button";
 
 type L = "en" | "de" | "uk";
 const txt = {
@@ -29,34 +32,34 @@ const tr = (k: keyof typeof txt, l: string) => txt[k][(l as L)] ?? txt[k].en;
 const primaryBtn = "w-full inline-flex items-center justify-center gap-2 rounded-xl py-3 px-5 text-[13px] font-bold text-primary-foreground bg-primary transition-opacity duration-300 hover:opacity-90 disabled:opacity-70";
 const ghostBtn = "w-full rounded-xl py-2.5 text-[13px] font-semibold text-muted-foreground hover:text-foreground transition-colors duration-300";
 
-export function PayButton(props: { serviceId: string; serviceName: string; tierName: string; price: string }) {
+export function CartPaymentButton(props: { items: CartItem[]; total: string }) {
   const { locale } = useLanguage();
   const [open, setOpen] = useState(false);
-  if (props.price === "—") return null;
+  if (!props.items.length || props.items.some((item) => parseCatalogPrice(item.price) === null)) return null;
   return (
     <>
-      <button
+      <Button
         onClick={() => setOpen(true)}
-        className="mt-2 w-full inline-flex items-center justify-center gap-2 rounded-xl py-2.5 text-[13px] font-semibold text-foreground bg-muted/60 ring-1 ring-border transition-colors duration-300 hover:bg-muted"
+        className="w-full h-auto rounded-lg py-3.5 text-[14px] font-bold"
       >
         <CreditCard className="w-4 h-4" strokeWidth={1.5} />
-        {tr("pay", locale)} — {props.price}
-      </button>
+        {tr("pay", locale)} — {props.total}
+      </Button>
       <PayDialog {...props} open={open} onOpenChange={setOpen} />
     </>
   );
 }
 
-function PayDialog({ serviceId, serviceName, tierName, price, open, onOpenChange }: {
-  serviceId: string; serviceName: string; tierName: string; price: string; open: boolean; onOpenChange: (o: boolean) => void;
+function PayDialog({ items, total, open, onOpenChange }: {
+  items: CartItem[]; total: string; open: boolean; onOpenChange: (o: boolean) => void;
 }) {
-  const { locale } = useLanguage();
+  const { locale, t } = useLanguage();
   const [state, setState] = useState<"idle" | "loading" | "error">("idle");
   useEffect(() => { if (open) setState("idle"); }, [open]);
 
   const go = () => {
     setState("loading");
-    const url = buildCabinetUrl(planSlug(serviceId, tierName));
+    const url = buildCartCabinetUrl(items);
     if (!url) { setState("error"); return; }
     window.setTimeout(() => {
       try { window.location.assign(url); } catch { setState("error"); }
@@ -65,11 +68,11 @@ function PayDialog({ serviceId, serviceName, tierName, price, open, onOpenChange
 
   return (
     <Dialog open={open} onOpenChange={(o) => state !== "loading" && onOpenChange(o)}>
-      <DialogContent className="sm:max-w-md rounded-2xl">
+      <DialogContent overlayClassName="z-[3000]" className="z-[3001] sm:max-w-md rounded-lg max-h-[90dvh] overflow-y-auto">
         {state === "error" ? (
           <StatusView icon={<AlertCircle className="w-7 h-7 text-destructive" strokeWidth={1.5} />} title={tr("errTitle", locale)} body={tr("errBody", locale)}>
-            <button className={primaryBtn} onClick={go}>{tr("retry", locale)}</button>
-            <button className={ghostBtn} onClick={() => onOpenChange(false)}>{tr("close", locale)}</button>
+            <Button className={primaryBtn} onClick={go}>{tr("retry", locale)}</Button>
+            <Button variant="ghost" className={ghostBtn} onClick={() => onOpenChange(false)}>{tr("close", locale)}</Button>
           </StatusView>
         ) : (
           <>
@@ -78,15 +81,20 @@ function PayDialog({ serviceId, serviceName, tierName, price, open, onOpenChange
               <DialogDescription>{tr("desc", locale)}</DialogDescription>
             </DialogHeader>
             <div className="rounded-xl bg-muted/50 p-4 space-y-2 text-[13.5px]">
-              <div className="flex justify-between gap-4"><span className="text-muted-foreground">{tr("plan", locale)}</span><span className="font-semibold text-right">{serviceName} · {tierName}</span></div>
+              {items.map((item) => (
+                <div key={`${item.id}__${item.tierName}`} className="flex justify-between gap-4">
+                  <span className="font-semibold min-w-0 break-words">{t(`service.${item.id}.name`)} · {item.tierName} × {item.qty}</span>
+                  <span className="shrink-0">{item.price}</span>
+                </div>
+              ))}
               <div className="h-px bg-border" />
-              <div className="flex justify-between gap-4"><span className="text-muted-foreground">{tr("total", locale)}</span><span className="font-bold text-[15px]">{price}</span></div>
+              <div className="flex justify-between gap-4"><span className="text-muted-foreground">{tr("total", locale)}</span><span className="font-bold text-[15px]">{total}</span></div>
               <p className="text-[11.5px] text-muted-foreground">{tr("vat", locale)}</p>
             </div>
-            <button className={primaryBtn} onClick={go} disabled={state === "loading"}>
+            <Button className={primaryBtn} onClick={go} disabled={state === "loading"}>
               {state === "loading" ? <><Loader2 className="w-4 h-4 animate-spin" />{tr("loading", locale)}</> : <><ShieldCheck className="w-4 h-4" strokeWidth={1.5} />{tr("go", locale)}</>}
-            </button>
-            <button className={ghostBtn} onClick={() => onOpenChange(false)} disabled={state === "loading"}>{tr("cancel", locale)}</button>
+            </Button>
+            <Button variant="ghost" className={ghostBtn} onClick={() => onOpenChange(false)} disabled={state === "loading"}>{tr("cancel", locale)}</Button>
           </>
         )}
       </DialogContent>

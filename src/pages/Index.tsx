@@ -9,7 +9,6 @@ import BlockSection from "@/components/BlockSection";
 import CartFab from "@/components/CartFab";
 import CartDrawer from "@/components/CartDrawer";
 import SocialProof from "@/components/SocialProof";
-import { PaymentReturnDialog } from "@/components/PayDialog";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import SEOHead from "@/components/SEOHead";
 import SiteFooter from "@/components/SiteFooter";
@@ -156,7 +155,6 @@ export default function Index() {
 
       <CartFab totalItems={cart.totalItems} onOpen={cart.openCart} />
       <SocialProof />
-      <PaymentReturnDialog />
       <CartDrawer
         isOpen={cart.isOpen}
         items={cart.items}
