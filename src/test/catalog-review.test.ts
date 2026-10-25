@@ -6,6 +6,9 @@ import { translations } from "@/i18n/translations";
 import priceBaseline from "./catalog-prices.fixture.json";
 import { parseCatalogPrice, structuredTierOffer } from "@/lib/catalogPricing";
 import { refreshLegacyText } from "@/data/catalogReview";
+import { en } from "@/i18n/en";
+import { de } from "@/i18n/de";
+import { uk } from "@/i18n/uk";
 
 describe("Autumn 2026 catalog requirements", () => {
   it("reserves HOT exclusively for the five new researched offers", () => {
@@ -62,5 +65,24 @@ describe("Autumn 2026 catalog requirements", () => {
   it("normalizes names without duplicating Kling or silently switching vendors", () => {
     expect(refreshLegacyText("Kling VIDEO 3.0")).toBe("Kling VIDEO 3.0");
     expect(refreshLegacyText("Sora / Midjourney v7 / Google Antigravity / Manus AI")).toBe("Sora / Midjourney / Google Antigravity / Manus AI");
+  });
+  it("prices MVP-on-Demand by spec size with no per-character surcharge", () => {
+    const rawDescriptions = [en["service.mvp-on-demand.info.description"], de["service.mvp-on-demand.info.description"], uk["service.mvp-on-demand.info.description"]];
+    const rawSubtitles = [en["service.mvp-on-demand.subtitle"], de["service.mvp-on-demand.subtitle"], uk["service.mvp-on-demand.subtitle"]];
+    for (const text of [...rawDescriptions, ...rawSubtitles]) {
+      expect(text).not.toMatch(/0[.,]08/);
+      expect(text).not.toMatch(/per character|per symbol|за символ|Zeichengebühr|pro Zeichen/i);
+    }
+    expect(rawDescriptions[0]).toMatch(/assessed individually/i);
+    expect(rawDescriptions[1]).toMatch(/individuell bewertet/i);
+    expect(rawDescriptions[2]).toMatch(/оцінюється індивідуально/i);
+    for (const locale of ["en", "de", "uk"] as const) {
+      const description = translations["service.mvp-on-demand.info.description"][locale];
+      expect(description).not.toMatch(/0[.,]08/);
+      expect(description).toMatch(/confirmed before the order is placed|vor Auftragsbestätigung|до підтвердження замовлення/i);
+    }
+    expect(translations["service.mvp-on-demand.info.description"].en).toMatch(/assessed individually/i);
+    expect(translations["service.mvp-on-demand.info.description"].de).toMatch(/individuell bewertet/i);
+    expect(translations["service.mvp-on-demand.info.description"].uk).toMatch(/оцінюється індивідуально/i);
   });
 });

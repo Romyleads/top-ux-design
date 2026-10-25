@@ -868,9 +868,9 @@ export const en: Record<string, string> = {
   "service.ai-twin.tier.2.3": "Unlimited revisions · CRM integration",
 
   "service.mvp-on-demand.name": "MVP-on-Demand",
-  "service.mvp-on-demand.subtitle": "Working MVP priced by spec length — fair \"per character of idea\" model",
+  "service.mvp-on-demand.subtitle": "Working MVP priced by spec size — clear tiers, large specs quoted individually",
   "service.mvp-on-demand.goal": "Get a working MVP with transparent pricing tied to the depth of your technical specification",
-  "service.mvp-on-demand.info.description": "Building a working MVP from your technical spec with transparent pricing: the more detailed the spec, the more complex the product. Over 15,000 characters — custom quote (+€0.08/character).",
+  "service.mvp-on-demand.info.description": "Building a working MVP from your technical spec with transparent pricing: the more detailed the spec, the more complex the product. Specs over 15,000 characters are assessed individually and the price is confirmed before the order is placed.",
   "service.mvp-on-demand.info.content.0": "Analysis of your spec and scope sizing",
   "service.mvp-on-demand.info.content.1": "Clarifying brief and solution architecture",
   "service.mvp-on-demand.info.content.2": "Development on the optimal stack",

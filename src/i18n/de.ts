@@ -802,7 +802,7 @@ export const de: Record<string, string> = {
   "service.mvp-on-demand.name": "MVP-on-Demand",
   "service.mvp-on-demand.subtitle": "Funktionierendes MVP — Preis nach Umfang des Lastenhefts",
   "service.mvp-on-demand.goal": "Funktionierendes MVP mit transparentem Preis basierend auf der Tiefe Ihres Lastenhefts",
-  "service.mvp-on-demand.info.description": "Erstellung eines funktionierenden MVP nach Ihrem Lastenheft mit transparenter Preisgestaltung: Je detaillierter das Lastenheft, desto komplexer das Produkt. Über 15.000 Zeichen — individuelles Angebot (+0,08 €/Zeichen).",
+  "service.mvp-on-demand.info.description": "Erstellung eines funktionierenden MVP nach Ihrem Lastenheft mit transparenter Preisgestaltung: Je detaillierter das Lastenheft, desto komplexer das Produkt. Lastenhefte über 15.000 Zeichen werden individuell bewertet; der Preis wird vor Auftragsbestätigung abgestimmt.",
   "service.mvp-on-demand.info.content.0": "Analyse Ihres Lastenhefts und Umfangsbestimmung",
   "service.mvp-on-demand.info.content.1": "Klärendes Briefing und Lösungsarchitektur",
   "service.mvp-on-demand.info.content.2": "Entwicklung im optimalen Stack",
