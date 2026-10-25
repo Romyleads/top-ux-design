@@ -8,6 +8,8 @@ import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { parseCatalogPrice } from "@/lib/catalogPricing";
 import { saveCartAsOrder } from "@/lib/portalOrders";
+import { CartPaymentButton, PaymentReturnDialog } from "@/components/PayDialog";
+import { Button } from "@/components/ui/button";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -61,6 +63,7 @@ export default function CartDrawer({
 
   return (
     <>
+      <PaymentReturnDialog />
       {/* Overlay */}
       <div
         className={`fixed inset-0 bg-foreground/40 backdrop-blur-[2px] z-[799] transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
@@ -179,9 +182,10 @@ export default function CartDrawer({
             {/* CTA */}
             {!isEmpty && (
               <div className="px-5 py-4 pb-6 flex-shrink-0">
-                <button onClick={() => setStep(2)} className="w-full flex items-center justify-center gap-2 gradient-primary text-primary-foreground text-[14px] font-bold py-3.5 rounded-xl shadow-green hover:shadow-green-hover hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                <CartPaymentButton items={items} total={formatEur(totalPrice)} />
+                <Button variant={hasQuoteItems ? "default" : "outline"} onClick={() => setStep(2)} className="w-full h-auto py-3 mt-2 rounded-lg text-[13px] font-semibold">
                   {t("cart.proceed")} <ArrowRight className="w-4 h-4" />
-                </button>
+                </Button>
                 <p className="text-center text-[11px] text-muted-foreground mt-2">{t("cart.noObligation")}</p>
               </div>
             )}
@@ -255,10 +259,11 @@ export default function CartDrawer({
                       <span className="text-[11.5px] text-muted-foreground leading-relaxed">{t("cart.dsgvo")} *</span>
                     </div>
                   </label>
-                  <button onClick={handleSubmit} className="w-full gradient-primary text-primary-foreground text-[14px] font-bold py-3.5 rounded-xl shadow-green hover:shadow-green-hover hover:-translate-y-0.5 active:translate-y-0 transition-all mt-1 flex items-center justify-center gap-2">
+                  <CartPaymentButton items={items} total={formatEur(totalPrice)} />
+                  <Button variant={hasQuoteItems ? "default" : "outline"} onClick={handleSubmit} className="w-full h-auto py-3 rounded-lg text-[13px] font-semibold">
                     <ArrowRight className="w-4 h-4" />
                     {t("cart.submit")}
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}

@@ -1,3 +1,5 @@
+import { parseCatalogPrice } from "@/lib/catalogPricing";
+
 // Payments are handled by the owner's external cabinet (Node.js + Stripe on their own server).
 // This site never talks to Stripe: it only redirects to CABINET_URL with the chosen plan.
 // Change the address via VITE_CABINET_URL in .env or the fallback below.

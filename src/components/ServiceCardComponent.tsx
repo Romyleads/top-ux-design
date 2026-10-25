@@ -11,7 +11,6 @@ import {
 import type { ServiceCard } from "@/data/services";
 import FeatureIcon from "./FeatureIcon";
 import ToolsStack from "./ToolsStack";
-import { PayButton } from "./PayDialog";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const serviceIcons: Record<string, React.ElementType> = {
@@ -353,7 +352,6 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
           >
             {isOrdered ? t("card.inCart") : `${t("card.add")} ${tier.name} — ${tier.price === "—" ? t("cart.priceTbd") : tier.price}`}
           </button>
-          <PayButton serviceId={service.id} serviceName={serviceName} tierName={tier.name} price={tier.price} />
         </div>
       </div>
     </div>
