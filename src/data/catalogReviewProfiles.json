@@ -7,7 +7,7 @@
     },
     "tools": [
       "Gamma",
-      "Figma Slides",
+      "Beautiful.ai",
       "Adobe Firefly"
     ]
   },
@@ -18,7 +18,7 @@
       "uk": "Цифрові та друковані брошури з чіткою структурою офера, зручним читанням і перевіркою друкарських файлів"
     },
     "tools": [
-      "Adobe InDesign",
+      "Canva Magic Studio",
       "Adobe Firefly",
       "Claude"
     ]
@@ -30,7 +30,7 @@
       "uk": "Структуровані каталоги з перевіреними характеристиками, узгодженими зображеннями та посиланнями на товари"
     },
     "tools": [
-      "Adobe InDesign",
+      "Canva Magic Studio",
       "Adobe Firefly",
       "Lovable"
     ]
@@ -44,7 +44,7 @@
     "tools": [
       "Recraft",
       "Adobe Firefly",
-      "Figma"
+      "Figma Make"
     ]
   },
   "landing-page": {
@@ -104,7 +104,7 @@
     },
     "tools": [
       "Recraft",
-      "Adobe Illustrator",
+      "Ideogram",
       "Adobe Firefly"
     ]
   },
@@ -115,9 +115,9 @@
       "uk": "Готові до друку візитки з чіткими контактами, QR-переходами та перевіркою виробництва"
     },
     "tools": [
-      "Figma",
-      "Adobe Illustrator",
-      "Adobe Substance 3D"
+      "Figma Make",
+      "Recraft",
+      "Meshy"
     ]
   },
   "packaging": {
@@ -127,8 +127,8 @@
       "uk": "Дизайн упаковки на наданих розгортках із точними мокапами та друкарською перевіркою"
     },
     "tools": [
-      "Adobe Illustrator",
-      "Adobe Substance 3D",
+      "Recraft",
+      "Meshy",
       "Adobe Firefly"
     ]
   },
@@ -139,7 +139,7 @@
       "uk": "Практична бренд-система з візуальними правилами, доступними поєднаннями та прикладами для AI-виробництва"
     },
     "tools": [
-      "Figma",
+      "Figma Make",
       "Notion",
       "Claude"
     ]
@@ -163,7 +163,7 @@
       "uk": "Інфографіка з перевіреними джерелами, точними шкалами, доступними підписами та повторними елементами"
     },
     "tools": [
-      "Figma",
+      "Figma Make",
       "Flourish",
       "Recraft"
     ]
@@ -177,7 +177,7 @@
     "tools": [
       "Perplexity",
       "Claude",
-      "Adobe InDesign"
+      "Canva Magic Studio"
     ]
   },
   "case-study": {
@@ -189,7 +189,7 @@
     "tools": [
       "Riverside",
       "Descript",
-      "Figma"
+      "Figma Make"
     ]
   },
   "ebook": {
@@ -200,7 +200,7 @@
     },
     "tools": [
       "Claude",
-      "Adobe InDesign",
+      "Canva Magic Studio",
       "Lovable"
     ]
   },
@@ -332,7 +332,7 @@
     },
     "tools": [
       "Billo",
-      "CapCut",
+      "Captions",
       "Descript"
     ]
   },
@@ -369,7 +369,7 @@
     "tools": [
       "Taplio",
       "Claude",
-      "Figma"
+      "Figma Make"
     ]
   },
   "micro-saas": {
@@ -549,7 +549,7 @@
     },
     "tools": [
       "Recraft",
-      "Figma",
+      "Figma Make",
       "Adobe Firefly"
     ]
   },

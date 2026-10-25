@@ -87,6 +87,13 @@ const toolRoles: Record<string, Localized> = {
   "Adobe InDesign": { en: "Publication layout and print-ready export", de: "Publikationslayout und druckfertiger Export", uk: "Верстка видань та друкарський експорт" },
   "Adobe Illustrator": { en: "Precise vectors and production artwork", de: "Präzise Vektoren und Produktionsgrafiken", uk: "Точні вектори та виробничі макети" },
   "Adobe Substance 3D": { en: "Product and packaging mockups", de: "Produkt- und Verpackungsmockups", uk: "Мокапи товарів та упаковки" },
+  "Figma Make": { en: "AI-generated editable layouts and design components", de: "KI-generierte editierbare Layouts und Designkomponenten", uk: "AI-генерація редагованих макетів і дизайн-компонентів" },
+  "Google Stitch": { en: "AI interface drafts exported to editable design and code", de: "KI-Interface-Entwürfe mit Export in Design und Code", uk: "AI-чернетки інтерфейсів з експортом у дизайн і код" },
+  "Beautiful.ai": { en: "AI slide layouts that keep brand rules automatically", de: "KI-Folienlayouts mit automatischen Markenregeln", uk: "AI-макети слайдів з автоматичними правилами бренду" },
+  "Canva Magic Studio": { en: "AI layout, resizing and print-ready export", de: "KI-Layout, Formatanpassung und druckfertiger Export", uk: "AI-верстка, адаптація форматів і друкарський експорт" },
+  "Ideogram": { en: "AI typography-accurate graphics and concepts", de: "KI-Grafiken mit präziser Typografie", uk: "AI-графіка з точною типографікою" },
+  "Meshy": { en: "AI 3D models and product mockups", de: "KI-3D-Modelle und Produktmockups", uk: "AI-3D-моделі та мокапи товарів" },
+  "Captions": { en: "AI video editing, captions and social exports", de: "KI-Videoschnitt, Untertitel und Social-Exporte", uk: "AI-монтаж, субтитри та експорт для соцмереж" },
   "Descript": { en: "Transcript-based editing and captions", de: "Transkriptbasierter Schnitt und Untertitel", uk: "Монтаж за транскриптом і субтитри" },
   "Riverside": { en: "Interview and podcast recording", de: "Interview- und Podcastaufnahmen", uk: "Запис інтерв’ю та подкастів" },
   "OpusClip": { en: "Short-clip candidates for editorial review", de: "Kurzclip-Vorschläge zur redaktionellen Prüfung", uk: "Чернетки коротких кліпів для редактури" },
@@ -116,6 +123,12 @@ export function refreshLegacyText(text: string): string {
     .replace(/HeyGen Avatar IV/g, "HeyGen")
     .replace(/ElevenLabs v3/g, "ElevenLabs")
     .replace(/Gemini 3\.1 Pro/g, "Gemini")
+    .replace(/HTML \/ WordPress/g, "AI build · Lovable")
+    .replace(/Webflow, WordPress/g, "Lovable, Framer")
+    .replace(/Webflow (?:or|oder|або) Tilda/g, "Lovable / Framer")
+    .replace(/Tilda \/ Framer \+ Zapier/g, "Lovable / Framer + n8n")
+    .replace(/Adobe (?:InDesign|Illustrator|Photoshop)/g, "Adobe Firefly")
+    .replace(/\bFigma(?! Make)(?:-(?=\p{L}))?/gu, (m) => m.endsWith("-") ? "Figma-Make-" : "Figma Make")
     .replace(/\b1M\b/g, "")
     .replace(/80\.9% SWE-bench,?\s*/g, "");
 }
