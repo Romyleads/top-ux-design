@@ -12,6 +12,7 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
 import NotFound from "./pages/NotFound";
+import LegalPage from "./pages/LegalPage";
 import LocaleRedirect from "@/components/LocaleRedirect";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,10 @@ const App = () => (
               <Route path="about" element={<AboutPage />} />
               <Route path="contact" element={<ContactPage />} />
               <Route path="faq" element={<FAQPage />} />
+              <Route path="imprint" element={<LegalPage doc="imprint" />} />
+              <Route path="privacy" element={<LegalPage doc="privacy" />} />
+              <Route path="terms" element={<LegalPage doc="terms" />} />
+              <Route path="cookies" element={<LegalPage doc="cookies" />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />
