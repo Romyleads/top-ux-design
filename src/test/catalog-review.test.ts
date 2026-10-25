@@ -6,6 +6,9 @@ import { translations } from "@/i18n/translations";
 import priceBaseline from "./catalog-prices.fixture.json";
 import { parseCatalogPrice, structuredTierOffer } from "@/lib/catalogPricing";
 import { refreshLegacyText } from "@/data/catalogReview";
+import { en } from "@/i18n/en";
+import { de } from "@/i18n/de";
+import { uk } from "@/i18n/uk";
 
 describe("Autumn 2026 catalog requirements", () => {
   it("reserves HOT exclusively for the five new researched offers", () => {
