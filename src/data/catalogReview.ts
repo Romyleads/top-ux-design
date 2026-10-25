@@ -142,7 +142,6 @@ export const newOffers: NewOffer[] = [
   },
 ];
 
-const languages: Language[] = ["en", "de", "uk"];
 function localize(factory: (language: Language) => string): Localized {
   return { en: factory("en"), de: factory("de"), uk: factory("uk") };
 }
@@ -200,7 +199,9 @@ export function applyCatalogTranslations(dictionary: Dictionary): void {
     dictionary[`service.${id}.info.goal`] = goal;
     dictionary[`service.${id}.info.description`] = localize((l) => `${summary[l]}. ${copy.approach[l]} ${["ai-twin", "avatar-localization", "voice-agent", "creative-testing", "telegram-ai-agent"].includes(id) ? copy.consent[l] : copy.measurement[l]}`);
     [summary, copy.acceptance, copy.quality, copy.handover].forEach((item, index) => { dictionary[`service.${id}.info.content.${index}`] = item; });
-    if (formats) dictionary[`service.${id}.info.formats`] = localize(() => formats);
+    dictionary[`service.${id}.info.formats`] = formats
+      ? localize(() => formats)
+      : dictionary[`service.${id}.info.formats`] ?? dictionary[`service.${id}.tier.0.1`] ?? localize(() => "PDF / CSV");
     tools.forEach((name, index) => { dictionary[`tool.${id}.${index}.purpose`] = purpose(name); });
   };
   for (const [id, profile] of Object.entries(profiles)) {
