@@ -11,3 +11,7 @@
 - [x] Verify all HOT flags, existing prices, quote-only prices and structured price data.
 - [x] Exercise every localized card-to-detail route and representative cart flows; run regression tests (156 transitions, 10 tests).
 - [x] Record audit findings and remaining verification limits (account access, licenses and historical release dates not independently verified).
+
+## Cart payment
+- [ ] Move external payment into the shared cart and remove separate offer payment buttons.
+- [ ] Preserve all selected plans and quantities in the cabinet handoff; verify EN/DE/UK cart flows and tests.
