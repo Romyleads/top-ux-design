@@ -24,6 +24,11 @@ const serviceIcons: Record<string, React.ElementType> = {
   "ai-content": Bot, "saas-onboarding": Map, "linkedin-brand": Briefcase, "micro-saas": Zap,
   "interactive-content": Gamepad2, "podcast": Mic,
   "saas-builder": Wallet, "telegram-twa": Send, "ai-automation": Cpu, "nocode-mvp": Blocks,
+  "vibe-coding-visionary": Blocks, "ai-twin": Bot, "mvp-on-demand": Rocket,
+  "ai-video-catalog": Clapperboard, "reverse-engineering": BarChart3, "prompt-dna": Cpu,
+  "telegram-ai-agent": Send, "generative-identity": Pencil, "ai-forecast": BarChart3,
+  "creative-testing": Target, "avatar-localization": Globe, "ai-search-visibility": Globe,
+  "voice-agent": Mic, "content-repurpose": RefreshCw,
 };
 
 function tList(t: (key: string) => string, prefix: string): string[] {
@@ -298,7 +303,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
                 <span className={`text-[15px] font-extrabold leading-none transition-colors duration-300 ${
                   i === activeTier ? "text-foreground" : "text-t3"
                 }`}>
-                  {tierItem.price}
+                      {tierItem.price === "—" ? t("catalog.quote") : tierItem.price}
                 </span>
               </button>
             ))}
@@ -345,7 +350,7 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
               boxShadow: '0 6px 20px -4px rgba(22, 163, 74, 0.4), 0 2px 4px rgba(22, 163, 74, 0.15)',
             } : undefined}
           >
-            {isOrdered ? t("card.inCart") : `${t("card.add")} ${tier.name} — ${tier.price}`}
+            {isOrdered ? t("card.inCart") : `${t("card.add")} ${tier.name} — ${tier.price === "—" ? t("cart.priceTbd") : tier.price}`}
           </button>
         </div>
       </div>

@@ -1,4 +1,10 @@
 // Image imports
+import { buildNewOffers, reviewExistingServices } from "./catalogReview";
+import imgCreativeTesting from "@/assets/services/creative-testing.jpg";
+import imgAvatarLocalization from "@/assets/services/avatar-localization.jpg";
+import imgAiSearchVisibility from "@/assets/services/ai-search-visibility.jpg";
+import imgVoiceAgent from "@/assets/services/voice-agent.jpg";
+import imgContentRepurpose from "@/assets/services/content-repurpose.jpg";
 import imgPresentation from "@/assets/services/presentation.webp";
 import imgBrochure from "@/assets/services/brochure.webp";
 import imgCatalog from "@/assets/services/catalog.webp";
@@ -115,7 +121,7 @@ const tf = (s: string, f: string, c: string, ch: string): TierFeature[] => [
   { icon: "check", text: ch },
 ];
 
-export const services: ServiceCard[] = [
+const legacyServices: ServiceCard[] = [
   // ═══════════════════════════════════════
   // b1: Друкована продукція (4)
   // ═══════════════════════════════════════
@@ -1417,4 +1423,15 @@ export const services: ServiceCard[] = [
       { name: "Exploding Topics", purpose: "Раннє виявлення трендів на роки вперед", premium: true },
     ],
   },
+];
+
+export const services: ServiceCard[] = [
+  ...reviewExistingServices(legacyServices),
+  ...buildNewOffers({
+    "creative-testing": imgCreativeTesting,
+    "avatar-localization": imgAvatarLocalization,
+    "ai-search-visibility": imgAiSearchVisibility,
+    "voice-agent": imgVoiceAgent,
+    "content-repurpose": imgContentRepurpose,
+  }),
 ];

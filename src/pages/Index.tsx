@@ -66,6 +66,7 @@ export default function Index() {
           ...s.tierFeatures.flat().map((f) => f.text),
           ...translatedInfo,
           ...translatedTiers,
+           ...(s.tools ?? []).flatMap((tool, i) => [tool.name, t(`tool.${s.id}.${i}.purpose`)]),
         ].join(" ");
         return wordRe.test(searchable);
       });
