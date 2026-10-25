@@ -1,5 +1,6 @@
 // Image imports
 import { buildNewOffers, reviewExistingServices } from "./catalogReview";
+import { translations } from "@/i18n/translations";
 import imgCreativeTesting from "@/assets/services/creative-testing.jpg";
 import imgAvatarLocalization from "@/assets/services/avatar-localization.jpg";
 import imgAiSearchVisibility from "@/assets/services/ai-search-visibility.jpg";
@@ -1434,4 +1435,14 @@ export const services: ServiceCard[] = [
     "voice-agent": imgVoiceAgent,
     "content-repurpose": imgContentRepurpose,
   }),
-];
+].map((service) => ({
+  ...service,
+  name: translations[`service.${service.id}.name`].uk,
+  subtitle: translations[`service.${service.id}.subtitle`].uk,
+  goal: translations[`service.${service.id}.goal`].uk,
+  tag: "Catalog review 2026-10-25",
+  tierFeatures: service.tierFeatures.map((tier, ti) => tier.map((feature, fi) => ({ ...feature, text: translations[`service.${service.id}.tier.${ti}.${fi}`].uk }))),
+  info: service.info.map((section) => section.kind === "content"
+    ? { ...section, items: Array.from({ length: 4 }, (_, index) => translations[`service.${service.id}.info.content.${index}`].uk) }
+    : { ...section, text: translations[`service.${service.id}.info.${section.kind}`].uk }),
+}));

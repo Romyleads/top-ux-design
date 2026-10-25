@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
+import { parseCatalogPrice } from "@/lib/catalogPricing";
 
 export interface CartItem {
   id: string;
@@ -16,10 +17,7 @@ export function useCart() {
 
   const totalItems = items.reduce((s, i) => s + i.qty, 0);
 
-  const parsePrice = (str: string): number | null => {
-    const m = str.replace(/\./g, "").match(/\d+/);
-    return m ? parseInt(m[0]) : null;
-  };
+  const parsePrice = parseCatalogPrice;
 
   const totalPrice = items.reduce((s, i) => {
     const p = parsePrice(i.price);
