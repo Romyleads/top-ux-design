@@ -37,7 +37,9 @@ export default function CartDrawer({
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [dsgvo, setDsgvo] = useState(false);
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const requestLabel = locale === "uk" ? "Запросити пропозицію" : locale === "de" ? "Angebot anfordern" : "Request a quote";
+  const quoteNote = locale === "uk" ? "Оплата після погодження вартості всіх послуг." : locale === "de" ? "Zahlung nach Preisvereinbarung für alle Leistungen." : "Payment after prices for all services are agreed.";
 
   const isEmpty = items.length === 0;
   const hasQuoteItems = items.some((item) => parseCatalogPrice(item.price) === null);
@@ -183,8 +185,9 @@ export default function CartDrawer({
             {!isEmpty && (
               <div className="px-5 py-4 pb-6 flex-shrink-0">
                 <CartPaymentButton items={items} total={formatEur(totalPrice)} />
+                {hasQuoteItems && <p className="text-[12px] text-muted-foreground mb-2">{quoteNote}</p>}
                 <Button variant={hasQuoteItems ? "default" : "outline"} onClick={() => setStep(2)} className="w-full h-auto py-3 mt-2 rounded-lg text-[13px] font-semibold">
-                  {t("cart.proceed")} <ArrowRight className="w-4 h-4" />
+                  {requestLabel} <ArrowRight className="w-4 h-4" />
                 </Button>
                 <p className="text-center text-[11px] text-muted-foreground mt-2">{t("cart.noObligation")}</p>
               </div>
@@ -218,6 +221,7 @@ export default function CartDrawer({
                 </div>
                 <div className="text-lg font-extrabold text-foreground mb-1">{t("cart.sent")}</div>
                 <p className="text-muted-foreground text-[13px] leading-relaxed max-w-[260px]">{t("cart.sentMsg")}</p>
+                <div className="w-full mt-5"><CartPaymentButton items={items} total={formatEur(totalPrice)} /></div>
               </div>
             ) : (
               <div className="px-5 py-4 flex-1">
@@ -260,6 +264,7 @@ export default function CartDrawer({
                     </div>
                   </label>
                   <CartPaymentButton items={items} total={formatEur(totalPrice)} />
+                  {hasQuoteItems && <p className="text-[12px] text-muted-foreground">{quoteNote}</p>}
                   <Button variant={hasQuoteItems ? "default" : "outline"} onClick={handleSubmit} className="w-full h-auto py-3 rounded-lg text-[13px] font-semibold">
                     <ArrowRight className="w-4 h-4" />
                     {t("cart.submit")}
