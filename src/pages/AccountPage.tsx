@@ -26,7 +26,7 @@ export function PortalShell({ title, children }: { title: string; children: Reac
   );
 }
 
-export function TabBar<T extends PortalKey>({ tabs, active, onChange }: { tabs: readonly T[]; active: T; onChange: (t: T) => void }) {
+export function TabBar<T extends PortalKey>({ tabs, active, onChange }: { tabs: readonly T[]; active: NoInfer<T>; onChange: (t: NoInfer<T>) => void }) {
   const { locale } = useLanguage();
   return (
     <div className="flex flex-wrap gap-1 border-b border-border mb-6">

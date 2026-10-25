@@ -5,3 +5,9 @@
 - Apply catalog audit overrides before deriving service fallback/search text, so corrected localized scopes cannot coexist with stale raw claims.
 - Parse only complete integer EUR price strings with the shared catalog pricing helper; quote-only tiers have no numeric structured price and mixed carts identify partial totals.
 - Record research sources with a verification date and distinguish observed product capabilities from unverified release dates.
+# Client portal
+
+- The client portal targets the owner's self-hosted Supabase stack: schema lives in `selfhost/migrations`, server functions in `selfhost/functions`, and the browser connects only via `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY`, so the project can move servers without code changes.
+- Roles live in `user_roles` and every portal table is protected by RLS via `has_role`; clients may only create `new` orders and `open` tickets, while status changes, invoices and payments are admin-only.
+- Status values in `src/lib/supabase.ts` must mirror the SQL enums (covered by `src/test/portal-schema.test.ts`).
+- Legal page texts live in `src/data/legal.ts` with bracketed owner placeholders; the German text is binding.
