@@ -1,8 +1,8 @@
 # Catalog review — September–October 2026
 
 ## AI-first production update
-- [ ] Research official AI creative/development alternatives and refresh EN/DE/UK production descriptions and tool mappings without changing prices, IDs or outputs.
-- [ ] Validate all reviewed offers, record dated sources and check expanded details in preview.
+- [x] Research official AI creative/development alternatives and refresh EN/DE/UK production descriptions and tool mappings; prices, IDs and images preserved, unsupported branded source-file promises qualified.
+- [x] Validate all reviewed offers, record dated sources and check expanded details in preview (52 panels × 3 languages, brandbook higher tiers, no runtime errors; 22 tests passed).
 
 - [x] Verify market offers and technology names against official sources.
 - [x] Review every existing offer; refresh descriptions, deliverables and tool stacks in EN, DE and UK.
