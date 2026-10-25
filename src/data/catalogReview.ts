@@ -188,7 +188,7 @@ export const newOffers: NewOffer[] = [
     outcome: { en: "Get more approved assets from existing expertise with traceable source references", de: "Mehr freigegebene Materialien aus vorhandener Expertise mit nachvollziehbaren Quellen gewinnen", uk: "Отримати більше погоджених матеріалів із наявної експертизи з посиланнями на джерело" },
     scopes: [{ en: "1 source · 5 assets", de: "1 Quelle · 5 Materialien", uk: "1 джерело · 5 матеріалів" }, { en: "1 source · 10 assets", de: "1 Quelle · 10 Materialien", uk: "1 джерело · 10 матеріалів" }, { en: "2 sources · 20 assets", de: "2 Quellen · 20 Materialien", uk: "2 джерела · 20 матеріалів" }],
     formats: "MP4 · SRT · DOCX · PNG · ≤ 60 min / source",
-    tools: ["Claude", "Descript", "OpusClip", "Figma"], days: [5, 7, 10],
+    tools: ["Claude", "Descript", "OpusClip", "Figma Make"], days: [5, 7, 10],
   },
 ];
 
