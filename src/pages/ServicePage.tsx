@@ -9,6 +9,7 @@ import ToolsStack from "@/components/ToolsStack";
 import CartFab from "@/components/CartFab";
 import CartDrawer from "@/components/CartDrawer";
 import { ArrowLeft, ChevronRight } from "lucide-react";
+import { structuredTierOffer } from "@/lib/catalogPricing";
 
 function tList(t: (key: string) => string, prefix: string): string[] {
   const result: string[] = [];
@@ -60,13 +61,7 @@ export default function ServicePage() {
       name: "PromoVisions",
       url: "https://promovisions.com",
     },
-    offers: service.tiers.map((t) => ({
-      "@type": "Offer",
-      name: t.name,
-      price: t.price.replace(/[^\d]/g, "") || undefined,
-      priceCurrency: "EUR",
-      priceSpecification: { "@type": "PriceSpecification", price: t.price },
-    })),
+    offers: service.tiers.map(structuredTierOffer),
   };
 
   return (

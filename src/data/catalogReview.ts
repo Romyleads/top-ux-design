@@ -36,7 +36,7 @@ const toolPurposes: Record<string, Localized> = {
   "Adobe Firefly": { en: "Visual concepts and controlled asset adaptations", de: "Bildkonzepte und kontrollierte Materialanpassungen", uk: "Візуальні концепції та контрольовані адаптації" },
   "Recraft": { en: "Vector and raster assets with brand references", de: "Vektor- und Rastermaterial mit Markenreferenzen", uk: "Векторні та растрові матеріали за референсами бренду" },
   "Lovable": { en: "Web interfaces and scoped connected app workflows", de: "Weboberflächen und abgegrenzte App-Abläufe", uk: "Вебінтерфейси та визначені сценарії застосунків" },
-  "n8n": { en: "Logged integrations, approval gates and handoffs", de: "Protokollierte Integrationen, Freigaben und Übergaben", uk: "Інтеграції з журналами, погодженнями та передачею" },
+  "n8n": { en: "Integrations with configured logs, approval gates and handoffs", de: "Integrationen mit eingerichteten Protokollen, Freigaben und Übergaben", uk: "Інтеграції з налаштованими журналами, погодженнями та передачею" },
   "Telegram Stars": { en: "Platform-compliant digital-goods payments", de: "Plattformkonforme Zahlungen für digitale Güter", uk: "Оплата цифрових товарів за правилами платформи" },
   "Perplexity": { en: "Source discovery with independent fact checking", de: "Quellenrecherche mit unabhängiger Faktenprüfung", uk: "Пошук джерел із незалежним фактчекінгом" },
 };
@@ -106,17 +106,15 @@ export function refreshLegacyText(text: string): string {
     .replace(/Claude Sonnet 4\.6|Claude Opus 4\.[\d]+/g, "Claude")
     .replace(/GPT-5\.[\d]+/g, "OpenAI GPT")
     .replace(/GPT Image 2|DALL[·-]E(?: 3)?/g, "GPT Image")
-    .replace(/Nano Banana Pro|Midjourney v7/g, "Gemini image generation")
-    .replace(/Sora(?: 2(?: Pro)?)?/g, "Veo 3.1")
-    .replace(/Seedance 2\.0/g, "Seedance 2.5")
-    .replace(/Kling(?: 2\.5| 3\.0)?\b/g, "Kling VIDEO 3.0")
+    .replace(/Nano Banana Pro/g, "Gemini image generation")
+    .replace(/Midjourney v7/g, "Midjourney")
+    .replace(/Seedance 2\.0/g, "Seedance")
+    .replace(/\bKling(?: VIDEO)?(?: 2\.5| 3\.0)?\b/g, "Kling VIDEO 3.0")
     .replace(/Recraft V3/g, "Recraft")
     .replace(/Cursor 3\.0/g, "Cursor")
     .replace(/Gamma 2\.0/g, "Gamma")
     .replace(/HeyGen Avatar IV/g, "HeyGen")
     .replace(/ElevenLabs v3/g, "ElevenLabs")
-    .replace(/Google Antigravity/g, "Replit")
-    .replace(/Grok 4\.20|Perplexity Computer|Manus AI/g, "Perplexity")
     .replace(/Gemini 3\.1 Pro/g, "Gemini")
     .replace(/\b1M\b/g, "")
     .replace(/80\.9% SWE-bench,?\s*/g, "");
@@ -249,7 +247,7 @@ export function applyCatalogTranslations(dictionary: Dictionary): void {
     // Old model-heavy feature rows use reviewed tool families instead.
     for (let tier = 0; tier < 3; tier++) {
       const key = `service.${id}.tier.${tier}.1`;
-      if (dictionary[key] && /Sora|DALL|GPT|Claude|Midjourney|Tilda|Bubble|Runway|Lovable|Full.stack|AI \+|Custom AI/i.test(dictionary[key].en)) {
+      if (dictionary[key] && /Sora|DALL|GPT|Claude|Midjourney|Antigravity|Grok|Manus|Tilda|Bubble|Runway|Lovable|Full.stack|AI \+|Custom AI/i.test(dictionary[key].en)) {
         dictionary[key] = localize(() => profile.tools.slice(0, 3).join(" · "));
       }
     }

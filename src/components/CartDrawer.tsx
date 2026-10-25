@@ -6,6 +6,7 @@ import {
 import type { CartItem } from "@/hooks/useCart";
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { parseCatalogPrice } from "@/lib/catalogPricing";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -36,6 +37,7 @@ export default function CartDrawer({
   const { t } = useLanguage();
 
   const isEmpty = items.length === 0;
+  const hasQuoteItems = items.some((item) => parseCatalogPrice(item.price) === null);
 
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -120,6 +122,7 @@ export default function CartDrawer({
                   {hasPrice ? <span className="text-primary">{formatEur(totalPrice)}</span> : <span className="text-[14px] text-muted-foreground">{t("cart.priceTbd")}</span>}
                 </div>
                 <div className="text-[11px] text-muted-foreground mt-1.5">{t("cart.priceNote")}</div>
+                {hasPrice && hasQuoteItems && <div className="text-[11px] text-muted-foreground mt-1.5">{t("cart.partialEstimate")}</div>}
               </div>
             )}
 
@@ -150,7 +153,7 @@ export default function CartDrawer({
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-[12.5px] font-semibold text-foreground truncate">{getDisplayName(item)}</div>
-                        <div className="text-[11px] text-muted-foreground">{item.price}</div>
+                        <div className="text-[11px] text-muted-foreground">{parseCatalogPrice(item.price) === null ? t("cart.priceTbd") : item.price}</div>
                       </div>
                       <div className="flex items-center bg-card rounded-lg overflow-hidden flex-shrink-0 shadow-sm border border-border/50">
                         <button onClick={() => onChangeQty(item.id, item.tierName, -1)} className="text-muted-foreground w-7 h-7 flex items-center justify-center hover:bg-secondary hover:text-foreground transition-colors">
@@ -192,7 +195,8 @@ export default function CartDrawer({
                   <span className="text-[11px] text-muted-foreground truncate block">
                     {items.map((i) => getDisplayName(i)).join(", ")}
                   </span>
-                  <span className="text-[13px] font-bold text-foreground">{hasPrice ? formatEur(totalPrice) : ""}</span>
+                  <span className="text-[13px] font-bold text-foreground">{hasPrice ? formatEur(totalPrice) : t("cart.priceTbd")}</span>
+                  {hasPrice && hasQuoteItems && <p className="text-[11px] text-muted-foreground">{t("cart.partialEstimate")}</p>}
                 </div>
               </div>
               <button onClick={() => setStep(1)} className="text-muted-foreground text-[11px] font-medium px-3 py-1.5 rounded-lg hover:bg-background hover:text-foreground transition-colors flex-shrink-0">
