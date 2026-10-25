@@ -34,7 +34,7 @@ const toolPurposes: Record<string, Localized> = {
   "GPT Image": { en: "Reference-led image generation and editing", de: "Referenzbasierte Bilderzeugung und Bearbeitung", uk: "Генерація та редагування зображень за референсами" },
   "Gemini image generation": { en: "Product-scene concepts and image editing", de: "Produktszenen-Konzepte und Bildbearbeitung", uk: "Концепції товарних сцен і редагування зображень" },
   "Adobe Firefly": { en: "Visual concepts and controlled asset adaptations", de: "Bildkonzepte und kontrollierte Materialanpassungen", uk: "Візуальні концепції та контрольовані адаптації" },
-  "Recraft": { en: "Vector and raster assets with brand references", de: "Vektor- und Rastermaterial mit Markenreferenzen", uk: "Векторні та растрові матеріали за референсами бренду" },
+  "Recraft": { en: "SVG vector drafts, refined and checked before handover", de: "SVG-Vektorentwürfe, vor Übergabe überarbeitet und geprüft", uk: "SVG-чернетки векторів, доопрацьовані й перевірені перед передачею" },
   "Lovable": { en: "Web interfaces and scoped connected app workflows", de: "Weboberflächen und abgegrenzte App-Abläufe", uk: "Вебінтерфейси та визначені сценарії застосунків" },
   "n8n": { en: "Integrations with configured logs, approval gates and handoffs", de: "Integrationen mit eingerichteten Protokollen, Freigaben und Übergaben", uk: "Інтеграції з налаштованими журналами, погодженнями та передачею" },
   "Telegram Stars": { en: "Platform-compliant digital-goods payments", de: "Plattformkonforme Zahlungen für digitale Güter", uk: "Оплата цифрових товарів за правилами платформи" },
@@ -87,12 +87,12 @@ const toolRoles: Record<string, Localized> = {
   "Adobe InDesign": { en: "Publication layout and print-ready export", de: "Publikationslayout und druckfertiger Export", uk: "Верстка видань та друкарський експорт" },
   "Adobe Illustrator": { en: "Precise vectors and production artwork", de: "Präzise Vektoren und Produktionsgrafiken", uk: "Точні вектори та виробничі макети" },
   "Adobe Substance 3D": { en: "Product and packaging mockups", de: "Produkt- und Verpackungsmockups", uk: "Мокапи товарів та упаковки" },
-  "Figma Make": { en: "AI-generated editable layouts and design components", de: "KI-generierte editierbare Layouts und Designkomponenten", uk: "AI-генерація редагованих макетів і дизайн-компонентів" },
-  "Google Stitch": { en: "AI interface drafts exported to editable design and code", de: "KI-Interface-Entwürfe mit Export in Design und Code", uk: "AI-чернетки інтерфейсів з експортом у дизайн і код" },
+  "Figma Make": { en: "AI layout drafts; delivered as editable Figma files", de: "KI-Layoutentwürfe; Übergabe als editierbare Figma-Dateien", uk: "AI-чернетки макетів; передаються як редаговані файли Figma" },
+  "Google Stitch": { en: "AI interface drafts with Figma and HTML export", de: "KI-Interface-Entwürfe mit Figma- und HTML-Export", uk: "AI-чернетки інтерфейсів з експортом у Figma та HTML" },
   "Beautiful.ai": { en: "AI slide layouts that keep brand rules automatically", de: "KI-Folienlayouts mit automatischen Markenregeln", uk: "AI-макети слайдів з автоматичними правилами бренду" },
-  "Canva Magic Studio": { en: "AI layout, resizing and print-ready export", de: "KI-Layout, Formatanpassung und druckfertiger Export", uk: "AI-верстка, адаптація форматів і друкарський експорт" },
+  "Canva Magic Studio": { en: "AI-assisted layout, resizing and PDF export; print specs confirmed with your printer", de: "KI-gestütztes Layout, Formatanpassung und PDF-Export; Druckvorgaben mit Ihrer Druckerei abgestimmt", uk: "AI-верстка, адаптація форматів і PDF-експорт; вимоги друку погоджуються з друкарнею" },
   "Ideogram": { en: "AI typography-accurate graphics and concepts", de: "KI-Grafiken mit präziser Typografie", uk: "AI-графіка з точною типографікою" },
-  "Meshy": { en: "AI 3D models and product mockups", de: "KI-3D-Modelle und Produktmockups", uk: "AI-3D-моделі та мокапи товарів" },
+  "Meshy": { en: "AI 3D previews for packaging and product mockups", de: "KI-3D-Vorschauen für Verpackungs- und Produktmockups", uk: "AI-3D-превʼю для мокапів упаковки й товарів" },
   "Captions": { en: "AI video editing, captions and social exports", de: "KI-Videoschnitt, Untertitel und Social-Exporte", uk: "AI-монтаж, субтитри та експорт для соцмереж" },
   "Descript": { en: "Transcript-based editing and captions", de: "Transkriptbasierter Schnitt und Untertitel", uk: "Монтаж за транскриптом і субтитри" },
   "Riverside": { en: "Interview and podcast recording", de: "Interview- und Podcastaufnahmen", uk: "Запис інтерв’ю та подкастів" },
@@ -127,8 +127,6 @@ export function refreshLegacyText(text: string): string {
     .replace(/Webflow, WordPress/g, "Lovable, Framer")
     .replace(/Webflow (?:or|oder|або) Tilda/g, "Lovable / Framer")
     .replace(/Tilda \/ Framer \+ Zapier/g, "Lovable / Framer + n8n")
-    .replace(/Adobe (?:InDesign|Illustrator|Photoshop)/g, "Adobe Firefly")
-    .replace(/\bFigma(?! Make)(?:-(?=\p{L}))?/gu, (m) => m.endsWith("-") ? "Figma-Make-" : "Figma Make")
     .replace(/\b1M\b/g, "")
     .replace(/80\.9% SWE-bench,?\s*/g, "");
 }
