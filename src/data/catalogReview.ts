@@ -42,6 +42,45 @@ const toolPurposes: Record<string, Localized> = {
 };
 
 const toolRoles: Record<string, Localized> = {
+  "Google Search Console": { en: "Indexing checks and search performance evidence", de: "Indexierungsprüfung und Suchleistungsdaten", uk: "Перевірка індексації та дані ефективності пошуку" },
+  "Google Trends": { en: "Dated demand signals and regional comparisons", de: "Datierte Nachfragesignale und regionale Vergleiche", uk: "Датовані сигнали попиту та порівняння регіонів" },
+  "Google Analytics": { en: "Consent-aware campaign and conversion measurement", de: "Einwilligungsbasierte Kampagnen- und Conversion-Messung", uk: "Вимірювання кампаній і конверсій за згодою" },
+  "Semrush": { en: "Search topics and competitive content analysis", de: "Suchthemen und Wettbewerbs-Content-Analyse", uk: "Пошукові теми та аналіз контенту конкурентів" },
+  "Similarweb": { en: "Estimated competitive audience and channel benchmarks", de: "Geschätzte Zielgruppen- und Kanalbenchmarks", uk: "Оціночні показники аудиторії та каналів конкурентів" },
+  "Exploding Topics": { en: "Emerging-topic discovery for hypothesis testing", de: "Neue Themen für die Hypothesenprüfung entdecken", uk: "Пошук нових тем для перевірки гіпотез" },
+  "Meta Ads Library": { en: "Public advertising examples and creative comparisons", de: "Öffentliche Werbebeispiele und Kreativvergleiche", uk: "Публічні рекламні приклади та порівняння креативів" },
+  "Google Ads": { en: "Search campaign setup and conversion optimization", de: "Suchkampagnen und Conversion-Optimierung", uk: "Пошукові кампанії та оптимізація конверсій" },
+  "Meta Ads": { en: "Audience exclusions and controlled creative tests", de: "Zielgruppenausschlüsse und kontrollierte Kreativtests", uk: "Виключення аудиторій і контрольовані тести креативів" },
+  "Optmyzr": { en: "Budget monitoring and search campaign rules", de: "Budgetüberwachung und Suchkampagnenregeln", uk: "Моніторинг бюджету та правила пошукових кампаній" },
+  "Looker Studio": { en: "Campaign reporting and metric dashboards", de: "Kampagnenberichte und Kennzahl-Dashboards", uk: "Звіти кампаній та дашборди метрик" },
+  "Microsoft Clarity": { en: "Session insights and usability diagnostics", de: "Sitzungsanalyse und Nutzbarkeitsdiagnose", uk: "Аналіз сесій та діагностика зручності" },
+  "PostHog": { en: "Product events, funnels and usage measurement", de: "Produktergebnisse, Funnels und Nutzungsmessung", uk: "Події продукту, воронки та вимірювання використання" },
+  "Notion": { en: "Brand knowledge and team handover documentation", de: "Markenwissen und Übergabedokumentation", uk: "Знання бренду та документація для команди" },
+  "Flourish": { en: "Data charts with validated scales and labels", de: "Datencharts mit geprüften Skalen und Labels", uk: "Діаграми з перевіреними шкалами й підписами" },
+  "Buffer": { en: "Approved social publishing and editorial scheduling", de: "Freigegebene Social-Veröffentlichung und Redaktionsplanung", uk: "Погоджені соціальні публікації та розклад" },
+  "Bannerbear": { en: "Template-based multi-format creative exports", de: "Vorlagenbasierte Kreativexporte in mehreren Formaten", uk: "Шаблонний експорт креативів у різних форматах" },
+  "Billo": { en: "Real creator sourcing and product-video briefs", de: "Echte Creator und Produktvideo-Briefings", uk: "Пошук реальних креаторів і брифи товарних відео" },
+  "CapCut": { en: "Social video editing and platform-specific exports", de: "Social-Video-Schnitt und Plattformexporte", uk: "Монтаж соціальних відео та платформний експорт" },
+  "VideoAsk": { en: "Customer video responses with approved permissions", de: "Kunden-Videoantworten mit freigegebenen Rechten", uk: "Клієнтські відеовідповіді з погодженими правами" },
+  "Tella": { en: "Actual product screen recordings and walkthroughs", de: "Echte Bildschirmaufnahmen und Produktführungen", uk: "Записи реального екрана та огляди продукту" },
+  "Taplio": { en: "LinkedIn editorial planning and post scheduling", de: "LinkedIn-Redaktionsplanung und Beitragsplanung", uk: "Редакційне планування та розклад LinkedIn" },
+  "Klaviyo": { en: "Consent-based audience segmentation and email journeys", de: "Einwilligungsbasierte Segmentierung und E-Mail-Strecken", uk: "Сегментація за згодою та email-сценарії" },
+  "Customer.io": { en: "Event-triggered lifecycle messaging and exclusions", de: "Ereignisbasierte Lifecycle-Nachrichten und Ausschlüsse", uk: "Подієві повідомлення життєвого циклу та виключення" },
+  "beehiiv": { en: "Newsletter templates and subscriber management", de: "Newsletter-Vorlagen und Abonnentenverwaltung", uk: "Шаблони розсилок і керування підписниками" },
+  "Resend": { en: "Transactional email delivery and sending diagnostics", de: "Transaktions-E-Mails und Versanddiagnose", uk: "Транзакційна пошта та діагностика відправлення" },
+  "Maizzle": { en: "Email markup and rendering-compatible templates", de: "E-Mail-Markup und kompatible Vorlagen", uk: "Email-розмітка та сумісні шаблони" },
+  "Typeform": { en: "Accessible questionnaire and lead qualification flows", de: "Zugängliche Fragebögen und Lead-Qualifizierung", uk: "Доступні анкети та кваліфікація заявок" },
+  "Outgrow": { en: "Interactive calculator and quiz logic", de: "Interaktive Rechner- und Quizlogik", uk: "Логіка інтерактивних калькуляторів і квізів" },
+  "Userflow": { en: "In-product onboarding and task guidance", de: "Onboarding und Aufgabenhilfe im Produkt", uk: "Онбординг і підказки завдань у продукті" },
+  "Taboola": { en: "Disclosed native-ad distribution and campaign setup", de: "Gekennzeichnete Native-Ads und Kampagnenaufbau", uk: "Позначена нативна реклама та налаштування кампаній" },
+  "Stripe": { en: "Payment flows and checkout testing", de: "Zahlungsabläufe und Checkout-Tests", uk: "Платіжні сценарії та перевірка оформлення" },
+  "Stripe Billing": { en: "Subscription billing and customer portal", de: "Abo-Abrechnung und Kundenportal", uk: "Підписний білінг та кабінет клієнта" },
+  "grammY": { en: "Telegram bot interactions and validated updates", de: "Telegram-Bot-Interaktionen und geprüfte Updates", uk: "Взаємодія Telegram-бота та перевірені події" },
+  "Cursor": { en: "Code refinement and acceptance-test implementation", de: "Code-Verfeinerung und Abnahmetests", uk: "Доопрацювання коду та приймальні тести" },
+  "Claude Code": { en: "Implementation assistance and code review", de: "Implementierungshilfe und Code-Prüfung", uk: "Допомога розробці та перевірка коду" },
+  "Replit": { en: "Comparable working prototypes and pilot deployment", de: "Vergleichbare Prototypen und Pilotbereitstellung", uk: "Порівнювані прототипи та розгортання пілота" },
+  "Framer": { en: "Marketing-page layout and publication", de: "Marketingseiten-Layout und Veröffentlichung", uk: "Макети маркетингових сторінок і публікація" },
+  "Make": { en: "Visual integrations with controlled handoffs", de: "Visuelle Integrationen mit kontrollierten Übergaben", uk: "Візуальні інтеграції з контрольованою передачею" },
   "Gamma": { en: "Slide drafting and presentation structure", de: "Folienentwürfe und Präsentationsstruktur", uk: "Чернетки слайдів і структура презентації" },
   "Figma": { en: "Editable layouts and reusable design components", de: "Editierbare Layouts und wiederverwendbare Gestaltungselemente", uk: "Редаговані макети та повторні дизайн-елементи" },
   "Figma Slides": { en: "Editable presentation layouts", de: "Editierbare Präsentationslayouts", uk: "Редаговані макети презентацій" },
@@ -198,7 +237,8 @@ export function applyCatalogTranslations(dictionary: Dictionary): void {
     dictionary[`service.${id}.goal`] = goal;
     dictionary[`service.${id}.info.goal`] = goal;
     dictionary[`service.${id}.info.description`] = localize((l) => `${summary[l]}. ${copy.approach[l]} ${["ai-twin", "avatar-localization", "voice-agent", "creative-testing", "telegram-ai-agent"].includes(id) ? copy.consent[l] : copy.measurement[l]}`);
-    [summary, copy.acceptance, copy.quality, copy.handover].forEach((item, index) => { dictionary[`service.${id}.info.content.${index}`] = item; });
+    const production = localize((l) => `${l === "en" ? "Production workflow" : l === "de" ? "Produktionsablauf" : "Виробничий процес"}: ${tools.join(" · ")}`);
+    [summary, copy.acceptance, production, copy.handover].forEach((item, index) => { dictionary[`service.${id}.info.content.${index}`] = item; });
     dictionary[`service.${id}.info.formats`] = formats
       ? localize(() => formats)
       : dictionary[`service.${id}.info.formats`] ?? dictionary[`service.${id}.tier.0.1`] ?? localize(() => "PDF / CSV");
