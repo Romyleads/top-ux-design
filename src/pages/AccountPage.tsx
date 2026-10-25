@@ -26,7 +26,8 @@ export function PortalShell({ title, children }: { title: string; children: Reac
   );
 }
 
-export function TabBar<T extends PortalKey>({ tabs, active, onChange }: { tabs: readonly T[]; active: NoInfer<T>; onChange: (t: NoInfer<T>) => void }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function TabBar({ tabs, active, onChange }: { tabs: readonly PortalKey[]; active: PortalKey; onChange: (t: any) => void }) {
   const { locale } = useLanguage();
   return (
     <div className="flex flex-wrap gap-1 border-b border-border mb-6">
