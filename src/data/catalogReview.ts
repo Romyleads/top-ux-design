@@ -1,0 +1,232 @@
+import profiles from "./catalogReviewProfiles.json";
+import type { ServiceCard, TierFeature } from "./services";
+
+type Language = "en" | "de" | "uk";
+type Localized = Record<Language, string>;
+type Dictionary = Record<string, Localized>;
+
+export const catalogReview = {
+  period: "September–October 2026",
+  checkedOn: "2026-10-25",
+  newOfferIds: ["creative-testing", "avatar-localization", "ai-search-visibility", "voice-agent", "content-repurpose"],
+} as const;
+
+const copy = {
+  approach: { en: "AI-assisted production is reviewed by a specialist. Scope, inputs, delivery dates and third-party usage costs are confirmed before work begins.", de: "KI-gestützte Produktion wird fachlich geprüft. Umfang, Materialien, Liefertermine und externe Nutzungskosten werden vor Beginn vereinbart.", uk: "AI-виробництво перевіряє фахівець. Обсяг, матеріали, строки та витрати сторонніх сервісів погоджуються до початку роботи." },
+  quality: { en: "Factual, brand and rights review", de: "Fakten-, Marken- und Rechteprüfung", uk: "Перевірка фактів, бренду та прав" },
+  acceptance: { en: "Approved inputs and acceptance checklist", de: "Freigegebene Materialien und Abnahmecheckliste", uk: "Погоджені матеріали та приймальний чекліст" },
+  handover: { en: "Human-reviewed exports and practical handover", de: "Fachlich geprüfte Exporte und praktische Übergabe", uk: "Перевірений експорт і практична передача" },
+  consent: { en: "Voice and likeness use requires documented permission; synthetic presenters are not genuine customer testimonials.", de: "Stimme und Abbild benötigen dokumentierte Zustimmung; synthetische Sprecher sind keine echten Kundenreferenzen.", uk: "Використання голосу та зовнішності потребує документованої згоди; синтетичні ведучі не є справжніми відгуками клієнтів." },
+  measurement: { en: "Results depend on inputs, audience and execution; no revenue, ranking or realism guarantee.", de: "Ergebnisse hängen von Materialien, Zielgruppe und Umsetzung ab; keine Umsatz-, Ranking- oder Realismusgarantie.", uk: "Результати залежать від матеріалів, аудиторії та реалізації; без гарантій доходу, позицій чи абсолютного реалізму." },
+};
+
+const toolPurposes: Record<string, Localized> = {
+  "Veo 3.1": { en: "Reference-led scenes and generated audio", de: "Referenzbasierte Szenen und generierter Ton", uk: "Сцени за референсами та генерація звуку" },
+  "Kling VIDEO 3.0": { en: "Controlled multi-shot video and character references", de: "Kontrolliertes Multi-Shot-Video und Figurenreferenzen", uk: "Кероване багатокадрове відео та референси персонажів" },
+  "Runway Gen-4.5": { en: "Image-to-video shots for human-edited productions", de: "Image-to-Video-Szenen für manuell montierte Produktionen", uk: "Image-to-video сцени для ручного монтажу" },
+  "Seedance 2.5": { en: "Reference-controlled video; access checked per project", de: "Referenzgesteuertes Video; Zugang je Projekt geprüft", uk: "Відео за референсами; доступ перевіряється для проєкту" },
+  "HeyGen": { en: "Authorized presenters and localized video", de: "Autorisierte Sprecher und lokalisierte Videos", uk: "Авторизовані ведучі та локалізоване відео" },
+  "ElevenLabs": { en: "Authorized narration, voice workflows and dubbing", de: "Autorisierte Vertonung, Sprachabläufe und Synchronisation", uk: "Авторизована озвучка, голосові процеси та дубляж" },
+  "Claude": { en: "Source-grounded writing, analysis and tool workflows", de: "Quellenbasiertes Schreiben, Analyse und Werkzeugabläufe", uk: "Тексти з джерелами, аналіз і робота з інструментами" },
+  "ChatGPT": { en: "Brief analysis and reviewed content drafts", de: "Briefing-Analyse und geprüfte Content-Entwürfe", uk: "Аналіз брифу та перевірені чернетки контенту" },
+  "OpenAI API": { en: "Tool-connected assistants with explicit action controls", de: "Werkzeugbasierte Assistenten mit klaren Aktionskontrollen", uk: "Помічники з інструментами та явним контролем дій" },
+  "OpenAI Realtime API": { en: "Real-time voice conversations with controlled actions", de: "Echtzeit-Sprachdialoge mit kontrollierten Aktionen", uk: "Голосові діалоги в реальному часі з контролем дій" },
+  "GPT Image": { en: "Reference-led image generation and editing", de: "Referenzbasierte Bilderzeugung und Bearbeitung", uk: "Генерація та редагування зображень за референсами" },
+  "Gemini image generation": { en: "Product-scene concepts and image editing", de: "Produktszenen-Konzepte und Bildbearbeitung", uk: "Концепції товарних сцен і редагування зображень" },
+  "Adobe Firefly": { en: "Visual concepts and controlled asset adaptations", de: "Bildkonzepte und kontrollierte Materialanpassungen", uk: "Візуальні концепції та контрольовані адаптації" },
+  "Recraft": { en: "Vector and raster assets with brand references", de: "Vektor- und Rastermaterial mit Markenreferenzen", uk: "Векторні та растрові матеріали за референсами бренду" },
+  "Lovable": { en: "Web interfaces and scoped connected app workflows", de: "Weboberflächen und abgegrenzte App-Abläufe", uk: "Вебінтерфейси та визначені сценарії застосунків" },
+  "n8n": { en: "Logged integrations, approval gates and handoffs", de: "Protokollierte Integrationen, Freigaben und Übergaben", uk: "Інтеграції з журналами, погодженнями та передачею" },
+  "Telegram Stars": { en: "Platform-compliant digital-goods payments", de: "Plattformkonforme Zahlungen für digitale Güter", uk: "Оплата цифрових товарів за правилами платформи" },
+  "Perplexity": { en: "Source discovery with independent fact checking", de: "Quellenrecherche mit unabhängiger Faktenprüfung", uk: "Пошук джерел із незалежним фактчекінгом" },
+};
+
+const toolRoles: Record<string, Localized> = {
+  "Gamma": { en: "Slide drafting and presentation structure", de: "Folienentwürfe und Präsentationsstruktur", uk: "Чернетки слайдів і структура презентації" },
+  "Figma": { en: "Editable layouts and reusable design components", de: "Editierbare Layouts und wiederverwendbare Gestaltungselemente", uk: "Редаговані макети та повторні дизайн-елементи" },
+  "Figma Slides": { en: "Editable presentation layouts", de: "Editierbare Präsentationslayouts", uk: "Редаговані макети презентацій" },
+  "Adobe InDesign": { en: "Publication layout and print-ready export", de: "Publikationslayout und druckfertiger Export", uk: "Верстка видань та друкарський експорт" },
+  "Adobe Illustrator": { en: "Precise vectors and production artwork", de: "Präzise Vektoren und Produktionsgrafiken", uk: "Точні вектори та виробничі макети" },
+  "Adobe Substance 3D": { en: "Product and packaging mockups", de: "Produkt- und Verpackungsmockups", uk: "Мокапи товарів та упаковки" },
+  "Descript": { en: "Transcript-based editing and captions", de: "Transkriptbasierter Schnitt und Untertitel", uk: "Монтаж за транскриптом і субтитри" },
+  "Riverside": { en: "Interview and podcast recording", de: "Interview- und Podcastaufnahmen", uk: "Запис інтерв’ю та подкастів" },
+  "OpusClip": { en: "Short-clip candidates for editorial review", de: "Kurzclip-Vorschläge zur redaktionellen Prüfung", uk: "Чернетки коротких кліпів для редактури" },
+};
+
+function purpose(name: string): Localized {
+  return toolPurposes[name] ?? toolRoles[name] ?? {
+    en: `${name}: production, integration and delivery checks`,
+    de: `${name}: Produktion, Integration und Lieferprüfung`,
+    uk: `${name}: виробництво, інтеграція та перевірка результату`,
+  };
+}
+
+// Public copy uses verified product families, not speculative model versions or benchmark claims.
+export function refreshLegacyText(text: string): string {
+  return text
+    .replace(/Claude Sonnet 4\.6|Claude Opus 4\.[\d]+/g, "Claude")
+    .replace(/GPT-5\.[\d]+/g, "OpenAI GPT")
+    .replace(/GPT Image 2|DALL[·-]E(?: 3)?/g, "GPT Image")
+    .replace(/Nano Banana Pro|Midjourney v7/g, "Gemini image generation")
+    .replace(/Sora(?: 2(?: Pro)?)?/g, "Veo 3.1")
+    .replace(/Seedance 2\.0/g, "Seedance 2.5")
+    .replace(/Kling(?: 2\.5| 3\.0)?\b/g, "Kling VIDEO 3.0")
+    .replace(/Recraft V3/g, "Recraft")
+    .replace(/Cursor 3\.0/g, "Cursor")
+    .replace(/Gamma 2\.0/g, "Gamma")
+    .replace(/HeyGen Avatar IV/g, "HeyGen")
+    .replace(/ElevenLabs v3/g, "ElevenLabs")
+    .replace(/Google Antigravity/g, "Replit")
+    .replace(/Grok 4\.20|Perplexity Computer|Manus AI/g, "Perplexity")
+    .replace(/Gemini 3\.1 Pro/g, "Gemini")
+    .replace(/\b1M\b/g, "")
+    .replace(/80\.9% SWE-bench,?\s*/g, "");
+}
+
+interface NewOffer {
+  id: string;
+  name: Localized;
+  summary: Localized;
+  outcome: Localized;
+  scopes: Localized[];
+  formats: string;
+  tools: string[];
+  days: number[];
+}
+
+export const newOffers: NewOffer[] = [
+  {
+    id: "creative-testing",
+    name: { en: "Performance Creative Sprint", de: "Performance-Kreativ-Sprint", uk: "Спринт рекламних креативів" },
+    summary: { en: "Test messaging angles with coordinated AI-assisted ads, hooks and product-accurate visuals", de: "Botschaftswinkel mit abgestimmten KI-Ads, Hooks und produktgetreuen Bildern testen", uk: "Тестування рекламних підходів з AI-креативами, хуками та точними зображеннями товару" },
+    outcome: { en: "Find promising creative hypotheses through a structured test, not guaranteed ROAS", de: "Vielversprechende Kreativhypothesen strukturiert testen, ohne ROAS-Garantie", uk: "Перевірити перспективні креативні гіпотези структурованим тестом без гарантії ROAS" },
+    scopes: [{ en: "3 ads · 1 angle", de: "3 Ads · 1 Ansatz", uk: "3 ролики · 1 підхід" }, { en: "6 ads · 2 angles", de: "6 Ads · 2 Ansätze", uk: "6 роликів · 2 підходи" }, { en: "12 ads · 3 angles", de: "12 Ads · 3 Ansätze", uk: "12 роликів · 3 підходи" }],
+    formats: "MP4 · 9:16 · 15–30 s · SRT",
+    tools: ["HeyGen", "Veo 3.1", "GPT Image", "Descript"], days: [5, 7, 10],
+  },
+  {
+    id: "avatar-localization",
+    name: { en: "Avatar & Video Localization", de: "Avatar- & Videolokalisierung", uk: "Аватар і локалізація відео" },
+    summary: { en: "Turn an approved master into reviewed multilingual presenter videos with dubbing and captions", de: "Ein freigegebenes Mastervideo in geprüfte mehrsprachige Sprechervideos mit Ton und Untertiteln übertragen", uk: "Погоджений майстер у перевірені мультимовні відео з ведучим, дубляжем і субтитрами" },
+    outcome: { en: "Reuse authorized expert content across languages while preserving approved meaning", de: "Autorisierte Experteninhalte mehrsprachig nutzen und die freigegebene Aussage bewahren", uk: "Повторно використовувати авторизований експертний контент різними мовами зі збереженням сенсу" },
+    scopes: [{ en: "1 video · 1 target language", de: "1 Video · 1 Zielsprache", uk: "1 відео · 1 цільова мова" }, { en: "1 video · 3 target languages", de: "1 Video · 3 Zielsprachen", uk: "1 відео · 3 цільові мови" }, { en: "3 videos · 3 target languages", de: "3 Videos · 3 Zielsprachen", uk: "3 відео · 3 цільові мови" }],
+    formats: "MP4 · WAV · SRT / VTT · ≤ 3 min / master",
+    tools: ["HeyGen", "ElevenLabs", "Descript"], days: [5, 7, 10],
+  },
+  {
+    id: "ai-search-visibility",
+    name: { en: "AI Search Visibility · GEO", de: "KI-Suchsichtbarkeit · GEO", uk: "Видимість в AI-пошуку · GEO" },
+    summary: { en: "Audit brand answers and improve citation-ready content for AI search discovery", de: "Markenantworten prüfen und zitierfähige Inhalte für KI-Suchen verbessern", uk: "Аудит відповідей про бренд та покращення контенту для цитування в AI-пошуку" },
+    outcome: { en: "Measure sampled visibility and brand accuracy without promising rankings or citations", de: "Stichproben-Sichtbarkeit und Markenrichtigkeit messen, ohne Ranking- oder Zitatversprechen", uk: "Виміряти вибіркову видимість і точність бренду без обіцянок позицій або цитувань" },
+    scopes: [{ en: "15 prompts · 1 market", de: "15 Prompts · 1 Markt", uk: "15 запитів · 1 ринок" }, { en: "30 prompts · 3 content updates", de: "30 Prompts · 3 Inhaltsupdates", uk: "30 запитів · 3 оновлення контенту" }, { en: "60 prompts · 6 updates · retest", de: "60 Prompts · 6 Updates · Nachtest", uk: "60 запитів · 6 оновлень · повторний тест" }],
+    formats: "PDF · CSV · HTML / JSON-LD",
+    tools: ["ChatGPT", "Perplexity", "Google Search Console"], days: [5, 10, 14],
+  },
+  {
+    id: "voice-agent",
+    name: { en: "Conversational Voice Agent", de: "Dialogorientierter Sprachagent", uk: "Розмовний голосовий агент" },
+    summary: { en: "A voice assistant grounded in approved knowledge, with booking and human escalation", de: "Ein Sprachassistent auf freigegebener Wissensbasis mit Terminbuchung und menschlicher Übergabe", uk: "Голосовий помічник на погодженій базі знань з бронюванням і передачею людині" },
+    outcome: { en: "Handle routine conversations safely and route sensitive requests to your team", de: "Routinedialoge sicher bearbeiten und sensible Anliegen an Ihr Team übergeben", uk: "Безпечно обробляти типові діалоги й передавати чутливі звернення команді" },
+    scopes: [{ en: "1 web voice flow · FAQ", de: "1 Web-Sprachablauf · FAQ", uk: "1 вебголосовий сценарій · FAQ" }, { en: "2 flows · booking integration", de: "2 Abläufe · Terminbuchung", uk: "2 сценарії · бронювання" }, { en: "3 flows · CRM · evaluation set", de: "3 Abläufe · CRM · Testset", uk: "3 сценарії · CRM · набір тестів" }],
+    formats: "Web · JSON · CSV",
+    tools: ["OpenAI Realtime API", "ElevenLabs", "n8n"], days: [7, 10, 14],
+  },
+  {
+    id: "content-repurpose",
+    name: { en: "Source-to-Campaign Engine", de: "Quelle-zu-Kampagne-Paket", uk: "Контент-двигун із одного джерела" },
+    summary: { en: "Turn an interview, webinar or report into reviewed clips, posts and campaign copy", de: "Interviews, Webinare oder Berichte in geprüfte Clips, Beiträge und Kampagnentexte verwandeln", uk: "Інтерв’ю, вебінар або звіт у перевірені кліпи, пости та тексти кампанії" },
+    outcome: { en: "Get more approved assets from existing expertise with traceable source references", de: "Mehr freigegebene Materialien aus vorhandener Expertise mit nachvollziehbaren Quellen gewinnen", uk: "Отримати більше погоджених матеріалів із наявної експертизи з посиланнями на джерело" },
+    scopes: [{ en: "1 source · 5 assets", de: "1 Quelle · 5 Materialien", uk: "1 джерело · 5 матеріалів" }, { en: "1 source · 10 assets", de: "1 Quelle · 10 Materialien", uk: "1 джерело · 10 матеріалів" }, { en: "2 sources · 20 assets", de: "2 Quellen · 20 Materialien", uk: "2 джерела · 20 матеріалів" }],
+    formats: "MP4 · SRT · DOCX · PNG · ≤ 60 min / source",
+    tools: ["Claude", "Descript", "OpusClip", "Figma"], days: [5, 7, 10],
+  },
+];
+
+const languages: Language[] = ["en", "de", "uk"];
+function localize(factory: (language: Language) => string): Localized {
+  return { en: factory("en"), de: factory("de"), uk: factory("uk") };
+}
+function deadline(days: number): Localized {
+  return { en: `<b>Delivery: ${days} business days</b>`, de: `<b>Lieferung: ${days} Werktage</b>`, uk: `<b>Виконання: ${days} робочих днів</b>` };
+}
+
+export function buildNewOffers(photos: Record<string, string>): ServiceCard[] {
+  return newOffers.map((offer) => ({
+    id: offer.id, name: offer.name.uk, subtitle: offer.summary.uk, goal: offer.outcome.uk,
+    emoji: "", blockId: "b8", photo: photos[offer.id], tag: "September–October 2026", hot: true,
+    tiers: ["Start", "Pro", "Max"].map((name) => ({ name, price: "—" })),
+    tierFeatures: offer.scopes.map((scope, index): TierFeature[] => [
+      { icon: "size", text: scope.uk }, { icon: "format", text: offer.formats },
+      { icon: "clock", text: deadline(offer.days[index]).uk }, { icon: "check", text: copy.quality.uk },
+    ]),
+    info: [
+      { kind: "description", label: "Опис", type: "text", text: `${offer.summary.uk}. ${copy.approach.uk}` },
+      { kind: "content", label: "Зміст", type: "list", items: [offer.summary.uk, copy.acceptance.uk, copy.quality.uk, copy.handover.uk] },
+      { kind: "goal", label: "Мета", type: "text", text: offer.outcome.uk },
+      { kind: "formats", label: "Формати", type: "text", text: offer.formats },
+    ],
+    tools: offer.tools.map((name) => ({ name, purpose: purpose(name).uk, premium: true })),
+  }));
+}
+
+export function reviewExistingServices(existing: ServiceCard[]): ServiceCard[] {
+  return existing.map((service) => {
+    const profile = profiles[service.id as keyof typeof profiles];
+    if (!profile) throw new Error(`Missing catalog review: ${service.id}`);
+    const summary = profile.summary.uk;
+    return {
+      ...service, hot: false, income: undefined, subtitle: summary, goal: summary,
+      tools: profile.tools.map((name) => ({ name, purpose: purpose(name).uk, premium: true })),
+      tierFeatures: service.tierFeatures.map((tier) => tier.map((feature) => ({ ...feature, text: refreshLegacyText(feature.text) }))),
+      info: [
+        { kind: "description", label: "Опис", type: "text", text: `${summary}. ${copy.approach.uk}` },
+        { kind: "content", label: "Зміст", type: "list", items: [summary, copy.acceptance.uk, copy.quality.uk, copy.handover.uk] },
+        { kind: "goal", label: "Мета", type: "text", text: summary },
+        { kind: "formats", label: "Формати", type: "text", text: refreshLegacyText(service.info.find((s) => s.kind === "formats")?.text ?? service.tierFeatures[0]?.[1]?.text ?? "") },
+      ],
+    };
+  });
+}
+
+export function applyCatalogTranslations(dictionary: Dictionary): void {
+  // Remove legacy list tails so no old claims leak through variable-length lists.
+  for (const key of Object.keys(dictionary)) {
+    if (/^service\..*\.info\.content\.\d+$/.test(key) || /^tool\./.test(key)) delete dictionary[key];
+    else if (key.startsWith("service.")) dictionary[key] = localize((language) => refreshLegacyText(dictionary[key][language]));
+  }
+  const add = (id: string, summary: Localized, goal: Localized, tools: string[], formats?: string) => {
+    dictionary[`service.${id}.subtitle`] = summary;
+    dictionary[`service.${id}.goal`] = goal;
+    dictionary[`service.${id}.info.goal`] = goal;
+    dictionary[`service.${id}.info.description`] = localize((l) => `${summary[l]}. ${copy.approach[l]} ${["ai-twin", "avatar-localization", "voice-agent", "creative-testing", "telegram-ai-agent"].includes(id) ? copy.consent[l] : copy.measurement[l]}`);
+    [summary, copy.acceptance, copy.quality, copy.handover].forEach((item, index) => { dictionary[`service.${id}.info.content.${index}`] = item; });
+    if (formats) dictionary[`service.${id}.info.formats`] = localize(() => formats);
+    tools.forEach((name, index) => { dictionary[`tool.${id}.${index}.purpose`] = purpose(name); });
+  };
+  for (const [id, profile] of Object.entries(profiles)) {
+    add(id, profile.summary, profile.summary, profile.tools);
+    // Old model-heavy feature rows use reviewed tool families instead.
+    for (let tier = 0; tier < 3; tier++) {
+      const key = `service.${id}.tier.${tier}.1`;
+      if (dictionary[key] && /Sora|DALL|GPT|Claude|Midjourney|Tilda|Bubble|Runway|Lovable|Full.stack|AI \+|Custom AI/i.test(dictionary[key].en)) {
+        dictionary[key] = localize(() => profile.tools.slice(0, 3).join(" · "));
+      }
+    }
+  }
+  for (const offer of newOffers) {
+    dictionary[`service.${offer.id}.name`] = offer.name;
+    add(offer.id, offer.summary, offer.outcome, offer.tools, offer.formats);
+    offer.scopes.forEach((scope, tier) => {
+      dictionary[`service.${offer.id}.tier.${tier}.0`] = scope;
+      dictionary[`service.${offer.id}.tier.${tier}.1`] = localize(() => offer.formats);
+      dictionary[`service.${offer.id}.tier.${tier}.2`] = deadline(offer.days[tier]);
+      dictionary[`service.${offer.id}.tier.${tier}.3`] = copy.quality;
+    });
+  }
+  dictionary["block.b8.title"] = { en: "AI & Growth · Autumn 2026", de: "KI & Wachstum · Herbst 2026", uk: "AI та зростання · Осінь 2026" };
+  dictionary["block.b8.subtitle"] = { en: "Reviewed September–October 2026", de: "Überarbeitet September–Oktober 2026", uk: "Оновлено у вересні–жовтні 2026" };
+  dictionary["hero.subtitle"] = { en: "Turnkey marketing, AI video and growth solutions", de: "Marketing, KI-Video und Wachstumslösungen aus einer Hand", uk: "Маркетинг, AI-відео та рішення для зростання під ключ" };
+  // New scopes require a brief: no invented price is presented as a factual offer.
+  dictionary["catalog.quote"] = { en: "Quote", de: "Anfrage", uk: "Запит" };
+  dictionary["tools.premiumHint"] = { en: "Paid tool; usage costs confirmed in your quote", de: "Kostenpflichtiges Tool; Nutzungskosten im Angebot bestätigt", uk: "Платний інструмент; витрати погоджуються в розрахунку" };
+}
