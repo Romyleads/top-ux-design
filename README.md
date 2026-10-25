@@ -1,5 +1,9 @@
 # Welcome to your Lovable project
 
+## External cabinet integration
+
+Payment stays in the owner's external cabinet; this app only redirects. See [whole-cart format and Node.js validation/repricing guide](selfhost/cabinet-cart.md) for `cartVersion=1`, explicit service/tier IDs, quantities, legacy single-plan compatibility, and integration checks. No Stripe backend or keys are included here.
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
