@@ -40,8 +40,9 @@ export const translations: Record<string, Record<Locale, string>> = {
   "card.inCart": { uk: "✓ В кошику", en: "✓ In cart", de: "✓ Im Warenkorb" },
   "card.add": { uk: "Додати", en: "Add", de: "Hinzufügen" },
   "card.goal": { uk: "🎯 Мета", en: "🎯 Goal", de: "🎯 Ziel" },
-  "tools.title": { uk: "Інструменти", en: "Tools", de: "Tools" },
-  "tools.subtitle": { uk: "Ключовий AI-стек для цього замовлення", en: "Key AI stack for this offer", de: "Schlüssel-AI-Stack für diesen Auftrag" },
+  "tools.title": { uk: "Як AI працює на результат", en: "How AI supports the result", de: "Wie KI zum Ergebnis beiträgt" },
+  "tools.subtitle": { uk: "Нейромережі готують чернетки та варіанти, а фахівець перевіряє й доводить результат до погодженого обсягу.", en: "AI drafts and generates options; a specialist reviews and finalizes the result within the agreed scope.", de: "KI erstellt Entwürfe und Varianten; eine Fachperson prüft und finalisiert das Ergebnis im vereinbarten Umfang." },
+  "tools.via": { uk: "Сервіс", en: "Service", de: "Dienst" },
   "tools.premiumHint": { uk: "Платний сервіс — вже включено у вартість", en: "Paid service — already included in the price", de: "Kostenpflichtig — bereits im Preis enthalten" },
 
   // Cart

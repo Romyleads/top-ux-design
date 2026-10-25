@@ -50,25 +50,23 @@ export default function ToolsStack({ tools, variant = "page", serviceId }: Props
               className={`flex items-start gap-2 ${isCard ? "py-1.5 px-2" : "py-2 px-2.5"} rounded-lg`}
             >
               <div className="flex flex-col min-w-0 flex-1">
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span
-                    className={`${isCard ? "text-[12px]" : "text-[13px]"} font-bold text-foreground leading-tight`}
-                  >
-                    {tool.name}
-                  </span>
+                <span
+                  className={`${isCard ? "text-[12px]" : "text-[13px]"} font-semibold text-foreground leading-snug`}
+                >
+                  {serviceId ? (() => { const k = `tool.${serviceId}.${i}.purpose`; const v = t(k); return v === k ? tool.purpose : v; })() : tool.purpose}
+                </span>
+                <span
+                  className={`${isCard ? "text-[10.5px]" : "text-[11px]"} text-t3 leading-snug mt-0.5 flex items-center gap-1`}
+                >
+                  {t("tools.via")}: {tool.name}
                   {tool.premium && (
                     <Crown
-                      className="w-3 h-3 flex-shrink-0"
+                      className="w-2.5 h-2.5 flex-shrink-0"
                       strokeWidth={2.4}
                       style={{ color: "hsl(38 92% 50%)" }}
                       aria-label={t("tools.premiumHint")}
                     />
                   )}
-                </div>
-                <span
-                  className={`${isCard ? "text-[11px]" : "text-[12px]"} text-t3 leading-snug`}
-                >
-                  {serviceId ? (() => { const k = `tool.${serviceId}.${i}.purpose`; const v = t(k); return v === k ? tool.purpose : v; })() : tool.purpose}
                 </span>
               </div>
             </div>
