@@ -7,7 +7,9 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | null>(null);
+// Keep one context instance across Vite HMR reloads so provider and consumers never diverge.
+const g = globalThis as unknown as { __languageContext?: React.Context<LanguageContextType | null> };
+const LanguageContext = g.__languageContext ?? (g.__languageContext = createContext<LanguageContextType | null>(null));
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(() => {
