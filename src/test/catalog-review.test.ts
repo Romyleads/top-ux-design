@@ -86,3 +86,10 @@ describe("Autumn 2026 catalog requirements", () => {
     expect(translations["service.mvp-on-demand.info.description"].uk).toMatch(/оцінюється індивідуально/i);
   });
 });
+import { services as __allServices } from "@/data/services";
+describe("AI-first tool stack", () => {
+  it("lists no legacy desktop programs in any offer", () => {
+    const legacy = /Adobe (InDesign|Illustrator|Photoshop|Substance)|WordPress|Tilda|CapCut|^Figma$|Figma Slides/;
+    for (const s of __allServices) for (const t of s.tools ?? []) expect(t.name).not.toMatch(legacy);
+  });
+});
