@@ -193,6 +193,7 @@ export default function SiteFooter() {
               <FooterLink to={lp("about")}>{t("footer.link.about")}</FooterLink>
               <FooterLink to={lp("contact")}>{t("footer.link.contact")}</FooterLink>
               <FooterLink to={lp("faq")}>{t("footer.link.faq")}</FooterLink>
+              <FooterLink to={lp("account")}>{locale === "de" ? "Kundenkonto" : locale === "uk" ? "Кабінет клієнта" : "Client account"}</FooterLink>
             </FooterCol>
             <FooterCol title={t("footer.col.legal")}>
               <FooterLink to={lp("imprint")}>{t("footer.link.imprint")}</FooterLink>
