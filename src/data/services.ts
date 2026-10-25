@@ -135,7 +135,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b1",
     photo: imgPresentation,
     tag: "🖨 Друкована",
-    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "99 €" }, { name: "Pro", price: "179 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "449 €" }],
     tierFeatures: [
       tf("<b>10–15</b> слайдів · Базова верстка", "PDF / PPTX", "<b>Термін: 5 днів</b>", "2 правки включено"),
       tf("<b>15–25</b> слайдів · Анімації + інфографіка", "PDF / PPTX / Keynote", "<b>Термін: 3 дні</b>", "5 правок · Slack-підтримка"),
@@ -162,7 +162,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b1",
     photo: imgBrochure,
     tag: "🖨 Друкована",
-    tiers: [{ name: "Lite", price: "39 €" }, { name: "Standard", price: "79 €" }, { name: "Pro", price: "149 €" }],
+    tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "199 €" }, { name: "Pro", price: "379 €" }],
     tierFeatures: [
       tf("<b>4–8</b> сторінок · стандартний макет", "PDF", "<b>Термін: 4 дні</b>", "2 правки"),
       tf("<b>8–16</b> сторінок · авторський дизайн", "PDF + Print-ready CMYK", "<b>Термін: 3 дні</b>", "4 правки · ілюстрації в комплекті"),
@@ -189,7 +189,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b1",
     photo: imgCatalog,
     tag: "🖨 Друкована",
-    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "299 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "549 €" }],
     tierFeatures: [
       tf("<b>до 40</b> позицій · базові картки", "PDF", "<b>Термін: 7 днів</b>", "1 правка структури"),
       tf("<b>до 120</b> позицій · деталізовані картки", "PDF + Print-ready", "<b>Термін: 5 днів</b>", "3 правки · таблиці та порівняння"),
@@ -216,7 +216,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b1",
     photo: imgFlyer,
     tag: "🖨 Друкована",
-    tiers: [{ name: "Lite", price: "19 €" }, { name: "Standard", price: "39 €" }, { name: "Pro", price: "69 €" }],
+    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "279 €" }],
     tierFeatures: [
       tf("<b>А5</b> · одностороння · базовий дизайн", "PDF для цифрових каналів", "<b>Термін: 1 день</b>", "2 правки"),
       tf("<b>А4 / А5</b> · двостороння · 2 варіанти", "Print CMYK + Digital PNG", "<b>Термін: 1 день</b>", "4 правки · анімована версія"),
@@ -248,7 +248,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgLandingPage,
     tag: "💻 Цифрова",
     hot: true,
-    tiers: [{ name: "Lite", price: "99 €" }, { name: "Standard", price: "199 €" }, { name: "Pro", price: "399 €" }],
+    tiers: [{ name: "Lite", price: "99 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "690 €" }],
     tierFeatures: [
       tf("<b>до 5</b> сторінок · Landing page", "HTML / WordPress", "<b>Термін: 7 днів</b>", "2 правки дизайну"),
       tf("<b>8–12</b> секцій · адаптивний + анімації", "React / Webflow", "<b>Термін: 5 днів</b>", "5 правок · CRM-інтеграція"),
@@ -275,7 +275,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b2",
     photo: imgVideoAd,
     tag: "💻 Цифрова",
-    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "299 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "590 €" }],
     tierFeatures: [
       tf("<b>15–30 сек</b> · моушн-графіка", "MP4 1080p · 1 формат", "<b>Термін: 5 днів</b>", "1 ітерація правок"),
       tf("<b>30–60 сек</b> · кастомна анімація", "MP4 4K + Social cuts", "<b>Термін: 4 дні</b>", "3 правки · субтитри"),
@@ -304,7 +304,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b2",
     photo: imgSmm,
     tag: "💻 Цифрова",
-    tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "139 €" }, { name: "Pro", price: "249 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>8</b> постів/міс · 1 платформа", "JPG/PNG + тексти + хештеги", "<b>Щотижневий звіт</b>", "2 правки на пост · без Stories"),
       tf("<b>16</b> постів/міс · 2 платформи", "JPG/PNG + Stories + Reels", "<b>Щотижневий звіт + аналітика</b>", "4 правки · контент-план"),
@@ -331,7 +331,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b2",
     photo: imgBanners,
     tag: "💻 Цифрова",
-    tiers: [{ name: "Lite", price: "19 €" }, { name: "Standard", price: "39 €" }, { name: "Pro", price: "79 €" }],
+    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "290 €" }],
     tierFeatures: [
       tf("<b>3</b> розміри · статичні", "JPG/PNG", "<b>Термін: 2 дні</b>", "2 правки · 1 варіант дизайну"),
       tf("<b>6</b> розмірів · статичні + GIF", "PNG + GIF + HTML5", "<b>Термін: 2 дні</b>", "4 правки · A/B варіанти"),
@@ -362,7 +362,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b3",
     photo: imgLogo,
     tag: "🎨 Брендинг",
-    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "99 €" }, { name: "Pro", price: "199 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>2</b> концепти · базовий бриф", "PNG + SVG", "<b>Термін: 4 дні</b>", "2 правки · без кольорових варіантів"),
       tf("<b>5</b> концептів · гайдлайн використання", "AI + SVG + PNG + PDF", "<b>Термін: 3 дні</b>", "5 правок · анімована версія"),
@@ -388,7 +388,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b3",
     photo: imgBusinessCard,
     tag: "🎨 Брендинг",
-    tiers: [{ name: "Lite", price: "15 €" }, { name: "Standard", price: "29 €" }, { name: "Pro", price: "59 €" }],
+    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "249 €" }],
     tierFeatures: [
       tf("<b>1</b> варіант · стандарт 90×50 мм", "PDF Print-ready", "<b>Термін: 1 день</b>", "2 правки"),
       tf("<b>2</b> варіанти · двостороння", "PDF + AI + Mockup", "<b>Термін: 1 день</b>", "4 правки · NFC варіант"),
@@ -414,7 +414,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b3",
     photo: imgPackaging,
     tag: "🎨 Брендинг",
-    tiers: [{ name: "Lite", price: "59 €" }, { name: "Standard", price: "119 €" }, { name: "Pro", price: "229 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "549 €" }],
     tierFeatures: [
       tf("<b>1</b> поверхня · коробка або пакет", "AI/PDF розгортка + 1 мокап", "<b>Термін: 5 днів</b>", "2 правки"),
       tf("<b>2</b> поверхні · кастомний дизайн", "AI + PDF + 3D Mockup", "<b>Термін: 4 дні</b>", "3 правки · друкарня-ready"),
@@ -440,7 +440,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b3",
     photo: imgBrandbook,
     tag: "🎨 Брендинг",
-    tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "549 €" }],
+    tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "399 €" }, { name: "Pro", price: "890 €" }],
     tierFeatures: [
       tf("<b>15–20</b> сторінок · логотип + кольори + шрифти", "PDF", "<b>Термін: 10 днів</b>", "2 правки"),
       tf("<b>30–40</b> сторінок · повний гайдлайн", "PDF + Figma", "<b>Термін: 7 днів</b>", "4 правки · шаблони документів"),
@@ -470,7 +470,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b4",
     photo: imgBlogPost,
     tag: "📝 Контент",
-    tiers: [{ name: "Lite", price: "15 €" }, { name: "Standard", price: "29 €" }, { name: "Pro", price: "59 €" }],
+    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "290 €" }],
     tierFeatures: [
       tf("<b>700–1000</b> слів · базова SEO-оптимізація", "Google Doc або HTML", "<b>Термін: 2 дні</b>", "1 правка · мета-теги включено"),
       tf("<b>1500–2500</b> слів · SEO + конверсія", "Google Doc + CMS", "<b>Термін: 2 дні</b>", "3 правки · keyword research"),
@@ -496,7 +496,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b4",
     photo: imgInfographic,
     tag: "📝 Контент",
-    tiers: [{ name: "Lite", price: "29 €" }, { name: "Standard", price: "59 €" }, { name: "Pro", price: "119 €" }],
+    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "290 €" }],
     tierFeatures: [
       tf("<b>1</b> інфографіка · статична · до 5 блоків", "PNG + PDF", "<b>Термін: 2 дні</b>", "2 правки"),
       tf("<b>3</b> інфографіки · кастомні ікони", "PNG + PDF + SVG", "<b>Термін: 2 дні</b>", "4 правки · інтерактивна версія"),
@@ -522,7 +522,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b4",
     photo: imgWhitePaper,
     tag: "📝 Контент",
-    tiers: [{ name: "Lite", price: "59 €" }, { name: "Standard", price: "119 €" }, { name: "Pro", price: "229 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "549 €" }],
     tierFeatures: [
       tf("<b>8–12</b> сторінок · базовий аналіз", "PDF", "<b>Термін: 10 днів</b>", "2 правки · без власного дослідження"),
       tf("<b>15–25</b> сторінок · глибокий аналіз", "PDF + Landing page", "<b>Термін: 7 днів</b>", "4 правки · графіки + діаграми"),
@@ -548,7 +548,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b4",
     photo: imgCaseStudy,
     tag: "📝 Контент",
-    tiers: [{ name: "Lite", price: "39 €" }, { name: "Standard", price: "79 €" }, { name: "Pro", price: "149 €" }],
+    tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "199 €" }, { name: "Pro", price: "379 €" }],
     tierFeatures: [
       tf("<b>2–3</b> сторінки · текст + метрики", "PDF", "<b>Термін: 3 дні</b>", "2 правки"),
       tf("<b>5–7</b> сторінок · відео-версія + інфографіка", "PDF + Web + Video", "<b>Термін: 3 дні</b>", "4 правки · landing для кейсу"),
@@ -580,7 +580,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgEbook,
     tag: "📧 Email",
     hot: true,
-    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "99 €" }, { name: "Pro", price: "199 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>15–20</b> сторінок · базовий дизайн", "PDF", "<b>Термін: 7 днів</b>", "2 правки · обкладинка included"),
       tf("<b>25–35</b> сторінок · авторський дизайн", "PDF + Landing page", "<b>Термін: 5 днів</b>", "4 правки · промо-матеріали"),
@@ -606,7 +606,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b5",
     photo: imgEmailCampaign,
     tag: "📧 Email",
-    tiers: [{ name: "Lite", price: "19 €" }, { name: "Standard", price: "39 €" }, { name: "Pro", price: "79 €" }],
+    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "290 €" }],
     tierFeatures: [
       tf("<b>1</b> лист · текст + базова верстка", "HTML + plain text", "<b>Термін: 2 дні</b>", "2 правки"),
       tf("<b>3</b> листи · A/B варіанти", "HTML + MJML + dark mode", "<b>Термін: 2 дні</b>", "4 правки · сегментація"),
@@ -633,7 +633,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgDripCampaign,
     tag: "📧 Email",
     hot: true,
-    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "99 €" }, { name: "Pro", price: "199 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>3</b> листи · лінійна welcome-серія", "HTML + налаштування в ESP", "<b>Термін: 5 днів</b>", "2 правки"),
       tf("<b>7</b> листів · розгалужена воронка", "HTML + Automation + Сегментація", "<b>Термін: 4 дні</b>", "4 правки · тригери"),
@@ -659,7 +659,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b5",
     photo: imgNewsletter,
     tag: "📧 Email",
-    tiers: [{ name: "Lite", price: "29 €" }, { name: "Standard", price: "59 €" }, { name: "Pro", price: "119 €" }],
+    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "179 €" }, { name: "Pro", price: "349 €" }],
     tierFeatures: [
       tf("<b>4</b> листи/міс · 400–600 слів", "HTML шаблон", "<b>Підготовка: 3 дні/лист</b>", "1 правка · базова аналітика"),
       tf("<b>8</b> листів/міс · контент + дизайн", "HTML + Copywriting", "<b>Підготовка: 2 дні/лист</b>", "3 правки · subject line тести"),
@@ -689,7 +689,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b6",
     photo: imgWebinar,
     tag: "🎬 Відео",
-    tiers: [{ name: "Lite", price: "59 €" }, { name: "Standard", price: "119 €" }, { name: "Pro", price: "249 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "590 €" }],
     tierFeatures: [
       tf("<b>1</b> вебінар · до 60 хв", "Слайди + запис MP4", "<b>Підготовка: 5 днів</b>", "Базовий монтаж · 1 правка"),
       tf("<b>3</b> вебінари · серія + Q&A", "MP4 + Landing + Email", "<b>Підготовка: 3 дні/вебінар</b>", "3 правки · промо-пакет"),
@@ -715,7 +715,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b6",
     photo: imgProductTour,
     tag: "🎬 Відео",
-    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "99 €" }, { name: "Pro", price: "199 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>2–3 хв</b> · screen recording або анімація", "MP4 1080p · 1 формат", "<b>Термін: 5 днів</b>", "1 правка монтажу"),
       tf("<b>5 хв</b> · кастомна анімація + озвучка", "MP4 4K + Social clips", "<b>Термін: 4 дні</b>", "3 правки · субтитри"),
@@ -741,7 +741,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b6",
     photo: imgTestimonials,
     tag: "🎬 Відео",
-    tiers: [{ name: "Lite", price: "39 €" }, { name: "Standard", price: "79 €" }, { name: "Pro", price: "149 €" }],
+    tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "199 €" }, { name: "Pro", price: "379 €" }],
     tierFeatures: [
       tf("<b>1</b> відгук · 1–2 хв", "MP4 1080p · 1 платформа", "<b>Термін: 3 дні</b>", "1 правка · субтитри"),
       tf("<b>3</b> відгуки · різні формати", "MP4 4K + Shorts + Stories", "<b>Термін: 3 дні</b>", "3 правки · монтаж"),
@@ -771,7 +771,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b7",
     photo: imgPpcGoogle,
     tag: "📢 Реклама",
-    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "99 €" }, { name: "Pro", price: "199 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>1</b> кампанія · до 50 ключів", "Google Search", "<b>Запуск: 5 днів</b>", "Щомісячна оптимізація · базовий звіт"),
       tf("<b>3</b> кампанії · Search + Display", "Google Ads + Analytics", "<b>Запуск: 3 дні</b>", "A/B тести · ремаркетинг"),
@@ -797,7 +797,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b7",
     photo: imgRetargeting,
     tag: "📢 Реклама",
-    tiers: [{ name: "Lite", price: "39 €" }, { name: "Standard", price: "79 €" }, { name: "Pro", price: "149 €" }],
+    tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "199 €" }, { name: "Pro", price: "379 €" }],
     tierFeatures: [
       tf("<b>1</b> аудиторія · Facebook або Google", "Pixel setup + 3 креативи", "<b>Запуск: 3 дні</b>", "Базова оптимізація"),
       tf("<b>3</b> аудиторії · мультиплатформа", "Pixel + API + 10 креативів", "<b>Запуск: 2 дні</b>", "A/B тести · сегментація"),
@@ -823,7 +823,7 @@ const legacyServices: ServiceCard[] = [
     blockId: "b7",
     photo: imgNativeAds,
     tag: "📢 Реклама",
-    tiers: [{ name: "Lite", price: "59 €" }, { name: "Standard", price: "119 €" }, { name: "Pro", price: "249 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>1</b> стаття · 1 платформа", "Google Doc + Visual", "<b>Термін: 5 днів</b>", "2 правки · базова аналітика"),
       tf("<b>3</b> статті · мультиплатформа", "CMS + Social + Analytics", "<b>Термін: 3 дні</b>", "4 правки · промо-план"),
@@ -850,7 +850,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgLandingAd,
     tag: "📢 Реклама",
     hot: true,
-    tiers: [{ name: "Lite", price: "39 €" }, { name: "Standard", price: "79 €" }, { name: "Pro", price: "149 €" }],
+    tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "199 €" }, { name: "Pro", price: "379 €" }],
     tierFeatures: [
       tf("<b>1</b> секція оффер + форма", "Webflow або Tilda", "<b>Термін: 3 дні</b>", "2 правки · базова аналітика"),
       tf("<b>3–5</b> секцій · повна воронка", "Webflow + CRM + Analytics", "<b>Термін: 2 дні</b>", "4 правки · A/B тести"),
@@ -882,7 +882,7 @@ const legacyServices: ServiceCard[] = [
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $50–500 / відео",
-    tiers: [{ name: "Lite", price: "59 €" }, { name: "Standard", price: "119 €" }, { name: "Pro", price: "249 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "590 €" }],
     tierFeatures: [
       tf("<b>3</b> відео · 15–30 сек · 1 платформа", "MP4 9:16", "<b>Термін: 5 днів</b>", "1 правка · 1 бриф + монтаж"),
       tf("<b>6</b> відео · мульти-платформа", "MP4 + JPG + Stories", "<b>Термін: 4 дні</b>", "3 правки · кастинг криейторів"),
@@ -910,7 +910,7 @@ const legacyServices: ServiceCard[] = [
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $2 000–8 000 / міс",
-    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "99 €" }, { name: "Pro", price: "199 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>10</b> матеріалів/міс · базовий бриф", "Google Doc + PNG", "<b>Партіями по 3 дні</b>", "2 правки · фактчекінг + SEO мета-теги"),
       tf("<b>25</b> матеріалів/міс · стратегія", "Notion + CMS + Social", "<b>Партіями по 2 дні</b>", "4 правки · навчання команди"),
@@ -939,7 +939,7 @@ const legacyServices: ServiceCard[] = [
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $1 000–5 000 / проєкт",
-    tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "139 €" }, { name: "Pro", price: "279 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "590 €" }],
     tierFeatures: [
       tf("<b>3</b> email welcome-серія + 1 гайд", "HTML email + PDF або Loom", "<b>Термін: 5 днів</b>", "2 правки · 1 сегмент"),
       tf("<b>7</b> листів + in-app повідомлення", "HTML + Product tours", "<b>Термін: 4 дні</b>", "4 правки · аналітика retention"),
@@ -967,7 +967,7 @@ const legacyServices: ServiceCard[] = [
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $2 000–7 000 / міс",
-    tiers: [{ name: "Lite", price: "59 €" }, { name: "Standard", price: "119 €" }, { name: "Pro", price: "249 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>3</b> пости/тиж · базова стратегія", "LinkedIn + профіль-оптимізація", "<b>Підготовка: 2 дні/тиж</b>", "1 правка/пост · гайд outreach + аналітика"),
       tf("<b>5</b> постів/тиж · thought leadership", "LinkedIn + Newsletter + Events", "<b>Підготовка: 1 день/тиж</b>", "3 правки · networking стратегія"),
@@ -995,7 +995,7 @@ const legacyServices: ServiceCard[] = [
     tag: "🔥 Тренд",
     hot: true,
     income: "💰 $5 000–20 000 / проєкт",
-    tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "599 €" }],
+    tiers: [{ name: "Lite", price: "790 €" }, { name: "Standard", price: "1 490 €" }, { name: "Pro", price: "—" }],
     tierFeatures: [
       tf("<b>Landing page</b> + Stripe + онбординг", "Webflow + Stripe + email", "<b>Термін: 10 днів</b>", "1 ітерація + Product Hunt чеклист"),
       tf("<b>MVP</b> + dashboard + API", "React + Supabase + Stripe", "<b>Термін: 7 днів</b>", "3 ітерації · аналітика"),
@@ -1022,7 +1022,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgInteractiveContent,
     tag: "🔥 Тренд",
     hot: true,
-    tiers: [{ name: "Lite", price: "59 €" }, { name: "Standard", price: "119 €" }, { name: "Pro", price: "249 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "299 €" }, { name: "Pro", price: "590 €" }],
     tierFeatures: [
       tf("<b>1</b> інструмент · до 10 кроків", "Typeform або Tally", "<b>Термін: 5 днів</b>", "2 правки · 2 результати + email"),
       tf("<b>3</b> інструменти · lead capture", "Web + Email інтеграція", "<b>Термін: 3 дні</b>", "4 правки · аналітика + CRM"),
@@ -1049,7 +1049,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgPodcast,
     tag: "🔥 Тренд",
     hot: true,
-    tiers: [{ name: "Lite", price: "49 €" }, { name: "Standard", price: "99 €" }, { name: "Pro", price: "199 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "490 €" }],
     tierFeatures: [
       tf("<b>Концепція</b> + обкладинка + 1 епізод", "MP3 + Cover art", "<b>Термін: 5 днів</b>", "2 правки · RSS-фід"),
       tf("<b>Брендинг</b> + 4 епізоди + дистрибуція", "MP3 + Video + Clips", "<b>Термін: 5 днів</b>", "Монтаж · show notes · Spotify/Apple"),
@@ -1079,7 +1079,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgSaasBuilder,
     tag: "🔥 Тренд",
     hot: true,
-    tiers: [{ name: "Lite", price: "149 €" }, { name: "Standard", price: "349 €" }, { name: "Pro", price: "699 €" }],
+    tiers: [{ name: "Lite", price: "790 €" }, { name: "Standard", price: "1 490 €" }, { name: "Pro", price: "—" }],
     tierFeatures: [
       tf("<b>MVP</b> · 1 core-фіча · landing", "Web App (React/Next)", "<b>Термін: 14 днів</b>", "2 правки · Stripe інтеграція"),
       tf("<b>3–5 фіч</b> · dashboard + auth", "Web App + API + DB", "<b>Термін: 10 днів</b>", "5 правок · аналітика · onboarding"),
@@ -1106,7 +1106,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgTelegramTwa,
     tag: "🔥 Тренд",
     hot: true,
-    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "199 €" }, { name: "Pro", price: "449 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "399 €" }, { name: "Pro", price: "890 €" }],
     tierFeatures: [
       tf("<b>1 екран</b> · базовий бот + TWA", "Telegram Web App", "<b>Термін: 7 днів</b>", "2 правки · хостинг"),
       tf("<b>3–5 екранів</b> · auth + БД + оплата", "TWA + Supabase + Stripe", "<b>Термін: 5 днів</b>", "4 правки · push · аналітика"),
@@ -1133,7 +1133,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgAiAutomation,
     tag: "🔥 Тренд",
     hot: true,
-    tiers: [{ name: "Lite", price: "99 €" }, { name: "Standard", price: "249 €" }, { name: "Pro", price: "549 €" }],
+    tiers: [{ name: "Lite", price: "790 €" }, { name: "Standard", price: "1 490 €" }, { name: "Pro", price: "—" }],
     tierFeatures: [
       tf("<b>1 бот</b> · FAQ + lead capture", "Telegram / WhatsApp", "<b>Термін: 5 днів</b>", "2 правки · навчання на даних"),
       tf("<b>AI-агент</b> · CRM + автовідповіді", "Multi-channel + Make/n8n", "<b>Термін: 5 днів</b>", "5 правок · інтеграції · дашборд"),
@@ -1160,7 +1160,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgNocodeMvp,
     tag: "🔥 Тренд",
     hot: true,
-    tiers: [{ name: "Lite", price: "69 €" }, { name: "Standard", price: "149 €" }, { name: "Pro", price: "349 €" }],
+    tiers: [{ name: "Lite", price: "79 €" }, { name: "Standard", price: "399 €" }, { name: "Pro", price: "890 €" }],
     tierFeatures: [
       tf("<b>Landing</b> + форма + автоматизація", "Tilda / Framer + Zapier", "<b>Термін: 3 дні</b>", "2 правки · аналітика"),
       tf("<b>MVP</b> · dashboard + auth + DB", "Bubble / Glide + Supabase", "<b>Термін: 5 днів</b>", "4 правки · оплата · email"),
@@ -1188,7 +1188,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgVibeCodingVisionary,
     tag: "🔥 Унікально",
     hot: true,
-    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tiers: [{ name: "Start", price: "790 €" }, { name: "Pro", price: "1 490 €" }, { name: "Max", price: "—" }],
     tierFeatures: [
       tf("<b>3 прототипи</b> · 1 платформа", "Lovable / v0 / Bolt", "<b>Термін: 3 дні</b>", "1 раунд правок · Loom-розбір"),
       tf("<b>5 прототипів</b> · 3 платформи", "Lovable + v0 + Replit", "<b>Термін: 5 днів</b>", "2 раунди правок · UX-порівняння"),
@@ -1215,7 +1215,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgAiTwin,
     tag: "🔥 Унікально",
     hot: true,
-    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tiers: [{ name: "Start", price: "790 €" }, { name: "Pro", price: "1 490 €" }, { name: "Max", price: "—" }],
     tierFeatures: [
       tf("<b>Клон голосу</b> + 50 відповідей", "ElevenLabs + база знань", "<b>Термін: 5 днів</b>", "Telegram-бот · 1 правка"),
       tf("<b>Голос + HD-аватар</b> · 200 відп.", "ElevenLabs + HeyGen + RAG", "<b>Термін: 7 днів</b>", "Telegram + Web · 3 правки"),
@@ -1242,7 +1242,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgMvpOnDemand,
     tag: "🔥 Унікально",
     hot: true,
-    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tiers: [{ name: "Start", price: "790 €" }, { name: "Pro", price: "1 490 €" }, { name: "Max", price: "—" }],
     tierFeatures: [
       tf("<b>ТЗ до 1 500 симв.</b> · мікро-MVP", "1 екран + 1 функція · no-code", "<b>Термін: 3 дні</b>", "1 правка · хостинг"),
       tf("<b>ТЗ до 5 000 симв.</b> · повний MVP", "3-5 екранів + auth + DB", "<b>Термін: 7 днів</b>", "3 правки · оплата · email"),
@@ -1269,7 +1269,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgAiVideoCatalog,
     tag: "🔥 Унікально",
     hot: true,
-    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tiers: [{ name: "Start", price: "790 €" }, { name: "Pro", price: "1 490 €" }, { name: "Max", price: "—" }],
     tierFeatures: [
       tf("<b>10 відео</b> · 5-8 сек кожне", "Runway / Kling · 720p", "<b>Термін: 5 днів</b>", "1 правка на відео"),
       tf("<b>30 відео</b> · 5-15 сек · озвучка", "Runway + Sora + ElevenLabs", "<b>Термін: 10 днів</b>", "2 правки · музика · сабтайтли"),
@@ -1298,7 +1298,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgReverseEngineering,
     tag: "🔥 Унікально",
     hot: true,
-    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tiers: [{ name: "Start", price: "790 €" }, { name: "Pro", price: "1 490 €" }, { name: "Max", price: "—" }],
     tierFeatures: [
       tf("<b>1 конкурент</b> · лендінг + ціни", "PDF-звіт 20+ стор.", "<b>Термін: 5 днів</b>", "1 zoom-розбір 30 хв"),
       tf("<b>3 конкуренти</b> · вся воронка", "Лендінг + email + ads + UX", "<b>Термін: 7 днів</b>", "1h розбір · 14-денний план"),
@@ -1326,7 +1326,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgPromptDna,
     tag: "🔥 Унікально",
     hot: true,
-    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tiers: [{ name: "Start", price: "790 €" }, { name: "Pro", price: "1 490 €" }, { name: "Max", price: "—" }],
     tierFeatures: [
       tf("<b>Текстовий DNA</b> · ChatGPT/Claude", "1 master + 5 шаблонів", "<b>Термін: 5 днів</b>", "1 правка · інструкція"),
       tf("<b>Текст + візуал</b> · MJ/DALL·E", "Master + 15 шаблонів + стилі", "<b>Термін: 7 днів</b>", "3 правки · Loom-навчання"),
@@ -1353,7 +1353,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgTelegramAiAgent,
     tag: "🔥 Унікально",
     hot: true,
-    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tiers: [{ name: "Start", price: "790 €" }, { name: "Pro", price: "1 490 €" }, { name: "Max", price: "—" }],
     tierFeatures: [
       tf("<b>Кваліфікація + бронювання</b>", "Telegram + Google Calendar", "<b>Термін: 5 днів</b>", "1 правка · сценарій"),
       tf("<b>Голос засновника</b> + CRM", "ElevenLabs + HubSpot/Pipedrive", "<b>Термін: 7 днів</b>", "3 правки · аналітика"),
@@ -1380,7 +1380,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgGenerativeIdentity,
     tag: "🔥 Унікально",
     hot: true,
-    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tiers: [{ name: "Start", price: "790 €" }, { name: "Pro", price: "1 490 €" }, { name: "Max", price: "—" }],
     tierFeatures: [
       tf("<b>Логотип + 5 варіацій</b>", "SVG / PNG · base palette", "<b>Термін: 5 днів</b>", "1 правка · brand-guide PDF"),
       tf("<b>Лого + патерни + ілюстрації</b>", "Generative system + Figma", "<b>Термін: 10 днів</b>", "3 правки · API-генератор"),
@@ -1407,7 +1407,7 @@ const legacyServices: ServiceCard[] = [
     photo: imgAiForecast,
     tag: "🔥 Унікально",
     hot: true,
-    tiers: [{ name: "Start", price: "299 €" }, { name: "Pro", price: "599 €" }, { name: "Max", price: "1 199 €" }],
+    tiers: [{ name: "Start", price: "790 €" }, { name: "Pro", price: "1 490 €" }, { name: "Max", price: "—" }],
     tierFeatures: [
       tf("<b>1 ніша</b> · 100 джерел · 3 міс", "PDF-звіт 30+ стор.", "<b>Термін: 7 днів</b>", "1 zoom-розбір 1h"),
       tf("<b>1 ніша</b> · 1000 джерел · 6 міс", "Notion + Loom + ідеї продуктів", "<b>Термін: 10 днів</b>", "2 розбори · 5 product-ідей"),
