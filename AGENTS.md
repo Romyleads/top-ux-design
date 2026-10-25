@@ -11,3 +11,6 @@
 - Roles live in `user_roles` and every portal table is protected by RLS via `has_role`; clients may only create `new` orders and `open` tickets, while status changes, invoices and payments are admin-only.
 - Status values in `src/lib/supabase.ts` must mirror the SQL enums (covered by `src/test/portal-schema.test.ts`).
 - Legal page texts live in `src/data/legal.ts` with bracketed owner placeholders; the German text is binding.
+# Payments
+
+- Payments run only in the owner's external cabinet (Node.js + Stripe on their server); this site only redirects to `CABINET_URL` (`src/config/payment.ts`, overridable by `VITE_CABINET_URL`) with `?plan=<service>_<tier>`, and reads `?payment=success|cancelled` on return. Never add Lovable built-in payments, Stripe keys or webhooks here.
