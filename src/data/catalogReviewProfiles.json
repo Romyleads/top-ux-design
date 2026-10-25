@@ -110,9 +110,9 @@
   },
   "business-card": {
     "summary": {
-      "en": "Print-ready business cards with readable contact hierarchy, QR destinations and production checks",
-      "de": "Druckfertige Visitenkarten mit klaren Kontaktdaten, QR-Zielen und Produktionsprüfung",
-      "uk": "Готові до друку візитки з чіткими контактами, QR-переходами та перевіркою виробництва"
+      "en": "Business cards with readable contact hierarchy, QR destinations and print files checked against your printer's specs",
+      "de": "Visitenkarten mit klaren Kontaktdaten, QR-Zielen und nach Druckereivorgaben geprüften Druckdateien",
+      "uk": "Візитки з чіткими контактами, QR-переходами та файлами для друку, перевіреними за вимогами друкарні"
     },
     "tools": [
       "Canva Magic Studio",
