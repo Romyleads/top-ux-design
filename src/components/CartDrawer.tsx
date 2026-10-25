@@ -7,6 +7,7 @@ import type { CartItem } from "@/hooks/useCart";
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { parseCatalogPrice } from "@/lib/catalogPricing";
+import { saveCartAsOrder } from "@/lib/portalOrders";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -46,6 +47,8 @@ export default function CartDrawer({
     if (!email.trim() || !emailRe.test(email.trim())) { alert(t("alert.email")); return; }
     if (!dsgvo) { alert(t("alert.dsgvo")); return; }
     if (isEmpty) { alert(t("alert.empty")); return; }
+    // Signed-in clients get the request saved as an order in their account
+    void saveCartAsOrder(items, (i) => t(`service.${i.id}.name`), comment.trim());
     setSubmitted(true);
   };
 
