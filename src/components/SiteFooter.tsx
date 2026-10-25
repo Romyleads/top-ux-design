@@ -195,10 +195,10 @@ export default function SiteFooter() {
               <FooterLink to={lp("faq")}>{t("footer.link.faq")}</FooterLink>
             </FooterCol>
             <FooterCol title={t("footer.col.legal")}>
-              <FooterLink to={lp("")}>{t("footer.link.imprint")}</FooterLink>
-              <FooterLink to={lp("")}>{t("footer.link.privacy")}</FooterLink>
-              <FooterLink to={lp("")}>{t("footer.link.terms")}</FooterLink>
-              <FooterLink to={lp("")}>{t("footer.link.cookies")}</FooterLink>
+              <FooterLink to={lp("imprint")}>{t("footer.link.imprint")}</FooterLink>
+              <FooterLink to={lp("privacy")}>{t("footer.link.privacy")}</FooterLink>
+              <FooterLink to={lp("terms")}>{t("footer.link.terms")}</FooterLink>
+              <FooterLink to={lp("cookies")}>{t("footer.link.cookies")}</FooterLink>
             </FooterCol>
             <FooterCol title={t("footer.col.contact")}>
               <li className="flex items-start gap-2 text-t2 text-[13px]">
