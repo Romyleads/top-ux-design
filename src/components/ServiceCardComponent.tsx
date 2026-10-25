@@ -197,18 +197,13 @@ export default function ServiceCardComponent({ service, isOrdered, onAddToCart }
       {/* Card body */}
       <div className="px-6 pt-4 flex-1 flex flex-col relative z-[1]">
 
-        {/* Goal — fixed height for vertical alignment across cards */}
-        <div className="flex h-[60px] items-start gap-2.5 mb-3 overflow-hidden">
+        {/* Goal — reserve space without clipping the full localized text. */}
+        <div className="flex min-h-[60px] items-start gap-2.5 mb-3">
           <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
             <img src={goalIcon} alt="" width={32} height={32} className="object-contain" />
           </div>
           <span
-            className="text-[13.5px] text-t4 leading-relaxed overflow-hidden transition-colors duration-300 group-hover:text-t2"
-            style={{
-              display: '-webkit-box',
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: 'vertical',
-            }}
+            className="min-w-0 flex-1 break-words text-[13.5px] text-t4 leading-relaxed transition-colors duration-300 group-hover:text-t2"
           >
             {serviceGoal}
           </span>
