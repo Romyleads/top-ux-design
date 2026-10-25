@@ -182,7 +182,7 @@ export default function ServicePage() {
                       {tierItem.name}
                     </span>
                     <span className={`text-[17px] font-extrabold leading-none transition-colors duration-300 ${i === activeTier ? "text-foreground" : "text-t3"}`}>
-                      {tierItem.price}
+                      {tierItem.price === "—" ? t("catalog.quote") : tierItem.price}
                     </span>
                   </button>
                 ))}
@@ -211,7 +211,7 @@ export default function ServicePage() {
                 boxShadow: '0 6px 20px -4px rgba(22, 163, 74, 0.4)',
               }}
             >
-              {t("card.add")} {tier.name} — {tier.price}
+              {t("card.add")} {tier.name} — {tier.price === "—" ? t("cart.priceTbd") : tier.price}
             </button>
           </div>
         </div>

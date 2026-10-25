@@ -1,6 +1,7 @@
 import { uk } from "./uk";
 import { en } from "./en";
 import { de } from "./de";
+import { applyCatalogTranslations } from "@/data/catalogReview";
 
 export type Locale = "uk" | "en" | "de";
 
@@ -466,3 +467,5 @@ Object.keys(uk).forEach((key) => {
     translations[key] = { uk: uk[key], en: en[key] || "", de: de[key] || "" };
   }
 });
+
+applyCatalogTranslations(translations);

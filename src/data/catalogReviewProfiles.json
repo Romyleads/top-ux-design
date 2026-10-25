@@ -1,0 +1,568 @@
+{
+  "presentation": {
+    "summary": {
+      "en": "Investor and sales decks with editable layouts, verified figures and reusable visual components",
+      "de": "Investoren- und Vertriebspräsentationen mit editierbaren Layouts, geprüften Zahlen und wiederverwendbaren Gestaltungselementen",
+      "uk": "Інвестиційні та продажні презентації з редагованими макетами, перевіреними даними та повторно використовуваними елементами"
+    },
+    "tools": [
+      "Gamma",
+      "Figma Slides",
+      "Adobe Firefly"
+    ]
+  },
+  "brochure": {
+    "summary": {
+      "en": "Digital and print brochures with clear offer hierarchy, accessible reading order and print preflight",
+      "de": "Digitale und gedruckte Broschüren mit klarer Angebotsstruktur, lesbarer Reihenfolge und Druckdatenprüfung",
+      "uk": "Цифрові та друковані брошури з чіткою структурою офера, зручним читанням і перевіркою друкарських файлів"
+    },
+    "tools": [
+      "Adobe InDesign",
+      "Adobe Firefly",
+      "Claude"
+    ]
+  },
+  "catalog": {
+    "summary": {
+      "en": "Structured product catalogs with verified specifications, consistent imagery and linked product references",
+      "de": "Strukturierte Produktkataloge mit geprüften Spezifikationen, einheitlichen Bildern und verknüpften Produktreferenzen",
+      "uk": "Структуровані каталоги з перевіреними характеристиками, узгодженими зображеннями та посиланнями на товари"
+    },
+    "tools": [
+      "Adobe InDesign",
+      "Adobe Firefly",
+      "Lovable"
+    ]
+  },
+  "flyer": {
+    "summary": {
+      "en": "Campaign flyers with one clear message, tracked QR links and coordinated digital adaptations",
+      "de": "Kampagnenflyer mit klarer Botschaft, messbaren QR-Links und abgestimmten digitalen Varianten",
+      "uk": "Кампанійні листівки з одним чітким повідомленням, вимірюваними QR-посиланнями та цифровими адаптаціями"
+    },
+    "tools": [
+      "Recraft",
+      "Adobe Firefly",
+      "Figma"
+    ]
+  },
+  "landing-page": {
+    "summary": {
+      "en": "Lead-generation pages with mobile-ready layouts, consent-aware forms and measurable conversion events",
+      "de": "Lead-Landingpages mit mobilgerechten Layouts, einwilligungsbasierten Formularen und messbaren Conversion-Ereignissen",
+      "uk": "Лендінги для заявок із мобільними макетами, формами зі згодою та вимірюваними подіями конверсії"
+    },
+    "tools": [
+      "Lovable",
+      "Cursor",
+      "Microsoft Clarity"
+    ]
+  },
+  "video-ad": {
+    "summary": {
+      "en": "Scripted video ads combining reference-controlled AI footage, accurate product assets and human editing",
+      "de": "Videowerbung mit Skript, referenzgesteuerten KI-Szenen, korrekten Produktmaterialien und menschlichem Schnitt",
+      "uk": "Сценарна відеореклама з AI-сценами за референсами, точними матеріалами товару та ручним монтажем"
+    },
+    "tools": [
+      "Veo 3.1",
+      "Kling VIDEO 3.0",
+      "Runway Gen-4.5",
+      "ElevenLabs"
+    ]
+  },
+  "smm": {
+    "summary": {
+      "en": "Platform-specific editorial planning, approved creative and consistent publishing with performance review",
+      "de": "Plattformspezifische Redaktionsplanung, freigegebene Kreativinhalte und Veröffentlichung mit Ergebnisauswertung",
+      "uk": "Редакційне планування під платформи, погоджені креативи та публікації з аналізом результатів"
+    },
+    "tools": [
+      "ChatGPT",
+      "Adobe Firefly",
+      "Buffer"
+    ]
+  },
+  "banners": {
+    "summary": {
+      "en": "Brand-consistent banner families with readable typography, safe-area checks and controlled variant generation",
+      "de": "Markenkonforme Bannerfamilien mit lesbarer Typografie, Sicherheitsabständen und kontrollierten Varianten",
+      "uk": "Узгоджені банери з читабельною типографікою, безпечними зонами та контрольованими варіантами"
+    },
+    "tools": [
+      "Recraft",
+      "Adobe Firefly",
+      "Bannerbear"
+    ]
+  },
+  "logo": {
+    "summary": {
+      "en": "Original identity concepts refined into editable vectors with legibility and similarity checks",
+      "de": "Eigenständige Identitätskonzepte als editierbare Vektoren mit Lesbarkeits- und Ähnlichkeitsprüfung",
+      "uk": "Оригінальні концепції знака у редагованому векторі з перевіркою читабельності та схожості"
+    },
+    "tools": [
+      "Recraft",
+      "Adobe Illustrator",
+      "Adobe Firefly"
+    ]
+  },
+  "business-card": {
+    "summary": {
+      "en": "Print-ready business cards with readable contact hierarchy, QR destinations and production checks",
+      "de": "Druckfertige Visitenkarten mit klaren Kontaktdaten, QR-Zielen und Produktionsprüfung",
+      "uk": "Готові до друку візитки з чіткими контактами, QR-переходами та перевіркою виробництва"
+    },
+    "tools": [
+      "Figma",
+      "Adobe Illustrator",
+      "Adobe Substance 3D"
+    ]
+  },
+  "packaging": {
+    "summary": {
+      "en": "Packaging artwork built on supplied dielines with product-accurate mockups and print checks",
+      "de": "Verpackungsgestaltung auf gelieferten Stanzkonturen mit produktgetreuen Mockups und Druckprüfung",
+      "uk": "Дизайн упаковки на наданих розгортках із точними мокапами та друкарською перевіркою"
+    },
+    "tools": [
+      "Adobe Illustrator",
+      "Adobe Substance 3D",
+      "Adobe Firefly"
+    ]
+  },
+  "brandbook": {
+    "summary": {
+      "en": "A usable brand system covering visual rules, accessible combinations and examples for AI-assisted production",
+      "de": "Eine nutzbare Markenbasis mit Gestaltungsregeln, zugänglichen Kombinationen und Beispielen für KI-gestützte Produktion",
+      "uk": "Практична бренд-система з візуальними правилами, доступними поєднаннями та прикладами для AI-виробництва"
+    },
+    "tools": [
+      "Figma",
+      "Notion",
+      "Claude"
+    ]
+  },
+  "blog-post": {
+    "summary": {
+      "en": "Source-backed articles structured for readers, organic search and AI answer discovery",
+      "de": "Quellenbasierte Artikel für Leser, organische Suche und Auffindbarkeit in KI-Antworten",
+      "uk": "Статті з джерелами для читачів, органічного пошуку та знаходження в AI-відповідях"
+    },
+    "tools": [
+      "Claude",
+      "Semrush",
+      "Google Search Console"
+    ]
+  },
+  "infographic": {
+    "summary": {
+      "en": "Source-checked data stories with accurate scales, accessible labels and reusable visual assets",
+      "de": "Datenvisualisierungen mit Quellenprüfung, korrekten Skalen, lesbaren Labels und wiederverwendbaren Elementen",
+      "uk": "Інфографіка з перевіреними джерелами, точними шкалами, доступними підписами та повторними елементами"
+    },
+    "tools": [
+      "Figma",
+      "Flourish",
+      "Recraft"
+    ]
+  },
+  "white-paper": {
+    "summary": {
+      "en": "Evidence-led B2B reports with traceable citations, expert review and conversion-focused distribution assets",
+      "de": "Evidenzbasierte B2B-Berichte mit nachvollziehbaren Quellen, Expertenprüfung und Materialien zur Lead-Gewinnung",
+      "uk": "Доказові B2B-звіти з перевірними посиланнями, експертною редактурою та матеріалами для заявок"
+    },
+    "tools": [
+      "Perplexity",
+      "Claude",
+      "Adobe InDesign"
+    ]
+  },
+  "case-study": {
+    "summary": {
+      "en": "Customer-approved case studies using real interviews, verified outcomes and documented permission",
+      "de": "Freigegebene Kundenfallstudien mit echten Interviews, geprüften Ergebnissen und dokumentierter Zustimmung",
+      "uk": "Погоджені клієнтські кейси зі справжніми інтерв’ю, перевіреними результатами та зафіксованою згодою"
+    },
+    "tools": [
+      "Riverside",
+      "Descript",
+      "Figma"
+    ]
+  },
+  "ebook": {
+    "summary": {
+      "en": "Useful lead magnets with original expertise, editable layouts and consent-aware delivery journeys",
+      "de": "Nützliche Lead-Magneten mit eigener Expertise, editierbaren Layouts und einwilligungsbasierter Zustellung",
+      "uk": "Корисні лід-магніти з експертним змістом, редагованими макетами та видачею за згодою"
+    },
+    "tools": [
+      "Claude",
+      "Adobe InDesign",
+      "Lovable"
+    ]
+  },
+  "email-campaign": {
+    "summary": {
+      "en": "Consent-based email campaigns with tested rendering, segmentation and clear unsubscribe paths",
+      "de": "Einwilligungsbasierte E-Mail-Kampagnen mit Darstellungsprüfung, Segmentierung und klarer Abmeldung",
+      "uk": "Email-кампанії за згодою з перевіркою відображення, сегментацією та чіткою відпискою"
+    },
+    "tools": [
+      "Klaviyo",
+      "Resend",
+      "Maizzle"
+    ]
+  },
+  "drip-campaign": {
+    "summary": {
+      "en": "Event-triggered email journeys with suppression rules, clear handoffs and conversion tracking",
+      "de": "Ereignisbasierte E-Mail-Strecken mit Ausschlussregeln, klaren Übergaben und Conversion-Messung",
+      "uk": "Подієві email-серії з правилами виключення, передачею менеджеру та відстеженням конверсій"
+    },
+    "tools": [
+      "Customer.io",
+      "n8n",
+      "Claude"
+    ]
+  },
+  "newsletter": {
+    "summary": {
+      "en": "Editorial newsletters with verified sources, repeatable templates and consent-based audience management",
+      "de": "Redaktionelle Newsletter mit geprüften Quellen, wiederverwendbaren Vorlagen und einwilligungsbasierter Abonnentenverwaltung",
+      "uk": "Редакційні розсилки з перевіреними джерелами, повторними шаблонами та аудиторією за згодою"
+    },
+    "tools": [
+      "beehiiv",
+      "Perplexity",
+      "Claude"
+    ]
+  },
+  "webinar": {
+    "summary": {
+      "en": "Live or recorded expert sessions with production planning, captions and reusable follow-up content",
+      "de": "Live- oder aufgezeichnete Expertenformate mit Produktionsplanung, Untertiteln und Folgeinhalten",
+      "uk": "Живі або записані експертні сесії з планом виробництва, субтитрами та похідним контентом"
+    },
+    "tools": [
+      "Riverside",
+      "Gamma",
+      "Descript"
+    ]
+  },
+  "product-tour": {
+    "summary": {
+      "en": "Real product walkthroughs with current screen recordings, narration and release-aware updates",
+      "de": "Echte Produktführungen mit aktuellen Bildschirmaufnahmen, Vertonung und releasebezogenen Aktualisierungen",
+      "uk": "Огляди реального продукту з актуальними записами екрана, озвучкою та оновленнями під релізи"
+    },
+    "tools": [
+      "Tella",
+      "Descript",
+      "ElevenLabs"
+    ]
+  },
+  "testimonials": {
+    "summary": {
+      "en": "Authentic customer interviews edited into approved testimonials without fabricated voices or claims",
+      "de": "Authentische Kundeninterviews als freigegebene Referenzen ohne erfundene Stimmen oder Aussagen",
+      "uk": "Справжні клієнтські інтерв’ю у погоджених відгуках без вигаданих голосів і тверджень"
+    },
+    "tools": [
+      "Riverside",
+      "VideoAsk",
+      "Descript"
+    ]
+  },
+  "ppc-google": {
+    "summary": {
+      "en": "Search campaigns with conversion hygiene, negative-query controls and budget-aware optimization",
+      "de": "Suchkampagnen mit sauberem Conversion-Tracking, Ausschlussbegriffen und budgetbewusster Optimierung",
+      "uk": "Пошукові кампанії з коректними конверсіями, мінус-запитами та оптимізацією в межах бюджету"
+    },
+    "tools": [
+      "Google Ads",
+      "Optmyzr",
+      "Looker Studio"
+    ]
+  },
+  "retargeting": {
+    "summary": {
+      "en": "Consent-aware remarketing with audience exclusions, frequency controls and creative testing",
+      "de": "Einwilligungsbasiertes Remarketing mit Zielgruppenausschlüssen, Frequenzsteuerung und Kreativtests",
+      "uk": "Ремаркетинг за згодою з виключеннями аудиторій, контролем частоти та тестами креативів"
+    },
+    "tools": [
+      "Meta Ads",
+      "Google Ads",
+      "Looker Studio"
+    ]
+  },
+  "native-ads": {
+    "summary": {
+      "en": "Clearly disclosed sponsored content with editorial-quality writing and transparent landing journeys",
+      "de": "Klar gekennzeichnete Werbeinhalte mit redaktioneller Qualität und transparenten Zielseiten",
+      "uk": "Чітко позначений рекламний контент з редакційною якістю та прозорими переходами"
+    },
+    "tools": [
+      "Taboola",
+      "Claude",
+      "Google Analytics"
+    ]
+  },
+  "landing-ad": {
+    "summary": {
+      "en": "Campaign-specific landing variants with message match, accessibility checks and testable hypotheses",
+      "de": "Kampagnenspezifische Landingvarianten mit Botschaftskonsistenz, Zugänglichkeitsprüfung und testbaren Hypothesen",
+      "uk": "Лендінги під кампанії з узгодженим повідомленням, перевіркою доступності та тестованими гіпотезами"
+    },
+    "tools": [
+      "Lovable",
+      "Microsoft Clarity",
+      "Google Analytics"
+    ]
+  },
+  "ugc": {
+    "summary": {
+      "en": "Creator-led ads with real product experience, usage permissions and platform-ready edits",
+      "de": "Creator-Werbung mit echter Produkterfahrung, Nutzungsrechten und plattformgerechtem Schnitt",
+      "uk": "Реклама з креаторами на основі реального досвіду, прав використання та платформного монтажу"
+    },
+    "tools": [
+      "Billo",
+      "CapCut",
+      "Descript"
+    ]
+  },
+  "ai-content": {
+    "summary": {
+      "en": "A brand-governed content workflow with approved references, factual checks and human sign-off",
+      "de": "Ein markengesteuerter Content-Prozess mit freigegebenen Referenzen, Faktenprüfung und menschlicher Freigabe",
+      "uk": "Брендований контент-процес із погодженими референсами, фактчекінгом та людським затвердженням"
+    },
+    "tools": [
+      "Claude",
+      "Adobe Firefly",
+      "Notion"
+    ]
+  },
+  "saas-onboarding": {
+    "summary": {
+      "en": "Activation journeys built around real product tasks, helpful walkthroughs and lifecycle messages",
+      "de": "Aktivierungsstrecken für echte Produktaufgaben mit hilfreichen Anleitungen und Lifecycle-Nachrichten",
+      "uk": "Активаційні сценарії під реальні завдання продукту з оглядами та життєвими повідомленнями"
+    },
+    "tools": [
+      "Userflow",
+      "Customer.io",
+      "Tella"
+    ]
+  },
+  "linkedin-brand": {
+    "summary": {
+      "en": "Expert-led LinkedIn positioning, source-backed posts and relationship-first outreach assets",
+      "de": "Expertenpositionierung auf LinkedIn, quellenbasierte Beiträge und Materialien für persönliche Kontaktpflege",
+      "uk": "Експертне позиціювання LinkedIn, пости з джерелами та матеріали для персональної комунікації"
+    },
+    "tools": [
+      "Taplio",
+      "Claude",
+      "Figma"
+    ]
+  },
+  "micro-saas": {
+    "summary": {
+      "en": "A narrowly scoped subscription product with a tested core journey, billing and usage measurement",
+      "de": "Ein klar abgegrenztes Abo-Produkt mit getesteter Kernstrecke, Abrechnung und Nutzungsmessung",
+      "uk": "Вузький підписний продукт з перевіреним основним сценарієм, білінгом та вимірюванням використання"
+    },
+    "tools": [
+      "Lovable",
+      "Stripe",
+      "PostHog"
+    ]
+  },
+  "interactive-content": {
+    "summary": {
+      "en": "Useful quizzes and calculators with validated logic, accessible inputs and consent-based lead capture",
+      "de": "Nützliche Quizze und Rechner mit geprüfter Logik, zugänglichen Eingaben und einwilligungsbasierter Lead-Erfassung",
+      "uk": "Корисні квізи та калькулятори з перевіреною логікою, доступним введенням та заявками за згодою"
+    },
+    "tools": [
+      "Typeform",
+      "Lovable",
+      "Outgrow"
+    ]
+  },
+  "podcast": {
+    "summary": {
+      "en": "An expert podcast workflow covering recording, transcript editing, publishing and approved clips",
+      "de": "Ein Expertenpodcast-Prozess von Aufnahme über Transkript-Schnitt bis Veröffentlichung und freigegebenen Clips",
+      "uk": "Експертний подкаст-процес від запису та монтажу за текстом до публікації й погоджених кліпів"
+    },
+    "tools": [
+      "Riverside",
+      "Descript",
+      "OpusClip"
+    ]
+  },
+  "saas-builder": {
+    "summary": {
+      "en": "A scoped SaaS launch with authentication, subscription billing and tested customer workflows",
+      "de": "Ein abgegrenzter SaaS-Start mit Anmeldung, Abo-Abrechnung und getesteten Kundenszenarien",
+      "uk": "Запуск SaaS з визначеним обсягом, входом, підписним білінгом та перевіреними сценаріями"
+    },
+    "tools": [
+      "Lovable",
+      "Cursor",
+      "Stripe Billing"
+    ]
+  },
+  "telegram-twa": {
+    "summary": {
+      "en": "A Telegram Mini App with verified user identity, server-validated actions and policy-compatible payments",
+      "de": "Eine Telegram Mini App mit geprüfter Nutzeridentität, serverseitiger Aktionsprüfung und regelkonformen Zahlungen",
+      "uk": "Telegram Mini App з перевіркою користувача, серверною валідацією та оплатами за правилами платформи"
+    },
+    "tools": [
+      "Lovable",
+      "grammY",
+      "Telegram Stars"
+    ]
+  },
+  "ai-automation": {
+    "summary": {
+      "en": "Supervised AI workflows with tool permissions, approval gates, audit logs and human escalation",
+      "de": "Überwachte KI-Prozesse mit Werkzeugrechten, Freigabeschritten, Protokollen und menschlicher Übergabe",
+      "uk": "Контрольовані AI-процеси з правами інструментів, етапами погодження, журналами та передачею людині"
+    },
+    "tools": [
+      "Claude",
+      "n8n",
+      "OpenAI API"
+    ]
+  },
+  "nocode-mvp": {
+    "summary": {
+      "en": "A focused no-code validation product with tested workflows and a practical handover",
+      "de": "Ein fokussiertes No-Code-Validierungsprodukt mit getesteten Abläufen und praktischer Übergabe",
+      "uk": "Сфокусований no-code продукт для перевірки ідеї з тестованими сценаріями та практичною передачею"
+    },
+    "tools": [
+      "Lovable",
+      "Framer",
+      "Make"
+    ]
+  },
+  "vibe-coding-visionary": {
+    "summary": {
+      "en": "Compare AI-assisted prototypes against the same brief, acceptance checks and maintainability criteria",
+      "de": "KI-gestützte Prototypen anhand desselben Briefings, Abnahmetests und Wartbarkeitskriterien vergleichen",
+      "uk": "Порівняння AI-прототипів за одним брифом, приймальними тестами та критеріями підтримки"
+    },
+    "tools": [
+      "Lovable",
+      "Cursor",
+      "Replit"
+    ]
+  },
+  "ai-twin": {
+    "summary": {
+      "en": "An authorized digital presenter and knowledge assistant with approved scripts and human handoff",
+      "de": "Ein autorisierter digitaler Sprecher und Wissensassistent mit freigegebenen Skripten und menschlicher Übergabe",
+      "uk": "Авторизований цифровий ведучий і помічник знань з погодженими сценаріями та передачею людині"
+    },
+    "tools": [
+      "HeyGen",
+      "ElevenLabs",
+      "Claude"
+    ]
+  },
+  "mvp-on-demand": {
+    "summary": {
+      "en": "A brief-sized MVP delivered against an agreed feature scope and concrete acceptance checks",
+      "de": "Ein anhand des Briefings abgegrenztes MVP mit vereinbartem Funktionsumfang und konkreten Abnahmetests",
+      "uk": "MVP за брифом із погодженим обсягом функцій та конкретними приймальними перевірками"
+    },
+    "tools": [
+      "Lovable",
+      "Claude Code",
+      "Stripe"
+    ]
+  },
+  "ai-video-catalog": {
+    "summary": {
+      "en": "Product-reference-led catalog videos with label checks, consistent framing and reviewed exports",
+      "de": "Referenzbasierte Katalogvideos mit Etikettenprüfung, einheitlichem Bildaufbau und geprüften Exporten",
+      "uk": "Каталогові відео за референсами товарів із перевіркою етикеток, кадрування та експорту"
+    },
+    "tools": [
+      "Veo 3.1",
+      "Kling VIDEO 3.0",
+      "Runway Gen-4.5",
+      "ElevenLabs"
+    ]
+  },
+  "reverse-engineering": {
+    "summary": {
+      "en": "Public-source competitor analysis with cited evidence, funnel hypotheses and prioritized experiments",
+      "de": "Wettbewerbsanalyse aus öffentlichen Quellen mit Belegen, Funnel-Hypothesen und priorisierten Experimenten",
+      "uk": "Аналіз конкурентів із публічних джерел, доказами, гіпотезами воронки та пріоритетними експериментами"
+    },
+    "tools": [
+      "Perplexity",
+      "Similarweb",
+      "Meta Ads Library"
+    ]
+  },
+  "prompt-dna": {
+    "summary": {
+      "en": "A brand instruction system with approved examples, reusable prompts and evaluation checklists",
+      "de": "Ein Marken-Instruktionssystem mit freigegebenen Beispielen, wiederverwendbaren Prompts und Bewertungslisten",
+      "uk": "Система інструкцій бренду з погодженими прикладами, повторними промптами та перевірними чеклістами"
+    },
+    "tools": [
+      "Claude",
+      "ChatGPT",
+      "Adobe Firefly"
+    ]
+  },
+  "telegram-ai-agent": {
+    "summary": {
+      "en": "A Telegram lead assistant with qualification rules, consent checks, calendar booking and human fallback",
+      "de": "Ein Telegram-Lead-Assistent mit Qualifizierungsregeln, Einwilligungsprüfung, Terminbuchung und menschlicher Rückfallebene",
+      "uk": "Telegram-помічник заявок із правилами кваліфікації, згодою, бронюванням і передачею менеджеру"
+    },
+    "tools": [
+      "OpenAI API",
+      "n8n",
+      "ElevenLabs"
+    ]
+  },
+  "generative-identity": {
+    "summary": {
+      "en": "A controlled visual variation system that preserves the core logo, readability and brand rules",
+      "de": "Ein kontrolliertes Variationssystem, das Kernlogo, Lesbarkeit und Markenregeln bewahrt",
+      "uk": "Керована система візуальних варіантів зі збереженням основного логотипа, читабельності та правил бренду"
+    },
+    "tools": [
+      "Recraft",
+      "Figma",
+      "Adobe Firefly"
+    ]
+  },
+  "ai-forecast": {
+    "summary": {
+      "en": "Evidence-based market monitoring with dated signals, scenario analysis and explicit uncertainty",
+      "de": "Evidenzbasiertes Marktmonitoring mit datierten Signalen, Szenarien und offengelegter Unsicherheit",
+      "uk": "Доказовий моніторинг ринку з датованими сигналами, сценаріями та явною невизначеністю"
+    },
+    "tools": [
+      "Google Trends",
+      "Perplexity",
+      "Exploding Topics"
+    ]
+  }
+}

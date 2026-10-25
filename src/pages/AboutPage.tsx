@@ -6,7 +6,7 @@ import { ArrowLeft, Zap, Users, Globe, Shield } from "lucide-react";
 const content = {
   en: {
     title: "About PromoVisions",
-    desc: "PromoVisions delivers turnkey marketing concepts for businesses. From print to digital, branding to paid ads — 38+ ready-made formats.",
+    desc: "PromoVisions delivers marketing, AI video and growth solutions. Catalog reviewed for September–October 2026.",
     h1: "About Us",
     intro: "PromoVisions is a marketing concept studio that helps businesses launch faster with ready-made, professionally designed marketing materials.",
     features: [
@@ -18,7 +18,7 @@ const content = {
   },
   de: {
     title: "Über PromoVisions",
-    desc: "PromoVisions liefert schlüsselfertige Marketingkonzepte für Unternehmen. Über 38 Formate verfügbar.",
+    desc: "PromoVisions liefert Marketing-, KI-Video- und Wachstumslösungen. Katalog für September–Oktober 2026 überarbeitet.",
     h1: "Über uns",
     intro: "PromoVisions ist ein Marketingkonzept-Studio, das Unternehmen hilft, schneller mit professionell gestalteten Materialien zu starten.",
     features: [
@@ -30,7 +30,7 @@ const content = {
   },
   uk: {
     title: "Про PromoVisions",
-    desc: "PromoVisions створює готові маркетингові концепти для бізнесу. 38+ форматів від друку до цифрових медіа.",
+    desc: "PromoVisions створює маркетингові, AI-відео та growth-рішення. Каталог оновлено на вересень–жовтень 2026.",
     h1: "Про нас",
     intro: "PromoVisions — студія маркетингових концептів, яка допомагає бізнесу швидше стартувати з професійно розробленими матеріалами.",
     features: [
