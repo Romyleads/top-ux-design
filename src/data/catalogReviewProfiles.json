@@ -44,7 +44,7 @@
     "tools": [
       "Recraft",
       "Adobe Firefly",
-      "Figma Make"
+      "Canva Magic Studio"
     ]
   },
   "landing-page": {
@@ -56,7 +56,7 @@
     "tools": [
       "Lovable",
       "Cursor",
-      "Microsoft Clarity"
+      "Claude"
     ]
   },
   "video-ad": {
@@ -81,7 +81,7 @@
     "tools": [
       "ChatGPT",
       "Adobe Firefly",
-      "Buffer"
+      "Claude"
     ]
   },
   "banners": {
@@ -93,7 +93,7 @@
     "tools": [
       "Recraft",
       "Adobe Firefly",
-      "Bannerbear"
+      "Canva Magic Studio"
     ]
   },
   "logo": {
@@ -117,7 +117,7 @@
     "tools": [
       "Canva Magic Studio",
       "Recraft",
-      "Figma Make"
+      "Ideogram"
     ]
   },
   "packaging": {
@@ -139,8 +139,8 @@
       "uk": "Практична бренд-система з візуальними правилами, доступними поєднаннями та прикладами для AI-виробництва"
     },
     "tools": [
-      "Figma Make",
-      "Notion",
+      "Canva Magic Studio",
+      "Notion AI",
       "Claude"
     ]
   },
@@ -152,8 +152,8 @@
     },
     "tools": [
       "Claude",
-      "Semrush",
-      "Google Search Console"
+      "Perplexity",
+      "ChatGPT"
     ]
   },
   "infographic": {
@@ -163,8 +163,8 @@
       "uk": "Інфографіка з перевіреними джерелами, точними шкалами, доступними підписами та повторними елементами"
     },
     "tools": [
-      "Figma Make",
-      "Flourish",
+      "Claude",
+      "Canva Magic Studio",
       "Recraft"
     ]
   },
@@ -187,9 +187,9 @@
       "uk": "Погоджені клієнтські кейси зі справжніми інтерв’ю, перевіреними результатами та зафіксованою згодою"
     },
     "tools": [
-      "Riverside",
+      "Claude",
       "Descript",
-      "Figma Make"
+      "Canva Magic Studio"
     ]
   },
   "ebook": {
@@ -211,9 +211,9 @@
       "uk": "Email-кампанії за згодою з перевіркою відображення, сегментацією та чіткою відпискою"
     },
     "tools": [
-      "Klaviyo",
-      "Resend",
-      "Maizzle"
+      "Claude",
+      "ChatGPT",
+      "Canva Magic Studio"
     ]
   },
   "drip-campaign": {
@@ -223,9 +223,9 @@
       "uk": "Подієві email-серії з правилами виключення, передачею менеджеру та відстеженням конверсій"
     },
     "tools": [
-      "Customer.io",
-      "n8n",
-      "Claude"
+      "Claude",
+      "ChatGPT",
+      "Claude Code"
     ]
   },
   "newsletter": {
@@ -235,9 +235,9 @@
       "uk": "Редакційні розсилки з перевіреними джерелами, повторними шаблонами та аудиторією за згодою"
     },
     "tools": [
-      "beehiiv",
       "Perplexity",
-      "Claude"
+      "Claude",
+      "Canva Magic Studio"
     ]
   },
   "webinar": {
@@ -247,7 +247,7 @@
       "uk": "Живі або записані експертні сесії з планом виробництва, субтитрами та похідним контентом"
     },
     "tools": [
-      "Riverside",
+      "Claude",
       "Gamma",
       "Descript"
     ]
@@ -259,9 +259,9 @@
       "uk": "Огляди реального продукту з актуальними записами екрана, озвучкою та оновленнями під релізи"
     },
     "tools": [
-      "Tella",
       "Descript",
-      "ElevenLabs"
+      "ElevenLabs",
+      "Claude"
     ]
   },
   "testimonials": {
@@ -271,9 +271,8 @@
       "uk": "Справжні клієнтські інтерв’ю у погоджених відгуках без вигаданих голосів і тверджень"
     },
     "tools": [
-      "Riverside",
-      "VideoAsk",
-      "Descript"
+      "Descript",
+      "Claude"
     ]
   },
   "ppc-google": {
@@ -283,9 +282,9 @@
       "uk": "Пошукові кампанії з коректними конверсіями, мінус-запитами та оптимізацією в межах бюджету"
     },
     "tools": [
-      "Google Ads",
-      "Optmyzr",
-      "Looker Studio"
+      "Claude",
+      "ChatGPT",
+      "Perplexity"
     ]
   },
   "retargeting": {
@@ -295,9 +294,9 @@
       "uk": "Ремаркетинг за згодою з виключеннями аудиторій, контролем частоти та тестами креативів"
     },
     "tools": [
-      "Meta Ads",
-      "Google Ads",
-      "Looker Studio"
+      "Claude",
+      "ChatGPT",
+      "GPT Image"
     ]
   },
   "native-ads": {
@@ -307,9 +306,9 @@
       "uk": "Чітко позначений рекламний контент з редакційною якістю та прозорими переходами"
     },
     "tools": [
-      "Taboola",
       "Claude",
-      "Google Analytics"
+      "Perplexity",
+      "GPT Image"
     ]
   },
   "landing-ad": {
@@ -320,8 +319,8 @@
     },
     "tools": [
       "Lovable",
-      "Microsoft Clarity",
-      "Google Analytics"
+      "Cursor",
+      "Claude"
     ]
   },
   "ugc": {
@@ -331,9 +330,9 @@
       "uk": "Реклама з креаторами на основі реального досвіду, прав використання та платформного монтажу"
     },
     "tools": [
-      "Billo",
       "Captions",
-      "Descript"
+      "Descript",
+      "Claude"
     ]
   },
   "ai-content": {
@@ -345,7 +344,7 @@
     "tools": [
       "Claude",
       "Adobe Firefly",
-      "Notion"
+      "Notion AI"
     ]
   },
   "saas-onboarding": {
@@ -355,9 +354,9 @@
       "uk": "Активаційні сценарії під реальні завдання продукту з оглядами та життєвими повідомленнями"
     },
     "tools": [
-      "Userflow",
-      "Customer.io",
-      "Tella"
+      "Claude",
+      "Descript",
+      "Claude Code"
     ]
   },
   "linkedin-brand": {
@@ -367,9 +366,9 @@
       "uk": "Експертне позиціювання LinkedIn, пости з джерелами та матеріали для персональної комунікації"
     },
     "tools": [
-      "Taplio",
       "Claude",
-      "Figma Make"
+      "Perplexity",
+      "Canva Magic Studio"
     ]
   },
   "micro-saas": {
@@ -380,8 +379,8 @@
     },
     "tools": [
       "Lovable",
-      "Stripe",
-      "PostHog"
+      "Cursor",
+      "Claude Code"
     ]
   },
   "interactive-content": {
@@ -391,9 +390,9 @@
       "uk": "Корисні квізи та калькулятори з перевіреною логікою, доступним введенням та заявками за згодою"
     },
     "tools": [
-      "Typeform",
       "Lovable",
-      "Outgrow"
+      "Claude Code",
+      "Claude"
     ]
   },
   "podcast": {
@@ -403,8 +402,8 @@
       "uk": "Експертний подкаст-процес від запису та монтажу за текстом до публікації й погоджених кліпів"
     },
     "tools": [
-      "Riverside",
       "Descript",
+      "Claude",
       "OpusClip"
     ]
   },
@@ -417,7 +416,7 @@
     "tools": [
       "Lovable",
       "Cursor",
-      "Stripe Billing"
+      "Claude Code"
     ]
   },
   "telegram-twa": {
@@ -428,8 +427,8 @@
     },
     "tools": [
       "Lovable",
-      "grammY",
-      "Telegram Stars"
+      "Claude Code",
+      "Claude"
     ]
   },
   "ai-automation": {
@@ -452,8 +451,8 @@
     },
     "tools": [
       "Lovable",
-      "Framer",
-      "Make"
+      "Cursor",
+      "Claude Code"
     ]
   },
   "vibe-coding-visionary": {
@@ -465,7 +464,7 @@
     "tools": [
       "Lovable",
       "Cursor",
-      "Replit"
+      "Replit Agent"
     ]
   },
   "ai-twin": {
@@ -489,7 +488,7 @@
     "tools": [
       "Lovable",
       "Claude Code",
-      "Stripe"
+      "Cursor"
     ]
   },
   "ai-video-catalog": {
@@ -513,8 +512,8 @@
     },
     "tools": [
       "Perplexity",
-      "Similarweb",
-      "Meta Ads Library"
+      "Claude",
+      "ChatGPT"
     ]
   },
   "prompt-dna": {
@@ -549,7 +548,7 @@
     },
     "tools": [
       "Recraft",
-      "Figma Make",
+      "Canva Magic Studio",
       "Adobe Firefly"
     ]
   },
@@ -560,9 +559,9 @@
       "uk": "Доказовий моніторинг ринку з датованими сигналами, сценаріями та явною невизначеністю"
     },
     "tools": [
-      "Google Trends",
       "Perplexity",
-      "Exploding Topics"
+      "Claude",
+      "ChatGPT"
     ]
   }
 }
