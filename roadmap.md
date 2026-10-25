@@ -7,7 +7,7 @@
 - [x] Record sources and any date/availability limitations.
 
 ## Follow-up audit
-- [ ] Verify effective EN/DE/UK offer and tier content against sources; remove unsupported forecasts and capability claims.
-- [ ] Verify all HOT flags, existing prices, quote-only prices and structured price data.
-- [ ] Exercise every localized card-to-detail route and representative cart flows; run regression tests.
-- [ ] Record audit findings and remaining verification limits.
+- [x] Verify effective EN/DE/UK offer and tier content against sources; remove unsupported forecasts and capability claims.
+- [x] Verify all HOT flags, existing prices, quote-only prices and structured price data.
+- [x] Exercise every localized card-to-detail route and representative cart flows; run regression tests (156 transitions, 10 tests).
+- [x] Record audit findings and remaining verification limits (account access, licenses and historical release dates not independently verified).
