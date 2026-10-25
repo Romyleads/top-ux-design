@@ -13,7 +13,7 @@
 - [x] Record audit findings and remaining verification limits (account access, licenses and historical release dates not independently verified).
 
 ## Cart payment
-- [ ] Extend the whole-cart handoff with explicit service/tier IDs; document Node.js parsing, validation and server-side repricing; verify tests and redirect.
+- [x] Extend the whole-cart handoff with explicit service/tier IDs; document Node.js parsing, validation and server-side repricing; 13 tests passed and whole-cart redirects verified on EN/DE/UK with quantity 2 and two services.
 - [x] Make payment the third cart step after validated contacts, without a separate payment popup; 11 tests passed and EN/DE/UK preview flows verified, including validation, back navigation and captured cabinet redirect.
 - [x] Move external payment into the shared cart and remove separate offer payment buttons.
 - [x] Preserve all selected plans and quantities in the cabinet handoff; verify EN/DE/UK cart flows and tests (20 tests; captured redirects, no runtime errors).
